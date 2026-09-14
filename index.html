@@ -685,7 +685,8 @@ html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(
 
     <div class="filter-card"><label for="search">Search horse or rider</label><input id="search" type="search" placeholder="Type a horse or rider…"></div>
     <div class="actions"><button id="clear">Clear filters</button><a class="linkbtn primary" href="https://online.equipe.com/shows/82493" target="_blank" rel="noopener">Open Equipe ↗</a></div>
-    <div class="meta">Updated 14 September 2026 · Monday 14 and Tuesday 15 September · Saved schedule, not a live feed</div>
+    <div class="actions"><button id="refreshData" class="primary">Refresh latest times</button><button id="refreshNote" disabled>Live data file</button></div>
+    <div class="meta" id="dataStatus">Loading latest ShowViva times…</div>
     <details class="source" id="about"><summary>Schedule details &amp; timing ▾</summary><div class="inner"><p>Monday 14 September and Tuesday 15 September are loaded. Tuesday contains 8 rides for Claire Hansen, Olivia White and Rikki Gradley.</p><p>All jumping times are APPROX. Tuesday times are rounded down using Equipe’s displayed seconds per start, with relevant published breaks and confirmed withdrawals included for Summer Escape and WF ANNIE’s Discovery round.</p><p>Indoor = Equine America Indoor Championship Arena. Wednesday–Sunday have not yet been added.</p></div></details>
     <div class="head">
       <h2 id="viewTitle">Tue 15 September</h2>
@@ -706,14 +707,47 @@ html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(
 <p id="weekContext" class="week-context"></p><div id="weekList" class="week-list"></div>
 </dialog>
 <script>
-const rides=[{"horse":"Pardento","rider":"Olivia White","classNo":1,"className":"GFS Senior Newcomers Championship First Round / Jade Wilson Ayres Memorial 1.10m Open Qualifier","ring":"Indoor","start":"08:00","order":9,"url":"https://online.equipe.com/startlists/1300462","time":"08:15","day":0},{"horse":"Rio Seven","rider":"Claire Hansen","classNo":9,"className":"Clear round · 80cm","ring":"Outdoor 2","start":"08:00","order":25,"url":"https://online.equipe.com/startlists/1300470","time":"08:46","day":0},{"horse":"Monmore Var","rider":"Olivia White","classNo":5,"className":"Ariat Senior British Novice Championship First Round / 90cm Open Grand Prix Qualifier","ring":"Outdoor 1","start":"08:30","order":35,"url":"https://online.equipe.com/startlists/1300466","time":"09:35","day":0},{"horse":"Rio Seven","rider":"Claire Hansen","classNo":5,"className":"Ariat Senior British Novice Championship First Round / 90cm Open Grand Prix Qualifier","ring":"Outdoor 1","start":"08:30","order":63,"url":"https://online.equipe.com/startlists/1300466","time":"10:37","day":0},{"horse":"Monmore Var","rider":"Olivia White","classNo":9,"className":"Clear round · 90cm","ring":"Outdoor 2","start":"08:00","order":87,"url":"https://online.equipe.com/startlists/1300470","time":"10:54","day":0},{"horse":"Special Delivery 27","rider":"Claire Hansen","classNo":2,"className":"Redpost Equestrian Senior Foxhunter First Round / Senior 1.20m Open Grand Prix Qualifier","ring":"Indoor","start":"13:15","order":4,"url":"https://online.equipe.com/startlists/1300463","time":"13:20","day":0},{"horse":"Pardento","rider":"Olivia White","classNo":2,"className":"Redpost Equestrian Senior Foxhunter First Round / Senior 1.20m Open Grand Prix Qualifier","ring":"Indoor","start":"13:15","order":78,"url":"https://online.equipe.com/startlists/1300463","time":"15:50","day":0},{"horse":"Summer Escape","rider":"Claire Hansen","classNo":11,"className":"The BPH Auction 5 Year Old Grand Prix Qualifier","ring":"Outdoor 2","start":"15:40","order":6,"url":"https://online.equipe.com/startlists/1300473","time":"15:49","day":0},{"horse":"KSH Queen Ester","rider":"Claire Hansen","classNo":11,"className":"The BPH Auction 5 Year Old Grand Prix Qualifier","ring":"Outdoor 2","start":"15:40","order":41,"url":"https://online.equipe.com/startlists/1300473","time":"16:57","day":0},{"horse":"Special Delivery 27","rider":"Claire Hansen","classNo":3,"className":"Star of the Future Grades B & C Grand Prix Qualifier","ring":"Indoor","start":"18:00","order":19,"url":"https://online.equipe.com/startlists/1300464","time":"18:43","day":0},{"day":1,"horse":"KSH Queen Ester","rider":"Claire Hansen","classNo":null,"className":"5 Year Old","ring":"Outdoor 1","start":null,"order":1,"url":"https://online.equipe.com/startlists/1301680","time":"08:00"},{"day":1,"horse":"Rio Seven","rider":"Claire Hansen","classNo":null,"className":"Clear Round","ring":"Outdoor 3","start":null,"order":27,"url":"https://online.equipe.com/startlists/1301686","time":"08:52"},{"day":1,"horse":"Monmore Var","rider":"Olivia White","classNo":null,"className":"British Novice","ring":"Indoor","start":null,"order":50,"url":"https://online.equipe.com/startlists/1301675","time":"09:43"},{"day":1,"horse":"Summer Escape","rider":"Claire Hansen","classNo":null,"className":"5 Year Old","ring":"Outdoor 1","start":null,"order":58,"url":"https://online.equipe.com/startlists/1301680","time":"09:54"},{"day":1,"horse":"WF ANNIE","rider":"Olivia White","classNo":null,"className":"British Novice","ring":"Indoor","start":null,"order":101,"url":"https://online.equipe.com/startlists/1301675","time":"11:30"},{"day":1,"horse":"QAUNTA COSTA JS","rider":"Rikki Gradley","classNo":null,"className":"National 1.30m","ring":"Indoor","start":null,"order":19,"url":"https://online.equipe.com/startlists/1301676","time":"13:07"},{"day":1,"horse":"WF ANNIE","rider":"Olivia White","classNo":null,"className":"Discovery","ring":"Outdoor 1","start":null,"order":51,"url":"https://online.equipe.com/startlists/1301681","time":"14:25"},{"day":1,"horse":"Pardento","rider":"Olivia White","classNo":null,"className":"6/7 Year Old","ring":"Outdoor 1","start":null,"order":24,"url":"https://online.equipe.com/startlists/1301682","time":"17:41"}];
+let rides=[];
 const $=id=>document.getElementById(id);
 let activeDay=1;
 const names=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 const fill=(id,first,values)=>{$(id).innerHTML='<option value="">'+first+'</option>'+values.map(v=>'<option>'+v+'</option>').join('');};
-fill('horse','All horses',['KSH Queen Ester','Rio Seven','Monmore Var','Summer Escape','WF ANNIE','QAUNTA COSTA JS','Pardento','Special Delivery 27']);
-fill('rider','All riders',['Rikki Gradley','Claire Hansen','Olivia White']);
-fill('ring','All arenas',['Indoor','Outdoor 1','Outdoor 2','Outdoor 3']);
+
+function refreshFilters(){
+  const current={
+    horse:$('horse').value,
+    rider:$('rider').value,
+    ring:$('ring').value
+  };
+  const horses=[...new Set(rides.map(x=>x.horse))].sort();
+  const riders=[...new Set(rides.map(x=>x.rider))].sort();
+  const rings=[...new Set(rides.map(x=>x.ring))].sort();
+  fill('horse','All horses',horses);
+  fill('rider','All riders',riders);
+  fill('ring','All arenas',rings);
+  if(horses.includes(current.horse)) $('horse').value=current.horse;
+  if(riders.includes(current.rider)) $('rider').value=current.rider;
+  if(rings.includes(current.ring)) $('ring').value=current.ring;
+}
+
+async function loadData(showMessage=true){
+  const status=$('dataStatus');
+  if(showMessage) status.textContent='Refreshing latest ShowViva times…';
+  try{
+    const response=await fetch('data.json?v='+Date.now(),{cache:'no-store'});
+    if(!response.ok) throw new Error('Could not load data.json');
+    const data=await response.json();
+    rides=Array.isArray(data)?data:(data.rides||[]);
+    refreshFilters();
+    render();
+    const stamp=[data.updated,data.updatedTime].filter(Boolean).join(' · ');
+    status.textContent=(stamp?'Updated '+stamp+' · ':'')+'Tap “Refresh latest times” during the show for the newest published ShowViva data.';
+  }catch(err){
+    status.textContent='Could not refresh the latest times. Please try again.';
+    console.error(err);
+  }
+}
+
 function render(){
 $('days').innerHTML=names.map((d,i)=>`<button class="day ${i===activeDay?'active':''}" aria-pressed="${i===activeDay}" data-day="${i}"><b>${d}</b><span>${14+i} Sep</span></button>`).join('');
 $('days').querySelectorAll('button').forEach(b=>b.onclick=()=>{activeDay=Number(b.dataset.day);render();});
@@ -724,6 +758,7 @@ $('cards').innerHTML=list.length?list.map(x=>`<article class="ride" data-horse="
 }
 ['horse','rider','ring'].forEach(id=>{$(id).onchange=render;$(id).oninput=render;});$('search').oninput=render;
 $('clear').onclick=()=>{['horse','rider','ring','search'].forEach(id=>$(id).value='');render();};
+$('refreshData').onclick=()=>loadData(true);
 const eventsPanel=$('eventsPanel');
 $('openEvents').onclick=()=>{document.querySelector('.venue-menu').open=false;eventsPanel.showModal();};
 eventsPanel.addEventListener('close',()=>document.querySelector('.menu-btn').focus());
@@ -739,6 +774,6 @@ $('closeWeek').onclick=()=>weekPanel.close();
 weekPanel.addEventListener('click',event=>{if(event.target===weekPanel){const box=weekPanel.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)weekPanel.close();}});
 $('closeEvents').onclick=()=>eventsPanel.close();
 eventsPanel.addEventListener('click',event=>{if(event.target===eventsPanel){const box=eventsPanel.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)eventsPanel.close();}});
-render();
+loadData(false);
 document.documentElement.classList.add("interactive");
 </script></body></html>
