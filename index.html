@@ -692,7 +692,6 @@ html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(
 
     <div class="filter-card"><label for="search">Search horse or rider</label><input id="search" type="search" placeholder="Type a horse or rider…"></div>
     <div class="actions"><button id="clear">Clear filters</button><a class="linkbtn primary" href="https://online.equipe.com/shows/82493" target="_blank" rel="noopener">Open Equipe ↗</a></div>
-    <div class="actions"><button id="refreshData" class="primary">Refresh latest times</button></div>
     <div class="meta" id="dataStatus">Loading latest ShowViva times…</div>
 
     <div class="head">
@@ -739,7 +738,7 @@ function refreshFilters(){
 
 async function loadData(showMessage=true){
   const status=$('dataStatus');
-  if(showMessage) status.textContent='Refreshing latest ShowViva times…';
+
   try{
     const response=await fetch('data.json?v='+Date.now(),{cache:'no-store'});
     if(!response.ok) throw new Error('Could not load data.json');
@@ -748,7 +747,7 @@ async function loadData(showMessage=true){
     refreshFilters();
     render();
     const stamp=[data.updated,data.updatedTime].filter(Boolean).join(' · ');
-    status.textContent=(stamp?'Updated '+stamp+' · ':'')+'Tap “Refresh latest times” during the show for the newest published ShowViva data.';
+    status.textContent=stamp?'Updated '+stamp:'';
   }catch(err){
     status.textContent='Could not refresh the latest times. Please try again.';
     console.error(err);
@@ -761,12 +760,10 @@ $('days').querySelectorAll('button').forEach(b=>b.onclick=()=>{activeDay=Number(
 let list=rides.filter(x=>x.day===activeDay&&(!$('horse').value||x.horse===$('horse').value)&&(!$('rider').value||x.rider===$('rider').value)&&(!$('ring').value||x.ring===$('ring').value)&&`${x.horse} ${x.rider}`.toLowerCase().includes($('search').value.trim().toLowerCase()));
 $('viewTitle').textContent=`${names[activeDay]} ${14+activeDay} September`;
 $('count').textContent=`${list.length} rides · ${new Set(list.map(x=>x.horse)).size} horses`;
-$('cards').innerHTML=list.length?list.map(x=>{const complete=x.status==='complete';return `<article class="ride ${complete?'complete':''}" data-horse="${x.horse}" data-rider="${x.rider}" data-ring="${x.ring}"><div><div class="time">${complete?'✓ COMPLETE':x.time}</div>${complete?`<div class="complete-note">Round finished</div>`:`<span class="demo">APPROX</span>`}${x.start?`<div class="small">Class starts ${x.start}</div>`:(x.day===1?`<div class="small">Tuesday 15 September</div>`:'')}</div><div class="details"><strong>${x.horse}</strong><div class="rider">${x.rider}</div><div class="detail">${x.classNo?`Class ${x.classNo} · `:''}${x.className}</div><div class="arena">${x.ring==='Indoor'?'Equine America Indoor Championship Arena':x.ring.replace('Outdoor ','Outdoor Arena ')}</div><div class="card-bottom"><b class="draw">Draw ${x.order}</b><a href="${x.url}" target="_blank" rel="noopener">Class details ↗</a></div></div></article>`;}).join(''):`<div class="empty">${activeDay>1?'This day’s schedule has not been added yet.':'No matching entries were found.'}</div>`;
+$('cards').innerHTML=list.length?list.map(x=>{const complete=x.status==='complete';return `<article class="ride ${complete?'complete':''}" data-horse="${x.horse}" data-rider="${x.rider}" data-ring="${x.ring}"><div><div class="time">${complete?'✓ COMPLETE':x.time}</div>${complete?`<div class="complete-note">Round finished</div>`:`<span class="demo">APPROX</span>`}${x.start?`<div class="small">Class starts ${x.start}</div>`:(x.day===1?`<div class="small">Tuesday 15 September</div>`:'')}</div><div class="details"><strong>${x.horse}</strong><div class="rider">${x.rider}</div><div class="detail">${x.classNo?`Class ${x.classNo} · `:''}${x.className}</div><div class="arena">${x.ring==='Indoor'?'Equine America Indoor Championship Arena':x.ring.replace('Outdoor ','Outdoor Arena ')}</div><div class="card-bottom"><b class="draw">Draw ${x.order}</b><a href="${x.url}" target="_blank" rel="noopener">${complete?'Results ↗':'Class details ↗'}</a></div></div></article>`;}).join(''):`<div class="empty">${activeDay>1?'This day’s schedule has not been added yet.':'No matching entries were found.'}</div>`;
 }
 ['horse','rider','ring'].forEach(id=>{$(id).onchange=render;$(id).oninput=render;});$('search').oninput=render;
 $('clear').onclick=()=>{['horse','rider','ring','search'].forEach(id=>$(id).value='');render();};
-$('refreshData').onclick=()=>loadData(true);
-setInterval(()=>loadData(false),60*60*1000);
 const eventsPanel=$('eventsPanel');
 $('openEvents').onclick=()=>{document.querySelector('.venue-menu').open=false;eventsPanel.showModal();};
 eventsPanel.addEventListener('close',()=>document.querySelector('.menu-btn').focus());
