@@ -1,6 +1,6 @@
 {
   "updated": "15 September 2026",
-  "updatedTime": "08:32",
+  "updatedTime": "13:18",
   "show": "Arena UK",
   "source": "https://online.equipe.com/shows/82493",
   "rides": [
@@ -20,7 +20,7 @@
       "horse": "Rio Seven",
       "rider": "Claire Hansen",
       "classNo": 9,
-      "className": "Clear round \u00b7 80cm",
+      "className": "Clear round · 80cm",
       "ring": "Outdoor 2",
       "start": "08:00",
       "order": 25,
@@ -58,7 +58,7 @@
       "horse": "Monmore Var",
       "rider": "Olivia White",
       "classNo": 9,
-      "className": "Clear round \u00b7 90cm",
+      "className": "Clear round · 90cm",
       "ring": "Outdoor 2",
       "start": "08:00",
       "order": 87,
@@ -188,7 +188,8 @@
       "start": null,
       "order": 101,
       "url": "https://online.equipe.com/startlists/1302013",
-      "time": "11:30"
+      "time": "11:30",
+      "status": "complete"
     },
     {
       "day": 1,
@@ -200,7 +201,8 @@
       "start": null,
       "order": 19,
       "url": "https://online.equipe.com/startlists/1301676",
-      "time": "13:07"
+      "time": "13:07",
+      "status": "complete"
     },
     {
       "day": 1,
