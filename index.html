@@ -21,9 +21,9 @@ button{font:inherit}.header{background:var(--navy);position:sticky;top:0;z-index
 
 .benefit{background:#fffaf2;text-align:center;padding:58px 24px;border-top:1px solid var(--line)}.benefit h2{font:700 34px/1.1 Georgia,serif;margin:0 0 16px}.benefit p{max-width:720px;margin:0 auto;font-size:17px;line-height:1.6}.checks{display:flex;justify-content:center;gap:34px;margin-top:26px;flex-wrap:wrap}.checks span{font-size:14px}.checks span:before{content:"✓";display:inline-grid;place-items:center;width:23px;height:23px;border:2px solid #b58a43;border-radius:50%;margin-right:8px;color:#b58a43;font-weight:700}
 
-.closing{background:var(--navy);color:var(--gold);text-align:center;padding:55px 20px}.closing h2{font:italic 43px Georgia,serif;margin:0}.modal{position:fixed;inset:0;background:rgba(0,17,28,.76);display:none;align-items:center;justify-content:center;z-index:100;padding:22px}.modal.show{display:flex}.box{background:var(--navy);color:#fff;border:1px solid var(--gold);border-radius:22px;padding:42px 28px;text-align:center;width:min(460px,100%);position:relative}.box h3{font:38px Georgia,serif;color:var(--gold);margin:0 0 10px}.close{position:absolute;right:12px;top:8px;border:0;background:none;color:#fff;font-size:30px}
+.closing{background:var(--navy);color:var(--gold);text-align:center;padding:55px 20px}.closing h2{font:italic 43px Georgia,serif;margin:0}.modal{position:fixed;inset:0;background:rgba(0,17,28,.76);display:none;align-items:center;justify-content:center;z-index:100;padding:22px}.modal.show{display:flex}.box{background:var(--navy);color:#fff;border:1px solid var(--gold);border-radius:22px;padding:42px 28px;text-align:center;width:min(460px,100%);position:relative}.modalLogo{display:block;width:180px;max-width:70%;height:auto;max-height:90px;object-fit:contain;margin:0 auto 22px}.box h3{font:38px Georgia,serif;color:var(--gold);margin:0 0 10px}.close{position:absolute;right:12px;top:8px;border:0;background:none;color:#fff;font-size:30px}
 
-@media(max-width:760px){
+@media(max-width:900px){
  .nav{height:78px;padding:10px 16px}.logo{width:220px;max-width:72vw}.navlinks{display:none}.menu{display:block;margin-left:auto}
  .hero{display:flex;flex-direction:column;min-height:0}
  .heroVisual{order:1;min-height:0;height:310px;width:100%}.heroVisual:after{background:linear-gradient(0deg,var(--navy) 0%,rgba(8,40,58,.04) 32%,rgba(8,40,58,0) 62%)}.heroVisual img{object-position:57% 50%}
@@ -33,6 +33,12 @@ button{font:inherit}.header{background:var(--navy);position:sticky;top:0;z-index
  .benefit{padding:46px 20px}.benefit h2{font-size:30px}.benefit p{font-size:15.5px}.checks{gap:15px 22px}.closing{padding:45px 18px}.closing h2{font-size:35px}
 }
 @media(max-width:390px){.hero h1{font-size:37px}.phoneInner{grid-template-columns:1fr 118px}.phone{width:112px;height:220px}.phoneCopy h2{font-size:27px}}
+@media(max-width:900px){
+ body{overflow-x:hidden}
+ .header,.nav,.hero,.heroCopy,.heroVisual,.iconStrip,.phoneBand,.benefit,.closing{max-width:100%;overflow-x:hidden}
+ .heroCopy{width:100%}
+ .heroVisual img{display:block}
+}
 </style>
 </head>
 <body>
@@ -73,7 +79,7 @@ button{font:inherit}.header{background:var(--navy);position:sticky;top:0;z-index
 <section class="closing"><h2>Show days, made simple.</h2></section>
 </main>
 
-<div class="modal" id="modal"><div class="box"><button class="close" aria-label="Close">×</button><h3>Coming soon.</h3><p>A smoother show day is coming.<br>ShowViva is nearly ready.</p></div></div>
+<div class="modal" id="modal"><div class="box"><button class="close" aria-label="Close">×</button><img class="modalLogo" src="showviva-logo.svg" alt="ShowViva">Coming soon.</h3><p>A smoother show day is coming.<br>ShowViva is nearly ready.</p></div></div>
 <script>
 const m=document.getElementById('modal');document.querySelectorAll('[data-coming]').forEach(x=>x.onclick=()=>m.classList.add('show'));document.querySelector('.close').onclick=()=>m.classList.remove('show');m.onclick=e=>{if(e.target===m)m.classList.remove('show')};
 </script>
