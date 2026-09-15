@@ -58,6 +58,13 @@ button,.linkbtn{border-radius:15px;border:1px solid var(--line);background:#fff;
 .ride{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px;display:grid;grid-template-columns:94px 1fr;gap:14px;position:relative;box-shadow:0 4px 13px rgba(16,39,67,.04)}
 .ride:before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:4px;background:var(--navy2);border-radius:0 4px 4px 0}
 .ride.next:before{background:var(--gold)}
+.ride.complete{opacity:.64;background:#f6f6f3}
+.ride.complete:before{background:#9aa3ad}
+.ride.complete .time{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:17px;line-height:1.2;color:#466056;font-weight:850}
+.ride.complete .demo{display:none}
+.ride.complete .details strong{color:#52606d}
+.complete-note{font-size:11px;color:#65727f;margin-top:6px;font-weight:700}
+
 .nextpill{position:absolute;left:15px;top:-8px;background:linear-gradient(180deg,#e2c47e,#c79e4b);padding:4px 9px;border-radius:7px;font-size:11px;font-weight:800}
 .time{font-family:Georgia,"Times New Roman",serif;font-size:28px;font-weight:700;line-height:1}
 .small{font-size:11px;color:#526b85;margin-top:5px}
@@ -685,9 +692,9 @@ html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(
 
     <div class="filter-card"><label for="search">Search horse or rider</label><input id="search" type="search" placeholder="Type a horse or rider…"></div>
     <div class="actions"><button id="clear">Clear filters</button><a class="linkbtn primary" href="https://online.equipe.com/shows/82493" target="_blank" rel="noopener">Open Equipe ↗</a></div>
-    <div class="actions"><button id="refreshData" class="primary">Refresh latest times</button><button id="refreshNote" disabled>Live data file</button></div>
+    <div class="actions"><button id="refreshData" class="primary">Refresh latest times</button></div>
     <div class="meta" id="dataStatus">Loading latest ShowViva times…</div>
-    <details class="source" id="about"><summary>Schedule details &amp; timing ▾</summary><div class="inner"><p>Monday 14 September and Tuesday 15 September are loaded. Tuesday contains 8 rides for Claire Hansen, Olivia White and Rikki Gradley.</p><p>All jumping times are APPROX. Tuesday times are rounded down using Equipe’s displayed seconds per start, with relevant published breaks and confirmed withdrawals included for Summer Escape and WF ANNIE’s Discovery round.</p><p>Indoor = Equine America Indoor Championship Arena. Wednesday–Sunday have not yet been added.</p></div></details>
+
     <div class="head">
       <h2 id="viewTitle">Tue 15 September</h2>
       <span id="count">8 rides · 7 horses</span>
@@ -754,11 +761,12 @@ $('days').querySelectorAll('button').forEach(b=>b.onclick=()=>{activeDay=Number(
 let list=rides.filter(x=>x.day===activeDay&&(!$('horse').value||x.horse===$('horse').value)&&(!$('rider').value||x.rider===$('rider').value)&&(!$('ring').value||x.ring===$('ring').value)&&`${x.horse} ${x.rider}`.toLowerCase().includes($('search').value.trim().toLowerCase()));
 $('viewTitle').textContent=`${names[activeDay]} ${14+activeDay} September`;
 $('count').textContent=`${list.length} rides · ${new Set(list.map(x=>x.horse)).size} horses`;
-$('cards').innerHTML=list.length?list.map(x=>`<article class="ride" data-horse="${x.horse}" data-rider="${x.rider}" data-ring="${x.ring}"><div><div class="time">${x.time}</div><span class="demo">APPROX</span>${x.start?`<div class="small">Class starts ${x.start}</div>`:(x.day===1?`<div class="small">Tuesday 15 September</div>`:'')}</div><div class="details"><strong>${x.horse}</strong><div class="rider">${x.rider}</div><div class="detail">${x.classNo?`Class ${x.classNo} · `:''}${x.className}</div><div class="arena">${x.ring==='Indoor'?'Equine America Indoor Championship Arena':x.ring.replace('Outdoor ','Outdoor Arena ')}</div><div class="card-bottom"><b class="draw">Draw ${x.order}</b><a href="${x.url}" target="_blank" rel="noopener">Class details ↗</a></div></div></article>`).join(''):`<div class="empty">${activeDay>1?'This day’s schedule has not been added yet.':'No matching entries were found.'}</div>`;
+$('cards').innerHTML=list.length?list.map(x=>{const complete=x.status==='complete';return `<article class="ride ${complete?'complete':''}" data-horse="${x.horse}" data-rider="${x.rider}" data-ring="${x.ring}"><div><div class="time">${complete?'✓ COMPLETE':x.time}</div>${complete?`<div class="complete-note">Round finished</div>`:`<span class="demo">APPROX</span>`}${x.start?`<div class="small">Class starts ${x.start}</div>`:(x.day===1?`<div class="small">Tuesday 15 September</div>`:'')}</div><div class="details"><strong>${x.horse}</strong><div class="rider">${x.rider}</div><div class="detail">${x.classNo?`Class ${x.classNo} · `:''}${x.className}</div><div class="arena">${x.ring==='Indoor'?'Equine America Indoor Championship Arena':x.ring.replace('Outdoor ','Outdoor Arena ')}</div><div class="card-bottom"><b class="draw">Draw ${x.order}</b><a href="${x.url}" target="_blank" rel="noopener">Class details ↗</a></div></div></article>`;}).join(''):`<div class="empty">${activeDay>1?'This day’s schedule has not been added yet.':'No matching entries were found.'}</div>`;
 }
 ['horse','rider','ring'].forEach(id=>{$(id).onchange=render;$(id).oninput=render;});$('search').oninput=render;
 $('clear').onclick=()=>{['horse','rider','ring','search'].forEach(id=>$(id).value='');render();};
 $('refreshData').onclick=()=>loadData(true);
+setInterval(()=>loadData(false),60*60*1000);
 const eventsPanel=$('eventsPanel');
 $('openEvents').onclick=()=>{document.querySelector('.venue-menu').open=false;eventsPanel.showModal();};
 eventsPanel.addEventListener('close',()=>document.querySelector('.menu-btn').focus());

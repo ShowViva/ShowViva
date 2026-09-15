@@ -1,6 +1,6 @@
 {
-  "updated": "14 September 2026",
-  "updatedTime": "22:45",
+  "updated": "15 September 2026",
+  "updatedTime": "08:32",
   "show": "Arena UK",
   "source": "https://online.equipe.com/shows/82493",
   "rides": [
@@ -134,7 +134,8 @@
       "start": null,
       "order": 1,
       "url": "https://online.equipe.com/startlists/1301680",
-      "time": "08:00"
+      "time": "08:00",
+      "status": "complete"
     },
     {
       "day": 1,
