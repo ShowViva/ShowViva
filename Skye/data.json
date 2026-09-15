@@ -1,0 +1,37 @@
+{
+  "show": "Arena UK 21st Major Showjumping Championships 2026",
+  "rider": "Skye Blu Valderas",
+  "date": "2026-09-16",
+  "rides": [
+    {
+      "time": "14:14",
+      "approx": true,
+      "horse": "Devonte’s Primero",
+      "classNo": 40,
+      "className": "Ariat Senior British Novice Championship First Round / 90cm Open Grand Prix Qualifier",
+      "arena": "Outdoor Arena 1",
+      "draw": 47,
+      "starts": 88,
+      "classStart": "12:30",
+      "paceSeconds": 126,
+      "breakMinutesIncluded": 7,
+      "url": "https://online.equipe.com/startlists/1302299",
+      "status": "scheduled"
+    },
+    {
+      "time": "19:14",
+      "approx": true,
+      "horse": "High Voltage III",
+      "classNo": 36,
+      "className": "The Robin Ayres Senior 1.15m Open (Inc. The National 1.15 Members Cup Qualifier)",
+      "arena": "Equine America Indoor Championship Arena",
+      "draw": 72,
+      "starts": 75,
+      "classStart": "17:05",
+      "paceSeconds": 103,
+      "breakMinutesIncluded": 7,
+      "url": "https://online.equipe.com/startlists/1302296",
+      "status": "scheduled"
+    }
+  ]
+}
