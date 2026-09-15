@@ -3,46 +3,90 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#06283d">
 <title>ShowViva — Your personalised show planner</title>
 <style>
-:root{--navy:#06243a;--navy2:#0b2c45;--cream:#fbf7ee;--gold:#d8ad62;--ink:#09243a}
-*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
-header{background:var(--navy);color:white;position:relative;z-index:3}
-.nav{max-width:1180px;margin:auto;min-height:96px;padding:18px 28px;display:flex;align-items:center;gap:34px;overflow:visible}
-.brand{display:flex;align-items:center;margin-right:auto;overflow:visible;padding:3px 0;text-decoration:none}.brand-logo{display:block;width:350px;max-width:42vw;height:auto;overflow:visible}.shield{flex:0 0 auto;width:46px;height:54px;border:2px solid var(--gold);border-top:2px solid var(--gold);clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%);display:grid;place-items:center;color:var(--gold);font:27px Georgia,serif}.name{font:42px Georgia,serif}.name b{color:var(--gold);font-weight:400}.tag{font-size:9px;letter-spacing:2.4px;margin-top:3px}
-.links{display:flex;align-items:center;gap:32px}.links a{color:white;text-decoration:none;font-size:12px;white-space:nowrap}
-.btn{min-height:50px;padding:13px 27px;border-radius:999px;background:linear-gradient(90deg,#f1d08e,#d8ad62);color:var(--navy);text-decoration:none;font:700 18px Georgia,serif;display:inline-flex;align-items:center;justify-content:center;gap:14px;white-space:nowrap}
-.menu{font-size:29px;letter-spacing:3px}
-.hero{background:var(--navy);overflow:hidden}.hero img{display:block;width:100%;height:auto}
-.benefits{background:var(--cream);padding:34px 22px}.grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr)}
-.card{text-align:center;padding:14px 32px;border-right:1px solid #d9c7a5}.card:last-child{border:0}.icon{font-size:42px;color:#b48a43}.card h2{font:700 22px Georgia,serif;margin:10px 0}.card p{font-size:16px;line-height:1.45;margin:0}
-.closing{background:var(--navy);color:white;text-align:center;padding:46px 22px}.closing h2{font:48px Georgia,serif;margin:0 0 25px}.closing h2 span{color:var(--gold)}.closing small{display:block;margin-top:26px;letter-spacing:5px}
-footer{background:var(--cream);padding:20px;text-align:center;font-size:10px;letter-spacing:3px}
+:root{--navy:#06283d;--cream:#fbf8f0;--gold:#d9ad60;--ink:#08243a;--line:#dfcba7}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+button,a{font:inherit}.header{position:sticky;top:0;z-index:20;background:var(--navy);box-shadow:0 1px 0 rgba(255,255,255,.08)}
+.nav{max-width:1180px;margin:auto;height:82px;padding:12px 18px;display:flex;align-items:center;gap:24px}
+.logo{display:block;width:245px;max-width:68vw;height:auto}.navlinks{margin-left:auto;display:flex;align-items:center;gap:30px}
+.navlinks button,.menu{border:0;background:none;color:#fff;cursor:pointer}.navlinks button{font-size:12px;letter-spacing:.8px}.goldbtn{border:0;cursor:pointer;background:linear-gradient(90deg,#efd18f,#d7aa59);color:var(--navy);min-height:48px;padding:0 25px;border-radius:999px;font-family:Georgia,serif;font-weight:700}
+.menu{font-size:30px;display:none}
+.hero{position:relative;min-height:520px;background:var(--navy);overflow:hidden;display:flex;align-items:center}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,40,61,.98) 0%,rgba(6,40,61,.84) 36%,rgba(6,40,61,.08) 70%)}
+.heroimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.heroCopy{position:relative;z-index:2;width:min(1180px,100%);margin:auto;padding:55px 28px;color:#fff}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:2.4px;color:#fff;margin-bottom:14px}.heroReassure{margin-top:18px;font-size:12px;letter-spacing:.25px;color:#f7e7c4}.heroCopy h1{max-width:560px;font:58px/1.02 Georgia,serif;margin:0 0 18px}.heroCopy h1 span{color:var(--gold)}
+.heroCopy p{max-width:460px;font-size:19px;line-height:1.55;margin:0 0 28px}
+.heroCopy .goldbtn{font-size:18px;padding:0 32px}
+.benefits{padding:18px 22px 26px}.benefitGrid{max-width:1080px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr)}
+.benefit{text-align:center;padding:28px 30px;border-right:1px solid var(--line)}.benefit:last-child{border:0}.ico{color:#b58a43;font-size:34px;line-height:1}
+.benefit h2{font:700 21px Georgia,serif;margin:12px 0 8px}.benefit p{font-size:15px;line-height:1.45;margin:0}
+.stress{background:#fffdf8;padding:54px 22px;text-align:center}.stressInner{max-width:760px;margin:auto}
+.stress h2{font:700 34px/1.15 Georgia,serif;margin:0 0 18px}.stress h2 span{color:#b58a43}
+.stress p{font-size:17px;line-height:1.65;margin:0 auto 16px;max-width:700px}.stress strong{font-family:Georgia,serif;font-size:20px}
+.closing{background:var(--navy);color:#fff;text-align:center;padding:50px 22px}.closing h2{font:48px/1.05 Georgia,serif;margin:0 0 28px}.closing h2 span{color:var(--gold)}.closing .goldbtn{font-size:19px;padding:0 36px}.closing small{display:block;margin-top:28px;letter-spacing:5px}
+footer{text-align:center;padding:22px;letter-spacing:5px;font-size:10px}
+/* coming soon modal */
+.modal{position:fixed;inset:0;z-index:100;background:rgba(2,20,32,.72);display:none;align-items:center;justify-content:center;padding:22px}
+.modal.show{display:flex}.box{position:relative;width:min(520px,100%);background:var(--navy);border:1px solid var(--gold);border-radius:24px;padding:48px 30px 42px;text-align:center;color:#fff;box-shadow:0 24px 80px rgba(0,0,0,.35)}
+.box .miniShield{width:58px;height:66px;margin:0 auto 20px;border:2px solid var(--gold);clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%);display:grid;place-items:center;color:var(--gold);font:27px Georgia,serif}
+.box h3{font:44px Georgia,serif;color:var(--gold);margin:0 0 12px}.box p{margin:0;line-height:1.55}.close{position:absolute;right:15px;top:12px;border:0;background:none;color:#fff;font-size:30px;cursor:pointer;padding:8px}
 @media(max-width:760px){
-.nav{min-height:82px;padding:14px 16px;gap:12px;overflow:visible}.brand{padding:3px 0;overflow:visible}.brand-logo{width:245px;max-width:72vw;height:auto}.links,.nav>.btn{display:none}.menu{margin-left:auto;flex:0 0 auto}
-.hero{background:var(--navy)}.hero img{width:100%;min-height:420px;object-fit:cover;object-position:55% center}
-.benefits{padding:8px 18px 15px}.grid{grid-template-columns:1fr}.card{border-right:0;border-bottom:1px solid #dfcfb3;padding:21px 10px}.card:last-child{border-bottom:0}.icon{font-size:35px}.card h2{font-size:20px;margin:7px 0}.card p{font-size:15px}
-.closing{padding:36px 20px}.closing h2{font-size:39px;line-height:1.05}.closing .btn{width:min(100%,330px);margin-top:2px}.closing small{font-size:8px;letter-spacing:3px}
+.nav{height:76px;padding:10px 16px}.logo{width:235px;max-width:70vw}.navlinks{display:none}.menu{display:block;margin-left:auto}
+.hero{min-height:500px;align-items:flex-end}.heroimg{object-position:62% center}.hero:before{background:linear-gradient(0deg,rgba(6,40,61,.97) 0%,rgba(6,40,61,.78) 43%,rgba(6,40,61,.08) 78%)}
+.heroCopy{padding:190px 20px 30px}.eyebrow{font-size:10px;letter-spacing:1.8px;margin-bottom:10px}.heroCopy h1{font-size:39px;line-height:1.03;max-width:360px;margin-bottom:14px}.heroCopy p{font-size:15.5px;line-height:1.48;max-width:360px;margin-bottom:20px}.heroCopy .goldbtn{width:100%;max-width:330px}.heroReassure{font-size:11px;line-height:1.45;max-width:350px;margin-top:15px}
+.benefits{padding:0 20px}.benefitGrid{grid-template-columns:1fr}.benefit{border-right:0;border-bottom:1px solid var(--line);padding:34px 10px}.benefit:last-child{border-bottom:0}.benefit h2{font-size:23px}.benefit p{font-size:16px}
+.stress{padding:45px 23px}.stress h2{font-size:31px}.stress p{font-size:16px}.stress strong{font-size:19px}
+.closing{padding:45px 20px}.closing h2{font-size:43px}.closing .goldbtn{width:100%;max-width:330px}.box h3{font-size:38px}
 }
 </style>
 </head>
 <body>
-<header><div class="nav">
-<a class="brand" href="/" aria-label="ShowViva home"><img class="brand-logo" src="showviva-logo.svg" alt="ShowViva — Your Equestrian Show Planner"></a>
-<nav class="links"><a href="#benefits">HOW IT WORKS</a><a href="#benefits">PRICING</a><a href="mailto:hello@showviva.co.uk">CONTACT</a></nav>
-<a class="btn" href="#get">Get ShowViva →</a><div class="menu">☰</div>
+<header class="header"><div class="nav">
+<img class="logo" src="showviva-logo.svg" alt="ShowViva — Your Equestrian Show Planner">
+<div class="navlinks"><button data-coming>PRICING</button><button data-coming>HOW IT WORKS</button><button data-coming>CONTACT</button><button class="goldbtn" data-coming>Get ShowViva →</button></div>
+<button class="menu" aria-label="Menu" data-coming>☰</button>
 </div></header>
 
 <main>
-<section class="hero"><img src="showviva-hero.jpg" alt="ShowViva personalised equestrian show planner"></section>
+<section class="hero">
+<img class="heroimg" src="showviva-hero.jpg" alt="">
+<div class="heroCopy">
+<div class="eyebrow">YOUR EQUESTRIAN SHOW PLANNER</div>
+<h1>A smoother <span>show day starts here.</span></h1>
+<p>ShowViva brings your horses, riders, rounds, times, schedules, show information and results together — so your whole team knows what’s happening and when.</p>
+<div class="heroReassure">Quick to set up. &nbsp;•&nbsp; Simple to navigate. &nbsp;•&nbsp; Made for your phone.</div>
+<button class="goldbtn" data-coming>Get ShowViva →</button>
+</div>
+</section>
 
-<section class="benefits" id="benefits"><div class="grid">
-<div class="card"><div class="icon">⌕</div><h2>NO MORE SEARCHING</h2><p>Your show day, without the hassle.</p></div>
-<div class="card"><div class="icon">▣</div><h2>EVERYTHING IN ONE PLACE</h2><p>Your horses, riders, rounds, rings, times and show info.</p></div>
-<div class="card"><div class="icon">♙♙</div><h2>SHARE WITH YOUR TEAM</h2><p>Keep everyone in the know, instantly.</p></div>
+<section class="benefits"><div class="benefitGrid">
+<article class="benefit"><div class="ico">⌕</div><h2>LESS SEARCHING. MORE SHOW DAY.</h2><p>No more scrolling through start lists, switching between schedules and links, or working out who needs to be where and when.</p></article>
+<article class="benefit"><div class="ico">▣</div><h2>EVERYTHING THAT MATTERS. AT A GLANCE.</h2><p>Your horses, riders, rounds, rings, start times, schedules, show information and results — brought together around your team.</p></article>
+<article class="benefit"><div class="ico">♙♙</div><h2>YOUR WHOLE TEAM. ONE SHOW PLAN.</h2><p>Everyone who needs it can follow the same personalised show plan from their phone, so everyone knows what’s happening and when.</p></article>
 </div></section>
 
-<section class="closing" id="get"><h2>Show days, <span>made simple.</span></h2><a class="btn" href="mailto:hello@showviva.co.uk?subject=Get%20ShowViva">Get ShowViva →</a><small>YOUR SHOW. YOUR VIEW.</small></section>
+<section class="stress"><div class="stressInner">
+<h2>BUILT AROUND <span>YOUR TEAM.</span></h2>
+<p>Follow the horses, riders and rounds that matter to you, without having to sift through everyone else’s information.</p>
+<strong>Quick to set up. Simple to navigate. Made for your phone.</strong>
+</div></section>
+
+<section class="closing"><h2>Show days, <span>made simple.</span></h2><button class="goldbtn" data-coming>Get ShowViva →</button><small>YOUR SHOW. YOUR VIEW.</small></section>
 </main>
 <footer>SHOWVIVA</footer>
+
+<div class="modal" id="comingSoon" role="dialog" aria-modal="true" aria-labelledby="soonTitle">
+<div class="box"><button class="close" aria-label="Close">×</button><div class="miniShield">SV</div><h3 id="soonTitle">Coming soon.</h3><p>A smoother show day is coming.<br>ShowViva is nearly ready.</p></div>
+</div>
+
+<script>
+const modal=document.getElementById('comingSoon');
+document.querySelectorAll('[data-coming]').forEach(el=>el.addEventListener('click',()=>modal.classList.add('show')));
+document.querySelector('.close').addEventListener('click',()=>modal.classList.remove('show'));
+modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('show')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('show')});
+</script>
 </body></html>
