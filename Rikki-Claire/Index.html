@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ShowViva — Monday 14 September 2026</title>
+<style>
+:root{
+  --navy:#0b2a47; --navy2:#123a5f; --gold:#c6a15a; --gold-soft:#ead7a8;
+  --cream:#fbf8f2; --white:#fff; --ink:#102743; --muted:#6d7887; --line:#d9dee5;
+  --shadow:0 10px 26px rgba(11,42,71,.08); --radius:18px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#eef1f4;color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+.app{max-width:760px;margin:0 auto;min-height:100vh;background:var(--cream);box-shadow:0 0 40px rgba(0,0,0,.08)}
+
+
+
+
+main{padding:20px 18px 28px}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:34px;margin:0 0 4px}
+.sub{font-family:Georgia,"Times New Roman",serif;font-size:18px;color:#39536e;margin-bottom:14px}
+.status{
+  border:1px solid #e2c980;background:#fff9e8;border-radius:14px;padding:12px 14px;
+  display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.4;margin-bottom:15px
+}
+.status-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);margin-top:5px;flex:0 0 auto}
+.days{display:flex;gap:0;overflow-x:auto;padding:6px 0 10px;scrollbar-width:none;border:1px solid var(--line);border-radius:16px;background:#fff}
+.days::-webkit-scrollbar{display:none}
+.day{min-width:96px;border:0;border-right:1px solid var(--line);background:#fff;color:var(--ink);padding:12px 14px;text-align:left;font-family:Georgia,"Times New Roman",serif;cursor:pointer}
+.day:last-child{border-right:0}
+.day.active{background:linear-gradient(180deg,#edd69f,#d9b46b)}
+.day b{display:block;font-size:18px;line-height:1.1;margin-bottom:6px}
+.day span{display:block;font-size:14px;line-height:1.1;color:#40566e}
+.filter-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:11px 14px;margin:10px 0}
+.filter-card label{display:block;text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:800;color:var(--muted);margin-bottom:4px}
+select{width:100%;border:0;background:transparent;color:var(--ink);font-size:20px;outline:none;padding:2px 0}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+button,.linkbtn{border-radius:15px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:750;font-size:16px;padding:14px 12px;cursor:pointer;text-decoration:none;text-align:center}
+.primary{background:var(--navy);border-color:var(--navy);color:#fff}
+.meta{text-align:center;color:var(--muted);font-size:12px;min-height:18px;margin:8px 0 0}
+.source{
+  margin:18px 0 0;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden
+}
+.source summary{cursor:pointer;list-style:none;padding:15px 16px;font-weight:800}
+.source summary::-webkit-details-marker{display:none}
+.source .inner{padding:0 16px 16px;border-top:1px solid var(--line)}
+.source h3{font-family:Georgia,"Times New Roman",serif;margin:14px 0 8px;font-size:20px}
+.source p{font-size:13px;line-height:1.5;color:#43566b}
+.source code{display:block;white-space:pre-wrap;background:#f6f7f9;border:1px solid var(--line);border-radius:12px;padding:12px;font-size:12px;color:#243a54}
+.source-url{display:flex;gap:8px;margin-top:10px}
+.source-url input{flex:1;min-width:0;border:1px solid var(--line);border-radius:12px;padding:11px;font-size:13px}
+.source-url a{white-space:nowrap}
+.head{display:flex;justify-content:space-between;align-items:end;margin:24px 0 10px}
+.head h2{font-family:Georgia,"Times New Roman",serif;font-size:24px;margin:0}
+.head span{font-size:13px;color:var(--muted)}
+.cards{display:grid;gap:10px}
+.ride{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px;display:grid;grid-template-columns:94px 1fr;gap:14px;position:relative;box-shadow:0 4px 13px rgba(16,39,67,.04)}
+.ride:before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:4px;background:var(--navy2);border-radius:0 4px 4px 0}
+.ride.next:before{background:var(--gold)}
+.ride.complete{opacity:.64;background:#f6f6f3}
+.ride.complete:before{background:#9aa3ad}
+.ride.complete .time{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:17px;line-height:1.2;color:#466056;font-weight:850}
+.ride.complete .demo{display:none}
+.ride.complete .details strong{color:#52606d}
+.complete-note{font-size:11px;color:#65727f;margin-top:6px;font-weight:700}
+
+.nextpill{position:absolute;left:15px;top:-8px;background:linear-gradient(180deg,#e2c47e,#c79e4b);padding:4px 9px;border-radius:7px;font-size:11px;font-weight:800}
+.time{font-family:Georgia,"Times New Roman",serif;font-size:28px;font-weight:700;line-height:1}
+.small{font-size:11px;color:#526b85;margin-top:5px}
+.details strong{font-family:Georgia,"Times New Roman",serif;font-size:20px;display:block}
+.rider{font-size:15px;margin:2px 0 5px}
+.detail{font-family:Georgia,"Times New Roman",serif;font-size:14px;color:#314c68;line-height:1.45}
+.demo{display:inline-block;margin-top:7px;background:#fff2c8;color:#805f19;font-weight:800;font-size:10px;border-radius:5px;padding:3px 6px;letter-spacing:.06em}
+.empty{text-align:center;padding:28px 15px;background:#fff;border:1px solid var(--line);border-radius:16px;color:var(--muted)}
+footer{text-align:center;color:#647385;font-size:11px;line-height:1.5;padding:0 18px 22px}
+footer strong{color:var(--navy)}
+@media(max-width:520px){.top{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:176px;
+  background:#082844;
+  color:#fff;
+  padding:20px 72px 18px;
+  border-bottom:1px solid rgba(198,161,90,.34);
+  box-shadow:0 10px 24px rgba(7,27,46,.12);
+}.brand{font-size:31px;letter-spacing:.17em}.tag{font-size:9px;letter-spacing:.20em}.showviva-horse{width:58px;height:36px}.top-icon{width:38px;height:38px}.menu-btn{left:14px}.calendar-btn{right:14px}main{padding:18px 15px 26px}.actions{grid-template-columns:1fr}.ride{grid-template-columns:84px 1fr}.day{min-width:82px;padding:11px 10px}.day b{font-size:16px}.day span{font-size:13px}}
+
+.top{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:176px;
+  background:#082844;
+  color:#fff;
+  padding:20px 72px 18px;
+  border-bottom:1px solid rgba(198,161,90,.34);
+}
+.top-center{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+}
+.showviva-horse{
+  width:62px;
+  height:39px;
+  color:#d7b66f;
+  margin:0 auto 1px;
+}
+.showviva-horse svg{display:block;width:100%;height:100%}
+.brand{
+  margin:2px 0 8px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:34px;
+  line-height:1;
+  font-weight:400;
+  letter-spacing:.20em;
+  color:#ead19a;
+}
+.tag{
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  font-size:10px;
+  font-style:normal;
+  font-weight:500;
+  letter-spacing:.26em;
+  color:#f8f4ed;
+  white-space:nowrap;
+}
+.top-icon{
+  position:absolute;
+  top:50%;
+  transform:translateY(-42%);
+  width:42px;
+  height:42px;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:#d7b66f;
+  border-radius:0;
+  box-shadow:none;
+}
+.menu-btn{left:18px}
+.calendar-btn{right:18px}
+.menu-btn span{
+  display:block;
+  width:26px;
+  height:2px;
+  margin:5px auto;
+  border-radius:2px;
+  background:#d7b66f;
+}
+.calendar-btn svg{
+  width:27px;
+  height:27px;
+  display:block;
+  margin:auto;
+}
+
+
+.brand-accent{
+  font-size:1.34em;
+  font-weight:400;
+  letter-spacing:0;
+  font-family:"Snell Roundhand","Segoe Script","Brush Script MT",cursive;
+  display:inline-block;
+  transform:translateY(.03em);
+}
+input[type=search]{width:100%;border:0;background:transparent;font:inherit;font-size:18px;color:var(--ink);padding:6px 0}button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:3px}.arena{font-size:12px;color:#526b85;margin-top:7px}.card-bottom{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px;font-size:12px}.card-bottom a{color:var(--navy);padding:8px 0}.draw{background:#f3ead8;border-radius:6px;padding:6px 9px}.days{padding:0}.day{flex:1}.sub{line-height:1.4}.ride .details{min-width:0}.details strong{overflow-wrap:anywhere}@media(max-width:520px){.brand{font-size:27px;letter-spacing:.12em}.tag{font-size:8px;letter-spacing:.12em}.top{padding:20px 45px}.menu-btn{left:6px}.calendar-btn{right:6px}.ride{padding:15px 12px;gap:10px;grid-template-columns:74px 1fr}.time{font-size:26px}.details strong{font-size:19px}}
+
+.native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked) .ride:not([data-horse="Summer Escape"]){display:none}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked) .ride:not([data-horse="Special Delivery 27"]){display:none}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked) .ride:not([data-horse="QAUNTA COSTA JS"]){display:none}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked) .ride:not([data-horse="KSH Queen Ester"]){display:none}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked) .ride:not([data-horse="Pardento"]){display:none}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked) .ride:not([data-horse="Rio Seven"]){display:none}
+html:not(.interactive) .app:has(#horse option[value=]:checked) .ride:not([data-horse=]){display:none}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked) .ride:not([data-horse="Monmore Var"]){display:none}
+html:not(.interactive) .app:has(#rider option[value="Rikki Gradley"]:checked) .ride:not([data-rider="Rikki Gradley"]){display:none}
+html:not(.interactive) .app:has(#rider option[value="Claire Hansen"]:checked) .ride:not([data-rider="Claire Hansen"]){display:none}
+html:not(.interactive) .app:has(#rider option[value="Olivia White"]:checked) .ride:not([data-rider="Olivia White"]){display:none}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Rikki Gradley"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Rikki Gradley"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Rikki Gradley"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Claire Hansen"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Claire Hansen"]:checked) #count:after{content:"6 rides · 4 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Olivia White"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Olivia White"]:checked) #count:after{content:"4 rides · 2 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value=""]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value=""]:checked) #count:after{content:"1 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Rikki Gradley"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Rikki Gradley"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Rikki Gradley"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Claire Hansen"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Claire Hansen"]:checked) #count:after{content:"1 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Olivia White"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Olivia White"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Olivia White"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value=""]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value=""]:checked) #count:after{content:"2 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Rikki Gradley"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Rikki Gradley"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Rikki Gradley"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Claire Hansen"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Claire Hansen"]:checked) #count:after{content:"2 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Olivia White"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Olivia White"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Olivia White"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value=""]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value=""]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value=""]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Rikki Gradley"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Rikki Gradley"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Rikki Gradley"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Claire Hansen"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Claire Hansen"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Claire Hansen"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Olivia White"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Olivia White"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Olivia White"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value=""]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value=""]:checked) #count:after{content:"1 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Rikki Gradley"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Rikki Gradley"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Rikki Gradley"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Claire Hansen"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Claire Hansen"]:checked) #count:after{content:"1 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Olivia White"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Olivia White"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Olivia White"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value=""]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value=""]:checked) #count:after{content:"2 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Rikki Gradley"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Rikki Gradley"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Rikki Gradley"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Claire Hansen"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Claire Hansen"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Claire Hansen"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Olivia White"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Olivia White"]:checked) #count:after{content:"2 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value=""]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value=""]:checked) #count:after{content:"2 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Rikki Gradley"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Rikki Gradley"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Rikki Gradley"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Claire Hansen"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Claire Hansen"]:checked) #count:after{content:"2 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Olivia White"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Olivia White"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Olivia White"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value=""]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value=""]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value=""]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Rikki Gradley"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Rikki Gradley"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Rikki Gradley"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Claire Hansen"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Claire Hansen"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Claire Hansen"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Olivia White"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Olivia White"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Olivia White"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value=""]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value=""]:checked) #count:after{content:"2 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Rikki Gradley"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Rikki Gradley"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Rikki Gradley"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Claire Hansen"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Claire Hansen"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Claire Hansen"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Olivia White"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Olivia White"]:checked) #count:after{content:"2 rides · 1 horses";font-size:13px}
+
+html:not(.interactive) .app:has(#ring option[value="Indoor"]:checked) .ride:not([data-ring="Indoor"]){display:none}
+html:not(.interactive) .app:has(#ring option[value="Outdoor 1"]:checked) .ride:not([data-ring="Outdoor 1"]){display:none}
+html:not(.interactive) .app:has(#ring option[value="Outdoor 2"]:checked) .ride:not([data-ring="Outdoor 2"]){display:none}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"4 rides · 2 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"2 rides · 2 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"4 rides · 4 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"2 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"1 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"3 rides · 3 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"2 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"1 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"1 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=""]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"1 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"1 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Summer Escape"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"2 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"2 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Special Delivery 27"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="QAUNTA COSTA JS"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"1 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"1 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="KSH Queen Ester"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"2 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"2 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Pardento"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"1 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"1 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"1 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"1 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Rio Seven"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value=]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"1 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"1 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value=""]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Rikki Gradley"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Claire Hansen"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) #count:after{content:"0 rides · 0 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Indoor"]:checked) .native-filter-empty{display:block}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) #count:after{content:"1 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 1"]:checked) .native-filter-empty{display:none}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count{font-size:0}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) #count:after{content:"1 rides · 1 horses";font-size:13px}
+html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(#rider option[value="Olivia White"]:checked):has(#ring option[value="Outdoor 2"]:checked) .native-filter-empty{display:none}
+.venue-menu>summary{list-style:none;cursor:pointer;display:flex;flex-direction:column;justify-content:center;align-items:center}.venue-menu>summary::-webkit-details-marker{display:none}.venue-menu .menu-btn span{flex:none;margin:3px auto}.venue-links{position:absolute;left:18px;top:calc(50% + 28px);z-index:20;min-width:210px;padding:6px;background:var(--cream);border:1px solid var(--gold);border-radius:12px;box-shadow:var(--shadow)}.venue-links a{display:block;padding:13px 14px;text-decoration:none;color:var(--navy);font-size:15px;font-weight:650;border-radius:7px}.venue-links a:hover,.venue-links a:focus-visible{background:#f3ead8}
+
+/* ShowViva reference branding */
+.top{background:#131e33;padding-top:16px;padding-bottom:18px}
+.showviva-shield{display:block;width:36.6px;height:47.3px;margin:0 auto 10px}
+.showviva-wordmark{font-family:Georgia,"Times New Roman",serif;font-size:34px;font-weight:400;line-height:1.1;letter-spacing:0;color:#fff;margin:0 0 12px}
+.showviva-wordmark span{color:#d8c28e}
+.tag{font-size:9px;letter-spacing:.16em;color:#c4cad5}
+@media(max-width:360px){.showviva-wordmark{font-size:32px}.tag{font-size:8px;letter-spacing:.1em}}
+
+.events-panel{width:min(480px,calc(100% - 28px));max-height:85dvh;padding:0;border:1px solid #d8c28e;border-radius:20px;background:var(--cream);color:var(--ink);box-shadow:0 24px 80px #0005;overflow:auto}
+.events-panel::backdrop{background:rgba(10,22,40,.65)}
+.events-heading{position:sticky;top:0;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px 22px;background:#131e33;color:white}
+.events-heading h2{font:30px Georgia,serif;margin:0;color:#d8c28e}
+.events-heading p{font-size:12px;margin:6px 0 0;color:#d3d8e0}
+.events-close{background:transparent;border:1px solid #d8c28e77;color:#d8c28e;font-size:25px;padding:3px 11px;border-radius:10px}
+.events-list{padding:8px 22px 0}
+.show-event{padding:18px 0;border-bottom:1px solid var(--line)}
+.event-day{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:750;color:#876b32}
+.show-event h3{font:22px Georgia,serif;margin:7px 0}
+.show-event p{font-size:14px;line-height:1.5;margin:4px 0;color:#526078}
+.show-event .event-timing{color:var(--ink);font-weight:650}
+.events-source{font-size:12px;line-height:1.5;color:var(--muted);padding:16px 22px 22px;margin:0}
+.events-source a{color:var(--navy);text-underline-offset:3px}
+
+.venue-links button{display:block;width:100%;text-align:left;padding:13px 14px;background:transparent;border:0;color:var(--navy);font-size:15px;font-weight:650;border-radius:7px}
+.venue-links button:hover,.venue-links button:focus-visible{background:#f3ead8}
+.week-list{padding:14px 18px 20px;display:grid;gap:8px}
+.week-day{display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;padding:14px;border-radius:12px;background:white}
+.week-day[aria-current="date"]{border-color:var(--gold);background:#f3ead8}
+.week-day b{display:block;font:19px Georgia,serif}.week-day small{display:block;font-size:12px;color:var(--muted);margin-top:5px}.week-day .week-count{font-size:13px;color:var(--navy);text-align:right}
+.week-context{font-size:13px;line-height:1.5;color:var(--muted);margin:16px 20px 0}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+      <details class="venue-menu">
+        <summary class="top-icon menu-btn" aria-label="Show menu"><span></span><span></span><span></span></summary>
+        <nav class="venue-links" aria-label="Show links">
+          <a href="https://www.arenauk.com/contact" target="_blank" rel="noopener">Venue contact ↗</a>
+          <a href="https://www.britishshowjumping.co.uk/centre-detail.cfm?shid=10023083&amp;month=9" target="_blank" rel="noopener">Show schedule ↗</a>
+          <button id="openEvents" aria-haspopup="dialog" aria-controls="eventsPanel">What’s on</button>
+        </nav>
+      </details>
+
+      <div class="top-center">
+        <svg class="showviva-shield" viewBox="170 75 240 310" role="img" aria-label="SV shield"><image href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAkACQAAD/4QECRXhpZgAATU0AKgAAAAgABwEOAAIAAAALAAAAYgESAAMAAAABAAEAAAEaAAUAAAABAAAAbgEbAAUAAAABAAAAdgEoAAMAAAABAAIAAAEyAAIAAAAUAAAAfodpAAQAAAABAAAAkgAAAABTY3JlZW5zaG90AAAAAACQAAAAAQAAAJAAAAABMjAyNjowOToxMyAxOTowNDo1OAAABZADAAIAAAAUAAAA1JKGAAcAAAASAAAA6KABAAMAAAAB//8AAKACAAQAAAABAAACTqADAAQAAAABAAACMwAAAAAyMDI2OjA5OjEzIDE5OjA0OjU4AEFTQ0lJAAAAU2NyZWVuc2hvdP/tAG5QaG90b3Nob3AgMy4wADhCSU0EBAAAAAAANhwBWgADGyVHHAIAAAIAAhwCeAAKU2NyZWVuc2hvdBwCPAAGMTkwNDU4HAI3AAgyMDI2MDkxMzhCSU0EJQAAAAAAEAeAhbiO/EgoC85lDmN0zDL/4gIoSUNDX1BST0ZJTEUAAQEAAAIYYXBwbAQAAABtbnRyUkdCIFhZWiAH5gABAAEAAAAAAABhY3NwQVBQTAAAAABBUFBMAAAAAAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWFwcGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApkZXNjAAAA/AAAADBjcHJ0AAABLAAAAFB3dHB0AAABfAAAABRyWFlaAAABkAAAABRnWFlaAAABpAAAABRiWFlaAAABuAAAABRyVFJDAAABzAAAACBjaGFkAAAB7AAAACxiVFJDAAABzAAAACBnVFJDAAABzAAAACBtbHVjAAAAAAAAAAEAAAAMZW5VUwAAABQAAAAcAEQAaQBzAHAAbABhAHkAIABQADNtbHVjAAAAAAAAAAEAAAAMZW5VUwAAADQAAAAcAEMAbwBwAHkAcgBpAGcAaAB0ACAAQQBwAHAAbABlACAASQBuAGMALgAsACAAMgAwADIAMlhZWiAAAAAAAAD21QABAAAAANMsWFlaIAAAAAAAAIPfAAA9v////7tYWVogAAAAAAAASr8AALE3AAAKuVhZWiAAAAAAAAAoOAAAEQsAAMi5cGFyYQAAAAAAAwAAAAJmZgAA8qcAAA1ZAAAT0AAACltzZjMyAAAAAAABDEIAAAXe///zJgAAB5MAAP2Q///7ov///aMAAAPcAADAbv/AABEIAjMCTgMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2wBDAAICAgICAgMCAgMFAwMDBQYFBQUFBggGBgYGBggKCAgICAgICgoKCgoKCgoMDAwMDAwODg4ODg8PDw8PDw8PDw//2wBDAQIDAwQEBAcEBAcQCwkLEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/3QAEACX/2gAMAwEAAhEDEQA/APxzooor7w+bCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP//Q/HOiiivvD5sKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//9H8c6KKK+8PmwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//0vxzooor7w+bCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP//T/HOiiivvD5sKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACitXSdC1rXp/suiWE9/L/dgjaQjPrtBxXplt8Afi7doJIvDzgH+/PBGfyeQGuCvjsNQdq9SMX5tL8zqp4atUV4Qb9E2ePUV7aP2dPjGenh7/AMm7X/49Ug/Zu+NDdPDv/k3af/Hq5f7ZwH/QRH/wJG/1DFf8+39zPDqK91H7NPxsPTw5/wCTlp/8eqUfsx/HA9PDX/k5Z/8Ax6j+2cB/0ER/8CQfUMT/AM+5fczwWivfh+y98dD08M/+Ttn/APHqkH7LPx4bp4Y/8nbP/wCPUf2vl/8A0ER/8CQvqOJ/59v7mfPtFfQw/ZU+PjdPC/8A5O2X/wAfqQfsnftAHp4W/wDJ6y/+P0f2vl//AEER/wDAkH1HE/8APuX3M+daK+jh+yT+0GenhT/yesf/AI/Ug/ZE/aHPTwn/AOT9j/8AH6f9r5f/ANBEfvQvqWI/59y+5nzbRX0sP2Pv2i26eEv/ACfsf/kipR+xz+0eenhH/wAn7D/5Io/tfL/+giP3oPqWJ/59y+5nzJRX06P2Nv2kT08If+VCw/8AkinD9jT9pHt4P/8AKhYf/JFH9r5f/wBBEfvQfUsR/JL7mfMFFfUI/Yx/aUPTwf8A+VCw/wDkilH7F/7Sx6eDv/Khp/8A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KOHPxV8Nn/qCr/6UzV+edeFw3/yLKPp+rO/M/wDep+oUUUV9QeOFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAH//W/HOiiivvD5sKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK+tf2P13eOtY/7Bx/9HR18lV9dfsdLu8d6z/2DT/6Ojr5biT/AJFdf0/U9vKf98p+v6Hz98UOPiV4sH/UXv8A/wBKHrhq7r4oj/i5fi4f9Re//wDSh64Wvewf+7w/wr8jza/8WfqwooorrOYKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAr1L4G8fGv4fn/qYdJ/9K4q8tr1H4H/APJavAH/AGMGlf8ApXHXJjP93n/hf5HRQ/iR9UfW/wDwUXOfip4b/wCwMv8A6UzV+e9foJ/wUTOfin4c/wCwMv8A6UTV+fdeFw3/AMiyj6fqz0Mz/wB6n6hRRRX1B44UUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAf//X/HOiiivvD5sKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK+v8A9jUbvHutD/qGn/0dHXyBX2L+xeM+P9aH/UMP/o6OvluJP+RXX9P1Payr/fIep87fFMY+J3i8f9RjUP8A0oeuDrv/AIq/8lR8Yf8AYZ1D/wBKHrgK97B/7vD/AAr8jzq/8WfqwooorrOYKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAr1D4I8fGjwCf+pg0r/wBK468vr074J/8AJZ/AX/Yf0v8A9K465MZ/u8/8L/I6KH8SPqj6x/4KHNu+KPh3/sDr/wClE1fAFffX/BQg5+J/h3/sDr/6US18C14XDf8AyK6Hp+p6GZ/71P1CiiivqDxwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//Q/HOiiivvD5sKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK+yf2Khn4ga3/ANgw/wDo+Ovjavs/9iZd3xB1z/sFn/0fFXy3En/Irren6ntZV/vcPU+b/it/yVLxj/2GdQ/9KXrg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gAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//1fxzooor7w+bCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA9++DP7Rnj/wCDN0sGlz/2jojnMunXDExHJyWjbkxt7rwe4NfceoaN8AP2wdNbUdFm/sLxfEgaQ7VS7U4x+9jyFnjB/iByPVc4r8nquafqN/pN5FqOl3MlndQMGjlhcxyIw6FWUgg18nmGR069T6zh5OnVX2l19UexhsfKnH2VRc8Oz/R9D1b4qfAv4gfCK72+JLPztPkYrDfW+Xt5PQFsAoxH8LAH0zXjtfffww/bKaaz/wCEW+Ndkur2EyiM3qxK7FehFxBjbIPdRn/ZNbvjv9lfwN8QtN/4TP4Fatbolxl/su/fauW5wjctCR/cYEdvlxXn0s8rYOao5tDkfSS1i/8AgnXPL4V4upg5X/uvdf5n5z0V03irwb4n8EapJo/irTptOukJG2VcKwHdG+6y+hUkVzNfc05xqRU4O6fVHz8ouL5ZKzCiiui8M+E/EfjHUk0nwzp8uoXLkDbGuQoPd26KPckCic4wi5zdkurCMXJ8sVdnO16h8O/hD41+Jlzt0G08uyRgst3NlIEz74yxx2UE+uK+pPB/7NPhDwNp/wDwlXxl1OBhDhvswfZbIRzh24aU/wCyoA/3s1z3xE/aoEdr/wAI58JbRdNsogYxdtEqEL0HkQ42oPdhn2FfDVM8q4yboZTDnfWT0iv82fQwy6nQiqmNlb+6t2eh22j/AAc/ZosFvdUm/tbxLIpKEhWuW4/5Zx5xCh/vE5PqelfJPxO+NXi/4nXBiv5fsWlKcx2UJPl8dC54Lt7ngdgK8pvb691K6kvtRnkurmYlnklYu7E9yxyTVWvRy/I6dCp9ZxEnUqv7T6ei6HNicwlUh7KiuWHZdfV9Qooor6s8QKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//W/HOiiivvD5sKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK7PwV8QfGPw81L+1PB+py6fK2BIqnMUoHQSRnKsPqOO1cZRWdSnCrB06kU0909UaQlKDUouzP0U8M/tMfDf4q6YnhH41aPBavIB+/ZTJaGQcbgeXhY9iCQP7wrkPiB+yOlzav4k+EWpx6jZTL5sVpLIGLKe0M4+Vh6bsf7xNfDVei+BPit46+HNysvhjU3ig3Ze1k/eW8meu6M8DPquD718PUyGtg5OplNTl7xesX+qPoI5hTrrkxseb+8tGv8z6Z8B/slfZbVPEfxa1JNOs4V82S0ikClVHaac/Ko9duf94Guj8TftFfDn4Y6c/hT4OaTBdMgOZlUpaiTpuJ4eZvU5APHzGvkPx38VvHXxHuWl8T6k8sG7KW0f7u3T02xjg49WyfevOqUMir4ySq5tU5u0VpFfqwlmFOguTBR5f7z1bOu8YeO/Fnj3UP7S8VajJfSLnYrHEcYPUIg+VR9Bz3rkaKK+4p04UoKnTiklsloj5+UpTk5Sd2wooorUzCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//X/HOiiivvD5sKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//9D8c6KKK+8PmwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//0fxzooor7w+bCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP//S/HOiiivvD5sKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//9P8c6KKK+8PmwooooAKKKKACiiigAooooAKKKKACiiigD2P4Q/AX4m/HDUpLHwFpZngt2Vbi8mbyrSDd03yHPOOdqhmx0FfWOo/sI+G/CLR2fxG+Mfh/wAP6i6hjbyMiEZ7jzpYmI99gr7M8VvL+zh+xIs/w+jWy1JdNs83Kj5xc6iY1muCe7jzDtJ6EL2AFfhReXl3qF1LfX8z3NzOxeSSRi7uzHJZmPJJ7k18ZhMViswlOpSnyQi2lom3bq76I9ytSpYZRjOPNJq+9kvuP0LH/BPXWvEmnSap8LfiNoHiqFOMo7Kmf7vmQmdc/XFfJPxY+BXxN+Cd3aW3xE0r7AuoGUWsqSxzRTeTt3lWRj03LwQDz0rlfAHxA8WfDLxPZeLvB1/JYX9k6uCpOyRQcmORejo3QqetfoB+378RPDnxJ8F/CfX9Dv7a4luoL25nghmSV7dp47VtkiqSVIOR82OhrpjUx2HxdOjVmpQnfW1mrK/TQzcaFSlOcVyyjbS909T8y6mt1he4iS4YpEzKHYdQpPJ/KoaK+qPHP1Q+Gv7J/wCx/wDF7U7vRvh78Qdd1W8softEyARxbY9wTdmSzUHkgcc18K/tB/DjSPhJ8YfEXw70G4nu7DR3gWKW5KmZhLbxzHcUVF4LkDCjjFfYn/BMv/kqPiz/ALAw/wDSiOvn39tj/k5/xx/11s//AEigr4rBVK0M1nhZ1HKKjfW2912Xme9XjTlhY1VBJt20PleirElpdRIJJYXRD0ZlIH51Xr7VM8EKKKKACiirENrdXAJt4Xlx12qW/lQBXopzo8bFJFKsOoIwabQAUUUUAFFFFABRRRQAUUUUAd/8Lfh7qPxV8e6T8P8ASbuCxu9XeRI5rksIUMcbSncVDHkIQMDrX3DH/wAE0PitKoeLxXoTqehDXJH/AKJr836/XT/gmh8TBLZeJfhLf3GXgYarYox/gbbFcKuewby2wO7E+tfKZ3VxmHovEYaStG11a/Xe/wDwD2MBChUmqVSOr63PkL44fsf+MvgV4QTxjr+v6XqVu91HaeTZvKZQ8gYgkPGowNpzzXyRX2L+3J8L0+HHx21K8sI/L0zxSo1SAY4WSUkTqPpKGYDsGAr46r1stqzq4aFWcuZy1va3ytrscmKhGFWUIxtbzufQnwD/AGdfEn7QV3rFp4d1ew0ltFSF5DfNIocTFgAmxG6bTnOK+mX/AOCanxSjVXk8W6Cit0Je4AP0/c18V/B/4fXHxU+JvhzwDAzRrrF3HFNIgy0cA+aZx7rGGI96+ov2+vH2na98VrH4d+HyF0fwFZpYJGh/drcSBWlC/wC4ojQ+6kV5OKni3jY0KFRJNNvROyWm99bv0OqjGiqLqVI3adt9/wDhkfEGoWb6df3OnyMHe2leIsvQlGKkj24o07T7zVtQtdK06Iz3d7KkMMa9XkkYKqjPckgVTqa2ubizuIru0kaGeB1eN0O1ldTlWBHIIPINfVO9tNzydLn138b/ANjL4h/A7wJZ+PdZ1Gy1O0aSOG8jtt4e1kl+7ywAdM/KWGDkjjHNfH1fRvxV/ap+MPxk8J2PgvxpqED6bZskkgt4BE91LGMK87AnJGScLtXPJXIBHzlXmYBYpUbYxpzu9u3Q68R7Jz/cp28wooor1DjCiiigAooooAKKKciPIwSNSzHoAMmgBtFWJbS6gG6eF4we7KR/Oq9CYBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAf//U/HOiiivvD5sKKKKACiiigAooooAKKKKACiiigAooooA/oM+A/i74f/tOfs6W/gzWtly8WnxaXq9mWAmikhUKsq9wCVWSN8cHjqCK+B/if/wTm+KXh25ubz4b3lv4p04EtFC7ra3gTqFIkIiYgcZDjPZR0r4R8I+M/FXgLW4fEng3VbjR9SgBCz27lG2nqpxwynupyD3FffPw7/4KR/E3QYo7H4g6NaeJoU4+0RE2d1j/AGtoaJvwRT6k1+eyyzMMBVnUy+SlCTvyv+v1PpVisPiIRjiU011R8J+Lfh1488B3BtfGfh++0Vw20faoHiUn/ZYja34E1xlf0F/DL9rv4CfHuIeDdUxp1/qeLc6VrMSNHcl+NiN88UgY8BWIYn+Gviz9t39krwz8OtGX4sfDO3Gn6V5yQ6hp6kmOFpSQk0Oc7ULYVkzgEgrxkDtwefSlWWFxlNwm9uzOetgEqbq0Z80V95+Y9FFFfanhH6Vf8Ey/+So+LP8AsDD/ANKI69e+PGvfB39nv4y6/wDFHxpoSeNvG3iaSKbTNOdlW3sbOG3igE0pdHAkkkR9p2sQBxt5J8h/4Jl/8lR8Wf8AYGH/AKUR14f+3TqdxqP7TviyKZiY7FbG3iB/hQWcLkD6uzH8a/OpYb6xnVSnJtR5Ve2l1ppfc+mVX2eBhJLXm0/E++PgZ+2d4C+Oviq3+F3jfwRbaTNq4eO1LMl5aTMqlvKkR4k2llBA+8CeOMivhf8AbZ+BWifBX4nW7+Eo/s+geJIGu7e36i2lRtssSk87AdrLnoG29BXjP7PM8lt8dPAc0Rww1myGR7yqD/Ov0E/4KgRqP+Fey4+Y/wBorn2HkH+taQw8MDmtOjh7qE07q7auru+pMqjxGElOrrKLVn6n5L0UUV+gnzZ+j37Gv7I+ifEbS5Piz8WI2/4RiBnFlaMxiS7MJ/eTSuCCIUIK4BG4g5O0YZPHn7eV9oOuTaD8C/C2jaL4Y09jDA0lmrPOqHG8IhRERuy4JxyTk4H3V8SbP/hXH7EF/pGlnyms/C8FoSvGWuY0ilbj+8ZGP41/PxX5/lsI5nVq4jE+9FO0Y9Eu9u7PpMU3hIQp0tG1dvqfsB8GfiJ8Kv21bO++G/xh8J2Nh4ttoGuLe+sEEDyxqcFon5dHTILIWZGHOOMD85fjz8GNd+BPxEvfBGsObmAAT2V3t2Lc2rkhJAMnBBBVhk4YHtg1ufsqa5deH/2ifAV9aOUaXU4rVsHrHdgwOD/wFzX6Bf8ABTrQLaTw14J8UBQLiC7ubMt3KSxiQD6Axn861hJ4DM44am/3c1e3Z67fcZytiMLKrL44vfuvM/Huvpz9m/46+HPg5fahZ+JvB2n+KLPXJ7MSTXqozWccJcO0YaN8lhJkjI+6Pw+Y6K+zxFCFem6dRaP5fkeJTqSpyUo7n9Af7S3iDwj8DPh/ZfEHw78NdC8R2Ut1HBcbreGIRRzKTHKGWJ8qWAX6svrX4ReM/EEXi3xbq/ia3sItLj1S6luFtIMeXAJGLCNMBeFzgcD6V+13wddf2jv2IpfBjSC41O30+XRyHOSt1YANa7if9kQtn3zX5O/s8fDWT4lfG/wx4IvomFu16JL5CCCLe1zLMp9CVQp7E18JkLp4anXVX44Npu71S1WnyPoMwUqsocnwytb1P128D/st+Fh+yfF4D1HR7WfxHqujyXLXbQJ9pjvrlTcRgS43jynKp15C+5r8G5I5LeZ4ZlKvGxVlPBBBwQa/eT4OftEp42/ao+Inw4in3aNBDHFpik/KJtL/AHVyUHTEjMzf7qLX5cftkfD9fh5+0F4msreHyLLV5BqlsAMKUvMs+32EodR6YxRkNetDFVKGIes0pL57oMfTpyowqUto6fcfoN8MPjt4H8afBvx38YvEPwr0LSrDwmBHbRxwwyfa7opkRFmgXb8zxjIBxuzjivyz+NXxPsvi54z/AOEt0/w3aeFYvs0Vv9jsseVmMsS/yogy27njtX1/+0DKPg7+yb8Nvgpax/Z9S8T/APE61Xs5H+sCuPXfIi+wiAr85a9XJsHRUp4mCsnJqOrei06vq02cmOrzajSk9km9Fu9fwCvZP2fviV/wqX4v+GvHMzMtnZ3KpebOSbSb93NgdyEYkDuQK8bor6irTjVpypz2as/meTGbhJSjuj91v+Cgnw3t/HPwUh8d6XELm98JyrdLJH8xNlc7Umxjqv3JCewUnpmvwpr+gr9knxxZ/G/9m220PxBi4nsbebQdQQ8+ZGsexCf9+Blz75r8LviH4F1b4ffEDW/AGoxMbzSb2S1AAOZFDfu3UdSJFKsvqCK+I4bqype1wNXeDdvT/hz3s0gp8mIhtJfifcv7C+kaX4D8OeP/ANpPxLbebaeFrKS1s88b5yoklVCejsPLjB7eYR3r8+Nf1vUPE2u6h4i1aTzb3U7iW5mb1klYux/M1+j37TksvwL/AGZPh/8As82pW31XWUGo6yqEbjtPmOjEdQZ2AB7iLA4r8yq9nKv306mNf2naPotF97OLF+5GNH+VXfq/8gr6L+Avx40v4KrrC6l4J07xh/aph2/b9v7jyt2dm6OT727np0FfOlFe5XoU69N06iun8vyPOp1JU5Kcdz9vv2pNF8F6l+yFN460vwvpuj32p22l3YNtaxI8RuHiZlWRUVsfNjPGRX4g1+4/7RP/ACYZp/8A2C9D/nDX4cV8nwy39Xmr7Sf5I9rNf4sX/dX6nQeE9ci8M+KNJ8Rz2Ueox6Zdw3LW02PLnEThzG+QRtbGDweO1ful+y38Qfhd+0Z4a1fUp/h9omjano1ysUtsltBMpilTdHIGMSn5iHBGP4evNfgbX2B+xD8Um+Gvx10u0vLjydJ8UD+y7kMcJvlI+zuewKy4GewZuxNdWfYD2+GlUh8cVdavpq18zHL8R7Kqoy+F7lr9qv4xQ+LL65+GM/w90zwdf+GNVmWa4sQqvN5QeLaQIo/kbIcckHg+9cl+zH8VR8PvEtxoEPgfT/G194qmtLS2jv8AbiGTeyjbujk+8XG7pwK+kv8AgpH8LJdF8c6R8V7CH/Q/EMQtLt1H3bu1UCMt/vw4A/65n2rgf2DPA2k3fjvWvjB4rGzQ/h5ZPeGRh8ouXVtp9ykauwH97aa5KVbDPKPaqPu22u977Xvfc2nCqsby31vvpt+Wx9F/tjfGf4c/DCe/+D2g+AtEvdU1bRpo7y8ihihfT5byNo4zGFiJLqpEgyQcFfWvyDruvib45v8A4l/EDXvHmpApNrV3JcbCc+WhOI48/wCwgVfwrha9zK8CsJQjD7TS5tepwYrEOtUcunT0Nrw3Z2+oeItLsLtd0FzdQRSDOMo7hWGR04Nfrh+0H8Zvhv8Asl3Fj8NPgn4J0ddea3S4ubqaAS+RE5IRXfPmyytjdl5PlXHByMfj9Z2d3qF3DYWEL3FzcOscUcalnd3OFVQOSSeABX6CeFP+Cfnin/hFh4x+L/iyw8C2WwSSRz4lkhUnAEzM0cSMeMKHbrg4PFcGawwvtKc8XUtFX93XV6W0WrsdGDdbllGlHXv2+8d4P/4KA+J7jV4bH4teFdG1/wAO3B8u5SK0CTIjcFlDl43A6lGX5um4da0v20v2afBXg/w7pfxt+E0QtfD+sPELm0jyYI/tS+ZDPDn7iP0K/dBK7cA4rAb9mD9mGNtkn7QNjuHXFqhH5ievur9ofRNG079hW60XStQXWtO03RNFjtL1V2i5igltRFOoycb1AbqeDjNfNVcTh8Pi6EsEnFSlaSs0mn5NJXR6cKVWpRmq9nZXTum/wPwTooor9NPlQooooAKKKKACiiigAooooAKKKKACiiigAooooA//1fxzooor7w+bCiiigAooooAKKKKACiiigAooooAKKKKAPtf9oD9mrw98Nfgr8Pfin4Ta9n/4SCGH+1PtEiSRxzXNuk0XlhUUqpIkHJb+EZz1+KK/XXwN+2D+zj4y+EWm/B74yaXeWVnBp9vYXDSQm4gYwIqCVHgzKjAruUhMqehrym9/Zg/ZL8USnUPBHx2s9ItJDkQaiYHkX2AlltXx9VJr4zBZnVw8ZU8fCSabtKzaavpqrnuVsLCo1KhJbLS6X5n5xxvJFIskTFHQgqVOCCOhBHev3t/aj1K5T9iu8l8UEjVL3TdISTzPvm6aSBnzn+LIbP418seE/hv+xB8DNRtfF3i74jR+O9S09xNb21qFuIDKnKkw23mgkHkeZLt9a8C/av8A2stQ/aAvLbw9oFtLpXhHTJPNihkI866nwVE0wXhdoJCICcZJJJIxzYlTzHFUJUYNQg7uTTXbRX1exrTthaM1KS5pK1k7/efGdFFFfeHzx+lX/BMv/kqPiz/sDD/0ojr59/bY/wCTn/HH/XWz/wDSKCvs34BeN/2IPgBrV94j8M/EfULy81O0W1mS8sLxkVd6yHb5dkhzlcdSMV4n+1JqH7JPxFfxV8UvBfjq/wBR8cakbVrfT/slxFaO0fkwOMy2iYxCrNzIPmHHpX59hq0/7WliHTkoSSSbi97rfTReZ9JVhH6nGlzq6d915nyp8AP+S3+BP+w1Y/8Ao5a/Q3/gqD/q/h79dS/9t6+a/wBmy2/ZU0W30Xx58U/G2oaL4u0fURcpZQ2081uUgdWiLGK1l+9jkCTP0r67+PnxR/Yl/aGXRV8XfEW+sf7D88w/YrC9Xd9o2bt3mWT9NgxjHeqx1Wf9qUq6pycYJptJvddNNRUIL6rODkrytbVH420Vqa5FpUGtX8GhTtc6bHcSrbSuCGkgDERswIUglcE8D6Csuvvk7q5861Y/oE1a5l+NH7EE0+hg3d5qHhlcJHyz3Vkg8yNR/eMkTKB61/P3X2l+yd+1pf8AwCu5/DXiO3l1PwhqMnmyRRnM1pMQAZYQxAIYAb04zwQQQQfWPF3wM/ZN+L2rT+NPhr8XtP8AB0eoSNNPp2pIqCORzlvLSeW3dADn5fnX+6wGK+EwKlldarSqxfJJ3jJJtejtqj6DEWxcIzg1zJWabt81c+a/2QPC174s/aL8F2tpGWTT7wahMw6JHZqZct6AsoX6kCvtn/gpz4tszbeC/AsUga6D3GoyoDyqYEMZI7bjvx9DVLwR4/8A2V/2ONJ1K48G6+3xH8b38PlPPariDaDlUWRd0UUZbBba8jnA7Yr82fiZ8R/E3xY8aaj468WzCXUNRcEqgIjijUYSOMEnCIOAM+5ySTWtOlUxuZRxnK4wgrK6s23fWz1tqROcaGGdG95SetuhwdFFFfbngn6d/wDBNL4gppvjLxJ8NryfYms2y31qjHhp7U7ZFUf3mjbcfZPavcLT4aW37N/j345/H/UbcC2trQvoWeEkk1Iea6j0IuNkWRyF3HvX5SfBXx7/AMKw+K3hfx25ZYNJvY3n28sbd/kmAA6kxs3Hevvz9tr9q74b/E74dad4C+FWsnVlvbwXGoSC3uLcJFbjMceLiOPdvdg3y5xs56ivzrMcBXeY2pRfJVSUn0Vmr69Lo+mw+IprDe+/ehe3z/4J8IfBf4kX/wAO/jH4c+ITTkNa6gr3bk/fgnJS4B/3o3b8ea/Zb9qT4Cx/F/x98Kdet7T7Vbwap9k1JlXIOnlTdfOf7n7p1Ge8mOpFfgZX7O/DD9uT4ZeH/wBnnTbHxBrh/wCE70bSntY7N7W6k864tkMduWmWIxfOFQsS/rnmurPsNiFWpYrCRbmrrRdGtHp0Rll9Wm4TpVXZOz+4+E/21fiLL8Qv2gNeEcgfT/DpXSbQDoFts+afqZmc/TA7V8nVYu7q5vrqa+vJGmuLh2kkdjlndzlmJ9STk1Xr7HC0I0KMKMdopI8WrUdScpvqwooorqMD9DP+CdPxNl8MfFi8+Ht3MF0/xbbny1Y8C8tA0kZHoWj8wH1O30FfavxZ/ZfPjb9qrwR8UIog2ieWZ9WGOBPpuGt8+vnFkXHYRsa/Dzwt4h1Dwj4l0rxTpMhjvdIuobuFgcYeFw6/qOa/aX4r/t1/Bm8+D+tp4F197jxZqGn+Tb2gtLuJoprhQjkyyRLF+5DM2Q/O35ScivzfOcHiYY6NfBxb5007Lbpd9j6fBVqUqDp138LuvzsfmN+1X8Tf+FrfHLxH4htbn7TplpL9gsGByn2a1ygKf7Lvuk/4FmvnWiiv0GhRjRpRpQ2ikvuPnak3ObnLdhRRX0L8C/Df7O+vrq5+PHiu/wDDJhMP2H7FBJN527d5u7y7efG3C4zt69+yrVVSg6jTduiV39yCEOeXLdL10P1C/aJ/5MM0/wD7Beh/zhr8OK/bbxr8d/2MvHPwhh+DOqfEG7h0iC3tLYTQ6ffC422e3YSWsyuTsGfl+mK/KH4y6R8JdE8YfY/gvrl14h8PfZ42+03cbxSeec712vFCcDjB2/jXx3DrnThOjVg4tyb1TStp1fU9zMlGUozjJNJJaNHk9PikkhkSaJijoQykcEEcgimUV9yfPH7zaoll+19+xuLqA51wWQlHGWTVtOHzL7CYqQD/AHJAetfJfxPFz+zn+xn4c+GCoLPxL8SJWvNSU8SpBhJHQ9wQvkxMD/tj3rm/2Gf2mfCXwc/4SDwh8S9TOm6Bf7Ly1m8macR3S4R02wJI2JEwc4wCnvXhX7WvxjsvjX8Y9Q8R6Fctc6DYRR2WmsyvGGgjyzOEcKy75GZvmAOMZA6D84weXV6eNlhXF+xi+ZPp5K/kz6itiacqCqp++1b/ADZ8zUUUV+jny59mfsF6Do+u/tH6M2rosv8AZtrd3lujDINxGm1Dj1UMXHoVB7V7t/wU28Q62fGXhHwoZXXR00970RgkI9y8rxkkdCVRRj03H1r8+vhf8Q9b+FPj3RviB4fw17o83mBGOFkRlKSRtjs6Myn0zmv1o8Z/Eb9kn9sXwlYWvjHxIvg7XtODPC15ItrNbNIBvQSS/uJoyQOA2eM/Ka+DzGFShmVPGyg5QStor2eutvmfQ4aUamFlQTSle+ulz8Wq/df4t2s9l/wT0t7O6QxzQ+GNAR1PBVgbQEH3Br4ou/hP+yH8Gb5fEHiv4kn4ky2zCW30fSIkVJnU5CzzxyTIEz97LoSOgPSvr3xJ+1T+y38YPg0vgb4g+LX0CbXbG0GoW9lY3rNaToY5Xijf7LJGQki7cjIIHHrXNm2IniamHqUacpQjJNuz8tla/wCBpg6apRqRqSSbVrXX/DH4hUV6z8ZtH+EmieMFsvgtrt14h8PG2jc3N3G8UguCW3pteGE4AC4O3v1NeTV+g0qiqQU0mr91Z/NHzs48snEKKKK0ICiiigAooooAKKKKACiiigAooooAKKKKAP/W/HOiiivvD5sKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//9f8c6KKK+8PmwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//0Pxzooor7w+bCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP//R/HOiiivvD5sKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//9L8c6KKK+8PmwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD//2Q==" width="590" height="563"/></svg>
+        <div class="brand showviva-wordmark">Show<span>Viva</span></div>
+        <div class="tag">YOUR EQUESTRIAN SHOW PLANNER</div>
+      </div>
+
+      <button class="top-icon calendar-btn" aria-label="Your show week" aria-haspopup="dialog" aria-controls="weekPanel" title="Your show week">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="4" y="5.5" width="16" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M7.5 3.5v4M16.5 3.5v4M4 9.5h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="8" cy="13" r="1" fill="currentColor"/>
+          <circle cx="12" cy="13" r="1" fill="currentColor"/>
+          <circle cx="16" cy="13" r="1" fill="currentColor"/>
+        </svg>
+      </button>
+    </header>
+
+  <main>
+    <h1>Arena UK</h1>
+    <div class="sub">14–20 September 2026 · Major Showjumping Championships</div>
+
+    <div class="status" id="statusBox">
+      <div class="status-dot"></div>
+      <div><strong>Monday and Tuesday drawn orders are ready.</strong> Tuesday 15 September: 8 rides · 7 horses. All jumping times are APPROX — follow the official drawn order.</div>
+    </div>
+
+    <noscript><p class="status">Tuesday is shown below by default. Use the day tabs to view Monday or Tuesday.</p></noscript><div class="days" id="days"><button class="day " aria-pressed="false" data-day="0"><b>Mon</b><span>14 Sep</span></button><button class="day active" aria-pressed="true" data-day="1"><b>Tue</b><span>15 Sep</span></button><button class="day " aria-pressed="false" data-day="2"><b>Wed</b><span>16 Sep</span></button><button class="day " aria-pressed="false" data-day="3"><b>Thu</b><span>17 Sep</span></button><button class="day " aria-pressed="false" data-day="4"><b>Fri</b><span>18 Sep</span></button><button class="day " aria-pressed="false" data-day="5"><b>Sat</b><span>19 Sep</span></button><button class="day " aria-pressed="false" data-day="6"><b>Sun</b><span>20 Sep</span></button></div>
+
+    <div class="filter-card">
+      <label for="horse">Horse</label>
+      <select id="horse"><option value="">All horses</option><option value="KSH Queen Ester">KSH Queen Ester</option><option value="Rio Seven">Rio Seven</option><option value="Monmore Var">Monmore Var</option><option value="Summer Escape">Summer Escape</option><option value="WF ANNIE">WF ANNIE</option><option value="QAUNTA COSTA JS">QAUNTA COSTA JS</option><option value="Pardento">Pardento</option><option value="Special Delivery 27">Special Delivery 27</option></select>
+    </div>
+    <div class="filter-card">
+      <label for="rider">Rider</label>
+      <select id="rider"><option value="">All riders</option><option value="Rikki Gradley">Rikki Gradley</option><option value="Claire Hansen">Claire Hansen</option><option value="Olivia White">Olivia White</option></select>
+    </div>
+    <div class="filter-card">
+      <label for="ring">Ring</label>
+      <select id="ring"><option value="">All arenas</option><option value="Indoor">Indoor</option><option value="Outdoor 1">Outdoor 1</option><option value="Outdoor 2">Outdoor 2</option><option value="Outdoor 3">Outdoor 3</option></select>
+    </div>
+
+    <div class="filter-card"><label for="search">Search horse or rider</label><input id="search" type="search" placeholder="Type a horse or rider…"></div>
+    <div class="actions"><button id="clear">Clear filters</button><a class="linkbtn primary" href="https://online.equipe.com/shows/82493" target="_blank" rel="noopener">Open Equipe ↗</a></div>
+    <div class="meta" id="dataStatus">Loading latest ShowViva times…</div>
+
+    <div class="head">
+      <h2 id="viewTitle">Tue 15 September</h2>
+      <span id="count">8 rides · 7 horses</span>
+    </div>
+    <section id="cards" class="cards" aria-live="polite"><article class="ride" data-horse="KSH Queen Ester" data-rider="Claire Hansen" data-ring="Outdoor 1"><div><div class="time">08:00</div><span class="demo">APPROX</span><div class="small">Tuesday 15 September</div></div><div class="details"><strong>KSH Queen Ester</strong><div class="rider">Claire Hansen</div><div class="detail">5 Year Old</div><div class="arena">Outdoor Arena 1</div><div class="card-bottom"><b class="draw">Draw 1</b><a href="https://online.equipe.com/startlists/1301680" target="_blank" rel="noopener">Class details ↗</a></div></div></article><article class="ride" data-horse="Rio Seven" data-rider="Claire Hansen" data-ring="Outdoor 3"><div><div class="time">08:52</div><span class="demo">APPROX</span><div class="small">Tuesday 15 September</div></div><div class="details"><strong>Rio Seven</strong><div class="rider">Claire Hansen</div><div class="detail">Clear Round</div><div class="arena">Outdoor Arena 3</div><div class="card-bottom"><b class="draw">Draw 27</b><a href="https://online.equipe.com/startlists/1301686" target="_blank" rel="noopener">Class details ↗</a></div></div></article><article class="ride" data-horse="Monmore Var" data-rider="Olivia White" data-ring="Indoor"><div><div class="time">09:43</div><span class="demo">APPROX</span><div class="small">Tuesday 15 September</div></div><div class="details"><strong>Monmore Var</strong><div class="rider">Olivia White</div><div class="detail">British Novice</div><div class="arena">Equine America Indoor Championship Arena</div><div class="card-bottom"><b class="draw">Draw 50</b><a href="https://online.equipe.com/startlists/1301675" target="_blank" rel="noopener">Class details ↗</a></div></div></article><article class="ride" data-horse="Summer Escape" data-rider="Claire Hansen" data-ring="Outdoor 1"><div><div class="time">09:54</div><span class="demo">APPROX</span><div class="small">Tuesday 15 September</div></div><div class="details"><strong>Summer Escape</strong><div class="rider">Claire Hansen</div><div class="detail">5 Year Old</div><div class="arena">Outdoor Arena 1</div><div class="card-bottom"><b class="draw">Draw 58</b><a href="https://online.equipe.com/startlists/1301680" target="_blank" rel="noopener">Class details ↗</a></div></div></article><article class="ride" data-horse="WF ANNIE" data-rider="Olivia White" data-ring="Indoor"><div><div class="time">11:30</div><span class="demo">APPROX</span><div class="small">Tuesday 15 September</div></div><div class="details"><strong>WF ANNIE</strong><div class="rider">Olivia White</div><div class="detail">British Novice</div><div class="arena">Equine America Indoor Championship Arena</div><div class="card-bottom"><b class="draw">Draw 101</b><a href="https://online.equipe.com/startlists/1301675" target="_blank" rel="noopener">Class details ↗</a></div></div></article><article class="ride" data-horse="QAUNTA COSTA JS" data-rider="Rikki Gradley" data-ring="Indoor"><div><div class="time">13:07</div><span class="demo">APPROX</span><div class="small">Tuesday 15 September</div></div><div class="details"><strong>QAUNTA COSTA JS</strong><div class="rider">Rikki Gradley</div><div class="detail">National 1.30m</div><div class="arena">Equine America Indoor Championship Arena</div><div class="card-bottom"><b class="draw">Draw 19</b><a href="https://online.equipe.com/startlists/1301676" target="_blank" rel="noopener">Class details ↗</a></div></div></article><article class="ride" data-horse="WF ANNIE" data-rider="Olivia White" data-ring="Outdoor 1"><div><div class="time">14:25</div><span class="demo">APPROX</span><div class="small">Tuesday 15 September</div></div><div class="details"><strong>WF ANNIE</strong><div class="rider">Olivia White</div><div class="detail">Discovery</div><div class="arena">Outdoor Arena 1</div><div class="card-bottom"><b class="draw">Draw 51</b><a href="https://online.equipe.com/startlists/1301681" target="_blank" rel="noopener">Class details ↗</a></div></div></article><article class="ride" data-horse="Pardento" data-rider="Olivia White" data-ring="Outdoor 1"><div><div class="time">17:41</div><span class="demo">APPROX</span><div class="small">Tuesday 15 September</div></div><div class="details"><strong>Pardento</strong><div class="rider">Olivia White</div><div class="detail">6/7 Year Old</div><div class="arena">Outdoor Arena 1</div><div class="card-bottom"><b class="draw">Draw 24</b><a href="https://online.equipe.com/startlists/1301682" target="_blank" rel="noopener">Class details ↗</a></div></div></article></section>
+  </main>
+
+  <footer><strong>ShowViva</strong> · Independent show-day planner<br>Always confirm official timings with the show organiser.</footer>
+</div>
+
+<dialog id="eventsPanel" class="events-panel" aria-labelledby="eventsTitle">
+<div class="events-heading"><div><h2 id="eventsTitle">What’s on</h2><p>Arena UK · Evening entertainment</p></div><button class="events-close" id="closeEvents" aria-label="Close What’s on" autofocus>×</button></div>
+<div class="events-list"><article class="show-event"><div class="event-day">Tuesday 15 September</div><h3>Live singer</h3><p class="event-timing">After the Masters Challenge</p><p>In the bar.</p></article><article class="show-event"><div class="event-day">Wednesday 16 September</div><h3>Karaoke night</h3><p class="event-timing">After the Six Bars</p><p>In the bar.</p></article><article class="show-event"><div class="event-day">Thursday 17 September</div><h3>Country Bound Midlands</h3><p class="event-timing">After Ride & Drive</p><p>Country Takeover band · two sets of country classics. Equipe mentions both the Big Marquee and the bar; confirm the location with the organiser.</p></article><article class="show-event"><div class="event-day">Friday 18 September</div><h3>DJ MJ Coops</h3><p class="event-timing">After the Puissance</p><p>Big Marquee · party night.</p></article><article class="show-event"><div class="event-day">Saturday 19 September</div><h3>DJ MJ Coops</h3><p class="event-timing">Time not published</p><p>Big Marquee · final party night.</p></article></div><p class="events-source">Published on <a href="https://online.equipe.com/shows/82493" target="_blank" rel="noopener">Equipe ↗</a> · Checked 13 September 2026.<br>Exact start times have not been published. Check the organiser’s updates for changes.</p></dialog>
+
+<dialog id="weekPanel" class="events-panel" aria-labelledby="weekTitle">
+<div class="events-heading"><div><h2 id="weekTitle">Your show week</h2><p>Arena UK · 14–20 September</p></div><button class="events-close" id="closeWeek" aria-label="Close your show week" autofocus>×</button></div>
+<p id="weekContext" class="week-context"></p><div id="weekList" class="week-list"></div>
+</dialog>
+<script>
+let rides=[];
+const $=id=>document.getElementById(id);
+let activeDay=1;
+const names=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+const fill=(id,first,values)=>{$(id).innerHTML='<option value="">'+first+'</option>'+values.map(v=>'<option>'+v+'</option>').join('');};
+
+function refreshFilters(){
+  const current={
+    horse:$('horse').value,
+    rider:$('rider').value,
+    ring:$('ring').value
+  };
+  const horses=[...new Set(rides.map(x=>x.horse))].sort();
+  const riders=[...new Set(rides.map(x=>x.rider))].sort();
+  const rings=[...new Set(rides.map(x=>x.ring))].sort();
+  fill('horse','All horses',horses);
+  fill('rider','All riders',riders);
+  fill('ring','All arenas',rings);
+  if(horses.includes(current.horse)) $('horse').value=current.horse;
+  if(riders.includes(current.rider)) $('rider').value=current.rider;
+  if(rings.includes(current.ring)) $('ring').value=current.ring;
+}
+
+async function loadData(showMessage=true){
+  const status=$('dataStatus');
+
+  try{
+    const response=await fetch('data.json?v='+Date.now(),{cache:'no-store'});
+    if(!response.ok) throw new Error('Could not load data.json');
+    const data=await response.json();
+    rides=Array.isArray(data)?data:(data.rides||[]);
+    refreshFilters();
+    render();
+    const stamp=[data.updated,data.updatedTime].filter(Boolean).join(' · ');
+    status.textContent=stamp?'Updated '+stamp:'';
+  }catch(err){
+    status.textContent='Could not refresh the latest times. Please try again.';
+    console.error(err);
+  }
+}
+
+function render(){
+$('days').innerHTML=names.map((d,i)=>`<button class="day ${i===activeDay?'active':''}" aria-pressed="${i===activeDay}" data-day="${i}"><b>${d}</b><span>${14+i} Sep</span></button>`).join('');
+$('days').querySelectorAll('button').forEach(b=>b.onclick=()=>{activeDay=Number(b.dataset.day);render();});
+let list=rides.filter(x=>x.day===activeDay&&(!$('horse').value||x.horse===$('horse').value)&&(!$('rider').value||x.rider===$('rider').value)&&(!$('ring').value||x.ring===$('ring').value)&&`${x.horse} ${x.rider}`.toLowerCase().includes($('search').value.trim().toLowerCase()));
+$('viewTitle').textContent=`${names[activeDay]} ${14+activeDay} September`;
+$('count').textContent=`${list.length} rides · ${new Set(list.map(x=>x.horse)).size} horses`;
+$('cards').innerHTML=list.length?list.map(x=>{const complete=x.status==='complete';return `<article class="ride ${complete?'complete':''}" data-horse="${x.horse}" data-rider="${x.rider}" data-ring="${x.ring}"><div><div class="time">${complete?'✓ COMPLETE':x.time}</div>${complete?`<div class="complete-note">Round finished</div>`:`<span class="demo">APPROX</span>`}${x.start?`<div class="small">Class starts ${x.start}</div>`:(x.day===1?`<div class="small">Tuesday 15 September</div>`:'')}</div><div class="details"><strong>${x.horse}</strong><div class="rider">${x.rider}</div><div class="detail">${x.classNo?`Class ${x.classNo} · `:''}${x.className}</div><div class="arena">${x.ring==='Indoor'?'Equine America Indoor Championship Arena':x.ring.replace('Outdoor ','Outdoor Arena ')}</div><div class="card-bottom"><b class="draw">Draw ${x.order}</b><a href="${x.url}" target="_blank" rel="noopener">${complete?'Results ↗':'Class details ↗'}</a></div></div></article>`;}).join(''):`<div class="empty">${activeDay>1?'This day’s schedule has not been added yet.':'No matching entries were found.'}</div>`;
+}
+['horse','rider','ring'].forEach(id=>{$(id).onchange=render;$(id).oninput=render;});$('search').oninput=render;
+$('clear').onclick=()=>{['horse','rider','ring','search'].forEach(id=>$(id).value='');render();};
+const eventsPanel=$('eventsPanel');
+$('openEvents').onclick=()=>{document.querySelector('.venue-menu').open=false;eventsPanel.showModal();};
+eventsPanel.addEventListener('close',()=>document.querySelector('.menu-btn').focus());
+const weekPanel=$('weekPanel');
+function weekRows(){return names.map((day,i)=>{const filtered=rides.filter(x=>x.day===i&&(!$('horse').value||x.horse===$('horse').value)&&(!$('rider').value||x.rider===$('rider').value)&&(!$('ring').value||x.ring===$('ring').value)&&`${x.horse} ${x.rider}`.toLowerCase().includes($('search').value.trim().toLowerCase()));const scheduled=rides.some(x=>x.day===i);const horses=new Set(filtered.map(x=>x.horse)).size;return `<button class="week-day" data-week-day="${i}" ${i===activeDay?'aria-current="date"':''}><span><b>${day} ${14+i} September</b><small>${scheduled?'View jumping times':'View day'}</small></span><span class="week-count">${scheduled?`${filtered.length} ${filtered.length===1?'round':'rounds'} · ${horses} ${horses===1?'horse':'horses'}${filtered.length===0?' · no matches':''}`:'Awaiting schedule'} →</span></button>`;}).join('');}
+document.querySelector('.calendar-btn').onclick=()=>{
+const selected=rides.filter(x=>(!$('horse').value||x.horse===$('horse').value)&&(!$('rider').value||x.rider===$('rider').value)&&(!$('ring').value||x.ring===$('ring').value)&&`${x.horse} ${x.rider}`.toLowerCase().includes($('search').value.trim().toLowerCase()));
+$('weekContext').textContent=['horse','rider','ring','search'].some(id=>$(id).value)?'Round counts reflect your current filters. Choose a day to view its schedule.':'All your horses and riders. Choose a day to view its schedule.';
+$('weekList').innerHTML=weekRows();
+$('weekList').querySelectorAll('[data-week-day]').forEach(button=>button.onclick=()=>{activeDay=Number(button.dataset.weekDay);render();weekPanel.close();$('viewTitle').setAttribute('tabindex','-1');$('viewTitle').focus({preventScroll:true});$('viewTitle').scrollIntoView({behavior:'smooth',block:'start'});});
+weekPanel.showModal();};
+$('closeWeek').onclick=()=>weekPanel.close();
+weekPanel.addEventListener('click',event=>{if(event.target===weekPanel){const box=weekPanel.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)weekPanel.close();}});
+$('closeEvents').onclick=()=>eventsPanel.close();
+eventsPanel.addEventListener('click',event=>{if(event.target===eventsPanel){const box=eventsPanel.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)eventsPanel.close();}});
+loadData(false);
+document.documentElement.classList.add("interactive");
+</script></body></html>
