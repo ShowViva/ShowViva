@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 92" role="img" aria-label="ShowViva">
+  <g fill="none" stroke="#D8AD62" stroke-width="2.2">
+    <path d="M10 7 H72 V51 C72 66 56 77 41 85 C26 77 10 66 10 51 Z"/>
+  </g>
+  <text x="41" y="50" text-anchor="middle" fill="#D8AD62"
+        font-family="Georgia, 'Times New Roman', serif" font-size="31">SV</text>
+  <text x="91" y="50" fill="#FFFFFF"
+        font-family="Georgia, 'Times New Roman', serif" font-size="45">Show</text>
+  <text x="204" y="50" fill="#D8AD62"
+        font-family="Georgia, 'Times New Roman', serif" font-size="45">Viva</text>
+  <text x="92" y="76" fill="#FFFFFF"
+        font-family="Arial, Helvetica, sans-serif" font-size="9" letter-spacing="3.2">YOUR EQUESTRIAN SHOW PLANNER</text>
+</svg>
