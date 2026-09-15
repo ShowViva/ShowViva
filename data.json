@@ -26,7 +26,8 @@
       "order": 25,
       "url": "https://online.equipe.com/startlists/1300470",
       "time": "08:46",
-      "day": 0
+      "day": 0,
+      "status": "upcoming"
     },
     {
       "horse": "Monmore Var",
@@ -50,7 +51,8 @@
       "order": 63,
       "url": "https://online.equipe.com/startlists/1300466",
       "time": "10:37",
-      "day": 0
+      "day": 0,
+      "status": "upcoming"
     },
     {
       "horse": "Monmore Var",
@@ -147,7 +149,8 @@
       "start": null,
       "order": 27,
       "url": "https://online.equipe.com/startlists/1301686",
-      "time": "08:52"
+      "time": "08:52",
+      "status": "complete"
     },
     {
       "day": 1,
