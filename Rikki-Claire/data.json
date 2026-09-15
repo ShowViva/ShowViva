@@ -1,6 +1,6 @@
 {
   "updated": "15 September 2026",
-  "updatedTime": "13:18",
+  "updatedTime": "17:19",
   "show": "Arena UK",
   "source": "https://online.equipe.com/shows/82493",
   "rides": [
@@ -14,7 +14,8 @@
       "order": 9,
       "url": "https://online.equipe.com/startlists/1300462",
       "time": "08:15",
-      "day": 0
+      "day": 0,
+      "status": "complete"
     },
     {
       "horse": "Rio Seven",
@@ -27,7 +28,7 @@
       "url": "https://online.equipe.com/startlists/1300470",
       "time": "08:46",
       "day": 0,
-      "status": "upcoming"
+      "status": "complete"
     },
     {
       "horse": "Monmore Var",
@@ -39,7 +40,8 @@
       "order": 35,
       "url": "https://online.equipe.com/startlists/1300466",
       "time": "09:35",
-      "day": 0
+      "day": 0,
+      "status": "complete"
     },
     {
       "horse": "Rio Seven",
@@ -52,7 +54,7 @@
       "url": "https://online.equipe.com/startlists/1300466",
       "time": "10:37",
       "day": 0,
-      "status": "upcoming"
+      "status": "complete"
     },
     {
       "horse": "Monmore Var",
@@ -64,7 +66,8 @@
       "order": 87,
       "url": "https://online.equipe.com/startlists/1300470",
       "time": "10:54",
-      "day": 0
+      "day": 0,
+      "status": "complete"
     },
     {
       "horse": "Special Delivery 27",
@@ -76,7 +79,8 @@
       "order": 4,
       "url": "https://online.equipe.com/startlists/1300463",
       "time": "13:20",
-      "day": 0
+      "day": 0,
+      "status": "complete"
     },
     {
       "horse": "Pardento",
@@ -88,7 +92,8 @@
       "order": 78,
       "url": "https://online.equipe.com/startlists/1300463",
       "time": "15:50",
-      "day": 0
+      "day": 0,
+      "status": "complete"
     },
     {
       "horse": "Summer Escape",
@@ -100,7 +105,8 @@
       "order": 6,
       "url": "https://online.equipe.com/startlists/1300473",
       "time": "15:49",
-      "day": 0
+      "day": 0,
+      "status": "complete"
     },
     {
       "horse": "KSH Queen Ester",
@@ -112,7 +118,8 @@
       "order": 41,
       "url": "https://online.equipe.com/startlists/1300473",
       "time": "16:57",
-      "day": 0
+      "day": 0,
+      "status": "complete"
     },
     {
       "horse": "Special Delivery 27",
@@ -124,7 +131,8 @@
       "order": 19,
       "url": "https://online.equipe.com/startlists/1300464",
       "time": "18:43",
-      "day": 0
+      "day": 0,
+      "status": "complete"
     },
     {
       "day": 1,
@@ -161,7 +169,7 @@
       "ring": "Indoor",
       "start": null,
       "order": 50,
-      "url": "https://online.equipe.com/startlists/1302013",
+      "url": "https://online.equipe.com/startlists/1301675",
       "time": "09:43",
       "status": "complete"
     },
@@ -187,7 +195,7 @@
       "ring": "Indoor",
       "start": null,
       "order": 101,
-      "url": "https://online.equipe.com/startlists/1302013",
+      "url": "https://online.equipe.com/startlists/1301675",
       "time": "11:30",
       "status": "complete"
     },
@@ -214,7 +222,8 @@
       "start": null,
       "order": 51,
       "url": "https://online.equipe.com/startlists/1301681",
-      "time": "14:25"
+      "time": "14:25",
+      "status": "complete"
     },
     {
       "day": 1,
@@ -226,7 +235,99 @@
       "start": null,
       "order": 24,
       "url": "https://online.equipe.com/startlists/1301682",
-      "time": "17:41"
+      "time": "17:41",
+      "status": "complete"
+    },
+    {
+      "day": 2,
+      "horse": "Special Delivery 27",
+      "rider": "Claire Hansen",
+      "classNo": 38,
+      "className": "Redpost Equestrian Senior Foxhunter First Round / Senior 1.20m Open Grand Prix Qualifier",
+      "ring": "Outdoor Arena 1",
+      "start": "08:15",
+      "order": 29,
+      "url": "https://online.equipe.com/startlists/1302297",
+      "time": "09:12",
+      "status": "upcoming"
+    },
+    {
+      "day": 2,
+      "horse": "Quanta costa JS",
+      "rider": "Rikki Gradley",
+      "classNo": 38,
+      "className": "Redpost Equestrian Senior Foxhunter First Round / Senior 1.20m Open Grand Prix Qualifier",
+      "ring": "Outdoor Arena 1",
+      "start": "08:15",
+      "order": 47,
+      "url": "https://online.equipe.com/startlists/1302297",
+      "time": "09:49",
+      "status": "upcoming"
+    },
+    {
+      "day": 2,
+      "horse": "Pardento",
+      "rider": "Olivia White",
+      "classNo": 43,
+      "className": "6/7 Year old Grand Prix Qualifier",
+      "ring": "Outdoor Arena 2",
+      "start": "10:10",
+      "order": 28,
+      "url": "https://online.equipe.com/startlists/1302302",
+      "time": "11:03",
+      "status": "upcoming"
+    },
+    {
+      "day": 2,
+      "horse": "Summer Escape",
+      "rider": "Claire Hansen",
+      "classNo": 35,
+      "className": "Nupafeed Supplements Senior Discovery First Round / Senior 1.00m Open Grand Prix Qualifier",
+      "ring": "Equine America Indoor Championship Arena",
+      "start": "11:25",
+      "order": 5,
+      "url": "https://online.equipe.com/startlists/1302292",
+      "time": "11:32",
+      "status": "upcoming"
+    },
+    {
+      "day": 2,
+      "horse": "Rio Seven",
+      "rider": "Claire Hansen",
+      "classNo": 40,
+      "className": "Ariat Senior British Novice Championship First Round / 90cm Open Grand Prix Qualifier",
+      "ring": "Outdoor Arena 1",
+      "start": "12:30",
+      "order": 51,
+      "url": "https://online.equipe.com/startlists/1302299",
+      "time": "14:15",
+      "status": "upcoming"
+    },
+    {
+      "day": 2,
+      "horse": "KSH Queen Ester",
+      "rider": "Claire Hansen",
+      "classNo": 35,
+      "className": "Nupafeed Supplements Senior Discovery First Round / Senior 1.00m Open Grand Prix Qualifier",
+      "ring": "Equine America Indoor Championship Arena",
+      "start": "11:25",
+      "order": 134,
+      "url": "https://online.equipe.com/startlists/1302292",
+      "time": "15:37",
+      "status": "upcoming"
+    },
+    {
+      "day": 2,
+      "horse": "Quanta costa JS",
+      "rider": "Rikki Gradley",
+      "classNo": 45,
+      "className": "The Trevor Burrows National 1.30m Grand Prix Qualifier",
+      "ring": "Outdoor Arena 2",
+      "start": "15:35",
+      "order": 20,
+      "url": "https://online.equipe.com/startlists/1302303",
+      "time": "16:09",
+      "status": "upcoming"
     }
   ]
 }
