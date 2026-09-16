@@ -266,6 +266,19 @@
     },
     {
       "day": 2,
+      "horse": "Pardento",
+      "rider": "Olivia White",
+      "classNo": 43,
+      "className": "6/7 Year old Grand Prix Qualifier",
+      "ring": "Outdoor Arena 2",
+      "start": "10:10",
+      "order": 28,
+      "url": "https://online.equipe.com/startlists/1302302",
+      "time": "Complete",
+      "status": "complete"
+    },
+    {
+      "day": 2,
       "horse": "Summer Escape",
       "rider": "Claire Hansen",
       "classNo": 35,
@@ -287,8 +300,8 @@
       "start": "12:30",
       "order": 51,
       "url": "https://online.equipe.com/startlists/1302299",
-      "time": "14:15",
-      "status": "upcoming"
+      "time": "Complete",
+      "status": "complete"
     },
     {
       "day": 2,
