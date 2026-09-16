@@ -416,12 +416,13 @@
       "rider": "Olivia White",
       "classNo": 63,
       "className": "6/7 Year old Grand Prix Qualifier",
-      "ring": "TBC",
-      "start": "TBC",
+      "ring": "Outdoor Arena 2",
+      "start": "17:40",
       "order": 8,
       "url": "https://online.equipe.com/startlists/1302730",
-      "time": "TBC",
-      "status": "upcoming"
+      "time": "17:54",
+      "status": "upcoming",
+      "note": "Approximate ShowViva time: draw 8 at 124 sec/start"
     }
   ]
 }
