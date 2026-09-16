@@ -1,6 +1,6 @@
 {
-  "updated": "15 September 2026",
-  "updatedTime": "17:19",
+  "updated": "16 September 2026",
+  "updatedTime": "13:30",
   "show": "Arena UK",
   "source": "https://online.equipe.com/shows/82493",
   "rides": [
@@ -249,7 +249,7 @@
       "order": 29,
       "url": "https://online.equipe.com/startlists/1302297",
       "time": "09:12",
-      "status": "upcoming"
+      "status": "complete"
     },
     {
       "day": 2,
@@ -262,7 +262,7 @@
       "order": 47,
       "url": "https://online.equipe.com/startlists/1302297",
       "time": "09:49",
-      "status": "upcoming"
+      "status": "complete"
     },
     {
       "day": 2,
@@ -275,7 +275,7 @@
       "order": 28,
       "url": "https://online.equipe.com/startlists/1302302",
       "time": "11:03",
-      "status": "upcoming"
+      "status": "complete"
     },
     {
       "day": 2,
@@ -288,7 +288,7 @@
       "order": 5,
       "url": "https://online.equipe.com/startlists/1302292",
       "time": "11:32",
-      "status": "upcoming"
+      "status": "complete"
     },
     {
       "day": 2,
