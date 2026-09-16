@@ -2,53 +2,139 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#062a3c">
-<title>ShowViva — Your Equestrian Show Planner</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#061f30">
+<title>ShowViva | Your Equestrian Show Planner</title>
+<meta name="description" content="Everything you need for your show day. All in one place.">
 <style>
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:#062a3c;overflow-x:hidden}
-body{-webkit-font-smoothing:antialiased}
-.page{position:relative;width:100%;max-width:828px;margin:0 auto}
-.page img{display:block;width:100%;height:auto;margin:0}
-.hotspot{position:absolute;display:block;z-index:5;border:0;background:transparent;
-         -webkit-tap-highlight-color:transparent;cursor:pointer}
-/* Exact transparent hit areas over the approved artwork */
-.menu{left:2.5%;top:2.2%;width:11%;height:4%}
-.get{left:4.7%;top:45.5%;width:58%;height:5.7%}
-.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;
-       padding:24px;background:rgba(2,22,33,.82);backdrop-filter:blur(5px)}
-.modal.show{display:flex}
-.box{position:relative;width:min(88vw,390px);padding:38px 25px 32px;text-align:center;
-     border:1px solid #d6a957;border-radius:22px;background:#062a3c;color:#fff;
-     box-shadow:0 18px 55px rgba(0,0,0,.35);font-family:Arial,sans-serif}
-.shield{width:58px;height:70px;margin:0 auto 18px;border:2px solid #d6a957;border-radius:2px 2px 26px 26px;
-        display:flex;align-items:center;justify-content:center;color:#d6a957;font:28px Georgia,serif}
-.box h2{margin:0 0 10px;font:34px Georgia,serif;color:#fff}
-.box p{margin:0;line-height:1.55;color:#f5ead8}
-.close{position:absolute;right:12px;top:8px;border:0;background:none;color:#fff;font-size:30px;cursor:pointer}
+:root{--navy:#061f30;--navy2:#08293c;--cream:#f6f1e8;--gold:#dda94e;--gold2:#f0c36c;--white:#fffdf8;--ink:#092438;--serif:Georgia,"Times New Roman",serif;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans)}button,a{font:inherit}.wrap{width:min(1160px,calc(100% - 40px));margin:auto}
+header{position:relative;background:var(--navy);color:white;border-bottom:1px solid rgba(221,169,78,.3);z-index:20}
+.nav{height:104px;display:flex;align-items:center;justify-content:space-between;gap:25px}.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:white}
+.shield{width:55px;height:66px;border:2px solid var(--gold);clip-path:polygon(8% 0,50% 8%,92% 0,92% 65%,50% 100%,8% 65%);display:grid;place-items:center;color:var(--gold);font:700 24px var(--serif)}
+.wordmark{font:700 39px/1 var(--serif)}.wordmark span{color:var(--gold)}.tagline{font-size:9px;letter-spacing:.27em;margin-top:9px;text-transform:uppercase}
+.navlinks{display:flex;align-items:center;gap:26px}.navlinks a{text-decoration:none;color:white;font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.cta{border:0;border-radius:999px;padding:16px 27px;background:linear-gradient(135deg,#f3ca78,#dda94e);color:#132638;font:700 17px var(--serif);cursor:pointer;display:inline-flex;align-items:center;gap:14px;text-decoration:none}
+.menu{display:none;background:none;border:0;color:white;font-size:31px;cursor:pointer}.drawer{display:none;background:var(--navy);padding:0 20px 24px}.drawer.open{display:grid;gap:18px}.drawer a{color:white;text-decoration:none;text-transform:uppercase;font-size:13px;letter-spacing:.12em}
+
+.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:white;padding:86px 0 78px}.hero-copy{max-width:850px}
+.hero h1{font:500 clamp(60px,8vw,106px)/.88 var(--serif);letter-spacing:-.045em;margin:0 0 34px}.hero h1 span{color:var(--gold2)}
+.hero p{font-size:22px;line-height:1.55;margin:0 0 34px;max-width:650px;color:#f0f3f4}
+
+.phone-zone{background:var(--cream);padding:70px 20px 80px;text-align:center}
+.phone-card{width:min(720px,100%);margin:auto;padding:45px 24px 30px;border-radius:34px;background:#fbf7ef;overflow:hidden}
+.phone-halo{position:relative;display:grid;place-items:center;min-height:500px}
+.phone-halo:before{content:"";position:absolute;width:min(420px,82vw);aspect-ratio:1;border:2px solid rgba(221,169,78,.72);border-radius:50%}
+.phone-halo img{position:relative;z-index:1;width:min(300px,62vw);max-height:510px;object-fit:contain;filter:drop-shadow(0 20px 28px rgba(0,0,0,.18))}
+.micro{font-size:12px;letter-spacing:.35em;text-transform:uppercase;font-weight:700;margin-top:15px}.micro b{color:var(--gold);padding:0 9px}
+
+.benefits{background:var(--navy);color:white;padding:55px 0}.benefit-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.benefit{text-align:center;padding:12px 35px;border-right:1px solid rgba(221,169,78,.45)}.benefit:last-child{border:0}.benefit .icon{font-size:34px;color:var(--gold);margin-bottom:15px}
+.benefit h2{font:500 25px/1.05 var(--serif);text-transform:uppercase;margin:0 0 12px}.benefit p{margin:0;line-height:1.55;color:#e6ecef}
+
+.horse{background:var(--cream)}.horse img{display:block;width:100%;height:min(68vw,720px);object-fit:cover;object-position:center 50%}
+.simple{background:var(--cream);text-align:center;padding:95px 20px}.simple:before{content:"";display:block;width:105px;height:2px;background:var(--gold);margin:0 auto 32px}
+.simple h2{font:500 clamp(56px,8vw,100px)/.92 var(--serif);margin:0;color:var(--navy)}.simple h2 span{color:var(--gold)}
+
+.view{background:var(--navy);color:white;text-align:center;padding:105px 20px}.eyebrow{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.view h2{font:500 clamp(58px,9vw,115px)/.86 var(--serif);letter-spacing:-.045em;margin:25px 0}.view h2 span{color:var(--gold2)}
+.view p{font:italic 24px var(--serif);margin:28px auto 0;max-width:720px;color:#edf1f3}
+
+.final{background:var(--cream);text-align:center;padding:100px 20px}.final h2{font:500 clamp(52px,8vw,92px)/.92 var(--serif);margin:15px 0 35px}.final h2 span{color:var(--gold)}.final p{font-size:19px;line-height:1.6;max-width:620px;margin:0 auto 32px}
+footer{background:#041722;color:white;padding:35px 0}.footer{display:flex;justify-content:space-between;gap:20px;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:#d2dadd}
+
+.modal{display:none;position:fixed;z-index:100;inset:0;background:rgba(2,14,22,.8);place-items:center;padding:22px}.modal.show{display:grid}.modal-card{width:min(430px,100%);background:var(--cream);padding:42px 28px;border-radius:24px;text-align:center}.modal-card h3{font:500 39px var(--serif);margin:10px 0}.modal-card p{line-height:1.55}.modal-card .cta{margin-top:12px}
+
+@media(max-width:800px){
+ .wrap{width:calc(100% - 32px)}.nav{height:110px}.shield{width:53px;height:63px}.wordmark{font-size:37px}.tagline{font-size:8px}.navlinks{display:none}.menu{display:block}
+ .hero{padding:60px 0 52px}.hero h1{font-size:62px}.hero p{font-size:19px;line-height:1.55}.cta{padding:16px 28px}
+ .phone-zone{padding:34px 14px 55px}.phone-card{padding:28px 12px 26px;border-radius:28px}.phone-halo{min-height:410px}.phone-halo img{width:min(245px,58vw);max-height:400px}.phone-halo:before{width:min(330px,78vw)}.micro{font-size:10px;letter-spacing:.27em}
+ .benefit-grid{grid-template-columns:1fr}.benefit{border-right:0;border-bottom:1px solid rgba(221,169,78,.35);padding:30px 14px}.benefit:last-child{border-bottom:0}
+ .horse{background:var(--cream);padding:0}
+ .horse img{width:100%;height:auto;min-height:0;object-fit:contain;object-position:center;display:block}
+ .simple{padding:72px 20px}.simple h2{font-size:59px}
+ .view{padding:82px 20px}.view h2{font-size:64px}.view p{font-size:21px}
+ .final{padding:80px 20px}.final h2{font-size:58px}.footer{flex-direction:column;text-align:center;line-height:1.8}
+}
+@media(max-width:390px){
+ .wrap{width:calc(100% - 28px)}
+ .nav{height:96px}.shield{width:45px;height:54px}.wordmark{font-size:29px}.tagline{font-size:7px;letter-spacing:.16em}.menu{font-size:28px}
+ .hero{padding:48px 0 45px}.hero h1{font-size:51px;line-height:.9}.hero p{font-size:17px}.cta{padding:15px 24px}
+ .phone-zone{padding:28px 12px 46px}.phone-card{border-radius:24px}.phone-halo{min-height:360px}.phone-halo img{width:min(220px,57vw);max-height:350px}.phone-halo:before{width:min(295px,76vw)}
+ .horse img{width:100%;height:auto;object-fit:contain}
+ .simple h2{font-size:52px}.view h2{font-size:57px}.final h2{font-size:52px}
+}
 </style>
 </head>
 <body>
-<main class="page">
-  <img src="showviva-mobile-final.png" alt="ShowViva — Your Equestrian Show Planner">
-  <button class="hotspot menu" data-coming aria-label="Menu"></button>
-  <button class="hotspot get" data-coming aria-label="Get ShowViva"></button>
-</main>
-<div class="modal" id="comingSoon" role="dialog" aria-modal="true" aria-labelledby="soonTitle">
- <div class="box">
-  <button class="close" aria-label="Close">×</button>
-  <div class="shield">SV</div>
-  <h2 id="soonTitle">Coming soon.</h2>
-  <p>A smoother show day is coming.<br>ShowViva is nearly ready.</p>
+<header>
+ <div class="wrap nav">
+  <a class="brand" href="#top"><div class="shield">SV</div><div><div class="wordmark">Show<span>Viva</span></div><div class="tagline">Your equestrian show planner</div></div></a>
+  <nav class="navlinks"><a href="about.html">About</a><a href="#how">How it works</a><a href="#contact">Contact</a><button class="cta coming">Get ShowViva →</button></nav>
+  <button class="menu" aria-label="Open menu">☰</button>
  </div>
-</div>
+ <div class="drawer wrap"><a href="about.html">About ShowViva</a><a href="#how">How it works</a><a href="#contact">Contact</a><a class="coming" href="#">Get ShowViva →</a></div>
+</header>
+
+<main id="top">
+<section class="hero">
+ <div class="wrap hero-copy">
+  <h1>Your <span>personalised</span><br>show planner.</h1>
+  <p>Everything you need for your show day. All in one place.</p>
+  <button class="cta coming">Get ShowViva →</button>
+ </div>
+</section>
+
+<section class="phone-zone" aria-label="ShowViva on your phone">
+ <div class="phone-card">
+  <div class="phone-halo"><img src="showviva-phone.png" alt="ShowViva displayed on a phone"></div>
+  <div class="micro">Show days <b>◆</b> simplified</div>
+ </div>
+</section>
+
+<section class="benefits" id="how">
+ <div class="wrap benefit-grid">
+  <article class="benefit"><div class="icon">⌕</div><h2>No more<br>searching</h2><p>Your show day, without the hassle.</p></article>
+  <article class="benefit"><div class="icon">▣</div><h2>Everything<br>in one place</h2><p>Your horses, riders, rounds, rings, times and show info.</p></article>
+  <article class="benefit"><div class="icon">♙♙♙</div><h2>Share<br>with your team</h2><p>Keep everyone in the know, instantly.</p></article>
+ </div>
+</section>
+
+<!-- Intentionally NO words over this photograph -->
+<section class="horse">
+ <img src="showviva-horse.png" alt="Grey showjumper competing at a show">
+</section>
+
+<section class="simple">
+ <h2>Show days,<br><span>made simple.</span></h2>
+</section>
+
+<section class="view">
+ <div class="eyebrow">Your personalised show-day experience</div>
+ <h2>YOUR SHOW.<br>YOUR <span>VIEW.</span></h2>
+ <p>Your horses. Your riders. Your rounds. Only what matters to you.</p>
+</section>
+
+<section class="final">
+ <div class="eyebrow">Focus on what matters</div>
+ <h2>More riding.<br><span>Less organising.</span></h2>
+ <p>Your whole team knows the plan, so everyone can focus on what matters most: the horses.</p>
+ <button class="cta coming">Get ShowViva →</button>
+</section>
+</main>
+
+<footer id="contact"><div class="wrap footer"><span>Your show. Your view.</span><span>ShowViva</span></div></footer>
+
+<div class="modal" id="modal"><div class="modal-card"><div class="eyebrow">ShowViva</div><h3>Coming soon.</h3><p>ShowViva is getting ready to make show days simpler.</p><button class="cta" id="close">Close</button></div></div>
+
 <script>
-const modal=document.getElementById('comingSoon');
-document.querySelectorAll('[data-coming]').forEach(x=>x.addEventListener('click',()=>modal.classList.add('show')));
-document.querySelector('.close').addEventListener('click',()=>modal.classList.remove('show'));
-modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('show')});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('show')});
+const menu=document.querySelector('.menu'),drawer=document.querySelector('.drawer');
+menu.onclick=()=>drawer.classList.toggle('open');
+drawer.querySelectorAll('a').forEach(a=>a.onclick=()=>drawer.classList.remove('open'));
+const modal=document.getElementById('modal');
+document.querySelectorAll('.coming').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();modal.classList.add('show')}));
+document.getElementById('close').onclick=()=>modal.classList.remove('show');
+modal.onclick=e=>{if(e.target===modal)modal.classList.remove('show')};
 </script>
 </body>
 </html>
