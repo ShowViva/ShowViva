@@ -2,36 +2,256 @@
   "show": "Arena UK 21st Major Showjumping Championships 2026",
   "rider": "Skye Blu Valderas",
   "date": "2026-09-16",
+  "horses": [
+    {
+      "horse": "Devonte’s Primero",
+      "rider": "Skye Blu Valderas"
+    },
+    {
+      "horse": "High Voltage III",
+      "rider": "Skye Blu Valderas"
+    },
+    {
+      "horse": "Colt V",
+      "rider": "Kerys Evans"
+    },
+    {
+      "horse": "Hatterall Texas",
+      "rider": "Ann-Marie Vizard"
+    },
+    {
+      "horse": "Horatio II",
+      "rider": "Ann-Marie Vizard",
+      "noConfirmedRide": true
+    },
+    {
+      "horse": "Renkum Rendition",
+      "rider": "Ffion Hier"
+    },
+    {
+      "horse": "Veras Lady",
+      "rider": "Scarlett Walton"
+    },
+    {
+      "horse": "Mirthe T",
+      "rider": "Tia Bideau"
+    },
+    {
+      "horse": "Millfield Tantalise",
+      "rider": "Tia Bideau"
+    },
+    {
+      "horse": "Stakkatol Blue Sterling",
+      "rider": "Tia Bideau"
+    },
+    {
+      "horse": "Q Eight Van’t Valmoer Z",
+      "rider": "Tia Bideau"
+    },
+    {
+      "horse": "Aria (Starlord TT)",
+      "rider": "Tia Bideau"
+    }
+  ],
   "rides": [
+    {
+      "time": "Complete",
+      "approx": false,
+      "horse": "Stakkatol Blue Sterling",
+      "rider": "Tia Bideau",
+      "classNo": 34,
+      "className": "Senior 95cm Open Grand Prix Qualifier",
+      "arena": "Outdoor Arena Arena 1",
+      "draw": null,
+      "classStart": null,
+      "url": "",
+      "status": "complete"
+    },
+    {
+      "time": "Complete",
+      "approx": false,
+      "horse": "Veras Lady",
+      "rider": "Scarlett Walton",
+      "classNo": 34,
+      "className": "Senior 95cm Open Grand Prix Qualifier",
+      "arena": "Outdoor Arena Arena 1",
+      "draw": null,
+      "classStart": null,
+      "url": "",
+      "status": "complete"
+    },
+    {
+      "time": "11:29",
+      "approx": true,
+      "horse": "Q Eight Van’t Valmoer Z",
+      "rider": "Tia Bideau",
+      "classNo": 35,
+      "className": "Nupafeed Supplements Senior Discovery First Round / Senior 1.00m Open Grand Prix Qualifier",
+      "arena": "Equine America Indoor Championship Arena",
+      "draw": 3,
+      "classStart": "11:25",
+      "url": "https://online.equipe.com/startlists/1302292",
+      "status": "scheduled",
+      "starts": 151,
+      "paceSeconds": 114,
+      "breakMinutesIncluded": 0
+    },
+    {
+      "time": "11:06",
+      "approx": true,
+      "horse": "Aria (Starlord TT)",
+      "rider": "Tia Bideau",
+      "classNo": 47,
+      "className": "Clear Round 80cm/90cm/1.00m/1.05m/1.10m",
+      "arena": "Outdoor Arena 3",
+      "draw": 43,
+      "classStart": "09:45",
+      "url": "https://online.equipe.com/startlists/1302305",
+      "status": "scheduled",
+      "starts": 110,
+      "paceSeconds": 116,
+      "breakMinutesIncluded": 0
+    },
+    {
+      "time": "13:05",
+      "approx": true,
+      "horse": "Renkum Rendition",
+      "rider": "Ffion Hier",
+      "classNo": 35,
+      "className": "Nupafeed Supplements Senior Discovery First Round / Senior 1.00m Open Grand Prix Qualifier",
+      "arena": "Equine America Indoor Championship Arena",
+      "draw": 50,
+      "classStart": "11:25",
+      "url": "https://online.equipe.com/startlists/1302292",
+      "status": "scheduled",
+      "starts": 151,
+      "paceSeconds": 114,
+      "breakMinutesIncluded": 7
+    },
+    {
+      "time": "13:15",
+      "approx": true,
+      "horse": "Millfield Tantalise",
+      "rider": "Tia Bideau",
+      "classNo": 44,
+      "className": "The Star of the Future Grades B & C Grand Prix Qualifier",
+      "arena": "Outdoor Arena 2",
+      "draw": 9,
+      "classStart": "13:00",
+      "url": "https://online.equipe.com/startlists/1302293",
+      "status": "scheduled",
+      "starts": 58,
+      "paceSeconds": 110,
+      "breakMinutesIncluded": 0
+    },
+    {
+      "time": "13:35",
+      "approx": true,
+      "horse": "Veras Lady",
+      "rider": "Scarlett Walton",
+      "classNo": 35,
+      "className": "Nupafeed Supplements Senior Discovery First Round / Senior 1.00m Open Grand Prix Qualifier",
+      "arena": "Equine America Indoor Championship Arena",
+      "draw": 66,
+      "classStart": "11:25",
+      "url": "https://online.equipe.com/startlists/1302292",
+      "status": "scheduled",
+      "starts": 151,
+      "paceSeconds": 114,
+      "breakMinutesIncluded": 7
+    },
     {
       "time": "14:14",
       "approx": true,
       "horse": "Devonte’s Primero",
+      "rider": "Skye Blu Valderas",
       "classNo": 40,
       "className": "Ariat Senior British Novice Championship First Round / 90cm Open Grand Prix Qualifier",
       "arena": "Outdoor Arena 1",
       "draw": 47,
-      "starts": 88,
       "classStart": "12:30",
-      "paceSeconds": 126,
-      "breakMinutesIncluded": 7,
       "url": "https://online.equipe.com/startlists/1302299",
       "status": "scheduled"
+    },
+    {
+      "time": "14:53",
+      "approx": true,
+      "horse": "Colt V",
+      "rider": "Kerys Evans",
+      "classNo": 35,
+      "className": "Nupafeed Supplements Senior Discovery First Round / Senior 1.00m Open Grand Prix Qualifier",
+      "arena": "Equine America Indoor Championship Arena",
+      "draw": 107,
+      "classStart": "11:25",
+      "url": "https://online.equipe.com/startlists/1302292",
+      "status": "scheduled",
+      "starts": 151,
+      "paceSeconds": 114,
+      "breakMinutesIncluded": 7
+    },
+    {
+      "time": "15:56",
+      "approx": true,
+      "horse": "Hatterall Texas",
+      "rider": "Ann-Marie Vizard",
+      "classNo": 35,
+      "className": "Nupafeed Supplements Senior Discovery First Round / Senior 1.00m Open Grand Prix Qualifier",
+      "arena": "Equine America Indoor Championship Arena",
+      "draw": 140,
+      "classStart": "11:25",
+      "url": "https://online.equipe.com/startlists/1302292",
+      "status": "scheduled",
+      "starts": 151,
+      "paceSeconds": 114,
+      "breakMinutesIncluded": 7
+    },
+    {
+      "time": "16:21",
+      "approx": true,
+      "horse": "Stakkatol Blue Sterling",
+      "rider": "Tia Bideau",
+      "classNo": 35,
+      "className": "Nupafeed Supplements Senior Discovery First Round / Senior 1.00m Open Grand Prix Qualifier",
+      "arena": "Equine America Indoor Championship Arena",
+      "draw": 153,
+      "classStart": "11:25",
+      "url": "https://online.equipe.com/startlists/1302292",
+      "status": "scheduled",
+      "starts": 151,
+      "paceSeconds": 114,
+      "breakMinutesIncluded": 7
+    },
+    {
+      "time": "18:29",
+      "approx": true,
+      "horse": "Mirthe T",
+      "rider": "Tia Bideau",
+      "classNo": 36,
+      "className": "The Robin Ayres Senior 1.15m Open (Inc. The National 1.15 Members Cup Qualifier)",
+      "arena": "Equine America Indoor Championship Arena",
+      "draw": 46,
+      "classStart": "17:05",
+      "url": "https://online.equipe.com/startlists/1302296",
+      "status": "scheduled",
+      "starts": 75,
+      "paceSeconds": 103,
+      "breakMinutesIncluded": 7
     },
     {
       "time": "19:14",
       "approx": true,
       "horse": "High Voltage III",
+      "rider": "Skye Blu Valderas",
       "classNo": 36,
       "className": "The Robin Ayres Senior 1.15m Open (Inc. The National 1.15 Members Cup Qualifier)",
       "arena": "Equine America Indoor Championship Arena",
       "draw": 72,
-      "starts": 75,
       "classStart": "17:05",
-      "paceSeconds": 103,
-      "breakMinutesIncluded": 7,
       "url": "https://online.equipe.com/startlists/1302296",
-      "status": "scheduled"
+      "status": "scheduled",
+      "starts": 75,
+      "paceSeconds": 103,
+      "breakMinutesIncluded": 7
     }
   ]
 }
