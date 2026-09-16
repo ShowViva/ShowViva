@@ -81,8 +81,8 @@
       "status": "complete"
     },
     {
-      "time": "11:29",
-      "approx": true,
+      "time": "Complete",
+      "approx": false,
       "horse": "Q Eight Van’t Valmoer Z",
       "rider": "Tia Bideau",
       "classNo": 35,
@@ -91,14 +91,14 @@
       "draw": 3,
       "classStart": "11:25",
       "url": "https://online.equipe.com/startlists/1302292",
-      "status": "scheduled",
+      "status": "complete",
       "starts": 151,
       "paceSeconds": 114,
       "breakMinutesIncluded": 0
     },
     {
-      "time": "11:06",
-      "approx": true,
+      "time": "Complete",
+      "approx": false,
       "horse": "Aria (Starlord TT)",
       "rider": "Tia Bideau",
       "classNo": 47,
@@ -107,14 +107,14 @@
       "draw": 43,
       "classStart": "09:45",
       "url": "https://online.equipe.com/startlists/1302305",
-      "status": "scheduled",
+      "status": "complete",
       "starts": 110,
       "paceSeconds": 116,
       "breakMinutesIncluded": 0
     },
     {
-      "time": "13:05",
-      "approx": true,
+      "time": "Complete",
+      "approx": false,
       "horse": "Renkum Rendition",
       "rider": "Ffion Hier",
       "classNo": 35,
@@ -123,14 +123,14 @@
       "draw": 50,
       "classStart": "11:25",
       "url": "https://online.equipe.com/startlists/1302292",
-      "status": "scheduled",
+      "status": "complete",
       "starts": 151,
       "paceSeconds": 114,
       "breakMinutesIncluded": 7
     },
     {
-      "time": "13:15",
-      "approx": true,
+      "time": "Complete",
+      "approx": false,
       "horse": "Millfield Tantalise",
       "rider": "Tia Bideau",
       "classNo": 44,
@@ -139,7 +139,7 @@
       "draw": 9,
       "classStart": "13:00",
       "url": "https://online.equipe.com/startlists/1302293",
-      "status": "scheduled",
+      "status": "complete",
       "starts": 58,
       "paceSeconds": 110,
       "breakMinutesIncluded": 0
