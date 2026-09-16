@@ -11,7 +11,7 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans)}button,a{font:inherit}.wrap{width:min(1160px,calc(100% - 40px));margin:auto}
 header{position:relative;background:var(--navy);color:white;border-bottom:1px solid rgba(221,169,78,.3);z-index:20}
 .nav{height:104px;display:flex;align-items:center;justify-content:space-between;gap:25px}.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:white}
-.shield{width:55px;height:66px;border:2px solid var(--gold);clip-path:polygon(8% 0,50% 8%,92% 0,92% 65%,50% 100%,8% 65%);display:grid;place-items:center;color:var(--gold);font:700 24px var(--serif)}
+.shield{width:52px;height:60px;flex:0 0 52px;display:block;overflow:visible}.shield svg{display:block;width:100%;height:100%;overflow:visible}
 .wordmark{font:700 39px/1 var(--serif)}.wordmark span{color:var(--gold)}.tagline{font-size:9px;letter-spacing:.27em;margin-top:9px;text-transform:uppercase}
 .navlinks{display:flex;align-items:center;gap:26px}.navlinks a{text-decoration:none;color:white;font-size:12px;text-transform:uppercase;letter-spacing:.08em}
 .cta{border:0;border-radius:999px;padding:16px 27px;background:linear-gradient(135deg,#f3ca78,#dda94e);color:#132638;font:700 17px var(--serif);cursor:pointer;display:inline-flex;align-items:center;gap:14px;text-decoration:none}
@@ -56,13 +56,13 @@ footer{background:#041722;color:white;padding:35px 0}.footer{display:flex;justif
 
 @media(max-width:800px){
  .wrap{width:calc(100% - 32px)}
- .nav{height:96px;gap:12px}
- .brand{gap:10px;min-width:0;flex:1}
+ .nav{height:104px;gap:10px}
+ .brand{gap:11px;min-width:0;flex:1}
  .brand>div:last-child{min-width:0}
- .shield{width:42px;height:50px;min-width:42px;flex:0 0 42px;font-size:19px}
- .wordmark{font-size:32px;white-space:nowrap}
+ .shield{width:44px;height:52px;flex:0 0 44px}
+ .wordmark{font-size:34px;white-space:nowrap}
  .tagline{font-size:7px;letter-spacing:.18em;margin-top:7px;white-space:nowrap}
- .navlinks{display:none}.menu{display:block;flex:0 0 auto;padding:6px}
+ .navlinks{display:none}.menu{display:block;flex:0 0 auto;padding:4px}
  .hero{padding:60px 0 52px}.hero h1{font-size:62px}.hero p{font-size:19px;line-height:1.55}.cta{padding:16px 28px}
  .phone-zone{padding:34px 14px 55px}.phone-card{padding:28px 12px 26px;border-radius:28px}.phone-halo{min-height:410px}.phone-halo img{width:min(245px,58vw);max-height:400px}.phone-halo:before{width:min(330px,78vw)}.micro{font-size:10px;letter-spacing:.27em}
  .story-break{padding:68px 22px}.story-break h2{font-size:55px}.story-break p{font-size:17px}.story-break strong{font-size:20px}
@@ -75,12 +75,12 @@ footer{background:#041722;color:white;padding:35px 0}.footer{display:flex;justif
 }
 @media(max-width:390px){
  .wrap{width:calc(100% - 28px)}
- .nav{height:90px;gap:9px}
- .brand{gap:8px}
- .shield{width:36px;height:43px;min-width:36px;flex-basis:36px;font-size:16px}
- .wordmark{font-size:28px}
+ .nav{height:94px;gap:8px}
+ .brand{gap:9px}
+ .shield{width:38px;height:45px;flex:0 0 38px}
+ .wordmark{font-size:29px}
  .tagline{font-size:6px;letter-spacing:.14em}
- .menu{font-size:27px;padding:4px}
+ .menu{font-size:27px;padding:3px}
  .hero{padding:48px 0 45px}.hero h1{font-size:51px;line-height:.9}.hero p{font-size:17px}.cta{padding:15px 24px}
  .phone-zone{padding:28px 12px 46px}.phone-card{border-radius:24px}.phone-halo{min-height:360px}.phone-halo img{width:min(220px,57vw);max-height:350px}.phone-halo:before{width:min(295px,76vw)}
  .horse img{width:100%;height:auto;object-fit:contain}
@@ -91,7 +91,15 @@ footer{background:#041722;color:white;padding:35px 0}.footer{display:flex;justif
 <body>
 <header>
  <div class="wrap nav">
-  <a class="brand" href="#top"><div class="shield">SV</div><div><div class="wordmark">Show<span>Viva</span></div><div class="tagline">Your equestrian show planner</div></div></a>
+  <a class="brand" href="#top"><div class="shield" aria-label="SV">
+<svg viewBox="0 0 64 76" role="img" aria-hidden="true">
+  <path d="M5 5 H59 V43 C59 56 49 65 32 72 C15 65 5 56 5 43 Z"
+        fill="none" stroke="#dda94e" stroke-width="2.4" stroke-linejoin="round"/>
+  <text x="32" y="42" text-anchor="middle"
+        fill="#dda94e" font-family="Georgia, 'Times New Roman', serif"
+        font-size="24" font-weight="700">SV</text>
+</svg>
+</div><div><div class="wordmark">Show<span>Viva</span></div><div class="tagline">Your equestrian show planner</div></div></a>
   <nav class="navlinks"><a href="about.html">About</a><a href="#how">How it works</a><a href="#contact">Contact</a><button class="cta coming">Get ShowViva →</button></nav>
   <button class="menu" aria-label="Open menu">☰</button>
  </div>
