@@ -748,7 +748,7 @@ async function loadData(showMessage=true){
     refreshFilters();
     render();
     const stamp=[data.updated,data.updatedTime].filter(Boolean).join(' · ');
-    status.textContent=(stamp?'Updated '+stamp+' · ':'')+'ShowViva checks for the latest published data automatically every hour. Tap “Refresh now” for an immediate check.';
+    status.textContent=(stamp?'Updated '+stamp+' · ':'')+'ShowViva schedule';
   }catch(err){
     status.textContent='Could not refresh the latest times. Please try again.';
     console.error(err);
@@ -765,8 +765,7 @@ $('cards').innerHTML=list.length?list.map(x=>{const complete=x.status==='complet
 }
 ['horse','rider','ring'].forEach(id=>{$(id).onchange=render;$(id).oninput=render;});$('search').oninput=render;
 $('clear').onclick=()=>{['horse','rider','ring','search'].forEach(id=>$(id).value='');render();};
-$('refreshData').onclick=()=>loadData(true);
-setInterval(()=>loadData(false),60*60*1000);
+if($('refreshData')) $('refreshData').onclick=()=>loadData(true);
 const eventsPanel=$('eventsPanel');
 $('openEvents').onclick=()=>{document.querySelector('.venue-menu').open=false;eventsPanel.showModal();};
 eventsPanel.addEventListener('close',()=>document.querySelector('.menu-btn').focus());
