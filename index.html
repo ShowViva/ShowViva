@@ -45,10 +45,20 @@ footer{background:#041722;color:white;padding:35px 0}.footer{display:flex;justif
 
 .modal{display:none;position:fixed;z-index:100;inset:0;background:rgba(2,14,22,.8);place-items:center;padding:22px}.modal.show{display:grid}.modal-card{width:min(430px,100%);background:var(--cream);padding:42px 28px;border-radius:24px;text-align:center}.modal-card h3{font:500 39px var(--serif);margin:10px 0}.modal-card p{line-height:1.55}.modal-card .cta{margin-top:12px}
 
+
+.story-break{background:var(--cream);text-align:center;padding:90px 20px}
+.story-inner{width:min(760px,100%);margin:auto}
+.story-break:before{content:"";display:block;width:92px;height:2px;background:var(--gold);margin:0 auto 30px}
+.story-break h2{font:500 clamp(52px,8vw,88px)/.92 var(--serif);margin:0 0 30px;color:var(--navy)}
+.story-break h2 span{color:var(--gold)}
+.story-break p{font-size:20px;line-height:1.65;max-width:650px;margin:0 auto 18px;color:var(--ink)}
+.story-break strong{font:italic 23px/1.5 var(--serif);color:var(--navy)}
+
 @media(max-width:800px){
  .wrap{width:calc(100% - 32px)}.nav{height:110px}.shield{width:53px;height:63px}.wordmark{font-size:37px}.tagline{font-size:8px}.navlinks{display:none}.menu{display:block}
  .hero{padding:60px 0 52px}.hero h1{font-size:62px}.hero p{font-size:19px;line-height:1.55}.cta{padding:16px 28px}
  .phone-zone{padding:34px 14px 55px}.phone-card{padding:28px 12px 26px;border-radius:28px}.phone-halo{min-height:410px}.phone-halo img{width:min(245px,58vw);max-height:400px}.phone-halo:before{width:min(330px,78vw)}.micro{font-size:10px;letter-spacing:.27em}
+ .story-break{padding:68px 22px}.story-break h2{font-size:55px}.story-break p{font-size:17px}.story-break strong{font-size:20px}
  .benefit-grid{grid-template-columns:1fr}.benefit{border-right:0;border-bottom:1px solid rgba(221,169,78,.35);padding:30px 14px}.benefit:last-child{border-bottom:0}
  .horse{background:var(--cream);padding:0}
  .horse img{width:100%;height:auto;min-height:0;object-fit:contain;object-position:center;display:block}
@@ -85,6 +95,19 @@ footer{background:#041722;color:white;padding:35px 0}.footer{display:flex;justif
  </div>
 </section>
 
+<!-- Intentionally NO words over this photograph -->
+<section class="horse">
+ <img src="showviva-horse.png" alt="Grey showjumper competing at a show">
+</section>
+
+<section class="story-break">
+ <div class="story-inner">
+  <h2>Show days,<br><span>made simple.</span></h2>
+  <p>No more scrolling through start lists, working out times or keeping everyone updated.</p>
+  <strong>ShowViva does the organising for you.</strong>
+ </div>
+</section>
+
 <section class="phone-zone" aria-label="ShowViva on your phone">
  <div class="phone-card">
   <div class="phone-halo"><img src="showviva-phone.png" alt="ShowViva displayed on a phone"></div>
@@ -98,15 +121,6 @@ footer{background:#041722;color:white;padding:35px 0}.footer{display:flex;justif
   <article class="benefit"><div class="icon">▣</div><h2>Everything<br>in one place</h2><p>Your horses, riders, rounds, rings, times and show info.</p></article>
   <article class="benefit"><div class="icon">♙♙♙</div><h2>Share<br>with your team</h2><p>Keep everyone in the know, instantly.</p></article>
  </div>
-</section>
-
-<!-- Intentionally NO words over this photograph -->
-<section class="horse">
- <img src="showviva-horse.png" alt="Grey showjumper competing at a show">
-</section>
-
-<section class="simple">
- <h2>Show days,<br><span>made simple.</span></h2>
 </section>
 
 <section class="view">
