@@ -145,8 +145,8 @@
       "breakMinutesIncluded": 0
     },
     {
-      "time": "13:35",
-      "approx": true,
+      "time": "Complete",
+      "approx": false,
       "horse": "Veras Lady",
       "rider": "Scarlett Walton",
       "classNo": 35,
@@ -155,7 +155,7 @@
       "draw": 66,
       "classStart": "11:25",
       "url": "https://online.equipe.com/startlists/1302292",
-      "status": "scheduled",
+      "status": "complete",
       "starts": 151,
       "paceSeconds": 114,
       "breakMinutesIncluded": 7
