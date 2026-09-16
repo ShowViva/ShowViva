@@ -55,7 +55,14 @@ footer{background:#041722;color:white;padding:35px 0}.footer{display:flex;justif
 .story-break strong{font:italic 23px/1.5 var(--serif);color:var(--navy)}
 
 @media(max-width:800px){
- .wrap{width:calc(100% - 32px)}.nav{height:110px}.shield{width:53px;height:63px}.wordmark{font-size:37px}.tagline{font-size:8px}.navlinks{display:none}.menu{display:block}
+ .wrap{width:calc(100% - 32px)}
+ .nav{height:96px;gap:12px}
+ .brand{gap:10px;min-width:0;flex:1}
+ .brand>div:last-child{min-width:0}
+ .shield{width:42px;height:50px;min-width:42px;flex:0 0 42px;font-size:19px}
+ .wordmark{font-size:32px;white-space:nowrap}
+ .tagline{font-size:7px;letter-spacing:.18em;margin-top:7px;white-space:nowrap}
+ .navlinks{display:none}.menu{display:block;flex:0 0 auto;padding:6px}
  .hero{padding:60px 0 52px}.hero h1{font-size:62px}.hero p{font-size:19px;line-height:1.55}.cta{padding:16px 28px}
  .phone-zone{padding:34px 14px 55px}.phone-card{padding:28px 12px 26px;border-radius:28px}.phone-halo{min-height:410px}.phone-halo img{width:min(245px,58vw);max-height:400px}.phone-halo:before{width:min(330px,78vw)}.micro{font-size:10px;letter-spacing:.27em}
  .story-break{padding:68px 22px}.story-break h2{font-size:55px}.story-break p{font-size:17px}.story-break strong{font-size:20px}
@@ -68,7 +75,12 @@ footer{background:#041722;color:white;padding:35px 0}.footer{display:flex;justif
 }
 @media(max-width:390px){
  .wrap{width:calc(100% - 28px)}
- .nav{height:96px}.shield{width:45px;height:54px}.wordmark{font-size:29px}.tagline{font-size:7px;letter-spacing:.16em}.menu{font-size:28px}
+ .nav{height:90px;gap:9px}
+ .brand{gap:8px}
+ .shield{width:36px;height:43px;min-width:36px;flex-basis:36px;font-size:16px}
+ .wordmark{font-size:28px}
+ .tagline{font-size:6px;letter-spacing:.14em}
+ .menu{font-size:27px;padding:4px}
  .hero{padding:48px 0 45px}.hero h1{font-size:51px;line-height:.9}.hero p{font-size:17px}.cta{padding:15px 24px}
  .phone-zone{padding:28px 12px 46px}.phone-card{border-radius:24px}.phone-halo{min-height:360px}.phone-halo img{width:min(220px,57vw);max-height:350px}.phone-halo:before{width:min(295px,76vw)}
  .horse img{width:100%;height:auto;object-fit:contain}
