@@ -1,6 +1,6 @@
 {
   "updated": "16 September 2026",
-  "updatedTime": "18:30",
+  "updatedTime": "18:36",
   "show": "Arena UK",
   "source": "https://online.equipe.com/shows/82493",
   "rides": [
@@ -402,8 +402,8 @@
       "rider": "Olivia White",
       "classNo": 63,
       "className": "6/7 Year old Grand Prix Qualifier",
-      "ring": null,
-      "start": null,
+      "ring": "TBC",
+      "start": "TBC",
       "order": 8,
       "url": "https://online.equipe.com/startlists/1302730",
       "time": "TBC",
