@@ -724,6 +724,10 @@ html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(
   line-height:1!important;
   box-sizing:border-box!important;
 }
+
+.ride{position:relative!important}
+.card-actions .card-note-icon{position:absolute!important;top:16px!important;right:16px!important;bottom:auto!important;left:auto!important;margin:0!important;z-index:30!important;overflow:visible!important}
+.card-note-icon .note-count{position:absolute!important;top:-8px!important;right:-8px!important;z-index:40!important;min-width:20px!important;height:20px!important;padding:0 5px!important;border-radius:999px!important;background:var(--gold)!important;color:var(--navy)!important;border:2px solid #fff!important;display:flex!important;align-items:center!important;justify-content:center!important;font-size:10px!important;font-weight:900!important;line-height:1!important;box-sizing:border-box!important;box-shadow:0 2px 5px rgba(8,40,58,.22)!important}
 </style>
 
 <style id="showviva-close-button-fix">
@@ -907,7 +911,7 @@ async function loadData(showMessage=true){
     render();
     const stamp=[data.updated,data.updatedTime].filter(Boolean).join(' · ');
     status.textContent=(stamp?'Updated '+stamp+' · ':'')+'ShowViva schedule';
-    loadPlans();
+    loadPlans();loadNoteCounts();
   }catch(err){
     status.textContent='Could not refresh the latest times. Please try again.';
     console.error(err);
