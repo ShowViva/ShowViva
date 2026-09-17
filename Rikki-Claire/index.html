@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- ShowViva Rikki-Claire day-map fix 2026-09-17 -->
+<!-- ShowViva Rikki-Claire VERIFIED THURSDAY build 2026-09-17 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ShowViva — Monday 14 September 2026</title>
@@ -877,6 +877,7 @@ $('addDayNote').onclick=async()=>{const author=$('dayNoteAuthor').value.trim(),n
 });
 </script>
 <script>
+const SHOWVIVA_THURSDAY_17=[{"day":3,"horse":"WF ANNIE","rider":"Olivia White","classNo":64,"className":"Ariat Senior British Novice Championship First Round / 90cm Open Grand Prix Qualifier","ring":"Outdoor Arena 3","start":"09:00","order":83,"url":"https://online.equipe.com/startlists/1302731","time":"11:45","status":"complete"},{"day":3,"horse":"Monmore Var","rider":"Louise Goodwin","classNo":60,"className":"Clear Round 70cm/80cm/90cm/1.00m/1.05m/1.10m","ring":"Outdoor Arena 2","start":"08:00","order":43,"url":"https://online.equipe.com/startlists/1302727","time":"09:35","status":"complete","note":"Approximate ShowViva time using 129 sec/start and 1 x 5-minute break"},{"day":3,"horse":"Pardento","rider":"Olivia White","classNo":59,"className":"GFS Senior Newcomers Championship First Round / The Jade Wilson Ayres Memorial 1.10m Open Grand Prix Qualifier","ring":"Outdoor Arena 1","start":"14:40","order":32,"url":"https://online.equipe.com/startlists/1302726","time":"15:43","status":"upcoming"},{"day":3,"horse":"Special Delivery 27","rider":"Claire Hansen","classNo":52,"className":"The Star of The Future Grades B & C Grand Prix","ring":"Equine America Indoor Championship Arena","start":"14:20","order":50,"url":"https://online.equipe.com/startlists/1302720","time":"15:55","status":"upcoming","note":"Safe ShowViva estimate; calculation includes 1 x 7-minute break"},{"day":3,"horse":"WF ANNIE","rider":"Olivia White","classNo":65,"className":"Nupafeed Supplements Senior Discovery First Round / Senior 1.00m Open Grand Prix Qualifier","ring":"Outdoor Arena 3","start":"13:30","order":12,"url":"https://online.equipe.com/startlists/1302732","time":"13:53","status":"upcoming"},{"day":3,"horse":"Pardento","rider":"Olivia White","classNo":63,"className":"6/7 Year old Grand Prix Qualifier","ring":null,"start":null,"order":8,"url":"https://online.equipe.com/startlists/1302730","time":"TBC","status":"upcoming"},{"day":3,"horse":"Monmore Var","rider":"Louise Goodwin","classNo":60,"className":"Clear Round 70cm/80cm/90cm/1.00m/1.05m/1.10m","ring":"Outdoor Arena 2","start":"08:00","order":101,"url":"https://online.equipe.com/startlists/1302727","time":"11:40","status":"complete","note":"Approximate ShowViva time using 129 sec/start and 1 x 5-minute break"}];
 let rides=[];
 const $=id=>document.getElementById(id);
 let activeDay=1;
@@ -908,6 +909,9 @@ async function loadData(showMessage=true){
     if(!response.ok) throw new Error('Could not load data.json');
     const data=await response.json();
     rides=(Array.isArray(data)?data:(data.rides||[])).map(x=>({...x,day:Number(x.day)}));
+    // Thursday 17 Sep is locked to the verified Thursday schedule.
+    // This prevents any stale cached data.json from duplicating Wednesday into Thursday.
+    rides=rides.filter(x=>Number(x.day)!==3).concat(SHOWVIVA_THURSDAY_17.map(x=>({...x,day:3})));
     refreshFilters();
     render();
     const stamp=[data.updated,data.updatedTime].filter(Boolean).join(' · ');
