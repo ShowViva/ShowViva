@@ -864,7 +864,8 @@ function refreshFilters(){
   };
   const horses=[...new Set(rides.map(x=>x.horse))].sort();
   const riders=[...new Set(rides.map(x=>x.rider))].sort();
-  const rings=[...new Set(rides.map(x=>x.ring))].sort();
+  const allowedRings=['Equine America Indoor Championship Arena','Outdoor Arena 1','Outdoor Arena 2','Outdoor Arena 3'];
+  const rings=allowedRings.filter(r=>rides.some(x=>x.ring===r));
   fill('horse','All horses',horses);
   fill('rider','All riders',riders);
   fill('ring','All arenas',rings);
