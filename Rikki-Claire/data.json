@@ -339,7 +339,7 @@
       "start": "09:00",
       "order": 83,
       "url": "https://online.equipe.com/startlists/1302731",
-      "time": "Complete",
+      "time": "11:45",
       "status": "complete"
     },
     {
@@ -352,7 +352,7 @@
       "start": "08:00",
       "order": 43,
       "url": "https://online.equipe.com/startlists/1302727",
-      "time": "Complete",
+      "time": "09:35",
       "status": "complete",
       "note": "Approximate ShowViva time using 129 sec/start and 1 x 5-minute break"
     },
@@ -419,7 +419,7 @@
       "start": "08:00",
       "order": 101,
       "url": "https://online.equipe.com/startlists/1302727",
-      "time": "Complete",
+      "time": "11:40",
       "status": "complete",
       "note": "Approximate ShowViva time using 129 sec/start and 1 x 5-minute break"
     }
