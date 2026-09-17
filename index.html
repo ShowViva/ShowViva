@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061f30">
 <title>ShowViva | Your Equestrian Show Planner</title>
-<meta name="description" content="Your personalised place to organise competing — before the show, on the day and throughout your season.">
+<meta name="description" content="Making show days simple for the whole team.">
 <style>
 :root{--navy:#061f30;--navy2:#08293c;--cream:#f6f1e8;--gold:#dda94e;--gold2:#f0c36c;--white:#fffdf8;--ink:#092438;--serif:Georgia,"Times New Roman",serif;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans)}button,a{font:inherit}.wrap{width:min(1160px,calc(100% - 40px));margin:auto}
@@ -43,7 +43,7 @@ header{position:relative;background:var(--navy);color:white;border-bottom:1px so
 .final{background:var(--cream);text-align:center;padding:100px 20px}.final h2{font:500 clamp(52px,8vw,92px)/.92 var(--serif);margin:15px 0 35px}.final h2 span{color:var(--gold)}.final p{font-size:19px;line-height:1.6;max-width:620px;margin:0 auto 32px}
 footer{background:#041722;color:white;padding:35px 0}.footer{display:flex;justify-content:space-between;gap:20px;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:#d2dadd}
 
-.modal{display:none;position:fixed;z-index:100;inset:0;background:rgba(2,14,22,.8);place-items:center;padding:22px}.modal.show{display:grid}.modal-card{width:min(430px,100%);background:var(--cream);padding:42px 28px;border-radius:24px;text-align:center}.modal-card h3{font:500 39px var(--serif);margin:10px 0}.modal-card p{line-height:1.55}.modal-card .cta{margin-top:12px}
+.modal{display:none;position:fixed;z-index:100;inset:0;background:rgba(2,14,22,.8);place-items:center;padding:22px}.modal.show{display:grid}.modal-card{width:min(430px,100%);background:var(--cream);padding:42px 28px;border-radius:24px;text-align:center}.modal-card h3{font:500 39px var(--serif);margin:10px 0}.modal-card p{line-height:1.55}.modal-card .cta{margin-top:16px}.modal-card .later{display:block;margin:14px auto 0;border:0;background:none;color:var(--navy);font:600 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;opacity:.65}.modal-card .later:hover{opacity:1}
 
 
 .story-break{background:var(--cream);text-align:center;padding:90px 20px}
@@ -54,6 +54,8 @@ footer{background:#041722;color:white;padding:35px 0}.footer{display:flex;justif
 .story-break p{font-size:20px;line-height:1.65;max-width:650px;margin:0 auto 18px;color:var(--ink)}
 .story-break strong{font:italic 23px/1.5 var(--serif);color:var(--navy)}
 
+
+.footer a{color:inherit;text-decoration:none}.footer a:hover{text-decoration:underline}
 @media(max-width:800px){
  .wrap{width:calc(100% - 32px)}.nav{height:110px}.wordmark{font-size:37px}.tagline{font-size:8px}.navlinks{display:none}.menu{display:block}
  .hero{padding:60px 0 52px}.hero h1{font-size:62px}.hero p{font-size:19px;line-height:1.55}.cta{padding:16px 28px}
@@ -79,7 +81,7 @@ footer{background:#041722;color:white;padding:35px 0}.footer{display:flex;justif
 <body>
 <header>
  <div class="wrap nav">
-  <a class="brand" href="#top"><div><div class="wordmark">Show<span>Viva</span></div><div class="tagline">Equestrian show days, simplified</div></div></a>
+  <a class="brand" href="#top"><div><div class="wordmark">Show<span>Viva</span></div><div class="tagline">Your show. All in one place.</div></div></a>
   <nav class="navlinks"><a href="about.html">About</a><a href="#how">How it works</a><a href="#contact">Contact</a><button class="cta coming">Get ShowViva →</button></nav>
   <button class="menu" aria-label="Open menu">☰</button>
  </div>
@@ -89,8 +91,8 @@ footer{background:#041722;color:white;padding:35px 0}.footer{display:flex;justif
 <main id="top">
 <section class="hero">
  <div class="wrap hero-copy">
-  <h1>Your personalised<br><span>show planner.</span></h1>
-  <p>Show days made simple.</p>
+  <h1>Your <span>personalised</span><br>show planner.</h1>
+  <p>Making show days simple for the whole team.</p>
   <button class="cta coming">Get ShowViva →</button>
  </div>
 </section>
@@ -102,43 +104,44 @@ footer{background:#041722;color:white;padding:35px 0}.footer{display:flex;justif
 
 <section class="story-break">
  <div class="story-inner">
-  <h2>More than<br><span>the day.</span></h2>
-  <p>ShowViva brings the organisation around competing together — helping riders and teams prepare, stay organised and manage their shows in one personalised place.</p>
+  <h2>Show days,<br><span>made simple.</span></h2>
+  <p>Everything your team needs for the show — from pre-show preparation and travel to warm-ups, team coordination and all the practical details that keep the day running smoothly.</p>
+  <strong>Plan it together. Run it together.</strong>
  </div>
 </section>
 
 <section class="phone-zone" aria-label="ShowViva on your phone">
  <div class="phone-card">
   <div class="phone-halo"><img src="showviva-phone.png" alt="ShowViva displayed on a phone"></div>
-  <div class="micro">Your show <b>◆</b> your view</div>
+  <div class="micro">Show days <b>◆</b> simplified</div>
  </div>
 </section>
 
 <section class="benefits" id="how">
  <div class="wrap benefit-grid">
-  <article class="benefit"><div class="icon">✓</div><h2>Prepare.</h2><p>Get organised before the competition begins.</p></article>
-  <article class="benefit"><div class="icon">↗</div><h2>Coordinate.</h2><p>Keep riders and teams connected around each show.</p></article>
-  <article class="benefit"><div class="icon">♙♙♙</div><h2>Compete.</h2><p>Keep the day clear so the focus stays on the horses.</p></article>
+  <article class="benefit"><div class="icon">✓</div><h2>Before<br>the show</h2><p>Build a shared checklist, get organised and make sure nothing gets left behind.</p></article>
+  <article class="benefit"><div class="icon">↗</div><h2>Travel<br>&amp; arrival</h2><p>Keep departure, journey, arrival, parking and stabling plans together.</p></article>
+  <article class="benefit"><div class="icon">♙♙♙</div><h2>Run<br>the day</h2><p>Coordinate warm-ups, responsibilities and the changing details your team needs as the show unfolds.</p></article>
  </div>
 </section>
 
 <section class="view">
- <div class="eyebrow">One place for every show</div>
+ <div class="eyebrow">Built around your team</div>
  <h2>YOUR SHOW.<br>YOUR <span>VIEW.</span></h2>
- <p>From preparing for the next competition to managing the day itself, ShowViva keeps everything connected around you, your horses and your team.</p>
+ <p>One personalised view of the show that matters to you.</p>
 </section>
 
 <section class="final">
- <div class="eyebrow">Throughout your competition season</div>
+ <div class="eyebrow">Ready for show day</div>
  <h2>More riding.<br><span>Less organising.</span></h2>
- <p>Keep the focus where it belongs.</p>
+ <p>Prepare before you leave. Stay coordinated when you arrive. Focus on the horses when it matters.</p>
  <button class="cta coming">Get ShowViva →</button>
 </section>
 </main>
 
-<footer id="contact"><div class="wrap footer"><span>Your show. Your view.</span><span>ShowViva</span></div></footer>
+<footer id="contact"><div class="wrap footer"><span>Your show. Your view.</span><span><a href="mailto:hello@showviva.co.uk">hello@showviva.co.uk</a></span><span>ShowViva</span></div></footer>
 
-<div class="modal" id="modal"><div class="modal-card"><div class="eyebrow">ShowViva</div><h3>Coming soon.</h3><p>ShowViva is coming soon.</p><button class="cta" id="close">Close</button></div></div>
+<div class="modal" id="modal"><div class="modal-card"><div class="eyebrow">ShowViva</div><h3>ShowViva is coming soon.</h3><p>We’re currently testing ShowViva with riders and teams.</p><p><strong>Register your interest and we’ll keep you updated.</strong></p><a class="cta" href="mailto:hello@showviva.co.uk?subject=ShowViva%20%E2%80%93%20Register%20my%20interest&body=Hi%20ShowViva%2C%0A%0AI%27d%20like%20to%20register%20my%20interest%20in%20ShowViva.%0A%0AThanks%21">Register interest →</a><button class="later" id="close">Maybe later</button></div></div>
 
 <script>
 const menu=document.querySelector('.menu'),drawer=document.querySelector('.drawer');
