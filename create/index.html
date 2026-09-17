@@ -46,10 +46,7 @@ input,select{width:100%;padding:12px;border:1px solid #cbd3d8;border-radius:10px
 <div><label>From</label><input id="show_date" type="date"></div>
 <div><label>To <span class="small">(optional)</span></label><input id="show_end_date" type="date"></div>
 </div>
-<div class="row">
 <div><label>Default warm-up</label><select id="warmup"><option value="20">20 minutes</option><option value="15">15 minutes</option><option value="10">10 minutes</option><option value="30">30 minutes</option></select></div>
-<div><label>Seconds per start <span class="small">(optional)</span></label><input id="seconds_per_start" type="number" placeholder="e.g. 120"></div>
-</div>
 </div>
 
 <div class="card">
@@ -57,10 +54,6 @@ input,select{width:100%;padding:12px;border:1px solid #cbd3d8;border-radius:10px
 <div id="people"></div>
 </div>
 
-<div class="card">
-<div class="source-head"><div><h2>Official source links</h2><div class="small">Add every relevant start-list or PDF link. You can include multiple classes or days.</div></div><button class="add" type="button" id="addSource">+ Add link</button></div>
-<div id="sources"></div>
-</div>
 
 <div class="card">
 <button class="primary" id="submitBtn">Submit to ShowViva</button><div class="small" style="margin-top:10px">Your details are used only to prepare your ShowViva request.</div>
@@ -81,28 +74,7 @@ function personRow(rider='',horse=''){
  d.querySelector('.remove').onclick=()=>{if(document.querySelectorAll('.person').length>1)d.remove();};
  return d;
 }
-function sourceRow(url=''){
- const d=document.createElement('div'); d.className='source';
- d.innerHTML=`<label>Start-list / PDF link</label><input class="sourceUrl" value="${url}" placeholder="https://..."><button type="button" class="remove">Remove</button>`;
- d.querySelector('.remove').onclick=()=>{if(document.querySelectorAll('.source').length>1)d.remove();};
- return d;
-}
 function addPerson(r='',h=''){$('people').appendChild(personRow(r,h));}
-function addSource(u=''){$('sources').appendChild(sourceRow(u));}
-$('addPerson').onclick=()=>addPerson();
-$('addSource').onclick=()=>addSource();
-addPerson(); addSource();
-
-async function post(table,payload,prefer='return=representation'){
- const r=await fetch(`${SUPABASE_URL}/rest/v1/${table}`,{
-   method:'POST',
-   headers:{'apikey':API_KEY,'Authorization':'Bearer '+API_KEY,'Content-Type':'application/json','Prefer':prefer},
-   body:JSON.stringify(payload)
- });
- let data=null; try{data=await r.json();}catch{}
- if(!r.ok) throw new Error((data&& (data.message||data.error)) || `HTTP ${r.status}`);
- return data;
-}
 
 $('submitBtn').onclick=async()=>{
  const msg=$('msg');
@@ -110,7 +82,6 @@ $('submitBtn').onclick=async()=>{
    rider_name:x.querySelector('.rider').value.trim(),
    horse_name:x.querySelector('.horse').value.trim()
  })).filter(x=>x.rider_name&&x.horse_name);
- const sources=[...document.querySelectorAll('.sourceUrl')].map(x=>x.value.trim()).filter(Boolean);
 
  const req={
    customer_name:$('customer_name').value.trim()||null,
@@ -120,24 +91,23 @@ $('submitBtn').onclick=async()=>{
    show_date:$('show_date').value,
    show_end_date:$('show_end_date').value||null,
    default_warmup_minutes:Number($('warmup').value||20),
-   seconds_per_start:$('seconds_per_start').value?Number($('seconds_per_start').value):null,
    status:'submitted',
    rider_name:null,
    horse_name:null,
    source_url:null
  };
 
- if(!req.show_name||!req.venue||!req.show_date||people.length===0||sources.length===0){
-   msg.className='msg err'; msg.textContent='Please add the show, date, at least one rider/horse and at least one official source link.'; return;
+ if(!req.show_name||!req.venue||!req.show_date||people.length===0){
+   msg.className='msg err'; msg.textContent='Please add the show, date and at least one rider/horse.'; return;
  }
  $('submitBtn').disabled=true; $('submitBtn').textContent='Submitting…';
  try{
-   const created=await post('planner_requests',req);
-   const requestId=created[0].id;
+   const requestId=(crypto.randomUUID?crypto.randomUUID():('xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=Math.random()*16|0,v=c==='x'?r:(r&0x3|0x8);return v.toString(16);}))); 
+   req.id=requestId;
+   await post('planner_requests',req,'return=minimal');
    await post('planner_request_participants',people.map(p=>({request_id:requestId,...p})),'return=minimal');
-   await post('planner_request_sources',sources.map(source_url=>({request_id:requestId,source_url})),'return=minimal');
    msg.className='msg ok';
-   msg.textContent=`Submitted. ${people.length} rider/horse combination${people.length===1?'':'s'} and ${sources.length} source link${sources.length===1?'':'s'} are now in the ShowViva review queue.`;
+   msg.textContent=`Submitted. ${people.length} rider/horse combination${people.length===1?'':'s'} are now in the ShowViva review queue.`;
  }catch(e){
    msg.className='msg err'; msg.textContent='Could not submit: '+e.message;
  }finally{
