@@ -34,6 +34,7 @@ input,select{width:100%;padding:12px;border:1px solid #cbd3d8;border-radius:10px
 <div><label>Your name</label><input id="customer_name" autocomplete="name"></div>
 <div><label>Email</label><input id="customer_email" type="email" autocomplete="email"></div>
 </div>
+<label>Contact number</label><input id="contact_number" type="tel" autocomplete="tel" placeholder="e.g. 07...">
 </div>
 
 <div class="card">
@@ -78,6 +79,23 @@ function addPerson(r='',h=''){$('people').appendChild(personRow(r,h));}
 $('addPerson').onclick=()=>addPerson();
 addPerson();
 
+async function post(table,payload,prefer='return=minimal'){
+ const r=await fetch(`${SUPABASE_URL}/rest/v1/${table}`,{
+   method:'POST',
+   headers:{
+     'apikey':API_KEY,
+     'Content-Type':'application/json',
+     'Prefer':prefer
+   },
+   body:JSON.stringify(payload)
+ });
+ let data=null;
+ const txt=await r.text();
+ if(txt){ try{ data=JSON.parse(txt); }catch{ data=txt; } }
+ if(!r.ok) throw new Error((data && (data.message||data.error)) || `HTTP ${r.status}`);
+ return data;
+}
+
 $('submitBtn').onclick=async()=>{
  const msg=$('msg');
  const people=[...document.querySelectorAll('.person')].map(x=>({
@@ -88,6 +106,7 @@ $('submitBtn').onclick=async()=>{
  const req={
    customer_name:$('customer_name').value.trim()||null,
    customer_email:$('customer_email').value.trim()||null,
+   contact_number:$('contact_number').value.trim()||null,
    show_name:$('show_name').value.trim(),
    venue:$('venue').value.trim(),
    show_date:$('show_date').value,
@@ -99,8 +118,8 @@ $('submitBtn').onclick=async()=>{
    source_url:null
  };
 
- if(!req.show_name||!req.venue||!req.show_date||people.length===0){
-   msg.className='msg err'; msg.textContent='Please complete the show name, venue, start date and at least one rider/horse.'; return;
+ if(!req.show_name||!req.venue||!req.show_date||!req.contact_number||people.length===0){
+   msg.className='msg err'; msg.textContent='Please complete the show name, venue, start date, contact number and at least one rider/horse.'; return;
  }
  $('submitBtn').disabled=true; $('submitBtn').textContent='Submitting…';
  try{
