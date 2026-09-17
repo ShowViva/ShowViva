@@ -29,7 +29,7 @@ button{border:0;border-radius:999px;padding:10px 14px;font-weight:700;font-size:
 <h2>Private review queue</h2>
 <p class="muted">Use your approved ShowViva admin email. Your password stays with Supabase Auth.</p>
 <label>Email</label><input id="email" type="email" value="hello@showviva.co.uk" autocomplete="email">
-<label>Password</label><input id="password" type="password" autocomplete="current-password">
+<label>Password</label><input id="password" type="password" minlength="6" autocomplete="current-password"><div class="muted">Choose at least 6 characters.</div>
 <div class="actions">
 <button id="signIn" class="gold">Sign in</button>
 <button id="signUp" class="soft">First time? Create admin login</button>
@@ -46,8 +46,8 @@ button{border:0;border-radius:999px;padding:10px 14px;font-weight:700;font-size:
 const U="https://yumqgvabwmekqvqwxldt.supabase.co", K="sb_publishable_1zKAN6mnrsoZXxRKLjzXEg_-KDS6NEv";
 let token=localStorage.getItem('sv_admin_token')||'';
 const $=id=>document.getElementById(id);
-function showMsg(t,ok=true){const m=$('msg');m.className=ok?'ok':'err';m.textContent=t;}
-function clearMsg(){$('msg').style.display='none';}
+function showMsg(t,ok=true){const m=$('msg');m.style.display='block';m.className=ok?'ok':'err';m.textContent=t;}
+function clearMsg(){const m=$('msg');m.style.display='none';m.textContent='';}
 async function auth(path,body){
  const r=await fetch(U+'/auth/v1/'+path,{method:'POST',headers:{'apikey':K,'Content-Type':'application/json'},body:JSON.stringify(body)});
  const d=await r.json(); if(!r.ok)throw new Error(d.msg||d.message||d.error_description||'Authentication failed'); return d;
@@ -59,11 +59,11 @@ async function rest(path,opts={}){
  if(!r.ok) throw new Error((d&&d.message)||('HTTP '+r.status)); return d;
 }
 async function doSignIn(){
- try{clearMsg();const d=await auth('token?grant_type=password',{email:$('email').value.trim(),password:$('password').value});token=d.access_token;localStorage.setItem('sv_admin_token',token);await load();}
+ try{clearMsg();if(!$('password').value||$('password').value.length<6)throw new Error('Enter the password you created (at least 6 characters).');const d=await auth('token?grant_type=password',{email:$('email').value.trim(),password:$('password').value});token=d.access_token;localStorage.setItem('sv_admin_token',token);await load();}
  catch(e){showMsg(e.message,false)}
 }
 async function doSignUp(){
- try{clearMsg();const d=await auth('signup',{email:$('email').value.trim(),password:$('password').value});showMsg(d.access_token?'Admin login created.':'Account created. Check hello@showviva.co.uk to confirm the email, then sign in.'); if(d.access_token){token=d.access_token;localStorage.setItem('sv_admin_token',token);await load();}}
+ try{clearMsg();if(!$('password').value||$('password').value.length<6)throw new Error('Choose a password of at least 6 characters first.');const d=await auth('signup',{email:$('email').value.trim(),password:$('password').value});showMsg(d.access_token?'Admin login created.':'Account created. Check hello@showviva.co.uk to confirm the email, then sign in.'); if(d.access_token){token=d.access_token;localStorage.setItem('sv_admin_token',token);await load();}}
  catch(e){showMsg(e.message,false)}
 }
 function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
