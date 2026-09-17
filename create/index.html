@@ -75,6 +75,8 @@ function personRow(rider='',horse=''){
  return d;
 }
 function addPerson(r='',h=''){$('people').appendChild(personRow(r,h));}
+$('addPerson').onclick=()=>addPerson();
+addPerson();
 
 $('submitBtn').onclick=async()=>{
  const msg=$('msg');
@@ -98,7 +100,7 @@ $('submitBtn').onclick=async()=>{
  };
 
  if(!req.show_name||!req.venue||!req.show_date||people.length===0){
-   msg.className='msg err'; msg.textContent='Please add the show, date and at least one rider/horse.'; return;
+   msg.className='msg err'; msg.textContent='Please complete the show name, venue, start date and at least one rider/horse.'; return;
  }
  $('submitBtn').disabled=true; $('submitBtn').textContent='Submitting…';
  try{
