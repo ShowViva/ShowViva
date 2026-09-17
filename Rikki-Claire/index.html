@@ -702,7 +702,7 @@ html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(
   z-index:4!important;
 }
 .round-sheet .sheet-close:focus-visible{outline:2px solid var(--navy)!important;outline-offset:3px!important;}
-</style>
+.class-name{margin-top:3px;margin-bottom:2px;font-size:12px;font-weight:750;color:#60727d;line-height:1.35}</style>
 
 <style id="showviva-close-button-fix">
 /* Keep Shared Notes close control visually identical to the Warm-up close control. */
@@ -864,8 +864,7 @@ function refreshFilters(){
   };
   const horses=[...new Set(rides.map(x=>x.horse))].sort();
   const riders=[...new Set(rides.map(x=>x.rider))].sort();
-  const allowedRings=['Equine America Indoor Championship Arena','Outdoor Arena 1','Outdoor Arena 2','Outdoor Arena 3'];
-  const rings=allowedRings.filter(r=>rides.some(x=>x.ring===r));
+  const rings=[...new Set(rides.map(x=>x.ring))].sort();
   fill('horse','All horses',horses);
   fill('rider','All riders',riders);
   fill('ring','All arenas',rings);
@@ -905,7 +904,7 @@ $('days').querySelectorAll('button').forEach(b=>b.onclick=()=>{activeDay=Number(
 let list=currentList();
 $('viewTitle').textContent=`${names[activeDay]} ${14+activeDay} September`;
 $('count').textContent=`${list.length} rides · ${new Set(list.map(x=>x.horse)).size} horses`;
-$('cards').innerHTML=list.length?list.map(x=>{const complete=x.status==='complete';const idx=rides.indexOf(x);const mins=planCache.get(roundKey(x))??20;const warm=(!complete&&/^\d{1,2}:\d{2}$/.test(x.time||''))?minutesBefore(x.time,mins):'';const notes=noteCountCache.get(roundKey(x))||0;const notebook=`<svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="5" width="19" height="23" rx="2"></rect><path d="M12 5v23M5 9h6M5 14h6M5 19h6M5 24h6"></path></svg>`;return `<article class="ride ${complete?'complete':''}" data-ride-index="${idx}" data-horse="${esc(x.horse)}" data-rider="${esc(x.rider)}" data-ring="${esc(x.ring)}"><div><div class="time">${complete?'✓':esc(x.time)}</div>${warm?`<button class="warmup-pill" type="button" aria-label="Change warm-up time">Warm up ${esc(warm)}</button>`:''}</div><div class="details"><strong>${esc(x.horse)}</strong><div class="rider">${esc(x.rider)}</div><div class="arena">${esc(x.ring==='Indoor'?'Equine America Indoor Championship Arena':x.ring.replace('Outdoor ','Outdoor Arena '))}</div>${x.order?`<div class="draw">Draw ${esc(x.order)}</div>`:''}<div class="card-bottom"><div class="card-actions"><button class="card-note-icon" type="button" aria-label="Open shared notes for ${esc(x.horse)}">${notebook}${notes?`<span class="note-count" aria-label="${notes} shared ${notes===1?'note':'notes'}">${notes>99?'99+':notes}</span>`:''}</button><a href="${esc(x.url)}" target="_blank" rel="noopener">${complete?'Results ↗':'Class details ↗'}</a></div></div></div></article>`;}).join(''):`<div class="empty">${activeDay>1?'This day’s schedule has not been added yet.':'No matching entries were found.'}</div>`;
+$('cards').innerHTML=list.length?list.map(x=>{const complete=x.status==='complete';const idx=rides.indexOf(x);const mins=planCache.get(roundKey(x))??20;const warm=(!complete&&/^\d{1,2}:\d{2}$/.test(x.time||''))?minutesBefore(x.time,mins):'';const notes=noteCountCache.get(roundKey(x))||0;const notebook=`<svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="5" width="19" height="23" rx="2"></rect><path d="M12 5v23M5 9h6M5 14h6M5 19h6M5 24h6"></path></svg>`;return `<article class="ride ${complete?'complete':''}" data-ride-index="${idx}" data-horse="${esc(x.horse)}" data-rider="${esc(x.rider)}" data-ring="${esc(x.ring)}"><div><div class="time">${complete?'✓':esc(x.time)}</div>${warm?`<button class="warmup-pill" type="button" aria-label="Change warm-up time">Warm up ${esc(warm)}</button>`:''}</div><div class="details"><strong>${esc(x.horse)}</strong>${x.className?`<div class="class-name">${esc(x.className)}</div>`:''}<div class="rider">${esc(x.rider)}</div><div class="arena">${esc(x.ring==='Indoor'?'Equine America Indoor Championship Arena':x.ring.replace('Outdoor ','Outdoor Arena '))}</div>${x.order?`<div class="draw">Draw ${esc(x.order)}</div>`:''}<div class="card-bottom"><div class="card-actions"><button class="card-note-icon" type="button" aria-label="Open shared notes for ${esc(x.horse)}">${notebook}${notes?`<span class="note-count" aria-label="${notes} shared ${notes===1?'note':'notes'}">${notes>99?'99+':notes}</span>`:''}</button><a href="${esc(x.url)}" target="_blank" rel="noopener">${complete?'Results ↗':'Class details ↗'}</a></div></div></div></article>`;}).join(''):`<div class="empty">${activeDay>1?'This day’s schedule has not been added yet.':'No matching entries were found.'}</div>`;
 $('cards').querySelectorAll('.ride').forEach(card=>card.addEventListener('click',e=>{const idx=Number(card.dataset.rideIndex);if(e.target.closest('a'))return;if(e.target.closest('.warmup-pill')){openWarmup(idx);return;}if(e.target.closest('.card-note-icon')){openRound(idx);return;}openRound(idx);}));
 }
 const SUPABASE_URL='https://yumqgvabwmekqvqwxldt.supabase.co';
@@ -946,7 +945,6 @@ weekPanel.addEventListener('click',event=>{if(event.target===weekPanel){const bo
 $('closeEvents').onclick=()=>eventsPanel.close();
 eventsPanel.addEventListener('click',event=>{if(event.target===eventsPanel){const box=eventsPanel.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)eventsPanel.close();}});
 loadData(false);
-loadNoteCounts(); // Load existing shared-note totals when the planner first opens
 document.documentElement.classList.add("interactive");
 
 function plannerDayKey(){return `day:${activeDay}`;}
