@@ -945,6 +945,7 @@ weekPanel.addEventListener('click',event=>{if(event.target===weekPanel){const bo
 $('closeEvents').onclick=()=>eventsPanel.close();
 eventsPanel.addEventListener('click',event=>{if(event.target===eventsPanel){const box=eventsPanel.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)eventsPanel.close();}});
 loadData(false);
+loadNoteCounts(); // Load existing shared-note totals when the planner first opens
 document.documentElement.classList.add("interactive");
 
 function plannerDayKey(){return `day:${activeDay}`;}
