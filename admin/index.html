@@ -90,7 +90,7 @@ function render(reqs,parts,srcs,rounds){
    return `<div class="card">
     <div class="toprow"><div><b>${esc(r.show_name)}</b><div class="muted">${esc(r.venue)} · ${esc(r.show_date)}${r.show_end_date?' → '+esc(r.show_end_date):''}</div></div><span class="pill">${esc(r.status)}</span></div>
     <div class="grid section">
-      <div><h3>Customer</h3><div>${esc(r.customer_name||'—')}</div><div class="muted">${esc(r.customer_email||'—')}</div></div>
+      <div><h3>Customer</h3><div>${esc(r.customer_name||'—')}</div><div class="muted">${esc(r.customer_email||'—')}</div><div class="muted">${esc(r.contact_number||'—')}</div></div>
       <div><h3>Defaults</h3><div>${esc(r.default_warmup_minutes)} min warm-up</div><div class="muted">${r.seconds_per_start?esc(r.seconds_per_start)+' sec/start':'No pace supplied'}</div></div>
     </div>
     <div class="section"><h3>Riders & horses (${p.length})</h3>${p.map(x=>`<div class="item"><b>${esc(x.rider_name)}</b> — ${esc(x.horse_name)}</div>`).join('')||'<div class="muted">None</div>'}</div>
