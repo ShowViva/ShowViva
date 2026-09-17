@@ -690,6 +690,53 @@ html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(
 .note-form{display:grid!important;grid-template-columns:105px 1fr!important;gap:8px!important;background:#f5f0e7!important;border-radius:16px!important;padding:12px!important}.note-form input,.note-form textarea{background:#fffdf9!important;border:1px solid #ddd3c2!important;border-radius:12px!important;padding:11px 12px!important;font:inherit!important}.note-form textarea{grid-column:1/-1!important;min-height:72px!important;resize:vertical!important}.note-form button{grid-column:1/-1!important;background:linear-gradient(180deg,#d8bd7d,#b4934f)!important;color:#fff!important;border:0!important;border-radius:12px!important;padding:12px!important;font-weight:800!important}
 .note-delete-dialog{border:0;border-radius:18px;padding:0;width:min(88vw,360px);box-shadow:0 24px 70px rgba(0,0,0,.3)}.note-delete-dialog::backdrop{background:rgba(5,22,38,.55)}.note-delete-card{padding:22px;background:#fbf8f1;color:var(--navy)}.note-delete-card h3{font:700 24px Georgia,serif;margin:0 0 8px}.note-delete-card p{color:#687487;margin:0 0 18px}.note-delete-actions{display:flex;gap:9px;justify-content:flex-end}.note-delete-actions button{border:1px solid #d8d0c3;background:#fff;color:var(--navy);border-radius:11px;padding:10px 15px;font-weight:800}.note-delete-actions .danger{background:var(--navy);color:#fff;border-color:var(--navy)}
 @media(max-width:520px){.ride .details{padding-right:31px!important}.card-note-icon{right:10px!important;top:10px!important}.note-form{grid-template-columns:1fr!important}.note-form textarea,.note-form button{grid-column:1!important}}
+
+/* Match Shared Notes close control to the Warm-up close control */
+.round-sheet .sheet-close{
+  position:absolute!important;right:14px!important;top:14px!important;
+  width:54px!important;height:54px!important;border-radius:50%!important;
+  border:4px solid #c9a052!important;background:#f7f3ea!important;
+  color:var(--navy)!important;font:800 31px/42px Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+  text-align:center!important;padding:0!important;cursor:pointer!important;
+  box-shadow:inset 0 0 0 5px #fff,0 1px 2px rgba(16,39,67,.08)!important;
+  z-index:4!important;
+}
+.round-sheet .sheet-close:focus-visible{outline:2px solid var(--navy)!important;outline-offset:3px!important;}
+</style>
+
+<style id="showviva-close-button-fix">
+/* Keep Shared Notes close control visually identical to the Warm-up close control. */
+#closeRoundSheet.sheet-close,
+#closeWarmup.warmup-close {
+  position:absolute !important;
+  right:16px !important;
+  top:16px !important;
+  width:46px !important;
+  height:46px !important;
+  min-width:46px !important;
+  min-height:46px !important;
+  box-sizing:border-box !important;
+  border:2px solid #c9a052 !important;
+  border-radius:50% !important;
+  background:#f7f3ea !important;
+  color:#102743 !important;
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif !important;
+  font-size:28px !important;
+  font-weight:400 !important;
+  line-height:40px !important;
+  text-align:center !important;
+  padding:0 0 2px !important;
+  box-shadow:inset 0 0 0 3px #fff !important;
+  cursor:pointer !important;
+  z-index:10 !important;
+  -webkit-appearance:none !important;
+  appearance:none !important;
+}
+#closeRoundSheet.sheet-close:focus-visible,
+#closeWarmup.warmup-close:focus-visible {
+  outline:2px solid #102743 !important;
+  outline-offset:3px !important;
+}
 </style>
 </head>
 <body>
