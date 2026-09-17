@@ -1,1 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ShowViva Admin</title>
+<style>
+:root{--navy:#082a43;--gold:#d4ab61;--cream:#fbf8f0;--ink:#0d2b40;--line:#d8d4ca;--muted:#667784;--green:#2f6b4d}
+*{box-sizing:border-box}body{margin:0;background:#e9eef0;color:var(--ink);font-family:Inter,Arial,sans-serif}
+.app{max-width:980px;margin:auto;min-height:100vh;background:var(--cream)}header{background:var(--navy);color:white;padding:24px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+h1{font:700 34px Georgia,serif;margin:0}header span{color:var(--gold)}main{padding:20px}
+.card{background:white;border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px}
+.login{max-width:500px;margin:30px auto}label{display:block;font-weight:700;margin:12px 0 6px}input{width:100%;padding:12px;border:1px solid #cad3d8;border-radius:10px;font-size:16px}
+button{border:0;border-radius:999px;padding:10px 14px;font-weight:700;font-size:14px;cursor:pointer}.gold{background:linear-gradient(90deg,#f0cf87,#d4a652);color:#172d3e}.soft{background:#edf1f3;color:var(--ink)}.danger{background:#f6e7e7;color:#7d3030}
+.toprow{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.muted{color:var(--muted);font-size:13px}.pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#eee7d7;text-transform:uppercase;font-size:11px;font-weight:800}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.section{margin-top:14px;padding-top:12px;border-top:1px solid #ececec}.section h3{font-size:14px;margin:0 0 8px}
+.item{padding:9px 0;border-bottom:1px solid #f0f0f0}.item:last-child{border-bottom:0}a{color:#8a6529;word-break:break-all}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}#msg{margin:12px 0;padding:10px;border-radius:10px;display:none}.ok{display:block;background:#edf7f1;color:#2f6b4d}.err{display:block;background:#faeded;color:#8d3030}.hidden{display:none}
+@media(max-width:650px){header{align-items:flex-start;flex-direction:column}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+<header><h1>Show<span>Viva</span> Admin</h1><button id="signOut" class="soft hidden">Sign out</button></header>
+<main>
+<div id="msg"></div>
 
+<div id="login" class="card login">
+<h2>Private review queue</h2>
+<p class="muted">Use your approved ShowViva admin email. Your password stays with Supabase Auth.</p>
+<label>Email</label><input id="email" type="email" value="hello@showviva.co.uk" autocomplete="email">
+<label>Password</label><input id="password" type="password" autocomplete="current-password">
+<div class="actions">
+<button id="signIn" class="gold">Sign in</button>
+<button id="signUp" class="soft">First time? Create admin login</button>
+</div>
+</div>
+
+<div id="queue" class="hidden">
+<div class="card"><div class="toprow"><div><b>Review queue</b><div class="muted">Newest ShowViva requests first.</div></div><button id="refresh" class="soft">Refresh</button></div></div>
+<div id="requests"></div>
+</div>
+</main></div>
+
+<script>
+const U="https://yumqgvabwmekqvqwxldt.supabase.co", K="sb_publishable_1zKAN6mnrsoZXxRKLjzXEg_-KDS6NEv";
+let token=localStorage.getItem('sv_admin_token')||'';
+const $=id=>document.getElementById(id);
+function showMsg(t,ok=true){const m=$('msg');m.className=ok?'ok':'err';m.textContent=t;}
+function clearMsg(){$('msg').style.display='none';}
+async function auth(path,body){
+ const r=await fetch(U+'/auth/v1/'+path,{method:'POST',headers:{'apikey':K,'Content-Type':'application/json'},body:JSON.stringify(body)});
+ const d=await r.json(); if(!r.ok)throw new Error(d.msg||d.message||d.error_description||'Authentication failed'); return d;
+}
+async function rest(path,opts={}){
+ const headers=Object.assign({'apikey':K,'Authorization':'Bearer '+token,'Content-Type':'application/json'},opts.headers||{});
+ const r=await fetch(U+'/rest/v1/'+path,Object.assign({},opts,{headers}));
+ let d=null; const txt=await r.text(); if(txt){try{d=JSON.parse(txt)}catch{d=txt}}
+ if(!r.ok) throw new Error((d&&d.message)||('HTTP '+r.status)); return d;
+}
+async function doSignIn(){
+ try{clearMsg();const d=await auth('token?grant_type=password',{email:$('email').value.trim(),password:$('password').value});token=d.access_token;localStorage.setItem('sv_admin_token',token);await load();}
+ catch(e){showMsg(e.message,false)}
+}
+async function doSignUp(){
+ try{clearMsg();const d=await auth('signup',{email:$('email').value.trim(),password:$('password').value});showMsg(d.access_token?'Admin login created.':'Account created. Check hello@showviva.co.uk to confirm the email, then sign in.'); if(d.access_token){token=d.access_token;localStorage.setItem('sv_admin_token',token);await load();}}
+ catch(e){showMsg(e.message,false)}
+}
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+async function setStatus(id,status){
+ try{await rest('planner_requests?id=eq.'+encodeURIComponent(id),{method:'PATCH',headers:{'Prefer':'return=minimal'},body:JSON.stringify({status,updated_at:new Date().toISOString()})});await load();}
+ catch(e){showMsg(e.message,false)}
+}
+async function load(){
+ $('login').classList.add('hidden');$('queue').classList.remove('hidden');$('signOut').classList.remove('hidden');
+ try{
+  const reqs=await rest('planner_requests?select=*&order=created_at.desc');
+  const parts=await rest('planner_request_participants?select=*');
+  const srcs=await rest('planner_request_sources?select=*');
+  const rounds=await rest('planner_request_rounds?select=*&order=created_at.asc');
+  render(reqs||[],parts||[],srcs||[],rounds||[]);
+ }catch(e){
+  localStorage.removeItem('sv_admin_token');token='';$('login').classList.remove('hidden');$('queue').classList.add('hidden');$('signOut').classList.add('hidden');showMsg('Please sign in with an approved ShowViva admin account.',false);
+ }
+}
+function render(reqs,parts,srcs,rounds){
+ const wrap=$('requests'); if(!reqs.length){wrap.innerHTML='<div class="card muted">No requests yet.</div>';return;}
+ wrap.innerHTML=reqs.map(r=>{
+   const p=parts.filter(x=>x.request_id===r.id), s=srcs.filter(x=>x.request_id===r.id), rd=rounds.filter(x=>x.request_id===r.id);
+   return `<div class="card">
+    <div class="toprow"><div><b>${esc(r.show_name)}</b><div class="muted">${esc(r.venue)} · ${esc(r.show_date)}${r.show_end_date?' → '+esc(r.show_end_date):''}</div></div><span class="pill">${esc(r.status)}</span></div>
+    <div class="grid section">
+      <div><h3>Customer</h3><div>${esc(r.customer_name||'—')}</div><div class="muted">${esc(r.customer_email||'—')}</div></div>
+      <div><h3>Defaults</h3><div>${esc(r.default_warmup_minutes)} min warm-up</div><div class="muted">${r.seconds_per_start?esc(r.seconds_per_start)+' sec/start':'No pace supplied'}</div></div>
+    </div>
+    <div class="section"><h3>Riders & horses (${p.length})</h3>${p.map(x=>`<div class="item"><b>${esc(x.rider_name)}</b> — ${esc(x.horse_name)}</div>`).join('')||'<div class="muted">None</div>'}</div>
+    <div class="section"><h3>Official sources (${s.length})</h3>${s.map(x=>`<div class="item"><a href="${esc(x.source_url)}" target="_blank" rel="noopener">${esc(x.source_url)}</a></div>`).join('')||'<div class="muted">None</div>'}</div>
+    <div class="section"><h3>Extracted rounds (${rd.length})</h3>${rd.map(x=>`<div class="item">${esc(x.individual_time||x.class_start||'TBC')} · <b>${esc(x.class_name)}</b> · ${esc(x.ring||'Ring TBC')} · Draw ${esc(x.drawn_order??'—')}</div>`).join('')||'<div class="muted">Not extracted yet.</div>'}</div>
+    <div class="actions">
+      <button class="soft" onclick="setStatus('${r.id}','needs_review')">Needs review</button>
+      <button class="gold" onclick="setStatus('${r.id}','approved')">Approve</button>
+      <button class="soft" onclick="setStatus('${r.id}','built')">Mark built</button>
+    </div>
+   </div>`;
+ }).join('');
+}
+$('signIn').onclick=doSignIn;$('signUp').onclick=doSignUp;$('refresh').onclick=load;$('signOut').onclick=()=>{localStorage.removeItem('sv_admin_token');token='';location.reload();};
+if(token) load();
+</script>
+</body>
+</html>
