@@ -76,16 +76,37 @@ footer{background:#041722;color:white;padding:35px 0}.footer{display:flex;justif
  .simple h2{font-size:52px}.view h2{font-size:57px}.final h2{font-size:52px}
 }
 .later{display:block;margin:14px auto 0;border:0;background:none;color:var(--navy);font:600 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;opacity:.65}
+
+/* ShowViva launch pricing — added to a COPY of the approved homepage */
+.pricing{background:var(--cream);padding:78px 0 88px;scroll-margin-top:20px}
+.pricing-head{text-align:center;max-width:760px;margin:0 auto 30px}
+.pricing-head .eyebrow{margin-bottom:14px}
+.pricing h2{font:500 clamp(42px,6vw,65px)/1.05 var(--serif);color:var(--navy);margin:0 0 13px}
+.pricing-head>p{font-size:19px;margin:0 0 24px}
+.launch-banner{background:#c4a064;color:var(--navy);border-radius:16px;padding:24px 22px;max-width:690px;margin:0 auto 27px}
+.launch-banner strong{font:600 24px var(--serif);letter-spacing:.025em;display:block;margin-bottom:8px}
+.launch-banner p{margin:0;font-size:15px;line-height:1.5}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.plan{background:#fff;border:1px solid #d7be8a;border-radius:18px;padding:29px 24px 25px;display:flex;flex-direction:column;min-height:300px}
+.plan h3{font:500 32px/1.1 var(--serif);color:var(--navy);margin:14px 0 8px}
+.plan-label{font-size:11px;letter-spacing:.16em;font-weight:750;color:#a17b38}
+.plan-price{font:600 38px var(--serif);color:#ad873f;margin:0 0 18px}
+.plan-desc{font-size:15px;line-height:1.55;color:var(--navy);margin:0 0 24px;flex:1}
+.plan .cta{justify-content:center;font:700 15px var(--sans);border-radius:10px;padding:15px 10px;background:var(--navy);color:#fff;text-align:center}
+.plan .cta:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+.pricing-foot{text-align:center;color:var(--navy);font-weight:650;margin:26px 0 0;font-size:15px}
+@media(max-width:800px){.pricing{padding:58px 0 65px}.pricing-grid{grid-template-columns:1fr;max-width:500px;margin:auto}.plan{min-height:0;padding:25px 23px}.pricing-head>p{font-size:17px}.launch-banner{padding:22px 17px}.plan h3{font-size:29px}}
+
 </style>
 </head>
 <body>
 <header>
  <div class="wrap nav">
   <a class="brand" href="#top"><div><div class="wordmark">Show<span>Viva</span></div><div class="tagline">Equestrian show days, simplified</div></div></a>
-  <nav class="navlinks"><a href="about.html">About</a><a href="#how">How it works</a><a href="#contact">Contact</a><a class="cta" href="/get/" aria-label="Buy ShowViva show planner for £20">Get ShowViva →</a></nav>
+  <nav class="navlinks"><a href="about.html">About</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a><a class="cta" href="/get/" aria-label="Choose your ShowViva plan">Get ShowViva →</a></nav>
   <button class="menu" aria-label="Open menu">☰</button>
  </div>
- <div class="drawer wrap"><a href="about.html">About ShowViva</a><a href="#how">How it works</a><a href="#contact">Contact</a><a href="/get/" aria-label="Buy ShowViva show planner for £20">Get ShowViva →</a></div>
+ <div class="drawer wrap"><a href="about.html">About ShowViva</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a><a href="/get/" aria-label="Choose your ShowViva plan">Get ShowViva →</a></div>
 </header>
 
 <main id="top">
@@ -93,7 +114,7 @@ footer{background:#041722;color:white;padding:35px 0}.footer{display:flex;justif
  <div class="wrap hero-copy">
   <h1>Your personalised<br><span>show planner.</span></h1>
   <p>Show days made simple.</p>
-  <a class="cta" href="/get/" aria-label="Buy ShowViva show planner for £20">Get ShowViva →</a>
+  <a class="cta" href="/get/" aria-label="Choose your ShowViva plan">Get ShowViva →</a>
  </div>
 </section>
 
@@ -118,23 +139,40 @@ footer{background:#041722;color:white;padding:35px 0}.footer{display:flex;justif
 
 <section class="benefits" id="how">
  <div class="wrap benefit-grid">
-  <article class="benefit"><div class="icon">✓</div><h2>Before.</h2><p>Get organised before you arrive.</p></article>
-  <article class="benefit"><div class="icon">↗</div><h2>During.</h2><p>Keep your show day and team in one clear plan.</p></article>
-  <article class="benefit"><div class="icon">♙♙♙</div><h2>After.</h2><p>Keep your show information and results together when the day is done.</p></article>
+  <article class="benefit"><div class="icon">✓</div><h2>Prepare.</h2><p>Get organised before the competition begins.</p></article>
+  <article class="benefit"><div class="icon">↗</div><h2>Coordinate.</h2><p>Keep riders and teams connected around each show.</p></article>
+  <article class="benefit"><div class="icon">♙♙♙</div><h2>Compete.</h2><p>Keep the day clear so the focus stays on the horses.</p></article>
  </div>
 </section>
 
 <section class="view">
  <div class="eyebrow">One place for every show</div>
  <h2>YOUR SHOW.<br>YOUR <span>VIEW.</span></h2>
- <p>From preparing before you arrive, to managing the day and keeping your show information together afterwards, ShowViva keeps everything connected around you, your horses and your team.</p>
+ <p>From preparing for the next competition to managing the day itself, ShowViva keeps everything connected around you, your horses and your team.</p>
+</section>
+
+<section class="pricing" id="pricing" aria-labelledby="pricing-title">
+ <div class="wrap">
+  <div class="pricing-head">
+   <div class="eyebrow">SHOWVIVA</div>
+   <h2 id="pricing-title">Choose your ShowViva.</h2>
+   <p>One price. Your whole show.</p>
+   <div class="launch-banner"><strong>LAUNCH PRICE</strong><p>Exclusive introductory pricing for a limited time.</p></div>
+  </div>
+  <div class="pricing-grid">
+   <article class="plan"><div class="plan-label">INDIVIDUAL</div><h3>1 horse</h3><p class="plan-price">£4.99</p><p class="plan-desc">For individual riders who want their entire show organised in one place.</p><a class="cta" href="/get/?plan=individual">Choose this plan →</a></article>
+   <article class="plan"><div class="plan-label">SMALL TEAM</div><h3>2–3 horses</h3><p class="plan-price">£9.99</p><p class="plan-desc">For riders and small teams managing multiple horses and competition schedules.</p><a class="cta" href="/get/?plan=small-team">Choose this plan →</a></article>
+   <article class="plan"><div class="plan-label">PROFESSIONAL YARD &amp; TEAM</div><h3>4+ horses</h3><p class="plan-price">£14.99</p><p class="plan-desc">For professional yards and teams coordinating multiple horses, riders and competition schedules.</p><a class="cta" href="/get/?plan=professional-yard">Choose this plan →</a></article>
+  </div>
+  <p class="pricing-foot">All features included. Unlimited riders. One shareable link.</p>
+ </div>
 </section>
 
 <section class="final">
  <div class="eyebrow">Throughout your competition season</div>
  <h2>More riding.<br><span>Less organising.</span></h2>
  <p>Keep the focus where it belongs.</p>
- <a class="cta" href="/get/" aria-label="Buy ShowViva show planner for £20">Get ShowViva →</a>
+ <a class="cta" href="/get/" aria-label="Choose your ShowViva plan">Get ShowViva →</a>
 </section>
 </main>
 
