@@ -59,7 +59,7 @@ input,select{width:100%;padding:12px;border:1px solid #cbd3d8;border-radius:10px
 
 <div class="card">
 <div class="person-head"><div><h2>Riders & horses</h2><div class="small">Add a line for each horse and rider. The plan limit applies to different horses, not rider/horse combinations.</div></div><button class="add" type="button" id="addPerson">+ Add</button></div>
-<div id="people"></div><p class="small" id="horseCount" aria-live="polite"></p>
+<div id="people"></div><p class="small" id="horseCount" aria-live="polite"></p><p class="small" id="limitNotice" role="status" aria-live="polite"></p>
 </div>
 
 
@@ -91,7 +91,11 @@ else{
  const count=()=>{
   const n=uniqueHorses().length;
   $('horseCount').textContent=n+' of '+(Number.isFinite(plan.max)?plan.max:'4+')+' horses entered. '+(n<plan.min?'Add at least '+plan.min+' different horse'+(plan.min===1?'':'s')+'.':n>plan.max?'This plan allows up to '+plan.max+' different horses. Change plan or remove a horse.':'');
-  // Riders are unlimited; only distinct horses are limited by the plan.
+  // Stop new rows at the selected plan allowance; also validate distinct horses.
+  const atLimit=Number.isFinite(plan.max)&&rows().length>=plan.max;
+  $('addPerson').disabled=atLimit;
+  $('limitNotice').textContent=atLimit?'You have reached the '+plan.max+'-horse allowance for this plan. To add another horse, choose a larger plan.':'';
+  $('horseCount').style.color=n>plan.max?'#9c2d2d':'';
  };
  function personRow(){
   const d=document.createElement('div');d.className='person';
@@ -100,7 +104,10 @@ else{
   d.querySelectorAll('input').forEach(input=>input.addEventListener('input',()=>{count();review.classList.remove('show');}));
   return d;
  }
- $('addPerson').onclick=()=>{ $('people').appendChild(personRow());count();};
+ $('addPerson').onclick=()=>{
+  if(Number.isFinite(plan.max)&&rows().length>=plan.max){count();return;}
+  $('people').appendChild(personRow());count();review.classList.remove('show');
+ };
  $('people').appendChild(personRow());count();
  $('submitBtn').onclick=()=>{
   const people=rows().map(x=>({rider:x.querySelector('.rider').value.trim(),horse:x.querySelector('.horse').value.trim()}));
