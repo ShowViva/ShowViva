@@ -29,11 +29,7 @@ radios.forEach(r=>r.addEventListener('change',()=>{
 selectButton.addEventListener('click',()=>{
   const selected=radios.find(r=>r.checked);
   if(!selected)return;
-  const url=new URL(location.href);url.searchParams.set('plan',selected.value);
-  history.replaceState(null,'',url.pathname+url.search+url.hash);
-  status.textContent='Selected: '+plans[selected.value];
-  status.hidden=false;
-  selectButton.textContent='Plan selected ✓';
+  location.href='/create/?plan='+encodeURIComponent(selected.value);
 });
 radios.forEach(r=>r.addEventListener('change',()=>{selectButton.textContent='Select this plan →'}));
 </script></body></html>
