@@ -1,1 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Create my ShowViva</title>
+<style>
+:root{--navy:#061f30;--gold:#c4a064;--cream:#f6f1e8;--ink:#0d2b40;--line:#d8d4ca;--muted:#667784}
+*{box-sizing:border-box}body{margin:0;background:#f6f1e8;color:var(--ink);font-family:Inter,Arial,sans-serif}
+.app{max-width:820px;margin:0 auto;min-height:100vh;background:var(--cream)}
+header{background:var(--navy);color:white;padding:26px 20px}h1{font:700 38px Georgia,serif;margin:0}h1 span{color:var(--gold)}header p{margin:8px 0 0;color:#dce5e8}
+main{padding:20px}.card{background:white;border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:16px}
+h2{font:700 24px Georgia,serif;margin:0 0 10px}label{display:block;font-weight:700;margin:14px 0 6px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #cbd3d8;border-radius:10px;font-size:16px;background:white}
+.notes-field{min-height:105px;resize:vertical;font-family:inherit;line-height:1.5}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.person,.source{border:1px solid #e2e5e7;border-radius:14px;padding:14px;margin-top:10px;background:#fafafa}
+.person-head,.source-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.add{background:#eef1f3;color:var(--navy);border:1px solid #cdd6db;border-radius:999px;padding:10px 14px;font-weight:700}
+.remove{border:0;background:transparent;color:#7b4e4e;font-weight:700}
+.primary{width:100%;margin-top:18px;border:0;border-radius:999px;padding:14px 20px;font-weight:700;font-size:16px;background:linear-gradient(90deg,#f0cf87,#d4a652);color:#142c3c}
+.small{font-size:12px;color:var(--muted);line-height:1.5;margin-top:6px}.msg{margin-top:16px;padding:12px;border-radius:12px;background:#f2f4f5;display:none}
+ .ok{display:block;color:#285b43}.err{display:block;color:#9c2d2d}
+.plan-summary{background:#fff8e8;border:1px solid var(--gold);border-radius:14px;padding:18px;margin-bottom:16px}
+.plan-summary strong{display:block;font:600 24px Georgia,serif;margin:8px 0;color:var(--navy)}
+.plan-summary a{color:var(--navy);font-size:14px}
+.plan-summary .plan-label{font-size:12px;font-weight:700;letter-spacing:.12em;color:#9b783e}
+.plan-summary p{margin:5px 0 12px}.notice{background:#fff8e8;border:1px solid var(--gold);padding:14px;border-radius:10px;font-size:14px;line-height:1.5}
+#review{display:none}#review.show{display:block}.primary:disabled,.add:disabled{opacity:.5;cursor:not-allowed}
+@media(max-width:600px){.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+<header><h1>Create my Show<span>Viva</span></h1><p>Tell us who's competing and where to find the official show information.</p></header>
+<main>
+<div class="plan-summary" id="planSummary" aria-live="polite"><span class="plan-label">YOUR SELECTED PLAN</span><strong id="planTitle"></strong><p id="planPrice"></p><a href="/get/">← Change plan</a></div>
 
+<div class="card">
+<h2>Your details</h2>
+<div class="row">
+<div><label>Your name</label><input id="customer_name" autocomplete="name"></div>
+<div><label>Email</label><input id="customer_email" type="email" autocomplete="email"></div>
+</div>
+<label>Contact number</label><input id="contact_number" type="tel" autocomplete="tel" placeholder="e.g. 07...">
+</div>
+
+<div class="card">
+<h2>Show details</h2>
+<div class="row">
+<div><label>Show name</label><input id="show_name" placeholder="e.g. Arena UK Major Show"></div>
+<div><label>Venue</label><input id="venue" placeholder="e.g. Arena UK"></div>
+</div>
+<div class="row">
+<div><label>From</label><input id="show_date" type="date"></div>
+<div><label>To <span class="small">(optional)</span></label><input id="show_end_date" type="date"></div>
+</div>
+<div><label>Default warm-up</label><select id="warmup"><option value="20">20 minutes</option><option value="15">15 minutes</option><option value="10">10 minutes</option><option value="30">30 minutes</option></select></div>
+</div>
+
+<div class="card">
+<div class="person-head"><div><h2>Riders & horses</h2><div class="small">Add a line for each horse and rider. The plan limit applies to different horses, not rider/horse combinations.</div></div><button class="add" type="button" id="addPerson">+ Add</button></div>
+<div id="people"></div><p class="small" id="horseCount" aria-live="polite"></p><p class="small" id="limitNotice" role="status" aria-live="polite"></p>
+</div>
+
+<div class="card">
+<h2>Notes for the ShowViva organiser <span class="small">(optional)</span></h2>
+<p>Your personalised planner link will arrive within 24 hours, with available show details. Times will be added as soon as officially published.</p>
+<label for="organiser_notes">Need it sooner, or have anything else to tell us?</label>
+<textarea id="organiser_notes" class="notes-field" maxlength="1500" placeholder="Tell us when you need your planner, or add any other requests."></textarea>
+<p class="small">For urgent requests, we’ll do our best to accommodate.</p>
+</div>
+
+<div class="card">
+<button class="primary" id="submitBtn" type="button">Review my details →</button><div class="small" style="margin-top:10px">No payment is taken on this page.</div>
+<div id="review" aria-live="polite"><h2 style="margin-top:22px">Review your ShowViva</h2><p id="reviewText"></p><div class="notice">Your plan and details are ready for checkout. Secure payment is not connected yet; this page will not take payment or submit a paid order.</div></div>
+<div id="msg" class="msg"></div>
+</div>
+
+</main></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const plans={
+ 'individual':{name:'INDIVIDUAL',horses:'1 horse',price:'£4.99',min:1,max:1},
+ 'small-team':{name:'SMALL TEAM',horses:'2–3 horses',price:'£9.99',min:2,max:3},
+ 'professional-yard':{name:'PROFESSIONAL YARD & TEAM',horses:'4+ horses',price:'£14.99',min:4,max:Infinity}
+};
+const key=new URLSearchParams(location.search).get('plan');
+const plan=Object.prototype.hasOwnProperty.call(plans,key)?plans[key]:null;
+if(!plan){location.replace('/get/');}
+else{
+ $('planTitle').textContent=plan.name+' · '+plan.horses;
+ $('planPrice').textContent=plan.price+' · One price for your whole show';
+ const review=$('review');
+ const msg=$('msg');
+ const rows=()=>[...document.querySelectorAll('.person')];
+ const uniqueHorses=()=>[...new Set(rows().map(x=>x.querySelector('.horse').value.trim().toLocaleLowerCase()).filter(Boolean))];
+ const count=()=>{
+  const n=uniqueHorses().length;
+  $('horseCount').textContent=n+' of '+(Number.isFinite(plan.max)?plan.max:'4+')+' horses entered. '+(n<plan.min?'Add at least '+plan.min+' different horse'+(plan.min===1?'':'s')+'.':n>plan.max?'This plan allows up to '+plan.max+' different horses. Change plan or remove a horse.':'');
+  // Stop new rows at the selected plan allowance; also validate distinct horses.
+  const atLimit=Number.isFinite(plan.max)&&rows().length>=plan.max;
+  $('addPerson').disabled=atLimit;
+  $('limitNotice').textContent=atLimit?'You have reached the '+plan.max+'-horse allowance for this plan. To add another horse, choose a larger plan.':'';
+  $('horseCount').style.color=n>plan.max?'#9c2d2d':'';
+ };
+ function personRow(){
+  const d=document.createElement('div');d.className='person';
+  d.innerHTML='<div class="row"><div><label>Rider</label><input class="rider" autocomplete="off"></div><div><label>Horse / pony</label><input class="horse" autocomplete="off"></div></div><button class="remove" type="button">Remove</button>';
+  d.querySelector('.remove').onclick=()=>{if(rows().length>1)d.remove();count();review.classList.remove('show');};
+  d.querySelectorAll('input').forEach(input=>input.addEventListener('input',()=>{count();review.classList.remove('show');}));
+  return d;
+ }
+ $('addPerson').onclick=()=>{
+  if(Number.isFinite(plan.max)&&rows().length>=plan.max){count();return;}
+  $('people').appendChild(personRow());count();review.classList.remove('show');
+ };
+ $('people').appendChild(personRow());count();
+ $('submitBtn').onclick=()=>{
+  const people=rows().map(x=>({rider:x.querySelector('.rider').value.trim(),horse:x.querySelector('.horse').value.trim()}));
+  const n=uniqueHorses().length;
+  const email=$('customer_email').value.trim();
+  if(!plan||!$('customer_name').value.trim()||!email||!$('customer_email').checkValidity()||!$('contact_number').value.trim()||!$('show_name').value.trim()||!$('venue').value.trim()||!$('show_date').value||people.some(p=>!p.rider||!p.horse)||n<plan.min||n>plan.max){
+   msg.className='msg err';msg.textContent='Please complete all details and enter '+(plan.min===plan.max?plan.min:plan.min+'–'+(Number.isFinite(plan.max)?plan.max:'or more'))+' different horses for this plan.';
+   review.classList.remove('show');return;
+  }
+  if($('show_end_date').value&&$('show_end_date').value<$('show_date').value){msg.className='msg err';msg.textContent='The show end date cannot be before the start date.';return;}
+  // A local preview only: never treat browser-selected prices as authoritative or create an unpaid fulfilment order.
+  const draft={plan:key,customer_name:$('customer_name').value.trim(),customer_email:email,contact_number:$('contact_number').value.trim(),show_name:$('show_name').value.trim(),venue:$('venue').value.trim(),show_date:$('show_date').value,show_end_date:$('show_end_date').value||null,default_warmup_minutes:Number($('warmup').value),participants:people,organiser_notes:$('organiser_notes').value.trim()};
+  try{sessionStorage.setItem('showviva_order_draft',JSON.stringify(draft));}catch(e){}
+  msg.className='msg';msg.style.display='none';
+  $('reviewText').textContent=plan.name+' · '+plan.horses+' · '+plan.price+' — '+n+' horse'+(n===1?'':'s')+' for '+draft.show_name+'.'+(draft.organiser_notes?' Notes: '+draft.organiser_notes:'');
+  review.classList.add('show');review.scrollIntoView({behavior:'smooth',block:'nearest'});
+ };
+}
+</script>
+</body></html>
