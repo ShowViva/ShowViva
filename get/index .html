@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="#061f30" name="theme-color"/><title>Choose your ShowViva | ShowViva</title><style>
+:root{--navy:#061f30;--cream:#f6f1e8;--gold:#c4a064;--gold-edge:#d7be8a}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--navy);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+header{background:var(--navy);padding:24px 20px;text-align:center}.brand{font:700 35px Georgia,serif;color:#fff;text-decoration:none}.brand span{color:#dda94e}
+main{width:min(760px,calc(100% - 32px));margin:48px auto 80px}.back{color:var(--navy);display:inline-block;margin-bottom:28px}.eyebrow{letter-spacing:.2em;color:#a17b38;font-weight:700;font-size:11px}
+h1{font:500 clamp(40px,7vw,62px)/1 Georgia,serif;margin:12px 0;text-align:center}p{line-height:1.6}.banner{background:var(--gold);border-radius:15px;padding:23px;text-align:center;margin:28px 0}.banner strong{font:600 26px Georgia,serif}.banner p{margin:8px 0 0}
+.plans{display:grid;gap:12px}.choice{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:12px;row-gap:10px;align-items:center;border:1px solid var(--gold-edge);border-radius:15px;padding:21px 20px;background:#fff;cursor:pointer;color:var(--navy)}
+.choice:has(input:checked){border:2px solid #a17b38;background:#fff9ec;padding:20px 19px}.choice:focus-within{outline:3px solid #c4a064;outline-offset:3px}
+.choice .tier{font-size:12px;letter-spacing:.15em;color:#9b783e;grid-column:1/-1;padding-right:38px}.choice .horses{font:500 clamp(23px,5vw,28px) Georgia,serif}.choice .price{font:600 clamp(25px,5vw,30px) Georgia,serif;color:#a17b38;white-space:nowrap;text-align:right}
+.choice .description{grid-column:1/-1;margin:0;font-size:15px;line-height:1.5;color:var(--navy);padding-right:28px}
+.choice input{position:absolute;top:19px;right:20px;appearance:none;width:24px;height:24px;border:2px solid #a17b38;border-radius:50%;background:#fff;cursor:pointer;margin:0}.choice input:checked{background:#a17b38;box-shadow:inset 0 0 0 5px #fff}
+.pricing-foot{text-align:center;margin:26px 0 20px;font-weight:600;font-size:15px}.select-button{display:block;width:100%;background:var(--navy);color:#fff;border:0;border-radius:10px;padding:18px;font:600 16px -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;cursor:pointer}.select-button:disabled{opacity:.5;cursor:not-allowed}.selected{margin:16px 0 0;text-align:center;font-size:14px;color:var(--navy)}footer{text-align:center;padding:30px;font-size:12px;letter-spacing:.15em}
+button:focus-visible,a:focus-visible{outline:3px solid #c4a064;outline-offset:4px}
+@media(max-width:430px){main{margin-top:30px}.choice{padding:18px 16px}.choice:has(input:checked){padding:17px 15px}.choice input{right:16px;top:18px}.choice .description{font-size:14px}}
+</style></head><body><header><a class="brand" href="/">Show<span>Viva</span></a></header><main><a class="back" href="/">← Back to pricing</a><div class="eyebrow">SHOWVIVA</div><h1>Choose your ShowViva</h1><p style="text-align:center">One price. Your whole show.</p><div class="banner"><strong>LAUNCH PRICE</strong><p>Exclusive introductory pricing for a limited time.</p></div><div aria-label="Choose number of horses" class="plans" role="group"><label class="choice"><input aria-label="INDIVIDUAL — 1 horse — £4.99" name="plan" type="radio" value="individual"/><span class="tier">INDIVIDUAL</span><span class="horses">1 horse</span><span class="price">£4.99</span><p class="description">For individual riders who want their entire show organised in one place.</p></label><label class="choice"><input aria-label="SMALL TEAM — 2–3 horses — £9.99" name="plan" type="radio" value="small-team"/><span class="tier">SMALL TEAM</span><span class="horses">2–3 horses</span><span class="price">£9.99</span><p class="description">For riders and small teams managing multiple horses and competition schedules.</p></label><label class="choice"><input aria-label="PROFESSIONAL YARD &amp; TEAM — 4+ horses — £14.99" name="plan" type="radio" value="professional-yard"/><span class="tier">PROFESSIONAL YARD &amp; TEAM</span><span class="horses">4+ horses</span><span class="price">£14.99</span><p class="description">For professional yards and teams coordinating multiple horses, riders and competition schedules.</p></label></div><p class="pricing-foot">All features included. Unlimited riders. One shareable link.</p><button class="select-button" disabled="disabled" id="select-plan" type="button">Select this plan →</button><p aria-live="polite" class="selected" hidden="" id="status" role="status"></p></main><footer>YOUR SHOW. YOUR VIEW.</footer><script>
+const plans={individual:'1 horse · £4.99','small-team':'2–3 horses · £9.99','professional-yard':'4+ horses · £14.99'};
+const radios=[...document.querySelectorAll('input[name="plan"]')];
+const selectButton=document.getElementById('select-plan');
+const status=document.getElementById('status');
+const initial=new URLSearchParams(location.search).get('plan');
+if(Object.prototype.hasOwnProperty.call(plans,initial)){
+  const radio=radios.find(r=>r.value===initial);
+  if(radio){radio.checked=true;selectButton.disabled=false;}
+}
+radios.forEach(r=>r.addEventListener('change',()=>{
+  selectButton.disabled=false;status.hidden=true;
+}));
+selectButton.addEventListener('click',()=>{
+  const selected=radios.find(r=>r.checked);
+  if(!selected)return;
+  location.href='/get/details/?plan='+encodeURIComponent(selected.value);
+});
+radios.forEach(r=>r.addEventListener('change',()=>{selectButton.textContent='Select this plan →'}));
+</script></body></html>
