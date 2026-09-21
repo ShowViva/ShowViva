@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- ShowViva Rikki-Claire VERIFIED THURSDAY + Pardento + chronological fix 2026-09-17 -->
+<!-- POC NOTEBOOK + CLASS/COURSE WALK 2026-09-21 | ShowViva Rikki-Claire VERIFIED THURSDAY + Pardento + chronological fix 2026-09-17 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ShowViva — Monday 14 September 2026</title>
@@ -743,6 +743,7 @@ html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(
 .course-fields input{width:100%;min-width:0;border:1px solid #d8bd80;border-radius:8px;padding:10px;color:var(--navy);background:white;font-size:16px}
 .course-save{border:0;background:var(--navy);color:white;border-radius:9px;padding:10px 16px;font-weight:800;cursor:pointer}
 @media(max-width:400px){.course-fields{grid-template-columns:1fr}}
+.my-team-heading{font-family:Georgia,"Times New Roman",serif;font-size:21px;margin:18px 0 8px;color:var(--navy)}
 </style>
 
 <style id="showviva-close-button-fix">
@@ -778,6 +779,41 @@ html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(
   outline:2px solid #102743 !important;
   outline-offset:3px !important;
 }
+</style>
+<style id="showviva-poc-visual-fix">
+/* Visible notebook and gold notes count, including zero; visible course-walk times on all cards. */
+.ride .details{position:relative!important;padding-right:53px!important}
+.ride .card-actions .card-note-icon{position:absolute!important;top:12px!important;right:12px!important;display:flex!important;align-items:center!important;justify-content:center!important;width:38px!important;height:38px!important;border:1px solid #d8bd80!important;border-radius:9px!important;background:#fffaf0!important;color:#092c43!important;z-index:50!important;overflow:visible!important}
+.ride .card-note-icon .sv-notes-word{display:none!important}
+.ride .card-note-icon svg{display:block!important;width:27px!important;height:27px!important;stroke:#092c43!important;fill:none!important}
+.ride .card-note-icon .note-count{display:flex!important;position:absolute!important;top:-8px!important;right:-8px!important;min-width:20px!important;height:20px!important;align-items:center!important;justify-content:center!important;background:#c7a45c!important;color:#092c43!important;border:2px solid white!important;border-radius:50%!important;font-size:10px!important;font-weight:800!important;z-index:60!important}
+.ride .course-times{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:5px!important;margin:10px 0!important;visibility:visible!important}
+.ride .course-times span{display:inline-block!important;background:#fff2d7!important;color:#092c43!important;padding:6px 9px!important;border-radius:7px!important;font-weight:700!important;font-size:12px!important}
+.ride.complete .course-times,.ride.complete .course-times span{display:flex!important;opacity:1!important;visibility:visible!important}
+</style>
+<style id="sv-final-card-layout-20260921">
+/* Final POC: notebook is a direct child of each ride, never trapped in card-bottom. */
+.ride{position:relative!important;overflow:visible!important}
+.ride .sv-notebook-top{position:absolute!important;top:12px!important;right:12px!important;left:auto!important;bottom:auto!important;z-index:100!important;width:38px!important;height:40px!important;min-width:38px!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:5px!important;border:1px solid #c6a15a!important;border-radius:8px!important;background:#fffaf0!important;overflow:visible!important;color:#0b2a47!important}
+.ride .sv-notebook-top svg{display:block!important;width:26px!important;height:26px!important;stroke:#0b2a47!important;fill:none!important}
+.ride .sv-notebook-top .note-count{display:flex!important;position:absolute!important;top:-9px!important;right:-9px!important;width:auto!important;min-width:22px!important;height:22px!important;align-items:center!important;justify-content:center!important;border-radius:50%!important;background:#c6a15a!important;border:2px solid #fff!important;color:#0b2a47!important;font-size:11px!important;font-weight:900!important;z-index:101!important}
+.ride .details{padding-right:46px!important;min-width:0!important}
+.sv-poc-times{margin-top:10px;display:grid;gap:5px;font:700 11px/1.3 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#0b2a47}
+.sv-poc-times div{padding:6px 5px;background:#fff2d7;border-radius:7px;display:flex;flex-direction:column;gap:2px}
+.sv-poc-times b{font-size:14px}
+.ride.complete .sv-poc-times{opacity:1!important}
+@media(max-width:520px){.ride{grid-template-columns:100px minmax(0,1fr)!important;gap:10px!important}.ride .details{padding-right:39px!important}.sv-poc-times{font-size:10px}.sv-poc-times b{font-size:13px}}
+</style>
+
+<style id="sv-clean-card-20260921">
+/* One unobtrusive class start row; preserve warm-up, notebook and Equipe link. */
+.ride .sv-poc-times{display:none!important}
+.ride .course-time-btn{display:none!important}
+.ride .sv-class-start{display:flex;align-items:baseline;flex-wrap:wrap;gap:5px;margin-top:9px;color:#0b2a47;font:600 12px/1.4 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.ride .sv-class-start b{font-size:14px;font-weight:800}
+.ride .sv-poc-label{font-size:10px;color:#947c4b;font-weight:500}
+.ride .details{padding-right:42px!important}
+@media(max-width:520px){.ride{grid-template-columns:92px minmax(0,1fr)!important;gap:10px!important}.ride .details{padding-right:37px!important}}
 </style>
 </head>
 <body>
@@ -816,12 +852,12 @@ html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(
     <noscript><p class="status">Tuesday is shown below by default. Use the day tabs to view Monday or Tuesday.</p></noscript><div class="days" id="days"><button class="day " aria-pressed="false" data-day="0"><b>Mon</b><span>14 Sep</span></button><button class="day active" aria-pressed="true" data-day="1"><b>Tue</b><span>15 Sep</span></button><button class="day " aria-pressed="false" data-day="2"><b>Wed</b><span>16 Sep</span></button><button class="day " aria-pressed="false" data-day="3"><b>Thu</b><span>17 Sep</span></button><button class="day " aria-pressed="false" data-day="4"><b>Fri</b><span>18 Sep</span></button><button class="day " aria-pressed="false" data-day="5"><b>Sat</b><span>19 Sep</span></button><button class="day " aria-pressed="false" data-day="6"><b>Sun</b><span>20 Sep</span></button></div>
 
     <div class="filter-card">
-      <label for="horse">Horse</label>
-      <select id="horse"><option value="">All horses</option><option value="KSH Queen Ester">KSH Queen Ester</option><option value="Rio Seven">Rio Seven</option><option value="Monmore Var">Monmore Var</option><option value="Summer Escape">Summer Escape</option><option value="WF ANNIE">WF ANNIE</option><option value="QAUNTA COSTA JS">QAUNTA COSTA JS</option><option value="Pardento">Pardento</option><option value="Special Delivery 27">Special Delivery 27</option></select>
+      <label for="horse">Horses</label>
+      <select id="horse"><option value="">My horses</option><option value="KSH Queen Ester">KSH Queen Ester</option><option value="Rio Seven">Rio Seven</option><option value="Monmore Var">Monmore Var</option><option value="Summer Escape">Summer Escape</option><option value="WF ANNIE">WF ANNIE</option><option value="QAUNTA COSTA JS">QAUNTA COSTA JS</option><option value="Pardento">Pardento</option><option value="Special Delivery 27">Special Delivery 27</option></select>
     </div>
     <div class="filter-card">
-      <label for="rider">Rider</label>
-      <select id="rider"><option value="">All riders</option><option value="Rikki Gradley">Rikki Gradley</option><option value="Claire Hansen">Claire Hansen</option><option value="Olivia White">Olivia White</option></select>
+      <label for="rider">Riders</label>
+      <select id="rider"><option value="">My riders</option><option value="Rikki Gradley">Rikki Gradley</option><option value="Claire Hansen">Claire Hansen</option><option value="Olivia White">Olivia White</option></select>
     </div>
     <div class="filter-card">
       <label for="ring">Ring</label>
@@ -860,7 +896,7 @@ html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(
 <p id="weekContext" class="week-context"></p><div id="weekList" class="week-list"></div>
 </dialog>
 <dialog id="warmupSheet" class="warmup-sheet" aria-labelledby="warmupTitle"><div class="warmup-card"><button id="closeWarmup" class="warmup-close" aria-label="Close">×</button><div class="sheet-kicker">ShowViva plan</div><h2 id="warmupTitle">Warm-up time</h2><p id="warmupHorse" class="warmup-horse"></p><div class="warmup-round-row"><span>Round</span><strong id="warmupRoundTime"></strong></div><div class="warmup-choices" aria-label="Warm-up allowance"><button type="button" data-mins="10">10 min</button><button type="button" data-mins="15">15 min</button><button type="button" data-mins="20">20 min</button><button type="button" data-mins="30">30 min</button></div><p class="warmup-result">Warm up <strong id="warmupResult"></strong></p><button id="saveWarmup" class="warmup-save" type="button">Save</button></div></dialog>
-<dialog id="roundSheet" class="round-sheet" aria-labelledby="roundSheetTitle"><div class="sheet-card"><div class="sheet-head"><button id="closeRoundSheet" class="sheet-close" aria-label="Close">×</button><div class="sheet-kicker">Shared notes</div><h2 id="roundSheetTitle">Round</h2><p id="roundSheetMeta"></p></div><div class="sheet-body"><section class="sheet-section"><div class="sheet-kicker">Round time</div><div id="sheetRoundTime" class="sheet-time"></div><div class="sheet-muted">Competition information · via Equipe</div></section><section class="sheet-section"><div class="sheet-kicker">Your ShowViva plan</div><div class="course-fields"><label>Class starts<input id="classStartInput" type="time" aria-label="Class start time"></label><label>Course walk<input id="courseWalkInput" type="time" aria-label="Course walk time"></label></div><button id="saveCourseTimes" class="course-save" type="button">Save class & course walk times</button><div class="plan-row"><span>Warm-up starts</span><strong id="sheetWarmupTime"></strong></div><div class="plan-row"><span>Round</span><strong id="sheetRoundTime2"></strong></div></section><section class="sheet-section team-notes-section"><div class="sheet-kicker">Team notes</div><div id="noteList" class="note-list"></div><div class="note-form"><input id="noteAuthor" placeholder="Your name" maxlength="60"><textarea id="noteText" placeholder="Add a note for this round…" maxlength="1000"></textarea><button id="addNote" type="button">+ Add shared note</button></div></section><a id="sheetEquipeLink" class="sheet-link" target="_blank" rel="noopener">View class on Equipe →</a><div class="sheet-source">Competition data via Equipe · Planning & team notes by ShowViva</div></div></div></dialog>
+<dialog id="roundSheet" class="round-sheet" aria-labelledby="roundSheetTitle"><div class="sheet-card"><div class="sheet-head"><button id="closeRoundSheet" class="sheet-close" aria-label="Close">×</button><div class="sheet-kicker">Shared notes</div><h2 id="roundSheetTitle">Round</h2><p id="roundSheetMeta"></p></div><div class="sheet-body"><section class="sheet-section"><div class="sheet-kicker">Round time</div><div id="sheetRoundTime" class="sheet-time"></div><div class="sheet-muted">Competition information · via Equipe</div></section><section class="sheet-section"><div class="sheet-kicker">Your ShowViva plan</div><div class="course-fields"><label>Class starts<input id="classStartInput" type="time" aria-label="Class start time"></label><label>Course walk · 15 min before<input id="courseWalkInput" type="time" aria-label="Course walk time" readonly></label></div><button id="saveCourseTimes" class="course-save" type="button">Save class start</button><div class="sheet-muted">Illustrative POC times — not published show times.</div><div class="plan-row"><span>Warm-up starts</span><strong id="sheetWarmupTime"></strong></div><div class="plan-row"><span>Round</span><strong id="sheetRoundTime2"></strong></div></section><section class="sheet-section team-notes-section"><div class="sheet-kicker">Team notes</div><div id="noteList" class="note-list"></div><div class="note-form"><input id="noteAuthor" placeholder="Your name" maxlength="60"><textarea id="noteText" placeholder="Add a note for this round…" maxlength="1000"></textarea><button id="addNote" type="button">+ Add shared note</button></div></section><a id="sheetEquipeLink" class="sheet-link" target="_blank" rel="noopener">View class on Equipe →</a><div class="sheet-source">Competition data via Equipe · Planning & team notes by ShowViva</div></div></div></dialog>
 <dialog id="deleteNoteDialog" class="note-delete-dialog"><div class="note-delete-card"><h3>Delete this note?</h3><p>This will remove it from the shared notes for this round.</p><div class="note-delete-actions"><button id="cancelDeleteNote" type="button">Cancel</button><button id="confirmDeleteNote" class="danger" type="button">Delete</button></div></div></dialog>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
@@ -945,15 +981,25 @@ function renderTimeline(list){const items=[];list.filter(x=>x.status!=='complete
 function timeSort(t){const [h,m]=(t||'99:99').split(':').map(Number);return h*60+m;}
 const courseTimeCache=new Map();
 try{Object.entries(JSON.parse(localStorage.getItem('sv-course-times-arena-uk')||'{}')).forEach(([k,v])=>courseTimeCache.set(k,v));}catch(e){}
-function courseTimesFor(x){return courseTimeCache.get(roundKey(x))||{};}
-function saveCourseTimes(){if(!selectedRide)return;const v={classStart:$('classStartInput').value,courseWalk:$('courseWalkInput').value};courseTimeCache.set(roundKey(selectedRide),v);try{localStorage.setItem('sv-course-times-arena-uk',JSON.stringify(Object.fromEntries(courseTimeCache)));}catch(e){alert('Could not save times on this device.');return;}render();$('saveCourseTimes').textContent='Saved ✓';}
+// POC-only illustrative class starts. Replace with official class data when available.
+function courseTimesFor(x){
+  // POC illustration only: no official class start data is available yet.
+  const saved=courseTimeCache.get(roundKey(x));
+  if(saved && saved.classStart) return {...saved,courseWalk:minutesBefore(saved.classStart,15),demo:true};
+  const match=String(x.time||'').match(/(\d{1,2}):(\d{2})/);
+  const roundMins=match ? Number(match[1])*60+Number(match[2]) : 9*60+Math.max(0,Number(x.day)||0)*30;
+  const demoStart=Math.max(0,Math.floor((roundMins-30)/30)*30);
+  const classStart=String(Math.floor(demoStart/60)).padStart(2,'0')+':'+String(demoStart%60).padStart(2,'0');
+  return {classStart,courseWalk:minutesBefore(classStart,15),demo:true};
+}
+function saveCourseTimes(){if(!selectedRide)return;const start=$('classStartInput').value;const v={classStart:start,courseWalk:start?minutesBefore(start,15):''};courseTimeCache.set(roundKey(selectedRide),v);try{localStorage.setItem('sv-course-times-arena-uk',JSON.stringify(Object.fromEntries(courseTimeCache)));}catch(e){alert('Could not save times on this device.');return;}render();$('saveCourseTimes').textContent='Saved ✓';}
 function render(){
 $('days').innerHTML=names.map((d,i)=>`<button class="day ${i===activeDay?'active':''}" aria-pressed="${i===activeDay}" data-day="${i}"><b>${d}</b><span>${14+i} Sep</span></button>`).join('');
 $('days').querySelectorAll('button').forEach(b=>b.onclick=()=>{activeDay=Number(b.dataset.day);render();});
 let list=currentList();
 $('viewTitle').textContent=`${names[activeDay]} ${14+activeDay} September`;
 $('count').textContent=`${list.length} rides · ${new Set(list.map(x=>x.horse)).size} horses`;
-$('cards').innerHTML=list.length?list.map(x=>{const complete=x.status==='complete';const idx=rides.indexOf(x);const mins=planCache.get(roundKey(x))??20;const warm=(/^\d{1,2}:\d{2}$/.test(x.time||''))?minutesBefore(x.time,mins):'';const notes=noteCountCache.get(roundKey(x))||0;const course=courseTimesFor(x);const courseHtml=`<div class="course-times">${course.classStart?`<span>Class starts ${esc(course.classStart)}</span>`:""}${course.courseWalk?`<span>Course walk ${esc(course.courseWalk)}</span>`:""}</div>`;const notebook=`<svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="5" width="19" height="23" rx="2"></rect><path d="M12 5v23M5 9h6M5 14h6M5 19h6M5 24h6"></path></svg>`;return `<article class="ride ${complete?'complete':''}" data-ride-index="${idx}" data-horse="${esc(x.horse)}" data-rider="${esc(x.rider)}" data-ring="${esc(x.ring)}"><div><div class="time">${complete?'✓':esc(x.time)}</div>${warm?`<button class="warmup-pill" type="button" aria-label="Open warm-up plan">Warm-up ${esc(warm)}</button>`:''}</div><div class="details"><strong>${esc(x.horse)}</strong>${x.className?`<div class="class-name">${esc(x.className)}</div>`:''}<div class="rider">${esc(x.rider)}</div><div class="arena">${esc(!x.ring?'Arena TBC':(x.ring==='Indoor'?'Equine America Indoor Championship Arena':x.ring.replace('Outdoor ','Outdoor Arena ')))}</div>${x.order?`<div class="draw">Draw ${esc(x.order)}</div>`:''}${courseHtml}<button class="course-time-btn" type="button">${course.classStart||course.courseWalk?"Edit class / course walk":"+ Class start / course walk"}</button><div class="card-bottom"><div class="card-actions"><button class="card-note-icon" type="button" aria-label="Open shared notes for ${esc(x.horse)}"><span class="sv-notes-word">Shared notes</span>${notebook}${notes?`<span class="note-count" aria-label="${notes} shared ${notes===1?'note':'notes'}">${notes>99?'99+':notes}</span>`:''}</button><a href="${esc(x.url)}" target="_blank" rel="noopener">${complete?'Results ↗':'Class details ↗'}</a></div></div></div></article>`;}).join(''):`<div class="empty">${activeDay>1?'This day’s schedule has not been added yet.':'No matching entries were found.'}</div>`;
+$('cards').innerHTML=list.length?list.map(x=>{const complete=x.status==='complete';const idx=rides.indexOf(x);const mins=planCache.get(roundKey(x))??20;const warm=(/^\d{1,2}:\d{2}$/.test(x.time||''))?minutesBefore(x.time,mins):'';const notes=noteCountCache.get(roundKey(x))||0;const course=courseTimesFor(x);const courseHtml=`<div class="course-times">${course.classStart?`<span>Class starts ${esc(course.classStart)}</span>`:""}${course.courseWalk?`<span>Course walk ${esc(course.courseWalk)}</span>`:""}${course.demo?`<small style="display:block;color:#9b7934;font-size:10px;margin-top:3px">Illustrative POC times</small>`:''}</div>`;const notebook=`<svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="5" width="19" height="23" rx="2"></rect><path d="M12 5v23M5 9h6M5 14h6M5 19h6M5 24h6"></path></svg>`;return `<article class="ride ${complete?'complete':''}" data-ride-index="${idx}" data-horse="${esc(x.horse)}" data-rider="${esc(x.rider)}" data-ring="${esc(x.ring)}"><div><div class="time">${complete?'✓':esc(x.time)}</div>${warm?`<button class="warmup-pill" type="button" aria-label="Open warm-up plan">Warm-up ${esc(warm)}</button>`:''}</div><button class="card-note-icon sv-notebook-top" type="button" aria-label="Open shared notes for ${esc(x.horse)}" title="Shared notes">${notebook}<span class="note-count" aria-label="${notes} shared notes">${notes>99?'99+':notes}</span></button><div class="details"><strong>${esc(x.horse)}</strong>${x.className?`<div class="class-name">${esc(x.className)}</div>`:''}<div class="rider">${esc(x.rider)}</div><div class="arena">${esc(!x.ring?'Arena TBC':(x.ring==='Indoor'?'Equine America Indoor Championship Arena':x.ring.replace('Outdoor ','Outdoor Arena ')))}</div>${x.order?`<div class="draw">Draw ${esc(x.order)}</div>`:''}<div class="sv-class-start">Class starts <b>${esc(course.classStart)}</b><span class="sv-poc-label">POC time</span></div><div class="card-bottom"><div class="card-actions"><a href="${esc(x.url)}" target="_blank" rel="noopener">${complete?'Results ↗':'Class details ↗'}</a></div></div></div></article>`;}).join(''):`<div class="empty">${activeDay>1?'This day’s schedule has not been added yet.':'No matching entries were found.'}</div>`;
 $('cards').querySelectorAll('.ride').forEach(card=>card.addEventListener('click',e=>{const idx=Number(card.dataset.rideIndex);if(e.target.closest('a'))return;if(e.target.closest('.warmup-pill')){openWarmup(idx);return;}if(e.target.closest('.course-time-btn')){openRound(idx);return;}if(e.target.closest('.card-note-icon')){openRound(idx);return;}openRound(idx);}));
 }
 const SUPABASE_URL='https://yumqgvabwmekqvqwxldt.supabase.co';
@@ -969,7 +1015,8 @@ function openWarmup(index){warmupRide=rides[index];if(!warmupRide)return;warmupS
 document.querySelectorAll('.warmup-choices button').forEach(b=>b.onclick=()=>{warmupSelected=Number(b.dataset.mins);document.querySelectorAll('.warmup-choices button').forEach(x=>x.classList.toggle('active',x===b));$('warmupResult').textContent=minutesBefore(warmupRide.time,warmupSelected);});
 $('closeWarmup').onclick=()=>$('warmupSheet').close();$('warmupSheet').addEventListener('click',e=>{if(e.target===$('warmupSheet'))$('warmupSheet').close();});
 $('saveWarmup').onclick=async()=>{if(!warmupRide)return;const btn=$('saveWarmup');btn.disabled=true;btn.textContent='Saving…';const payload={round_key:roundKey(warmupRide),show_key:SHOW_KEY,horse:warmupRide.horse,rider:warmupRide.rider,warmup_minutes:warmupSelected,updated_at:new Date().toISOString()};const {error}=await sb.from('round_plans').upsert(payload,{onConflict:'round_key'});btn.disabled=false;btn.textContent='Save';if(error){alert('Could not save the warm-up time. Please try again.');console.error(error);return;}planCache.set(roundKey(warmupRide),warmupSelected);$('warmupSheet').close();render();};
-async function openRound(index){selectedRide=rides[index];if(!selectedRide)return;const x=selectedRide;$('roundSheetTitle').textContent=`${x.horse} · ${x.rider}`;$('roundSheetMeta').textContent=x.status==='complete'?'Completed round':`Round ${x.time}`;const course=courseTimesFor(x);$('classStartInput').value=course.classStart||'';$('courseWalkInput').value=course.courseWalk||'';$('saveCourseTimes').textContent='Save class & course walk times';$('roundSheet').showModal();await loadNotes();}
+async function openRound(index){selectedRide=rides[index];if(!selectedRide)return;const x=selectedRide;$('roundSheetTitle').textContent=`${x.horse} · ${x.rider}`;$('roundSheetMeta').textContent=x.status==='complete'?'Completed round':`Round ${x.time}`;const course=courseTimesFor(x);$('classStartInput').value=course.classStart||'';$('courseWalkInput').value=course.courseWalk||'';$('saveCourseTimes').textContent='Save class start';$('roundSheet').showModal();await loadNotes();}
+$('classStartInput').addEventListener('input',()=>{$('courseWalkInput').value=$('classStartInput').value?minutesBefore($('classStartInput').value,15):'';});
 $('saveCourseTimes').onclick=saveCourseTimes;
 $('closeRoundSheet').onclick=()=>$('roundSheet').close();$('roundSheet').addEventListener('click',e=>{if(e.target===$('roundSheet'))$('roundSheet').close();});
 async function loadNotes(){if(!selectedRide)return;$('noteList').innerHTML='<div class="sheet-muted">Loading shared notes…</div>';const {data,error}=await sb.from('round_notes').select('id,author_name,note,created_at').eq('show_key',SHOW_KEY).eq('round_key',roundKey(selectedRide)).order('created_at',{ascending:true});if(error){$('noteList').innerHTML='<div class="sheet-muted">Could not load shared notes.</div>';return;}$('noteList').innerHTML=(data||[]).length?(data||[]).map(n=>`<div class="note" data-note-id="${n.id}"><p>${esc(n.note)}</p><small>${esc(n.author_name||'Team')} · ${new Date(n.created_at).toLocaleString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}</small><button class="note-menu" type="button" aria-label="Note options">⋮</button></div>`).join(''):'<div class="sheet-muted">No notes yet for this round.</div>';document.querySelectorAll('.note-menu').forEach(btn=>btn.onclick=e=>{e.stopPropagation();document.querySelectorAll('.note-delete-action').forEach(x=>x.remove());const card=btn.closest('.note');const del=document.createElement('button');del.type='button';del.className='note-delete-action';del.textContent='Delete note';del.onclick=()=>askDeleteNote(card.dataset.noteId);card.appendChild(del);});}
