@@ -765,7 +765,20 @@ html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(
   outline-offset:3px !important;
 }
 </style>
-<style id="showviva-compact-card-test">#cards .compact-ride{display:block;position:relative;padding:17px 18px 13px;border-radius:20px;margin-bottom:12px;min-width:0}#cards .compact-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:4px}#cards .compact-rider{font:700 11px/1.3 system-ui,sans-serif;letter-spacing:.07em;text-transform:uppercase;color:#687587}#cards .compact-top .card-note-icon{position:relative;flex:none;margin:0;width:43px;height:43px}#cards .compact-horse{display:block;font-size:clamp(23px,6vw,31px);line-height:1.16;color:#1b2b44;margin:0 0 5px}#cards .compact-class{font-size:13px;line-height:1.4;color:#617080;font-weight:600;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;margin:0 0 15px}#cards .compact-times{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:stretch;margin:0 0 12px}#cards .compact-round,#cards .compact-warm{min-width:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:11px 12px;border-radius:12px}#cards .compact-round{background:#f4f5f7}#cards .compact-round small,#cards .compact-warm small{font:700 10px/1.3 system-ui,sans-serif;letter-spacing:.08em}#cards .compact-round small{color:#637083}#cards .compact-round span{font-size:clamp(25px,7vw,35px);line-height:1.15;font-weight:750;color:#1b2b44}#cards .compact-warm{width:100%;height:auto;margin:0;border:0;background:#fff4d9;color:#806735;text-align:left;cursor:pointer}#cards .compact-warm span{font-size:clamp(25px,7vw,35px);line-height:1.15;font-weight:750}#cards .compact-meta{display:flex;justify-content:space-between;gap:10px;color:#617080;font-size:12px;font-weight:600;margin-bottom:7px}#cards .compact-arena{font-size:12px;color:#617080;line-height:1.4;margin-bottom:12px}#cards .compact-footer{border-top:1px solid #e9e6df;padding-top:10px;text-align:right}#cards .compact-footer a{color:#1b2b44;font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:3px}#cards .compact-ride.complete .compact-round span{font-size:19px}@media(max-width:360px){#cards .compact-ride{padding:14px}#cards .compact-times{gap:7px}#cards .compact-round,#cards .compact-warm{padding:10px}}</style>
+<style id="showviva-compact-card-refinement">
+/* Original compact side-by-side layout retained. Only hierarchy and spacing refined. */
+.ride{grid-template-columns:150px minmax(0,1fr)!important;gap:13px!important}
+.ride .time{font-size:39px!important;white-space:nowrap;letter-spacing:-.035em}
+.round-approx{font:italic 12px/1.3 Georgia,serif;color:#697689;text-align:center;margin-top:3px}
+.ride .warmup-pill{font-size:12px!important;padding:8px 9px!important;white-space:nowrap;max-width:100%;cursor:pointer}
+.ride .details{padding-right:25px!important}
+.ride .details .class-start{display:block!important;color:#566579;font-size:13px;margin-top:9px;line-height:1.35}
+.ride .details .class-start b{color:#1b2b44}
+.ride .details .draw{display:block!important;background:none!important;padding:0!important;margin-top:4px;color:#566579;font-size:12px}
+.ride .card-note-icon{width:29px!important;height:29px!important;padding:3px!important}
+.ride .card-note-icon svg{width:23px!important;height:23px!important}
+@media(max-width:520px){.ride{grid-template-columns:120px minmax(0,1fr)!important;gap:10px!important}.ride .time{font-size:33px!important}.ride .warmup-pill{font-size:11px!important;padding:7px 5px!important}.ride .details{padding-right:22px!important}}
+</style>
 </head>
 <body>
 <div class="app">
@@ -804,11 +817,11 @@ html:not(.interactive) .app:has(#horse option[value="Monmore Var"]:checked):has(
 
     <div class="filter-card">
       <label for="horse">Horse</label>
-      <select id="horse"><option value="">All horses</option><option value="KSH Queen Ester">KSH Queen Ester</option><option value="Rio Seven">Rio Seven</option><option value="Monmore Var">Monmore Var</option><option value="Summer Escape">Summer Escape</option><option value="WF ANNIE">WF ANNIE</option><option value="QAUNTA COSTA JS">QAUNTA COSTA JS</option><option value="Pardento">Pardento</option><option value="Special Delivery 27">Special Delivery 27</option></select>
+      <select id="horse"><option value="">My horses</option><option value="KSH Queen Ester">KSH Queen Ester</option><option value="Rio Seven">Rio Seven</option><option value="Monmore Var">Monmore Var</option><option value="Summer Escape">Summer Escape</option><option value="WF ANNIE">WF ANNIE</option><option value="QAUNTA COSTA JS">QAUNTA COSTA JS</option><option value="Pardento">Pardento</option><option value="Special Delivery 27">Special Delivery 27</option></select>
     </div>
     <div class="filter-card">
       <label for="rider">Rider</label>
-      <select id="rider"><option value="">All riders</option><option value="Rikki Gradley">Rikki Gradley</option><option value="Claire Hansen">Claire Hansen</option><option value="Olivia White">Olivia White</option></select>
+      <select id="rider"><option value="">My riders</option><option value="Rikki Gradley">Rikki Gradley</option><option value="Claire Hansen">Claire Hansen</option><option value="Olivia White">Olivia White</option></select>
     </div>
     <div class="filter-card">
       <label for="ring">Ring</label>
@@ -894,8 +907,8 @@ function refreshFilters(){
   const horses=[...new Set(rides.map(x=>x.horse))].sort();
   const riders=[...new Set(rides.map(x=>x.rider))].sort();
   const rings=[...new Set(rides.map(x=>x.ring))].sort();
-  fill('horse','All horses',horses);
-  fill('rider','All riders',riders);
+  fill('horse','My horses',horses);
+  fill('rider','My riders',riders);
   fill('ring','All arenas',rings);
   if(horses.includes(current.horse)) $('horse').value=current.horse;
   if(riders.includes(current.rider)) $('rider').value=current.rider;
@@ -936,7 +949,7 @@ $('days').querySelectorAll('button').forEach(b=>b.onclick=()=>{activeDay=Number(
 let list=currentList();
 $('viewTitle').textContent=`${names[activeDay]} ${14+activeDay} September`;
 $('count').textContent=`${list.length} rides · ${new Set(list.map(x=>x.horse)).size} horses`;
-$('cards').innerHTML=list.length?list.map(x=>{const complete=x.status==='complete';const idx=rides.indexOf(x);const mins=planCache.get(roundKey(x))??20;const warm=(!complete&&/^\d{1,2}:\d{2}$/.test(x.time||''))?minutesBefore(x.time,mins):'';const notes=noteCountCache.get(roundKey(x))||0;const notebook=`<svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="5" width="19" height="23" rx="2"></rect><path d="M12 5v23M5 9h6M5 14h6M5 19h6M5 24h6"></path></svg>`;return `<article class="ride compact-ride ${complete?'complete':''}" data-ride-index="${idx}" data-horse="${esc(x.horse)}" data-rider="${esc(x.rider)}" data-ring="${esc(x.ring)}"><div class="compact-top"><span class="compact-rider">${esc(x.rider)}</span><button class="card-note-icon" type="button" aria-label="Open shared notes for ${esc(x.horse)}">${notebook}${notes?`<span class="note-count" aria-label="${notes} shared ${notes===1?'note':'notes'}">${notes>99?'99+':notes}</span>`:''}</button></div><strong class="compact-horse">${esc(x.horse)}</strong>${x.className?`<div class="class-name compact-class">${esc(x.className)}</div>`:''}<div class="compact-times"><div class="compact-round"><small>${complete?'STATUS':'ROUND TIME'}</small><span>${complete?'✓ Completed':esc(x.time)}</span></div>${warm?`<button class="warmup-pill compact-warm" type="button" aria-label="Change warm-up time"><small>WARM-UP</small><span>${esc(warm)}</span></button>`:''}</div><div class="compact-meta"><span>${x.order?`Draw ${esc(x.order)}`:''}</span><span>${x.classStart?`Class starts ${esc(x.classStart)}`:''}</span></div><div class="compact-arena">${esc(!x.ring?'Arena TBC':(x.ring==='Indoor'?'Equine America Indoor Championship Arena':x.ring.replace('Outdoor ','Outdoor Arena ')))}</div><div class="compact-footer"><a href="${esc(x.url)}" target="_blank" rel="noopener">${complete?'Results ↗':'Class details ↗'}</a></div></article>`;}).join(''):`<div class="empty">${activeDay>1?'This day’s schedule has not been added yet.':'No matching entries were found.'}</div>`;
+$('cards').innerHTML=list.length?list.map(x=>{const complete=x.status==='complete';const idx=rides.indexOf(x);const mins=planCache.get(roundKey(x))??20;const warm=(!complete&&/^\d{1,2}:\d{2}$/.test(x.time||''))?minutesBefore(x.time,mins):'';const notes=noteCountCache.get(roundKey(x))||0;const notebook=`<svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="5" width="19" height="23" rx="2"></rect><path d="M12 5v23M5 9h6M5 14h6M5 19h6M5 24h6"></path></svg>`;return `<article class="ride ${complete?'complete':''}" data-ride-index="${idx}" data-horse="${esc(x.horse)}" data-rider="${esc(x.rider)}" data-ring="${esc(x.ring)}"><div><div class="time">${complete?'✓':esc(x.time)}</div>${!complete&&/^\d{1,2}:\d{2}$/.test(x.time||'')?'<div class="round-approx">Approx.</div>':''}${warm?`<button class="warmup-pill" type="button" aria-label="Change warm-up time">Warm up ${esc(warm)}</button>`:''}</div><div class="details"><strong>${esc(x.horse)}</strong>${x.className?`<div class="class-name">${esc(x.className)}</div>`:''}<div class="rider">${esc(x.rider)}</div><div class="arena">${esc(!x.ring?'Arena TBC':(x.ring==='Indoor'?'Equine America Indoor Championship Arena':x.ring.replace('Outdoor ','Outdoor Arena ')))}</div>${(x.classStart||x.classStartTime||x.class_start||x.class_start_time)?`<div class="class-start">Class starts <b>${esc(x.classStart||x.classStartTime||x.class_start||x.class_start_time)}</b></div>`:''}${x.order?`<div class="draw">Draw ${esc(x.order)}</div>`:''}<div class="card-bottom"><div class="card-actions"><button class="card-note-icon" type="button" aria-label="Open shared notes for ${esc(x.horse)}">${notebook}${notes?`<span class="note-count" aria-label="${notes} shared ${notes===1?'note':'notes'}">${notes>99?'99+':notes}</span>`:''}</button><a href="${esc(x.url)}" target="_blank" rel="noopener">${complete?'Results ↗':'Class details ↗'}</a></div></div></div></article>`;}).join(''):`<div class="empty">${activeDay>1?'This day’s schedule has not been added yet.':'No matching entries were found.'}</div>`;
 $('cards').querySelectorAll('.ride').forEach(card=>card.addEventListener('click',e=>{const idx=Number(card.dataset.rideIndex);if(e.target.closest('a'))return;if(e.target.closest('.warmup-pill')){openWarmup(idx);return;}if(e.target.closest('.card-note-icon')){openRound(idx);return;}openRound(idx);}));
 }
 const SUPABASE_URL='https://yumqgvabwmekqvqwxldt.supabase.co';
