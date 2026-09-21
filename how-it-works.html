@@ -1,79 +1,25 @@
 <!doctype html>
-<html lang="en-GB">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#10243c">
-  <meta name="description" content="See how ShowViva creates your personalised equestrian show planner in five simple steps — from choosing your plan to sharing it with your team.">
-  <title>How It Works | ShowViva</title>
-  <style>
-    :root{--navy:#061f30;--navy-soft:#263a50;--cream:#f6f1e8;--gold:#dda94e;--gold-pale:#f0c36c;--white:#fffdf8;--line:#dfcba5}
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:var(--cream);color:var(--navy);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.6}
-    a{color:inherit}
-    .wrap{width:min(1080px,calc(100% - 40px));margin:auto}
-    .header{background:var(--navy);border-bottom:1px solid rgba(221,169,78,.3)}
-    .nav{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .brand{text-decoration:none;display:flex;align-items:center;gap:11px;color:var(--white)}
-    .crest{display:none}
-    .brandname{font:700 39px Georgia,serif;letter-spacing:-1px;line-height:1.1}
-    .brandname span{color:var(--gold)}
-    .tagline{color:var(--gold-pale);font-size:9px;text-transform:uppercase;letter-spacing:.27em;margin-top:9px}
-    .navlinks{display:flex;align-items:center;gap:26px}
-    .navlinks a{text-decoration:none;color:var(--white);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
-    .navlinks a[aria-current="page"]{color:var(--gold-pale);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:8px}
-    .navlinks .button{color:var(--navy)}
-    .button{display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;background:linear-gradient(135deg,#f3ca78,#dda94e);color:var(--navy);padding:16px 27px;border-radius:999px;font:700 17px Georgia,serif;transition:background .15s ease,transform .15s ease}
-    .button:hover{background:#d8bb85;transform:translateY(-1px)}
-    a:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
-    .intro{text-align:center;padding:82px 0 56px}
-    .eyebrow{color:#9a773f;font-size:11px;letter-spacing:.23em;font-weight:750;text-transform:uppercase}
-    h1,h2,h3,p{margin-top:0}
-    h1,h2,h3{font-family:Georgia,'Times New Roman',serif;color:var(--navy);font-weight:500}
-    h1{font-size:clamp(44px,7vw,79px);line-height:1.09;letter-spacing:-.045em;margin:15px 0 20px}
-    h1 span{color:#9a773f}
-    .lede{max-width:650px;margin:0 auto;color:var(--navy-soft);font-size:clamp(16px,2.3vw,19px)}
-    .rule{width:64px;height:2px;background:var(--gold);margin:30px auto 0}
-    .steps{padding:8px 0 87px}
-    .step{display:grid;grid-template-columns:100px 1fr;gap:26px;padding:34px 38px;margin:0 0 17px;background:var(--white);border:1px solid var(--line);border-radius:18px;box-shadow:0 5px 24px rgba(16,36,60,.035)}
-    .number{display:grid;place-items:center;align-self:start;width:76px;height:76px;background:#f6eddb;border:1px solid var(--gold);border-radius:50%;font:500 34px Georgia,serif;color:var(--navy)}
-    .step h2{font-size:clamp(27px,4vw,38px);line-height:1.18;margin:3px 0 12px;letter-spacing:-.025em}
-    .step p{font-size:16px;color:var(--navy-soft);max-width:715px;margin-bottom:0}
-    .step small{display:block;color:#9a773f;font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;margin-bottom:9px}
-    .finish{background:#f0e5d0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center;padding:70px 20px 77px}
-    .finish h2{font-size:clamp(38px,6vw,60px);line-height:1.1;margin:12px 0 13px}
-    .finish p{color:var(--navy-soft);margin:0 auto 29px;font-size:17px}
-    .footer{background:var(--navy);padding:27px 0;color:var(--white)}
-    .footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:15px;font-size:12px}
-    .footer a{color:var(--gold-pale);text-decoration:none}
-    @media(max-width:730px){.nav{min-height:75px;align-items:flex-start;padding:14px 0;flex-direction:column}.navlinks{width:100%;gap:14px;flex-wrap:wrap}.navlinks a{font-size:12px}.navlinks .button{padding:9px 13px}.intro{padding:65px 0 42px}.steps{padding-bottom:57px}.step{grid-template-columns:1fr;gap:11px;padding:26px 23px}.number{height:57px;width:57px;font-size:27px}.footer .wrap{flex-direction:column;text-align:center}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#061f30">
+<title>How It Works | ShowViva</title>
+<meta name="description" content="Discover how ShowViva helps you and your team plan ahead and stay organised with one personalised, interactive show planner.">
+<style>
+:root{--navy:#061f30;--cream:#f6f1e8;--gold:#dda94e;--ink:#092438;--serif:Georgia,'Times New Roman',serif;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans)}a,button{font:inherit}.wrap{width:min(1100px,calc(100% - 40px));margin:auto}
+header{background:var(--navy);color:#fff;border-bottom:1px solid rgba(221,169,78,.3)}.nav{min-height:104px;display:flex;align-items:center;justify-content:space-between;gap:22px}.brand{color:white;text-decoration:none}.wordmark{font:700 39px/1 var(--serif)}.wordmark span{color:var(--gold)}.tagline{font-size:9px;letter-spacing:.27em;margin-top:9px;text-transform:uppercase}.navlinks{display:flex;align-items:center;gap:25px}.navlinks a{color:white;text-decoration:none;text-transform:uppercase;font-size:12px;letter-spacing:.08em}.cta{display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f3ca78,#dda94e);color:#132638!important;text-decoration:none;padding:16px 27px;border-radius:999px;font:700 17px var(--serif)!important;text-transform:none!important;letter-spacing:normal!important}.menu{display:none;background:none;color:#fff;border:0;font-size:30px;cursor:pointer}.drawer{display:none;padding:0 0 24px}.drawer.open{display:grid;gap:18px}.drawer a{color:white;text-decoration:none;font-size:13px;text-transform:uppercase;letter-spacing:.1em}
+.hero{background:linear-gradient(135deg,var(--navy),#08293c);color:#fff;padding:82px 0 85px;text-align:center}.eyebrow{color:var(--gold);font-size:12px;letter-spacing:.25em;text-transform:uppercase;font-weight:700}.hero h1{font:500 clamp(46px,7vw,85px)/1.03 var(--serif);letter-spacing:-.035em;margin:23px auto 24px;max-width:1000px}.hero h1 span{color:#f0c36c}.hero p{font-size:clamp(18px,2.3vw,22px);line-height:1.6;max-width:770px;margin:auto;color:#edf1f3}
+.steps{padding:78px 0 90px}.steps h2{text-align:center;font:500 clamp(40px,5vw,60px) var(--serif);margin:0 0 42px}.step-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.step{background:#fffdf8;border:1px solid #e1d4ba;border-radius:20px;padding:33px 28px 38px}.number{color:#ae823a;font:600 17px var(--serif)}.step h3{font:500 31px/1.15 var(--serif);margin:22px 0 15px}.step p{font-size:16px;line-height:1.65;margin:0}.end{text-align:center;padding:0 20px 88px}.end .cta{margin-top:6px}footer{background:#041722;color:#d2dadd;padding:35px 0}.footer{display:flex;justify-content:space-between;gap:20px;font-size:11px;letter-spacing:.15em;text-transform:uppercase}.footer a{color:#d2dadd}
+@media(max-width:800px){.wrap{width:calc(100% - 32px)}.nav{min-height:95px}.wordmark{font-size:35px}.tagline{font-size:8px}.navlinks{display:none}.menu{display:block}.hero{padding:63px 0 69px}.steps{padding:55px 0 65px}.step-grid{grid-template-columns:1fr;gap:15px}.step{padding:25px}.step h3{margin:14px 0 10px}.end{padding-bottom:65px}.footer{flex-direction:column;text-align:center;line-height:1.8}}
+</style>
 </head>
 <body>
-  <header class="header">
-    <div class="wrap nav">
-      <a class="brand" href="/" aria-label="ShowViva home"><div class="crest" aria-hidden="true">SV</div><div><div class="brandname">Show<span>Viva</span></div><div class="tagline">Your equestrian show planner</div></div></a>
-      <nav class="navlinks" aria-label="Main navigation"><a href="/">Home</a><a href="/how-it-works.html" aria-current="page">How it works</a><a href="/get/">Pricing</a><a href="/about.html">About</a><a class="button" href="/get/">Get ShowViva →</a></nav>
-    </div>
-  </header>
-  <main>
-    <section class="intro wrap">
-      <div class="eyebrow">Your show. Your view.</div>
-      <h1>How <span>ShowViva</span> works.</h1>
-      <p class="lede">Your show, organised in five simple steps.</p>
-      <div class="rule" aria-hidden="true"></div>
-    </section>
-    <section class="steps wrap" aria-label="The five steps">
-      <article class="step"><div class="number" aria-hidden="true">01</div><div><small>First, choose your plan</small><h2>Choose your ShowViva.</h2><p>Pick a plan based on your number of horses.</p></div></article>
-      <article class="step"><div class="number" aria-hidden="true">02</div><div><small>Tell us the details</small><h2>Tell us about your show.</h2><p>Add your show, horses and riders. Need it sooner? Leave us a note.</p></div></article>
-      <article class="step"><div class="number" aria-hidden="true">03</div><div><small>Secure checkout</small><h2>Make your payment.</h2><p>Pay securely after submitting your details.</p></div></article>
-      <article class="step"><div class="number" aria-hidden="true">04</div><div><small>We do the organising</small><h2>We create your personalised planner.</h2><p>Your personalised planner link will arrive within 24 hours, with available show details. Times will be added as soon as officially published.</p></div></article>
-      <article class="step"><div class="number" aria-hidden="true">05</div><div><small>Everyone stays in the know</small><h2>Share it with your team.</h2><p>One link for your whole team, before and during the show.</p></div></article>
-    </section>
-    <section class="finish"><div class="eyebrow">One personalised planner. Your whole show.</div><h2>Show days, made simple.</h2><p>Less searching. Less organising. More focus on the horses.</p><a class="button" href="/get/">Get ShowViva →</a></section>
-  </main>
-  <footer class="footer"><div class="wrap"><span>© 2026 ShowViva. All rights reserved.</span><span><a href="/">Home</a> · <a href="/get/">Choose your ShowViva</a> · <a href="/about.html">About</a></span></div></footer>
-</body>
-</html>
+<header><div class="wrap nav"><a class="brand" href="/"><div class="wordmark">Show<span>Viva</span></div><div class="tagline">Equestrian show days, simplified</div></a><nav class="navlinks"><a href="/about.html">About</a><a href="/how-it-works.html" aria-current="page">How it works</a><a href="/#contact">Contact</a><a class="cta" href="mailto:hello@showviva.co.uk?subject=ShowViva%20-%20Register%20interest">Register Interest →</a></nav><button class="menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">☰</button></div><nav class="drawer wrap" id="mobile-nav"><a href="/about.html">About ShowViva</a><a href="/how-it-works.html">How it works</a><a href="/#contact">Contact</a><a href="mailto:hello@showviva.co.uk?subject=ShowViva%20-%20Register%20interest">Register Interest →</a></nav></header>
+<main><section class="hero"><div class="wrap"><div class="eyebrow">How it works</div><h1>Arrive prepared.<br><span>Compete organised.</span></h1><p>ShowViva is your personalised, interactive show planner, helping you and your team prepare in advance and stay organised throughout the competition.</p></div></section>
+<section class="steps"><div class="wrap"><h2>How it works</h2><div class="step-grid"><article class="step"><div class="number">01</div><h3>Your show, your plan</h3><p>A personalised view of the competition, built around you and your team.</p></article><article class="step"><div class="number">02</div><h3>Prepare before you arrive</h3><p>Bring your show plans together, anticipate what’s ahead and coordinate everyone involved.</p></article><article class="step"><div class="number">03</div><h3>Stay organised throughout</h3><p>Use one interactive, shareable planner to keep your team connected from preparation to the final round.</p></article></div></div></section>
+<section class="end"><a class="cta" href="mailto:hello@showviva.co.uk?subject=ShowViva%20-%20Register%20interest">Register Interest →</a></section></main>
+<footer id="contact"><div class="wrap footer"><span>Your show. Your view.</span><span><strong>Contact ShowViva</strong><br><a href="mailto:hello@showviva.co.uk">hello@showviva.co.uk</a></span><span>ShowViva</span></div></footer>
+<script>const button=document.querySelector('.menu'),drawer=document.querySelector('.drawer');button.addEventListener('click',()=>{const open=drawer.classList.toggle('open');button.setAttribute('aria-expanded',String(open));button.setAttribute('aria-label',open?'Close menu':'Open menu')});</script>
+</body></html>
