@@ -307,7 +307,138 @@ dialog textarea{width:100%;min-height:112px;border:1px solid var(--line);border-
  .arena,.draw{font-size:12px}
 }
 @media(max-width:380px){.ride{grid-template-columns:146px minmax(0,1fr)}.roundtime{font-size:31px}.pill b{font-size:12px}}
-.date{display:flex;flex-direction:column;align-items:center;justify-content:center;text-decoration:none}.date small{display:block}</style>
+
+/* Calm test iteration: reduce competing surfaces; preserve markup, days and behaviour. */
+body{background:#fcfbf8}
+.header{box-shadow:none}
+.wrap{max-width:820px}
+.hero{background:#fff;border:1px solid #e9e6df;box-shadow:none;border-radius:18px;margin-bottom:22px}
+.hero-copy{padding:19px 20px 14px}
+.hero h1{font-size:clamp(34px,5.5vw,46px);margin-bottom:7px}
+.kicker{margin-bottom:7px;color:#9e8550}
+.subtitle{font-size:clamp(14px,2vw,17px);line-height:1.35;color:#667286}
+.meta-row{margin-top:10px}
+.meta-chip{background:transparent;padding:0;font-size:12px;color:#7a8494}
+.date{min-height:66px;font-size:19px;font-weight:400}
+.date small{font-size:14px;margin-top:3px}
+.date.active{background:#f3ebd8;color:#18263d;font-weight:700}
+.filters-panel{margin-bottom:27px}
+.filterbar{gap:9px}
+.filtercell{border:1px solid #e6e3de;border-radius:11px;background:#fff}
+.filtercell select{font-size:13px;color:#303d53;padding:12px 28px 12px 11px}
+.dayheading{margin-bottom:14px}
+.dayheading h2{font-size:clamp(26px,4vw,33px);font-weight:400;letter-spacing:-.4px}
+.dayheading span{font-size:12px;color:#8b93a0}
+.ride{grid-template-columns:170px minmax(0,1fr);border:1px solid #e7e8eb;border-radius:15px;box-shadow:none;margin-bottom:13px;background:#fff}
+.time{border-left:3px solid #cdb478;padding:13px 13px 12px 14px;gap:0}
+.roundlabel{font-size:9px;letter-spacing:1.8px;color:#8b94a1}
+.roundtime{font-size:36px;line-height:1.1;margin:3px 0 11px;font-weight:400}
+.pill,.pill.warm,.pill.start{background:transparent;border-radius:0;padding:5px 0;margin:0;line-height:1.25;font-size:11px;color:#6d7889;white-space:nowrap}
+.pill.start{border-top:1px solid #eeece7}
+.pill b{font-size:14px;font-weight:700;color:#223149}
+.info{margin:12px 0 10px;padding:0 15px 22px 17px}
+.horse{font-size:22px;font-weight:700;margin-bottom:5px;line-height:1.13;padding-right:26px}
+.classname{font:400 12px/1.35 Arial,Helvetica,sans-serif;color:#7b8595;margin-bottom:9px}
+.rider{font-size:14px;margin-bottom:7px;color:#25354e}
+.arena,.draw{font-size:12px;line-height:1.4;margin-bottom:1px;color:#7e8897}
+.details{right:13px;bottom:0;font-size:11px;color:#66748a}
+.notes{top:10px;right:10px;font-size:23px}
+.count{width:20px;height:20px;font-size:10px;top:-4px;right:-5px}
+@media(max-width:760px){
+  .hero{border-radius:16px;margin-bottom:17px}
+  .hero-copy{padding:14px 15px 13px}
+  .hero h1{font-size:clamp(30px,8vw,39px)}
+  .subtitle{font-size:12px}
+  .date{min-height:57px;font-size:17px}.date small{font-size:13px}
+  .filters-panel{margin-bottom:24px}
+  .filtercell select{font-size:12px;padding:11px 25px 11px 9px}
+  .dayheading h2{font-size:27px}
+  .ride{grid-template-columns:143px minmax(0,1fr);border-radius:13px;margin-bottom:12px}
+  .time{padding:12px 9px 11px 10px;border-left-width:3px}
+  .roundtime{font-size:31px;margin:4px 0 9px}
+  .pill,.pill.warm,.pill.start{font-size:10px;padding:5px 0;gap:4px}
+  .pill b{font-size:13px}
+  .info{margin:11px 0;padding:0 10px 22px 12px}
+  .horse{font-size:19px;margin-bottom:5px}
+  .classname{font-size:11px;margin-bottom:7px}
+  .rider{font-size:13px;margin-bottom:6px}
+  .arena,.draw{font-size:11px}
+  .details{right:10px;font-size:11px}
+  .notes{top:9px;right:9px;font-size:21px}
+}
+@media(max-width:380px){
+  .ride{grid-template-columns:139px minmax(0,1fr)}
+  .pill,.pill.warm,.pill.start{font-size:9.5px}
+  .pill b{font-size:12px}
+  .roundtime{font-size:30px}
+  .horse{font-size:18px}
+}
+
+/* ShowViva elevated TEST: restrained editorial hierarchy, original interactions unchanged. */
+:root{--cream:#faf9f5;--navy:#18263d;--gold:#d8b974}
+body{background:var(--cream)}
+.hero{background:#fffefa;border:1px solid #e9e5da;border-radius:19px;margin-bottom:22px;overflow:hidden}
+.hero-copy{padding:21px 20px 17px;border-top:3px solid #c9ad73}
+.kicker{font-size:10px;letter-spacing:2.7px;color:#a48a55;margin-bottom:9px}
+.hero h1{font-size:clamp(36px,5.5vw,48px);line-height:1.08;letter-spacing:-1.2px;margin-bottom:9px}
+.subtitle{font:400 clamp(14px,1.9vw,17px)/1.45 Georgia,serif;color:#596579}
+.meta-row{margin-top:11px}.meta-chip{font-size:12px;color:#7b8490}
+.dates{border-top:1px solid #eee9de}
+.date{min-height:65px;font:400 19px/1.1 Georgia,serif;background:#fffefa}
+.date small{font-size:13px;margin-top:5px;color:#657086}
+.date.active{background:#f2ead7;font-weight:700;box-shadow:inset 0 -3px #c9ad73}
+.date.active small{color:#18263d}
+.filters-panel{margin:0 0 28px}
+.filterbar{gap:9px}
+.filtercell{background:#fffefa;border:1px solid #dfdfdc;border-radius:10px;box-shadow:none}
+.filtercell select{font-size:13px;font-weight:400;color:#2c3951;padding:12px 28px 12px 12px}
+.filtercell:focus-within{border-color:#bda05e;box-shadow:0 0 0 2px rgba(216,185,116,.12)}
+.dayheading{margin:0 0 15px}
+.dayheading h2{font:400 clamp(28px,4vw,35px)/1.12 Georgia,serif;color:#18263d;letter-spacing:-.5px}
+.dayheading span{font-size:12px;color:#7d8998}
+.ride{grid-template-columns:170px minmax(0,1fr);border:1px solid #e8e6df;border-radius:15px;box-shadow:0 4px 15px rgba(24,38,61,.025);margin-bottom:15px}
+.time{border-left:3px solid #ceb782;padding:14px 13px 13px 14px;gap:0}
+.roundlabel{font-size:9px;color:#8a93a0;letter-spacing:1.8px}
+.roundtime{font:400 37px/1.08 Georgia,serif;margin:5px 0 11px;color:#18263d;font-variant-numeric:tabular-nums}
+.pill,.pill.warm,.pill.start{background:transparent;padding:5px 0;line-height:1.25;font-size:11px;color:#76808d;gap:4px}
+.pill.start{border-top:1px solid #eeeae2}
+.pill b{font-size:15px;letter-spacing:0;color:#18263d;font-weight:700;font-variant-numeric:tabular-nums}
+.info{margin:13px 0 12px;padding:0 16px 23px 20px;border-left:1px solid #edece7}
+.horse{font-size:23px;font-weight:700;line-height:1.14;margin:0 0 6px;padding-right:30px}
+.classname{font:400 12px/1.4 Arial,Helvetica,sans-serif;color:#687588;margin-bottom:10px}
+.rider{font-size:15px;color:#25354e;margin-bottom:8px}
+.arena,.draw{font-size:12px;color:#788595;line-height:1.4}
+.details{right:14px;bottom:0;font-size:11px;color:#596d86;text-underline-offset:3px}
+.notes{top:10px;right:10px;font-size:22px}
+.count{width:20px;height:20px;font-size:10px;top:-4px;right:-5px}
+@media(max-width:760px){
+ .hero-copy{padding:17px 16px 15px}
+ .hero h1{font-size:clamp(33px,8.7vw,42px)}
+ .subtitle{font-size:13px;line-height:1.38}
+ .date{min-height:60px;font-size:18px}.date small{font-size:13px}
+ .filters-panel{margin-bottom:26px}
+ .filtercell select{font-size:12px;padding:12px 26px 12px 10px}
+ .dayheading h2{font-size:clamp(27px,7vw,34px)}
+ .ride{grid-template-columns:144px minmax(0,1fr);margin-bottom:14px}
+ .time{padding:13px 10px 12px 10px}
+ .roundtime{font-size:33px;margin:5px 0 10px}
+ .pill,.pill.warm,.pill.start{font-size:10px;padding:5px 0;gap:3px}
+ .pill b{font-size:13px}
+ .info{margin:12px 0 11px;padding:0 10px 22px 13px}
+ .horse{font-size:20px;margin-bottom:6px}
+ .classname{font-size:11px;margin-bottom:8px}
+ .rider{font-size:13px;margin-bottom:7px}
+ .arena,.draw{font-size:11px}
+ .details{right:10px;font-size:11px}
+}
+@media(max-width:380px){
+ .ride{grid-template-columns:140px minmax(0,1fr)}
+ .time{padding-left:9px;padding-right:9px}
+ .roundtime{font-size:31px}
+ .pill b{font-size:12px}
+ .horse{font-size:18px}
+}
+</style>
 </head>
 <body>
 <header class="header">
@@ -329,7 +460,7 @@ dialog textarea{width:100%;min-height:112px;border:1px solid var(--line);border-
         <span class="meta-chip">16–18 October 2026</span>
       </div>
     </div>
-    <div class="dates" id="dates"><a class="date " href="friday.html" data-day="0">Fri<small>16 Oct</small></a><a class="date active" href="index.html" data-day="1">Sat<small>17 Oct</small></a><a class="date " href="sunday.html" data-day="2">Sun<small>18 Oct</small></a></div>
+    <div class="dates" id="dates"><button class="date" data-day="0">Fri<small>16 Oct</small></button><button class="date active" data-day="1">Sat<small>17 Oct</small></button><button class="date" data-day="2">Sun<small>18 Oct</small></button></div>
   </section>
 
   <section class="filters-panel">
@@ -370,7 +501,7 @@ dialog textarea{width:100%;min-height:112px;border:1px solid var(--line);border-
     <span id="summary">4 rides · 3 horses</span>
   </div>
 
-  <section id="rides"><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">08:30</div><div class="pill warm"><span>Warm up</span><b>08:05</b></div><div class="pill start"><span>Class starts</span><b>08:30</b></div></div><div class="info"><div class="horse">Summer Escape</div><div class="classname">CSI2* 1.35m Two Phase</div><div class="rider">Jodie Baker</div><div class="arena">International Arena</div><div class="draw">Draw 12 of 48</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" data-id="1-0" aria-label="Warm-up and notes for Summer Escape">▤<span class="count">2</span></button></div></article><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">10:15</div><div class="pill warm"><span>Warm up</span><b>09:50</b></div><div class="pill start"><span>Class starts</span><b>10:15</b></div></div><div class="info"><div class="horse">Autumn Jazz</div><div class="classname">CSI2* 1.40m Table A</div><div class="rider">Lucy Stranham</div><div class="arena">Main Arena</div><div class="draw">Draw 7 of 52</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" data-id="1-1" aria-label="Warm-up and notes for Autumn Jazz">▤<span class="count">1</span></button></div></article><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">12:20</div><div class="pill warm"><span>Warm up</span><b>11:55</b></div><div class="pill start"><span>Class starts</span><b>12:20</b></div></div><div class="info"><div class="horse">Chacco Iron</div><div class="classname">CSI2* 1.45m Grand Prix Qualifier</div><div class="rider">David Lock</div><div class="arena">International Arena</div><div class="draw">Draw 28 of 60</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" data-id="1-2" aria-label="Warm-up and notes for Chacco Iron">▤<span class="count">3</span></button></div></article><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">14:35</div><div class="pill warm"><span>Warm up</span><b>14:10</b></div><div class="pill start"><span>Class starts</span><b>14:35</b></div></div><div class="info"><div class="horse">Summer Escape</div><div class="classname">CSI2* 1.40m Accumulator</div><div class="rider">Jodie Baker</div><div class="arena">Outdoor Arena 2</div><div class="draw">Draw 5 of 44</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" data-id="1-3" aria-label="Warm-up and notes for Summer Escape">▤<span class="count">0</span></button></div></article></section>
+  <section id="rides"><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">08:30</div><div class="pill warm"><span>Warm up</span><b>08:05</b></div><div class="pill start"><span>Class starts</span><b>08:30</b></div></div><div class="info"><div class="horse">Summer Escape</div><div class="classname">CSI2* 1.35m Two Phase</div><div class="rider">Jodie Baker</div><div class="arena">International Arena</div><div class="draw">Draw 12 of 48</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" aria-label="Warm-up and notes for Summer Escape">▤<span class="count">2</span></button></div></article><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">10:15</div><div class="pill warm"><span>Warm up</span><b>09:50</b></div><div class="pill start"><span>Class starts</span><b>10:15</b></div></div><div class="info"><div class="horse">Autumn Jazz</div><div class="classname">CSI2* 1.40m Table A</div><div class="rider">Lucy Stranham</div><div class="arena">Main Arena</div><div class="draw">Draw 7 of 52</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" aria-label="Warm-up and notes for Autumn Jazz">▤<span class="count">1</span></button></div></article><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">12:20</div><div class="pill warm"><span>Warm up</span><b>11:55</b></div><div class="pill start"><span>Class starts</span><b>12:20</b></div></div><div class="info"><div class="horse">Chacco Iron</div><div class="classname">CSI2* 1.45m Grand Prix Qualifier</div><div class="rider">David Lock</div><div class="arena">International Arena</div><div class="draw">Draw 28 of 60</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" aria-label="Warm-up and notes for Chacco Iron">▤<span class="count">3</span></button></div></article><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">14:35</div><div class="pill warm"><span>Warm up</span><b>14:10</b></div><div class="pill start"><span>Class starts</span><b>14:35</b></div></div><div class="info"><div class="horse">Summer Escape</div><div class="classname">CSI2* 1.40m Accumulator</div><div class="rider">Jodie Baker</div><div class="arena">Outdoor Arena 2</div><div class="draw">Draw 5 of 44</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" aria-label="Warm-up and notes for Summer Escape">▤<span class="count">0</span></button></div></article></section>
 
   <p class="footer-note">Illustrative demonstration schedule · Confirm official timings with the organiser.</p>
 </main>
@@ -391,7 +522,6 @@ dialog textarea{width:100%;min-height:112px;border:1px solid var(--line);border-
 </dialog>
 
 <script>
-const dayFiles=['friday.html','index.html','sunday.html'];
 const days=[['Fri','16 Oct','Fri 16 October'],['Sat','17 Oct','Sat 17 October'],['Sun','18 Oct','Sun 18 October']];
 let selected=1,editing=null;
 const base=[
@@ -409,8 +539,8 @@ function shift(t,n){let [h,m]=t.split(':').map(Number);let x=(h*60+m+n+1440)%144
 const $=id=>document.getElementById(id);
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function render(){
-  $('dates').innerHTML=days.map((d,i)=>`<a class="date ${i===selected?'active':''}" href="${dayFiles[i]}" data-day="${i}">${d[0]}<small>${d[1]}</small></a>`).join('');
-  document.querySelectorAll('[data-day]').forEach(b=>b.onclick=e=>{e.preventDefault();selected=+b.dataset.day;render()});
+  $('dates').innerHTML=days.map((d,i)=>`<button class="date ${i===selected?'active':''}" data-day="${i}">${d[0]}<small>${d[1]}</small></button>`).join('');
+  document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>{selected=+b.dataset.day;render()});
   $('daytitle').textContent=days[selected][2];
   let rows=entries.filter(r=>r.day===selected&&(!$('horse').value||r.horse===$('horse').value)&&(!$('rider').value||r.rider===$('rider').value)&&(!$('ring').value||r.arena===$('ring').value));
   $('summary').textContent=rows.length+' rides · '+new Set(rows.map(r=>r.horse)).size+' horses';
