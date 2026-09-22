@@ -126,6 +126,100 @@ main,.tiles,.tile,.next,.field,.field input,.field select,.show-tools{min-width:
 #app.sv-view-show .delete-show{margin:24px auto 8px;padding:10px 15px;background:transparent;border:1px solid #e6d4d2;border-radius:11px;color:#7c4141;text-decoration:none;font:600 13px Arial,sans-serif}
 #app.sv-view-show .past-label{margin-top:14px}
 @media(min-width:640px){#app.sv-view-show form{padding:25px 30px 30px}#app.sv-view-show .show-journey{padding:25px 30px}}
+</style><style id="sv-show-pages-match-team-20260922">
+/* Add Show and Show Details use exactly the same visual vocabulary as My Team.
+   Scoped to show branches: no impact on Home, Calendar, Team or planner. */
+#app:is(.sv-view-add,.sv-view-show){--svn:#10283a;--svg:#c9a460;--svline:#e6dfd3;color:var(--svn)}
+#app:is(.sv-view-add,.sv-view-show) .back{display:inline-flex;align-items:center;gap:5px;margin:0 0 24px!important;padding:5px 0;color:#907448;font-size:14px;font-weight:500;text-decoration:none}
+#app:is(.sv-view-add,.sv-view-show) .sv-branch-intro,
+#app.sv-view-show .show-top{margin:4px 0 22px;padding:0 0 21px;border-bottom:1px solid var(--svline)}
+#app:is(.sv-view-add,.sv-view-show) .sv-eyebrow,
+#app.sv-view-show .show-top .eyebrow{font:700 10px/1.4 Arial,sans-serif;letter-spacing:3px;color:#95753f;margin:0 0 12px}
+#app:is(.sv-view-add,.sv-view-show) .sv-branch-intro h1,
+#app.sv-view-show .show-top h1{font:400 clamp(34px,9vw,45px)/1.12 Georgia,serif;letter-spacing:-.7px;color:var(--svn);margin:0 0 10px}
+#app:is(.sv-view-add,.sv-view-show) .sv-branch-intro .intro,
+#app.sv-view-show .show-top .intro{font-size:15px;line-height:1.5;color:#657180;margin:0}
+#app:is(.sv-view-add,.sv-view-show) form{background:#fffefa;border:1px solid var(--svline);border-radius:20px;padding:20px 18px 24px;box-shadow:0 6px 22px rgba(13,39,55,.035);min-width:0}
+#app:is(.sv-view-add,.sv-view-show) form>.field{display:block;margin:0 0 18px;color:#253b4f;font-size:13px;line-height:1.4;font-weight:600}
+#app:is(.sv-view-add,.sv-view-show) form>.field input{display:block;width:100%;min-width:0;max-width:100%;height:50px;min-height:50px;margin-top:8px;padding:10px 13px;border:1px solid #d9dfdf;border-radius:12px;background:#fff;color:var(--svn);font:400 16px/1.3 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;box-shadow:none;-webkit-appearance:none;appearance:none}
+#app:is(.sv-view-add,.sv-view-show) form>.field input[type=date]{-webkit-appearance:auto;appearance:auto;color-scheme:light}
+#app:is(.sv-view-add,.sv-view-show) form>.field input::placeholder{color:#89919a;font-weight:400}
+#app:is(.sv-view-add,.sv-view-show) form>.field input:focus-visible{outline:2px solid #bd9b60;outline-offset:2px;border-color:#bd9b60}
+#app:is(.sv-view-add,.sv-view-show) form>.field small{display:block;margin:8px 0 0;color:#727d88;font-size:12px;line-height:1.45;font-weight:400}
+#app:is(.sv-view-add,.sv-view-show) form>.subhead{font:400 clamp(25px,6.3vw,29px)/1.2 Georgia,serif;color:var(--svn);border-top:1px solid var(--svline);padding:23px 0 6px;margin:24px 0 5px}
+#app:is(.sv-view-add,.sv-view-show) form>.checkrow{display:flex;align-items:center;gap:13px;width:100%;min-height:61px;margin:9px 0;padding:12px 14px;border:1px solid #e8e0d4;border-radius:14px;background:#fff;color:var(--svn);font-size:15px;line-height:1.4;cursor:pointer}
+#app:is(.sv-view-add,.sv-view-show) form>.checkrow:has(input:checked){border-color:#c7a45e;background:#fcf8f0}
+#app:is(.sv-view-add,.sv-view-show) form>.checkrow input[type=checkbox]{display:block!important;position:static!important;flex:0 0 22px!important;width:22px!important;height:22px!important;margin:0;accent-color:#10283a;opacity:1!important;visibility:visible!important}
+#app:is(.sv-view-add,.sv-view-show) form>.checkrow span{font-size:15px;line-height:1.4;color:#253b4f;overflow-wrap:anywhere}
+#app:is(.sv-view-add,.sv-view-show) form>.goldbtn{display:block;width:100%;min-height:52px;margin:26px 0 0;padding:13px 18px;border:0;border-radius:14px;background:linear-gradient(110deg,#e7c88c,#c7a45e);color:#10283a;font:700 15px/1.4 Arial,sans-serif;box-shadow:none}
+#app.sv-view-show .show-journey{margin:20px 0 0;border:1px solid var(--svline);border-radius:18px;background:#fffefa;padding:20px 18px}
+#app.sv-view-show .show-journey .goldbtn{border-radius:13px;background:#10283a;color:#fffdfa}
+@media(min-width:640px){#app:is(.sv-view-add,.sv-view-show) form{padding:26px 30px 30px}}
+</style>
+<style id="showviva-unified-brand-test">
+/* SHOWVIVA: ONE BRAND SYSTEM ACROSS THE TEST EXPERIENCE.
+   The public website's navy / cream / warm gold is the visual reference.
+   CSS-only: existing routes, records, forms and handlers are unchanged. */
+:root {
+  --navy:#0e2838; --gold:#d9ad60; --cream:#fbf8f1;
+  --line:#e6d9c5; --muted:#62707a;
+  --sv-navy:#0e2838; --sv-gold:#d9ad60; --sv-cream:#fbf8f1;
+  --sv-paper:#fffdf9; --sv-line:#e6d9c5;
+}
+body{background:var(--sv-cream);color:var(--sv-navy)}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add,.sv-view-show){
+  --formnavy:var(--sv-navy);--formgold:var(--sv-gold);--formline:var(--sv-line);
+  --detailnavy:var(--sv-navy);--detailgold:var(--sv-gold);--detailline:var(--sv-line);
+  --svn:var(--sv-navy);--svg:var(--sv-gold);--svline:var(--sv-line);
+  color:var(--sv-navy);
+}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add,.sv-view-show)
+:is(.sv-branch-intro h1,.show-top h1,.subhead,.horsecard strong){
+  color:var(--sv-navy);font-family:Georgia,"Times New Roman",serif;font-weight:400;
+}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add,.sv-view-show)
+:is(.sv-eyebrow,.show-top .eyebrow){color:#9b783d;letter-spacing:3.5px}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add,.sv-view-show)
+:is(.sv-branch-intro,.show-top){border-bottom-color:var(--sv-line)}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add,.sv-view-show)
+:is(.horsecard,form,.show-journey){
+  background:var(--sv-paper);border:1px solid var(--sv-line);
+  border-radius:18px;box-shadow:0 5px 20px rgba(14,40,56,.035);
+}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add,.sv-view-show)
+:is(.field input,.field select,.field textarea){
+  background:#fff;color:var(--sv-navy);border-color:#dedad2;border-radius:12px;
+  font-size:16px;min-height:50px;
+}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add,.sv-view-show)
+:is(.field input,.field select,.field textarea):focus-visible{
+  outline:2px solid #b9914b;outline-offset:2px;border-color:#b9914b;
+}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add,.sv-view-show)
+:is(.field,.intro,.hint,.horsecard small,.checkrow){line-height:1.5}
+#app:is(.sv-view-horse,.sv-view-rider,.sv-view-add,.sv-view-show)
+form .goldbtn{
+  background:linear-gradient(115deg,#f2cd83,#d9ad60);
+  color:var(--sv-navy);border:0;border-radius:999px;
+  min-height:52px;font-weight:700;letter-spacing:.1px;
+}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add,.sv-view-show)
+:is(.smallbtn,.show-journey .goldbtn){
+  background:var(--sv-navy);color:#fffdf7;border-radius:999px;
+}
+#app:is(.sv-view-add,.sv-view-show) form>.checkrow{
+  background:#fffefa;border:1px solid var(--sv-line);
+  border-radius:12px;margin:7px 0;padding:13px 12px;
+}
+#app:is(.sv-view-add,.sv-view-show) form>.checkrow:has(input:checked){
+  background:#f8efdF;border-color:#c5a161;
+}
+#app:is(.sv-view-add,.sv-view-show) form>.checkrow input[type=checkbox]{accent-color:var(--sv-navy)}
+#app.sv-view-show .show-journey .goldbtn{background:var(--sv-navy);color:#fffdf7}
+@media(max-width:440px){
+ #app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add,.sv-view-show)
+ :is(.sv-branch-intro h1,.show-top h1){font-size:clamp(34px,9vw,45px)}
+}
 </style></head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions" aria-label="Account"><button type="button" class="home-nav" aria-label="Go to Home" onclick="go('home')" hidden><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 9-8 9 8"/><path d="M5 10v11h14V10M9 21v-7h6v7"/></svg>Home</button><button type="button" class="calendar-nav" aria-label="Open calendar" title="Calendar" onclick="mode='calendar';go('plan')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></button><button type="button" onclick="signOut()">Sign out</button></nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><script>function signOut(){alert('Sign out will be connected when this prototype is integrated with your live account.');}
 const KEY='showviva-demo-v1';const initial={shows:[{id:1,name:'Wales and West',start:'2026-10-16',end:'2026-10-18',horses:[],riders:[]},{id:2,name:'Suffolk Equestrian',start:'2026-11-11',end:'2026-11-12',horses:[],riders:[]},{id:3,name:'Arena UK',start:'2026-11-25',end:'2026-11-30',horses:[],riders:[]}],horses:[],riders:[]};let data;try{data=JSON.parse(localStorage.getItem(KEY))||initial}catch{data=initial}if(!data||!Array.isArray(data.shows)||!Array.isArray(data.horses)||!Array.isArray(data.riders))data=initial;data.shows.forEach(s=>{if(!s.status)s.status='draft'});if(!Array.isArray(data.plannerCreations))data.plannerCreations=[];if(!('lastSubmittedShowId' in data))data.lastSubmittedShowId=null;let editingHorse=null;let editingRider=null;let activeTool=null;let view='home',mode='calendar',month=new Date(2026,9,1),selected=null;const app=document.getElementById('app');const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){/* Local files may block storage. */}};const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const fmt=s=>new Date(s+'T12:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short'});const dates=s=>fmt(s.start)+(s.end&&s.end!==s.start?' – '+fmt(s.end):'');const riderName=r=>typeof r==='string'?r:r.name;const horseName=h=>typeof h==='string'?h:(h.stableName||h.registeredName);const registeredName=h=>typeof h==='string'?h:h.registeredName;const todayISO=()=>new Date().toLocaleDateString('en-CA');const isPast=s=>s.end<todayISO();const ordered=()=>[...data.shows].sort((a,b)=>a.start.localeCompare(b.start));const creationMonth=()=>todayISO().slice(0,7);const monthlyCount=()=>data.plannerCreations.filter(m=>m===creationMonth()).length;const statusLabel=s=>isPast(s)?'Past show':s.status==='ready'?'Planner ready':s.status==='preparing'?'Planner being prepared':s.status==='submitted'?'Show submitted':'Show details';const showItem=s=>`<button class="item" onclick="openShow(${s.id})"><span><strong>${esc(s.name)}</strong><small>${dates(s)} · ${statusLabel(s)}</small></span><span class="arrow">›</span></button>`;const back=()=>`<button class="back" onclick="go('home')">← Home</button>`;function go(v){view=v;render();scrollTo(0,0)}function openShow(id){activeTool=null;selected=Number(id);go('show')}function render(){app.className='sv-view-'+view;const homeNav=document.querySelector('.home-nav');if(homeNav)homeNav.hidden=(view==='home');if(view==='confirmed'){const s=data.shows.find(x=>x.id===selected);app.innerHTML=`<div class="confirmation"><div class="eyebrow">Your ShowViva</div><h1>Show added ✓</h1><p class="intro">${s?esc(s.name):'Your show'} is now on your Home page and in My Shows.</p><button class="goldbtn" onclick="go('home')">Go to Home →</button><button class="smallbtn" onclick="go('show')">Continue planning this show →</button></div>`;return}if(view==='home'){const shows=ordered().filter(s=>!isPast(s)),next=shows[0],submitted=data.shows.find(s=>s.id===data.lastSubmittedShowId&&!isPast(s));app.innerHTML=`<div class="eyebrow">Your ShowViva</div><h1 class="home-title">Everything for your next show.</h1><div class="tiles home-actions"><button class="tile" onclick="go('add')"><span class="symbol">＋</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders →</small></button></div>${submitted?`<section class="just-submitted" aria-label="Recently submitted show"><div class="eyebrow">✓ Show submitted</div><h2>${esc(submitted.name)}</h2><p>${dates(submitted)} · ${statusLabel(submitted)}</p><button onclick="openShow(${submitted.id})">View your show →</button></section>`:''}${next?`<section class="next" aria-label="Up next"><div class="eyebrow">★ Up next</div><h2>${esc(next.name)}</h2><p>${dates(next)} · ${statusLabel(next)}</p><button class="goldbtn" onclick="${next.status==='ready'&&Number(next.id)===1?'window.location.href=&quot;planner.html&quot;':'openShow('+next.id+')'}">${next.status==='ready'&&Number(next.id)===1?'Open Planner →':next.status==='draft'?'Finish show details →':'View show →'}</button></section>`:''}<div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div>${shows.filter(s=>s.id!==next?.id).slice(0,5).map(showItem).join('')||'<p class="hint">No other upcoming shows.</p>'}${ordered().some(isPast)?'<button class="item past-summary" onclick="go(\'past\')"><span><strong>Past Shows</strong><small>View your previous shows and saved notes</small></span><span class="arrow">›</span></button>':''}`}
 else if(view==='past'){app.innerHTML=`${back()}<h1>Past Shows</h1><p class="intro">Your previous shows, all in one place.</p>${ordered().filter(isPast).reverse().map(showItem).join('')||'<p class="empty">No past shows yet.</p>'}`}
