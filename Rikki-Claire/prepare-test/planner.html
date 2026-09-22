@@ -1,16 +1,569 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ShowViva | Wales and West</title><style>
-:root{--navy:#18263d;--gold:#d8b974;--cream:#fffdf8;--line:#d7deeb;--muted:#5f6d80}*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--navy);font-family:Arial,Helvetica,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.serif{font-family:Georgia,'Times New Roman',serif}header{height:106px;background:#18263d;color:white;display:flex;align-items:center;justify-content:space-between;padding:12px 28px}.brand{text-align:center}.brand .name{font:64px Georgia,serif;letter-spacing:-3px;line-height:1}.brand .name span{color:#e6c685}.brand .tag{font:12px Georgia,serif;letter-spacing:5px;margin-top:6px}.headicon{border:0;background:none;color:#e6c685;font-size:39px;line-height:1;width:46px}.wrap{max-width:820px;margin:auto;padding:20px 30px 50px}h1{font: bold clamp(44px,7vw,68px) Georgia,serif;letter-spacing:-2px;margin:0 0 5px}.subtitle{font:clamp(17px,2.9vw,26px)/1.3 Georgia,serif;color:#41516a;margin:0 0 20px}.dates{display:grid;grid-template-columns:repeat(3,1fr);margin-bottom:16px}.date{background:white;border:1.5px solid var(--line);min-height:94px;color:var(--navy);font:bold 29px Georgia,serif;line-height:1.2}.date:first-child{border-radius:22px 0 0 22px}.date:last-child{border-radius:0 22px 22px 0}.date.active{background:linear-gradient(#f3dfa9,#d7b772);border-color:#ead8ad}.date small{font-size:25px}.field{display:block;background:#fff;border:1.5px solid var(--line);border-radius:22px;padding:13px 25px;margin-bottom:14px;min-height:89px}.field label{display:block;font-size:15px;letter-spacing:2.5px;font-weight:bold;color:#5d6a7d;margin-bottom:9px}.field select,.field input{width:100%;border:0;outline:0;background:transparent;color:var(--navy);font-size:27px;appearance:none}.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-position:right center;background-repeat:no-repeat;padding-right:32px}.field input::placeholder{color:#999}.clear{width:100%;background:white;border:1.5px solid var(--line);border-radius:22px;color:var(--navy);font-size:22px;font-weight:bold;padding:17px;margin-bottom:20px}.dayheading{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:0 0 10px}.dayheading h2{font:bold clamp(31px,5vw,48px) Georgia,serif;margin:0}.dayheading span{color:#5d6a7d;font-size:18px;white-space:nowrap}.ride{background:#fff;border:1.5px solid var(--line);border-radius:22px;display:grid;grid-template-columns:31% 1fr;margin:0 0 13px;min-height:180px;overflow:hidden;position:relative}.time{border-left:6px solid var(--navy);padding:14px 10px 14px 19px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}.roundlabel{font-weight:bold;letter-spacing:2px;font-size:14px;color:#5d6a7d}.roundtime{font:bold clamp(35px,5vw,52px) Georgia,serif;line-height:1.05;margin:3px 0 9px}.pill{border-radius:50px;padding:7px 12px;white-space:nowrap;font-size:clamp(12px,2vw,17px);margin:2px 0;background:#fcf0d4}.pill.blue{background:#e8f1fa}.info{border-left:1px solid var(--line);margin:16px 0;padding:0 15px 15px 27px;position:relative;min-width:0}.horse{font:bold clamp(22px,3.4vw,32px) Georgia,serif;padding-right:35px;line-height:1.15}.classname{font:bold clamp(14px,2.3vw,19px) Georgia,serif;color:#647084;margin:3px 0}.rider{font-size:clamp(16px,2.6vw,21px);margin:3px 0}.arena,.draw{font-size:clamp(14px,2.2vw,18px);color:#5d6a7d;margin:2px 0}.details{cursor:default;display:block;text-align:right;margin-top:4px;color:var(--navy);font-size:clamp(13px,2vw,17px);text-decoration:underline}.notes{position:absolute;right:9px;top:8px;background:transparent;border:0;color:var(--navy);font-size:29px;padding:2px 6px}.count{position:absolute;right:-2px;top:-3px;background:#d8b974;border:2px solid white;border-radius:50%;font:bold 14px Arial;width:29px;height:29px;display:grid;place-items:center}.empty{padding:28px;text-align:center;color:var(--muted)}dialog{border:1px solid var(--line);border-radius:20px;padding:24px;width:min(92vw,480px);color:var(--navy)}dialog::backdrop{background:#18263d99}dialog h3{font:30px Georgia;margin:0 0 12px}dialog textarea{width:100%;min-height:110px;border:1px solid var(--line);border-radius:10px;padding:10px}dialog button{background:var(--navy);color:white;border:0;border-radius:9px;padding:10px 16px;margin:10px 8px 0 0}dialog .secondary{background:#eee;color:var(--navy)}.warmcontrols{display:flex;gap:12px;align-items:center;margin:10px 0}.warmcontrols input{width:65px;padding:7px;border:1px solid var(--line);border-radius:7px}@media(max-width:520px){header{height:92px;padding:10px 18px}.brand .name{font-size:clamp(33px,10vw,46px)}.brand .tag{font-size:8px;letter-spacing:3px}.headicon{font-size:29px;width:35px}.wrap{padding:18px 16px 40px}.date{min-height:74px;font-size:23px}.date small{font-size:20px}.field{min-height:78px;padding:11px 17px}.field select,.field input{font-size:22px}.field label{font-size:12px}.ride{grid-template-columns:33% 1fr}.time{padding:12px 5px 12px 11px}.info{padding:0 8px 10px 13px;margin:12px 0}.pill{padding:6px 7px}.notes{right:4px}.dayheading span{font-size:13px}}
-
-/* Approved compact ShowViva mobile proportions; functionality and content unchanged. */
-@media(max-width:600px){
- header{height:66px;padding:5px 17px}.brand .name{font-size:37px;letter-spacing:-1.5px}.brand .tag{font-size:7px;letter-spacing:2.5px;margin-top:2px}.headicon{font-size:25px;width:28px}
- .wrap{padding:12px 17px 30px}h1{font-size:clamp(34px,9vw,43px);letter-spacing:-1px;margin-bottom:4px}.subtitle{font-size:clamp(12px,3.2vw,16px);line-height:1.3;margin-bottom:12px}
- .dates{margin-bottom:9px}.date{min-height:53px;font-size:19px;line-height:1.13}.date small{font-size:16px}.date:first-child{border-radius:13px 0 0 13px}.date:last-child{border-radius:0 13px 13px 0}
- .field{min-height:49px;padding:7px 12px;margin-bottom:8px;border-radius:13px}.field label{font-size:9px;letter-spacing:1.5px;margin-bottom:3px}.field select,.field input{font-size:16px;min-height:21px}.field select{background-size:15px;padding-right:21px}
- .clear{font-size:15px;border-radius:13px;padding:10px;margin-bottom:12px}.dayheading{margin-bottom:6px}.dayheading h2{font-size:clamp(24px,6.4vw,32px)}.dayheading span{font-size:12px}
- .ride{grid-template-columns:34% 1fr;min-height:103px;border-radius:14px;margin-bottom:8px}.time{border-left-width:4px;padding:8px 4px 8px 9px}.roundlabel{font-size:9px;letter-spacing:1.1px}.roundtime{font-size:clamp(25px,7vw,35px);margin:2px 0 4px}.pill{font-size:clamp(9px,2.5vw,12px);padding:4px 5px;margin:1px 0}
- .info{margin:8px 0;padding:0 8px 5px 12px}.horse{font-size:clamp(18px,5vw,24px);padding-right:26px}.classname{font-size:clamp(11px,2.9vw,14px);line-height:1.2;margin:1px 0}.rider{font-size:clamp(12px,3.3vw,16px);margin:2px 0}.arena,.draw{font-size:clamp(11px,2.9vw,14px);margin:1px 0}.details{font-size:clamp(10px,2.8vw,13px);margin-top:2px}.notes{font-size:21px;right:3px;top:4px}.count{font-size:10px;width:21px;height:21px;right:-1px;top:-2px}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ShowViva | Wales and West</title>
+<style>
+:root{
+  --navy:#18263d;
+  --gold:#d8b974;
+  --gold-soft:#f6ecd2;
+  --blue-soft:#eaf1f8;
+  --cream:#fbf9f4;
+  --white:#ffffff;
+  --line:#dce3ee;
+  --text:#1b2942;
+  --muted:#617086;
+  --shadow:0 10px 28px rgba(24,38,61,.06);
 }
-</style></head><body><header><a class="headicon" href="./" aria-label="Back to ShowViva homepage" style="text-decoration:none">☰</a><div class="brand"><div class="name serif">Show<span>Viva</span></div><div class="tag">YOUR EQUESTRIAN SHOW PLANNER</div></div><button class="headicon" aria-label="Choose day" onclick="document.querySelector('.dates').scrollIntoView({behavior:'smooth'})">▦</button></header><main class="wrap"><h1>Wales and West</h1><p class="subtitle">16–18 October 2026 · CSI2* · National &amp; International Showjumping<br>Royal Welsh Showground, Builth Wells</p><div class="dates" id="dates"><button class="date" data-day="0">Fri<br><small>16 Oct</small></button><button class="date active" data-day="1">Sat<br><small>17 Oct</small></button><button class="date" data-day="2">Sun<br><small>18 Oct</small></button></div><div class="field"><label for="horse">HORSE</label><select id="horse"><option value="">My horses</option><option>Summer Escape</option><option>Autumn Jazz</option><option>Chacco Iron</option></select></div><div class="field"><label for="rider">RIDER</label><select id="rider"><option value="">My riders</option><option>Jodie Baker</option><option>Lucy Stranham</option><option>David Lock</option></select></div><div class="field"><label for="ring">RING</label><select id="ring"><option value="">All arenas</option><option>International Arena</option><option>Main Arena</option><option>Outdoor Arena 2</option></select></div><div class="field"><label for="search">SEARCH HORSE OR RIDER</label><input id="search" placeholder="Type a horse or rider…"></div><button class="clear" id="clear">Clear filters</button><div class="dayheading"><h2 id="daytitle">Sat 17 October</h2><span id="summary">4 rides · 3 horses</span></div><section id="rides"><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">08:30</div><div class="pill">Warm up 08:05</div><div class="pill blue">Class starts 08:30</div></div><div class="info"><div class="horse">Summer Escape</div><div class="classname">CSI2* 1.35m Two Phase</div><div class="rider">Jodie Baker</div><div class="arena">International Arena</div><div class="draw">Draw 12 of 48</div><span class="details">Class details ↗</span><button class="notes" data-id="1-0" aria-label="Notes for Summer Escape">▤<span class="count">2</span></button></div></article><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">10:15</div><div class="pill">Warm up 09:50</div><div class="pill blue">Class starts 10:15</div></div><div class="info"><div class="horse">Autumn Jazz</div><div class="classname">CSI2* 1.40m Table A</div><div class="rider">Lucy Stranham</div><div class="arena">Main Arena</div><div class="draw">Draw 7 of 52</div><span class="details">Class details ↗</span><button class="notes" data-id="1-1" aria-label="Notes for Autumn Jazz">▤<span class="count">1</span></button></div></article><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">12:20</div><div class="pill">Warm up 11:55</div><div class="pill blue">Class starts 12:20</div></div><div class="info"><div class="horse">Chacco Iron</div><div class="classname">CSI2* 1.45m Grand Prix Qualifier</div><div class="rider">David Lock</div><div class="arena">International Arena</div><div class="draw">Draw 28 of 60</div><span class="details">Class details ↗</span><button class="notes" data-id="1-2" aria-label="Notes for Chacco Iron">▤<span class="count">3</span></button></div></article><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">14:35</div><div class="pill">Warm up 14:10</div><div class="pill blue">Class starts 14:35</div></div><div class="info"><div class="horse">Summer Escape</div><div class="classname">CSI2* 1.40m Accumulator</div><div class="rider">Jodie Baker</div><div class="arena">Outdoor Arena 2</div><div class="draw">Draw 5 of 44</div><span class="details">Class details ↗</span><button class="notes" data-id="1-3" aria-label="Notes for Summer Escape">▤<span class="count">0</span></button></div></article></section><p style="text-align:center;color:#667085;font-size:12px;margin-top:26px">Illustrative demonstration schedule · Confirm official timings with the organiser.</p></main><dialog id="notedialog"><h3 id="notetitle">Round notes</h3><div class="warmcontrols"><label for="warmminutes">Warm-up minutes before round</label><input type="number" id="warmminutes" min="0" max="180" value="25"></div><label for="notetext">Notes</label><textarea id="notetext" placeholder="Add notes for this round…"></textarea><div><button id="save">Save</button><button class="secondary" onclick="notedialog.close()">Close</button></div></dialog><script>
-const days=[['Fri','16 Oct','Fri 16 October'],['Sat','17 Oct','Sat 17 October'],['Sun','18 Oct','Sun 18 October']];let selected=1,editing=null;const base=[{horse:'Summer Escape',rider:'Jodie Baker',time:'08:30',class:'CSI2* 1.35m Two Phase',arena:'International Arena',draw:'12 of 48',notes:['Check studs','Take boots off']},{horse:'Autumn Jazz',rider:'Lucy Stranham',time:'10:15',class:'CSI2* 1.40m Table A',arena:'Main Arena',draw:'7 of 52',notes:['Walk course']},{horse:'Chacco Iron',rider:'David Lock',time:'12:20',class:'CSI2* 1.45m Grand Prix Qualifier',arena:'International Arena',draw:'28 of 60',notes:['Check draw','Groom ready','Bring water']},{horse:'Summer Escape',rider:'Jodie Baker',time:'14:35',class:'CSI2* 1.40m Accumulator',arena:'Outdoor Arena 2',draw:'5 of 44',notes:[]}];let entries=days.flatMap((d,day)=>base.map((r,i)=>({...r,id:day+'-'+i,day,time:shift(r.time,day===1?0:day===0?-20:25),warm:25,notes:[...r.notes]})));try{const saved=JSON.parse(localStorage.getItem('showviva-ww-demo-v1')||'{}');entries.forEach(r=>{if(saved[r.id]){r.warm=saved[r.id].warm;r.notes=saved[r.id].notes}})}catch(e){}function shift(t,n){let [h,m]=t.split(':').map(Number);let x=(h*60+m+n+1440)%1440;return String(Math.floor(x/60)).padStart(2,'0')+':'+String(x%60).padStart(2,'0')}const $=id=>document.getElementById(id);function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function showTeam(){try{const d=JSON.parse(localStorage.getItem('showviva-demo-v1')||'{}');return d.shows?.find(s=>Number(s.id)===1)||null}catch(e){return null}}function refreshTeam(){const t=showTeam();if(!t)return;for(const [id,names,placeholder] of [['horse',t.horses||[],'My horses'],['rider',t.riders||[],'My riders']]){const el=$(id),old=el.value;if(!el)continue;el.innerHTML='<option value="">'+placeholder+'</option>'+names.map(n=>'<option value="'+esc(n)+'">'+esc(n)+'</option>').join('');el.value=names.includes(old)?old:''}}function render(){refreshTeam(); $('dates').innerHTML=days.map((d,i)=>`<button class="date ${i===selected?'active':''}" data-day="${i}">${d[0]}<br><small>${d[1]}</small></button>`).join('');document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>{selected=+b.dataset.day;render()});$('daytitle').textContent=days[selected][2];const team=showTeam();let rows=entries.filter(r=>(!team||((team.horses||[]).includes(r.horse)&&(team.riders||[]).includes(r.rider)))&&r.day===selected&&(!$('horse').value||r.horse===$('horse').value)&&(!$('rider').value||r.rider===$('rider').value)&&(!$('ring').value||r.arena===$('ring').value)&&(! $('search').value||[r.horse,r.rider].join(' ').toLowerCase().includes($('search').value.toLowerCase())));$('summary').textContent=rows.length+' rides · '+new Set(rows.map(r=>r.horse)).size+' horses';$('rides').innerHTML=rows.length?rows.map(r=>`<article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">${r.time}</div><div class="pill">Warm up ${shift(r.time,-r.warm)}</div><div class="pill blue">Class starts ${r.time}</div></div><div class="info"><div class="horse">${esc(r.horse)}</div><div class="classname">${esc(r.class)}</div><div class="rider">${esc(r.rider)}</div><div class="arena">${esc(r.arena)}</div><div class="draw">Draw ${esc(r.draw)}</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" data-id="${r.id}" aria-label="Notes for ${esc(r.horse)}">▤<span class="count">${r.notes.length}</span></button></div></article>`).join(''):'<p class="empty">No rides match these filters.</p>';document.querySelectorAll('.notes').forEach(b=>b.onclick=()=>{editing=entries.find(r=>r.id===b.dataset.id);$('notetitle').textContent=editing.horse+' · '+editing.time;$('warmminutes').value=editing.warm;$('notetext').value=editing.notes.join('\n');$('notedialog').showModal()})}['horse','rider','ring','search'].forEach(id=>$(id).addEventListener(id==='search'?'input':'change',render));$('clear').onclick=()=>{['horse','rider','ring','search'].forEach(id=>$(id).value='');render()};$('save').onclick=()=>{if(!editing)return;editing.warm=Math.max(0,Math.min(180,Number($('warmminutes').value)||0));editing.notes=$('notetext').value.split('\n').map(s=>s.trim()).filter(Boolean);try{localStorage.setItem('showviva-ww-demo-v1',JSON.stringify(Object.fromEntries(entries.map(r=>[r.id,{warm:r.warm,notes:r.notes}]))))}catch(e){}$('notedialog').close();render()};render();
-</script></body></html>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--cream);color:var(--text)}
+body{font-family:Arial,Helvetica,sans-serif}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.serif{font-family:Georgia,"Times New Roman",serif}
+.header{
+  height:108px;
+  background:var(--navy);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 28px;
+}
+.header-btn{
+  border:0;
+  background:transparent;
+  color:#e6c685;
+  font-size:39px;
+  line-height:1;
+  width:42px;
+  text-decoration:none;
+}
+.brand{text-align:center}
+.brand-name{font:64px Georgia,serif;letter-spacing:-3px;line-height:1}
+.brand-name span{color:#e6c685}
+.brand-tag{font:12px Georgia,serif;letter-spacing:5px;margin-top:6px}
+.wrap{max-width:860px;margin:0 auto;padding:22px 26px 42px}
+.hero{
+  background:linear-gradient(180deg,#fffdf8 0%, #ffffff 100%);
+  border:1px solid #e5ebf3;
+  border-radius:30px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  margin-bottom:18px;
+}
+.hero-copy{padding:18px 22px 16px}
+.kicker{
+  margin:0 0 10px;
+  color:#a88a44;
+  font-size:11px;
+  letter-spacing:3.8px;
+  font-weight:700;
+}
+.hero h1{
+  margin:0 0 10px;
+  font:700 clamp(44px,7vw,66px) Georgia,serif;
+  letter-spacing:-1.8px;
+  line-height:1;
+  color:var(--navy);
+}
+.subtitle{
+  margin:0;
+  color:#45556e;
+  font:clamp(17px,2.6vw,24px)/1.32 Georgia,serif;
+}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.meta-chip{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:#f7f2e5;
+  color:#4f5f77;
+  font-size:13px;
+}
+.dates{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid #edf1f6;
+}
+.date{
+  background:#fff;
+  border:0;
+  border-right:1px solid var(--line);
+  min-height:100px;
+  color:var(--navy);
+  font:700 31px Georgia,serif;
+  line-height:1.15;
+}
+.date:last-child{border-right:0}
+.date.active{background:linear-gradient(180deg,#f3dfa9 0%,#d8b974 100%)}
+.date small{display:block;font-size:26px;margin-top:2px}
+.filters-panel{
+  background:#fff;
+  border:1px solid #e5ebf3;
+  border-radius:22px;
+  box-shadow:0 6px 18px rgba(24,38,61,.04);
+  padding:14px;
+  margin-bottom:24px;
+}
+.filters-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+.filters-top .label{font-size:11px;letter-spacing:3px;color:#a88a44;font-weight:700}
+.filters-top .hint{font-size:13px;color:#728198}
+.filterbar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.filtercell{border:1px solid #e2d7bf;border-radius:14px;background:#fffdf8;overflow:hidden;box-shadow:0 2px 7px rgba(24,38,61,.035);transition:border-color .15s,box-shadow .15s}
+.filtercell:focus-within{border-color:#bda05e;box-shadow:0 0 0 2px rgba(216,185,116,.17)}
+.filtercell select{
+  display:block;width:100%;appearance:none;border:0;background:transparent;color:var(--navy);
+  padding:13px 38px 13px 14px;font-size:15px;font-weight:600;outline:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23a88a44' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;
+}
+.dayheading{
+  display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+  margin:0 0 14px;
+}
+.dayheading h2{margin:0;font:700 clamp(34px,6vw,52px) Georgia,serif;letter-spacing:-1px;color:var(--navy)}
+.dayheading span{font-size:18px;color:#607086;white-space:nowrap}
+.ride{
+  position:relative;
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:0;
+  background:#fff;
+  border:1px solid #dde4ee;
+  border-radius:28px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  margin-bottom:13px;
+}
+.time{
+  padding:13px 14px 13px 16px;
+  border-left:7px solid var(--navy);
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.roundlabel{font-weight:700;letter-spacing:3px;font-size:12px;color:#5f6f84}
+.roundtime{font:700 49px/0.95 Georgia,serif;color:var(--navy);letter-spacing:-1px;margin:0 0 2px}
+.pill{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  border-radius:999px;
+  padding:8px 14px;
+  font-size:12px;
+  line-height:1;
+  white-space:nowrap;
+}
+.pill b{font-size:16px;color:var(--navy);font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.2px}
+.pill.warm{background:var(--gold-soft)}
+.pill.start{background:var(--blue-soft)}
+.info{
+  position:relative;
+  margin:14px 0;
+  padding:0 118px 0 26px;
+  border-left:1px solid var(--line);
+}
+.horse{font:700 34px/1.06 Georgia,serif;color:var(--navy);margin:0 0 8px;padding-right:28px}
+.classname{font:700 17px/1.25 Georgia,serif;color:#6a7890;margin:0 0 12px}
+.rider{font-size:22px;color:var(--navy);margin:0 0 10px}
+.arena,.draw{font-size:17px;color:#617086;line-height:1.35;margin:0 0 3px}
+.details{
+  position:absolute;right:24px;bottom:4px;
+  color:var(--navy);font-size:15px;text-decoration:underline;text-underline-offset:3px;
+}
+.notes{
+  position:absolute;top:18px;right:18px;
+  border:0;background:transparent;color:var(--navy);
+  font-size:33px;line-height:1;padding:0;
+}
+.count{
+  position:absolute;top:-7px;right:-8px;
+  width:30px;height:30px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--gold);border:2px solid #fff;
+  color:var(--navy);font-size:15px;font-weight:700;
+}
+.footer-note{margin-top:18px;padding-top:14px;border-top:1px solid #edf1f6;text-align:center;color:#6c7b90;font-size:12px}
+.empty{padding:28px;text-align:center;color:#6c7b90}
+
+dialog{
+  width:min(92vw,480px);
+  border:1px solid #e5ebf3;
+  border-radius:24px;
+  padding:24px;
+  color:var(--navy);
+}
+dialog::backdrop{background:rgba(24,38,61,.55)}
+dialog h3{margin:0 0 12px;font:700 34px/1.05 Georgia,serif}
+.dialog-sub{font-size:14px;color:#6d7b90;margin-bottom:18px}
+.warmcontrols{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.warmcontrols label{font-size:14px;color:#5b697f}
+.warmcontrols input{width:72px;padding:9px 10px;border:1px solid var(--line);border-radius:12px}
+dialog textarea{width:100%;min-height:112px;border:1px solid var(--line);border-radius:14px;padding:12px}
+.dialog-actions{display:flex;gap:10px;margin-top:14px}
+.primary,.secondary{
+  border:0;border-radius:14px;padding:12px 18px;font-weight:700
+}
+.primary{background:var(--gold);color:var(--navy)}
+.secondary{background:#eef2f7;color:var(--navy)}
+
+@media (max-width:760px){
+  .header{height:94px;padding:10px 18px}
+  .header-btn{font-size:30px;width:34px}
+  .brand-name{font-size:46px;letter-spacing:-2px}
+  .brand-tag{font-size:8px;letter-spacing:3px;margin-top:4px}
+  .wrap{padding:14px 14px 32px}
+  .hero{border-radius:24px;margin-bottom:14px}
+  .hero-copy{padding:14px 16px 14px}
+  .kicker{font-size:10px;letter-spacing:3px;margin-bottom:8px}
+  .hero h1{font-size:clamp(36px,10.4vw,54px);margin-bottom:8px}
+  .subtitle{font-size:14px;line-height:1.34}
+  .meta-row{margin-top:10px;gap:6px}
+  .meta-chip{font-size:11.5px;padding:7px 10px}
+  .date{min-height:76px;font-size:24px}
+  .date small{font-size:19px}
+  .filters-panel{border-radius:18px;padding:12px;margin-bottom:18px}
+  .filters-top{margin-bottom:10px}
+  .filters-top .label{font-size:10px;letter-spacing:2.5px}
+  .filters-top .hint{font-size:12px}
+  .filterbar{gap:7px}
+  .filtercell{border-radius:12px}
+  .filtercell select{font-size:12.5px;padding:11px 28px 11px 11px;background-position:right 10px center}
+  .dayheading{margin-bottom:12px}
+  .dayheading h2{font-size:clamp(28px,8.2vw,40px)}
+  .dayheading span{font-size:12px}
+  .ride{grid-template-columns:154px minmax(0,1fr);border-radius:24px;margin-bottom:12px}
+  .time{padding:11px 8px 11px 11px;border-left-width:6px;gap:5px;min-width:0}
+  .roundlabel{font-size:9px;letter-spacing:2.1px}
+  .roundtime{font-size:37px}
+  .pill{padding:7px 8px;font-size:10px;gap:3px;min-width:0}
+  .pill b{font-size:13px;flex-shrink:0}
+  .info{margin:11px 0;padding:0 12px 25px 16px;min-width:0}
+  .horse{font-size:24px;margin-bottom:6px;padding-right:30px;overflow-wrap:anywhere}
+  .classname{font-size:12px;margin-bottom:10px}
+  .rider{font-size:16px;margin-bottom:8px}
+  .arena,.draw{font-size:12px;margin-bottom:2px}
+  .details{right:14px;bottom:0;font-size:12.5px}
+  .notes{top:13px;right:12px;font-size:26px}
+  .count{width:26px;height:26px;font-size:13px;top:-5px;right:-6px}
+  dialog{padding:18px;border-radius:20px}
+  dialog h3{font-size:28px}
+}
+@media(max-width:380px){
+  .ride{grid-template-columns:146px minmax(0,1fr)}
+  .pill{font-size:9px;padding:7px 6px}
+  .pill b{font-size:12px}
+  .roundtime{font-size:35px}
+  .horse{font-size:21px}
+  .info{padding-left:12px}
+}
+
+/* Calm visual pass — the locked premium master remains untouched. */
+.hero{box-shadow:none;border-color:#ebe8e1;border-radius:22px}
+.hero-copy{padding:17px 20px 16px}
+.hero h1{font-size:clamp(36px,5.6vw,52px);letter-spacing:-1px}
+.kicker{letter-spacing:2.6px;color:#a08b5d}
+.date.active{background:#ead8ad}
+.filters-panel{background:transparent;border:0;border-radius:0;box-shadow:none;padding:0;margin-bottom:23px}
+.filters-top{display:none}
+.filterbar{gap:8px}
+.filtercell{background:#fff;border:1px solid #e2e1dc;border-radius:11px;box-shadow:none}
+.filtercell select{font-weight:400;background-color:transparent}
+.dayheading h2{font-size:clamp(29px,4.9vw,41px)}
+.dayheading span{font-size:14px}
+.ride{border:1px solid #e6e8eb;box-shadow:0 3px 12px rgba(24,38,61,.025);border-radius:17px;margin-bottom:17px}
+.time{border-left-width:4px;padding:11px 12px 11px 14px;gap:5px}
+.roundtime{font-size:43px;margin-bottom:4px}
+.pill{border-radius:9px;padding:7px 9px}
+.pill b{font-size:15px}
+.pill.warm{background:#f8f3e6}
+.pill.start{background:#f0f3f7}
+.info{margin:13px 0;padding-left:21px}
+.horse{font-size:28px;margin-bottom:6px}
+.classname{font-size:15px;margin-bottom:9px}
+.rider{font-size:18px;margin-bottom:8px}
+.arena,.draw{font-size:14px}
+@media(max-width:760px){
+ .hero-copy{padding:13px 15px 14px}
+ .hero h1{font-size:clamp(32px,8.9vw,43px)}
+ .filters-panel{margin-bottom:23px}
+ .filtercell select{font-size:12px;padding:11px 26px 11px 10px}
+ .dayheading h2{font-size:clamp(27px,7vw,34px)}
+ .dayheading span{font-size:12px}
+ .ride{grid-template-columns:154px minmax(0,1fr);border-radius:16px;margin-bottom:15px}
+ .time{border-left-width:4px;padding:11px 8px 11px 10px;gap:5px}
+ .roundtime{font-size:32px}
+ .pill{padding:7px 7px;font-size:10px}
+ .pill b{font-size:13px}
+ .info{margin:12px 0;padding:0 12px 25px 15px}
+ .horse{font-size:22px}
+ .classname{font-size:12px}
+ .rider{font-size:15px}
+ .arena,.draw{font-size:12px}
+}
+@media(max-width:380px){.ride{grid-template-columns:146px minmax(0,1fr)}.roundtime{font-size:31px}.pill b{font-size:12px}}
+
+/* Calm test iteration: reduce competing surfaces; preserve markup, days and behaviour. */
+body{background:#fcfbf8}
+.header{box-shadow:none}
+.wrap{max-width:820px}
+.hero{background:#fff;border:1px solid #e9e6df;box-shadow:none;border-radius:18px;margin-bottom:22px}
+.hero-copy{padding:19px 20px 14px}
+.hero h1{font-size:clamp(34px,5.5vw,46px);margin-bottom:7px}
+.kicker{margin-bottom:7px;color:#9e8550}
+.subtitle{font-size:clamp(14px,2vw,17px);line-height:1.35;color:#667286}
+.meta-row{margin-top:10px}
+.meta-chip{background:transparent;padding:0;font-size:12px;color:#7a8494}
+.date{min-height:66px;font-size:19px;font-weight:400}
+.date small{font-size:14px;margin-top:3px}
+.date.active{background:#f3ebd8;color:#18263d;font-weight:700}
+.filters-panel{margin-bottom:27px}
+.filterbar{gap:9px}
+.filtercell{border:1px solid #e6e3de;border-radius:11px;background:#fff}
+.filtercell select{font-size:13px;color:#303d53;padding:12px 28px 12px 11px}
+.dayheading{margin-bottom:14px}
+.dayheading h2{font-size:clamp(26px,4vw,33px);font-weight:400;letter-spacing:-.4px}
+.dayheading span{font-size:12px;color:#8b93a0}
+.ride{grid-template-columns:170px minmax(0,1fr);border:1px solid #e7e8eb;border-radius:15px;box-shadow:none;margin-bottom:13px;background:#fff}
+.time{border-left:3px solid #cdb478;padding:13px 13px 12px 14px;gap:0}
+.roundlabel{font-size:9px;letter-spacing:1.8px;color:#8b94a1}
+.roundtime{font-size:36px;line-height:1.1;margin:3px 0 11px;font-weight:400}
+.pill,.pill.warm,.pill.start{background:transparent;border-radius:0;padding:5px 0;margin:0;line-height:1.25;font-size:11px;color:#6d7889;white-space:nowrap}
+.pill.start{border-top:1px solid #eeece7}
+.pill b{font-size:14px;font-weight:700;color:#223149}
+.info{margin:12px 0 10px;padding:0 15px 22px 17px}
+.horse{font-size:22px;font-weight:700;margin-bottom:5px;line-height:1.13;padding-right:26px}
+.classname{font:400 12px/1.35 Arial,Helvetica,sans-serif;color:#7b8595;margin-bottom:9px}
+.rider{font-size:14px;margin-bottom:7px;color:#25354e}
+.arena,.draw{font-size:12px;line-height:1.4;margin-bottom:1px;color:#7e8897}
+.details{right:13px;bottom:0;font-size:11px;color:#66748a}
+.notes{top:10px;right:10px;font-size:23px}
+.count{width:20px;height:20px;font-size:10px;top:-4px;right:-5px}
+@media(max-width:760px){
+  .hero{border-radius:16px;margin-bottom:17px}
+  .hero-copy{padding:14px 15px 13px}
+  .hero h1{font-size:clamp(30px,8vw,39px)}
+  .subtitle{font-size:12px}
+  .date{min-height:57px;font-size:17px}.date small{font-size:13px}
+  .filters-panel{margin-bottom:24px}
+  .filtercell select{font-size:12px;padding:11px 25px 11px 9px}
+  .dayheading h2{font-size:27px}
+  .ride{grid-template-columns:143px minmax(0,1fr);border-radius:13px;margin-bottom:12px}
+  .time{padding:12px 9px 11px 10px;border-left-width:3px}
+  .roundtime{font-size:31px;margin:4px 0 9px}
+  .pill,.pill.warm,.pill.start{font-size:10px;padding:5px 0;gap:4px}
+  .pill b{font-size:13px}
+  .info{margin:11px 0;padding:0 10px 22px 12px}
+  .horse{font-size:19px;margin-bottom:5px}
+  .classname{font-size:11px;margin-bottom:7px}
+  .rider{font-size:13px;margin-bottom:6px}
+  .arena,.draw{font-size:11px}
+  .details{right:10px;font-size:11px}
+  .notes{top:9px;right:9px;font-size:21px}
+}
+@media(max-width:380px){
+  .ride{grid-template-columns:139px minmax(0,1fr)}
+  .pill,.pill.warm,.pill.start{font-size:9.5px}
+  .pill b{font-size:12px}
+  .roundtime{font-size:30px}
+  .horse{font-size:18px}
+}
+
+/* ShowViva elevated TEST: restrained editorial hierarchy, original interactions unchanged. */
+:root{--cream:#faf9f5;--navy:#18263d;--gold:#d8b974}
+body{background:var(--cream)}
+.hero{background:#fffefa;border:1px solid #e9e5da;border-radius:19px;margin-bottom:22px;overflow:hidden}
+.hero-copy{padding:21px 20px 17px;border-top:3px solid #c9ad73}
+.kicker{font-size:10px;letter-spacing:2.7px;color:#a48a55;margin-bottom:9px}
+.hero h1{font-size:clamp(36px,5.5vw,48px);line-height:1.08;letter-spacing:-1.2px;margin-bottom:9px}
+.subtitle{font:400 clamp(14px,1.9vw,17px)/1.45 Georgia,serif;color:#596579}
+.meta-row{margin-top:11px}.meta-chip{font-size:12px;color:#7b8490}
+.dates{border-top:1px solid #eee9de}
+.date{min-height:65px;font:400 19px/1.1 Georgia,serif;background:#fffefa}
+.date small{font-size:13px;margin-top:5px;color:#657086}
+.date.active{background:#f2ead7;font-weight:700;box-shadow:inset 0 -3px #c9ad73}
+.date.active small{color:#18263d}
+.filters-panel{margin:0 0 28px}
+.filterbar{gap:9px}
+.filtercell{background:#fffefa;border:1px solid #dfdfdc;border-radius:10px;box-shadow:none}
+.filtercell select{font-size:13px;font-weight:400;color:#2c3951;padding:12px 28px 12px 12px}
+.filtercell:focus-within{border-color:#bda05e;box-shadow:0 0 0 2px rgba(216,185,116,.12)}
+.dayheading{margin:0 0 15px}
+.dayheading h2{font:400 clamp(28px,4vw,35px)/1.12 Georgia,serif;color:#18263d;letter-spacing:-.5px}
+.dayheading span{font-size:12px;color:#7d8998}
+.ride{grid-template-columns:170px minmax(0,1fr);border:1px solid #e8e6df;border-radius:15px;box-shadow:0 4px 15px rgba(24,38,61,.025);margin-bottom:15px}
+.time{border-left:3px solid #ceb782;padding:14px 13px 13px 14px;gap:0}
+.roundlabel{font-size:9px;color:#8a93a0;letter-spacing:1.8px}
+.roundtime{font:400 37px/1.08 Georgia,serif;margin:5px 0 11px;color:#18263d;font-variant-numeric:tabular-nums}
+.pill,.pill.warm,.pill.start{background:transparent;padding:5px 0;line-height:1.25;font-size:11px;color:#76808d;gap:4px}
+.pill.start{border-top:1px solid #eeeae2}
+.pill b{font-size:15px;letter-spacing:0;color:#18263d;font-weight:700;font-variant-numeric:tabular-nums}
+.info{margin:13px 0 12px;padding:0 16px 23px 20px;border-left:1px solid #edece7}
+.horse{font-size:23px;font-weight:700;line-height:1.14;margin:0 0 6px;padding-right:30px}
+.classname{font:400 12px/1.4 Arial,Helvetica,sans-serif;color:#687588;margin-bottom:10px}
+.rider{font-size:15px;color:#25354e;margin-bottom:8px}
+.arena,.draw{font-size:12px;color:#788595;line-height:1.4}
+.details{right:14px;bottom:0;font-size:11px;color:#596d86;text-underline-offset:3px}
+.notes{top:10px;right:10px;font-size:22px}
+.count{width:20px;height:20px;font-size:10px;top:-4px;right:-5px}
+@media(max-width:760px){
+ .hero-copy{padding:17px 16px 15px}
+ .hero h1{font-size:clamp(33px,8.7vw,42px)}
+ .subtitle{font-size:13px;line-height:1.38}
+ .date{min-height:60px;font-size:18px}.date small{font-size:13px}
+ .filters-panel{margin-bottom:26px}
+ .filtercell select{font-size:12px;padding:12px 26px 12px 10px}
+ .dayheading h2{font-size:clamp(27px,7vw,34px)}
+ .ride{grid-template-columns:144px minmax(0,1fr);margin-bottom:14px}
+ .time{padding:13px 10px 12px 10px}
+ .roundtime{font-size:33px;margin:5px 0 10px}
+ .pill,.pill.warm,.pill.start{font-size:10px;padding:5px 0;gap:3px}
+ .pill b{font-size:13px}
+ .info{margin:12px 0 11px;padding:0 10px 22px 13px}
+ .horse{font-size:20px;margin-bottom:6px}
+ .classname{font-size:11px;margin-bottom:8px}
+ .rider{font-size:13px;margin-bottom:7px}
+ .arena,.draw{font-size:11px}
+ .details{right:10px;font-size:11px}
+}
+@media(max-width:380px){
+ .ride{grid-template-columns:140px minmax(0,1fr)}
+ .time{padding-left:9px;padding-right:9px}
+ .roundtime{font-size:31px}
+ .pill b{font-size:12px}
+ .horse{font-size:18px}
+}
+</style>
+</head>
+<body>
+<header class="header">
+  <a class="header-btn" href="./" aria-label="Back to ShowViva homepage">☰</a>
+  <div class="brand">
+    <div class="brand-name serif">Show<span>Viva</span></div>
+    <div class="brand-tag">YOUR EQUESTRIAN SHOW PLANNER</div>
+  </div>
+  <button class="header-btn" aria-label="Choose day" onclick="document.querySelector('.dates').scrollIntoView({behavior:'smooth'})">▦</button>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="kicker">SHOWVIVA PLAN</p>
+      <h1>Wales and West</h1>
+      <p class="subtitle">CSI2* · National &amp; International Showjumping<br>Royal Welsh Showground, Builth Wells</p>
+      <div class="meta-row">
+        <span class="meta-chip">16–18 October 2026</span>
+      </div>
+    </div>
+    <div class="dates" id="dates"><button class="date" data-day="0">Fri<small>16 Oct</small></button><button class="date active" data-day="1">Sat<small>17 Oct</small></button><button class="date" data-day="2">Sun<small>18 Oct</small></button></div>
+  </section>
+
+  <section class="filters-panel">
+    <div class="filters-top">
+      <div class="label">YOUR PLAN</div>
+      <div class="hint">Filter by horse, rider or arena</div>
+    </div>
+    <div class="filterbar" aria-label="Filter show rounds">
+      <div class="filtercell">
+        <select id="horse" aria-label="My horses">
+          <option value="">My horses</option>
+          <option>Summer Escape</option>
+          <option>Autumn Jazz</option>
+          <option>Chacco Iron</option>
+        </select>
+      </div>
+      <div class="filtercell">
+        <select id="rider" aria-label="My riders">
+          <option value="">My riders</option>
+          <option>Jodie Baker</option>
+          <option>Lucy Stranham</option>
+          <option>David Lock</option>
+        </select>
+      </div>
+      <div class="filtercell">
+        <select id="ring" aria-label="Arenas">
+          <option value="">Arenas</option>
+          <option>International Arena</option>
+          <option>Main Arena</option>
+          <option>Outdoor Arena 2</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <div class="dayheading">
+    <h2 id="daytitle">Sat 17 October</h2>
+    <span id="summary">4 rides · 3 horses</span>
+  </div>
+
+  <section id="rides"><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">08:30</div><div class="pill warm"><span>Warm up</span><b>08:05</b></div><div class="pill start"><span>Class starts</span><b>08:30</b></div></div><div class="info"><div class="horse">Summer Escape</div><div class="classname">CSI2* 1.35m Two Phase</div><div class="rider">Jodie Baker</div><div class="arena">International Arena</div><div class="draw">Draw 12 of 48</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" aria-label="Warm-up and notes for Summer Escape">▤<span class="count">2</span></button></div></article><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">10:15</div><div class="pill warm"><span>Warm up</span><b>09:50</b></div><div class="pill start"><span>Class starts</span><b>10:15</b></div></div><div class="info"><div class="horse">Autumn Jazz</div><div class="classname">CSI2* 1.40m Table A</div><div class="rider">Lucy Stranham</div><div class="arena">Main Arena</div><div class="draw">Draw 7 of 52</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" aria-label="Warm-up and notes for Autumn Jazz">▤<span class="count">1</span></button></div></article><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">12:20</div><div class="pill warm"><span>Warm up</span><b>11:55</b></div><div class="pill start"><span>Class starts</span><b>12:20</b></div></div><div class="info"><div class="horse">Chacco Iron</div><div class="classname">CSI2* 1.45m Grand Prix Qualifier</div><div class="rider">David Lock</div><div class="arena">International Arena</div><div class="draw">Draw 28 of 60</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" aria-label="Warm-up and notes for Chacco Iron">▤<span class="count">3</span></button></div></article><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">14:35</div><div class="pill warm"><span>Warm up</span><b>14:10</b></div><div class="pill start"><span>Class starts</span><b>14:35</b></div></div><div class="info"><div class="horse">Summer Escape</div><div class="classname">CSI2* 1.40m Accumulator</div><div class="rider">Jodie Baker</div><div class="arena">Outdoor Arena 2</div><div class="draw">Draw 5 of 44</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" aria-label="Warm-up and notes for Summer Escape">▤<span class="count">0</span></button></div></article></section>
+
+  <p class="footer-note">Illustrative demonstration schedule · Confirm official timings with the organiser.</p>
+</main>
+
+<dialog id="notedialog">
+  <h3 id="notetitle">Warm-up time</h3>
+  <div class="dialog-sub" id="dialogsub">Set your custom warm-up time and add notes for this round.</div>
+  <div class="warmcontrols">
+    <label for="warmminutes">Warm-up minutes</label>
+    <input type="number" id="warmminutes" min="0" max="180" value="25">
+  </div>
+  <label for="notetext" style="display:block;font-size:14px;color:#5b697f;margin-bottom:8px">Notes</label>
+  <textarea id="notetext" placeholder="Add notes for this round…"></textarea>
+  <div class="dialog-actions">
+    <button class="primary" id="save">Save</button>
+    <button class="secondary" onclick="notedialog.close()">Close</button>
+  </div>
+</dialog>
+
+<script>
+const days=[['Fri','16 Oct','Fri 16 October'],['Sat','17 Oct','Sat 17 October'],['Sun','18 Oct','Sun 18 October']];
+let selected=1,editing=null;
+const base=[
+  {horse:'Summer Escape',rider:'Jodie Baker',time:'08:30',class:'CSI2* 1.35m Two Phase',arena:'International Arena',draw:'12 of 48',notes:['Check studs','Take boots off']},
+  {horse:'Autumn Jazz',rider:'Lucy Stranham',time:'10:15',class:'CSI2* 1.40m Table A',arena:'Main Arena',draw:'7 of 52',notes:['Walk course']},
+  {horse:'Chacco Iron',rider:'David Lock',time:'12:20',class:'CSI2* 1.45m Grand Prix Qualifier',arena:'International Arena',draw:'28 of 60',notes:['Check draw','Groom ready','Bring water']},
+  {horse:'Summer Escape',rider:'Jodie Baker',time:'14:35',class:'CSI2* 1.40m Accumulator',arena:'Outdoor Arena 2',draw:'5 of 44',notes:[]}
+];
+let entries=days.flatMap((d,day)=>base.map((r,i)=>({...r,id:day+'-'+i,day,time:shift(r.time,day===1?0:day===0?-20:25),warm:25,notes:[...r.notes]})));
+try{
+  const saved=JSON.parse(localStorage.getItem('showviva-ww-demo-v1')||'{}');
+  entries.forEach(r=>{if(saved[r.id]){r.warm=saved[r.id].warm;r.notes=saved[r.id].notes}})
+}catch(e){}
+function shift(t,n){let [h,m]=t.split(':').map(Number);let x=(h*60+m+n+1440)%1440;return String(Math.floor(x/60)).padStart(2,'0')+':'+String(x%60).padStart(2,'0')}
+const $=id=>document.getElementById(id);
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function render(){
+  $('dates').innerHTML=days.map((d,i)=>`<button class="date ${i===selected?'active':''}" data-day="${i}">${d[0]}<small>${d[1]}</small></button>`).join('');
+  document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>{selected=+b.dataset.day;render()});
+  $('daytitle').textContent=days[selected][2];
+  let rows=entries.filter(r=>r.day===selected&&(!$('horse').value||r.horse===$('horse').value)&&(!$('rider').value||r.rider===$('rider').value)&&(!$('ring').value||r.arena===$('ring').value));
+  $('summary').textContent=rows.length+' rides · '+new Set(rows.map(r=>r.horse)).size+' horses';
+  $('rides').innerHTML=rows.length?rows.map(r=>`<article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">${r.time}</div><div class="pill warm"><span>Warm up</span><b>${shift(r.time,-r.warm)}</b></div><div class="pill start"><span>Class starts</span><b>${r.time}</b></div></div><div class="info"><div class="horse">${esc(r.horse)}</div><div class="classname">${esc(r.class)}</div><div class="rider">${esc(r.rider)}</div><div class="arena">${esc(r.arena)}</div><div class="draw">Draw ${esc(r.draw)}</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" data-id="${r.id}" aria-label="Warm-up and notes for ${esc(r.horse)}">▤<span class="count">${r.notes.length}</span></button></div></article>`).join(''):'<p class="empty">No rides match these filters.</p>';
+  document.querySelectorAll('.notes').forEach(b=>b.onclick=()=>{
+    editing=entries.find(r=>r.id===b.dataset.id);
+    $('notetitle').textContent='Warm-up time';
+    $('dialogsub').textContent=editing.horse+' · '+editing.rider+' · Round '+editing.time;
+    $('warmminutes').value=editing.warm;
+    $('notetext').value=editing.notes.join('\n');
+    $('notedialog').showModal();
+  })
+}
+['horse','rider','ring'].forEach(id=>$(id).addEventListener('change',render));
+$('save').onclick=()=>{
+  if(!editing)return;
+  editing.warm=Math.max(0,Math.min(180,Number($('warmminutes').value)||0));
+  editing.notes=$('notetext').value.split('\n').map(s=>s.trim()).filter(Boolean);
+  try{localStorage.setItem('showviva-ww-demo-v1',JSON.stringify(Object.fromEntries(entries.map(r=>[r.id,{warm:r.warm,notes:r.notes}]))))}catch(e){}
+  $('notedialog').close();
+  render();
+};
+render();
+</script>
+</body>
+</html>
