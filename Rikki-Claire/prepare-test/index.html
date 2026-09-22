@@ -224,6 +224,79 @@ form .goldbtn{
 /* Clear planner-request journey: a single Up Next card, never a duplicate submitted banner. */
 #app.sv-view-home .next-support{font-size:14px;line-height:1.5;color:#f5e7c9;margin:9px 0 16px}
 #app.sv-view-show .notice{background:#f5eddb;color:#10283a;border:1px solid #d4b473;border-radius:13px;padding:13px 16px;font-weight:700}
+</style><style id="sv-team-edit-unified-20260922">
+/* ShowViva TEST: My Team and its editing branches share one layout language.
+   This layer changes presentation only, not saving, deletion, or navigation. */
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider){
+  --team-navy:#10283a;--team-gold:#c9a460;--team-line:#e6dfd3;
+  color:var(--team-navy);
+}
+/* A small, recognisable return link—not a competing call-to-action. */
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider)>.back{
+  display:inline-flex!important;align-items:center!important;gap:6px!important;
+  width:auto!important;min-height:0!important;margin:0 0 20px!important;
+  padding:5px 0!important;background:transparent!important;border:0!important;
+  border-radius:0!important;box-shadow:none!important;
+  color:#876b3b!important;font:600 14px/1.35 Arial,sans-serif!important;
+  text-decoration:none!important;
+}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider)>.sv-branch-intro{
+  margin:0 0 22px!important;padding:0 0 21px!important;
+  border-bottom:1px solid var(--team-line)!important;
+}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider)>.sv-branch-intro h1{
+  font:400 clamp(36px,9vw,48px)/1.08 Georgia,serif!important;
+  letter-spacing:-1px!important;color:var(--team-navy)!important;
+  margin:0 0 9px!important;
+}
+/* Align the list cards with the edit form's same premium paper treatment. */
+#app.sv-view-team .horsecard{
+  display:flex!important;flex-wrap:wrap!important;
+  align-items:center!important;justify-content:space-between!important;
+  gap:5px 14px!important;padding:18px 20px!important;
+  border:1px solid var(--team-line)!important;border-radius:17px!important;
+  background:#fffefa!important;min-height:75px!important;box-shadow:none!important;
+}
+#app.sv-view-team .horsecard strong{
+  font:400 clamp(22px,5.6vw,28px)/1.15 Georgia,serif!important;
+  color:var(--team-navy)!important;min-width:0!important;
+}
+#app.sv-view-team .horsecard small{
+  font:400 13px/1.4 Arial,sans-serif!important;
+  color:#637181!important;overflow-wrap:anywhere!important;
+  min-width:0!important;max-width:100%!important;
+  margin:0!important;text-align:left!important;
+}
+#app:is(.sv-view-rider,.sv-view-horse)>form{
+  background:#fffefa!important;border:1px solid var(--team-line)!important;
+  border-radius:18px!important;box-shadow:none!important;
+  padding:20px 18px 22px!important;
+}
+#app:is(.sv-view-rider,.sv-view-horse)>form>.field{
+  display:block!important;margin:0 0 18px!important;
+  font:600 14px/1.45 Arial,sans-serif!important;color:#293d50!important;
+}
+#app:is(.sv-view-rider,.sv-view-horse)>form>.field input{
+  display:block!important;width:100%!important;min-width:0!important;
+  min-height:50px!important;height:50px!important;
+  margin-top:9px!important;padding:10px 13px!important;
+  background:white!important;color:var(--team-navy)!important;
+  border:1px solid #dedad2!important;border-radius:12px!important;
+  font:400 16px/1.3 Arial,sans-serif!important;
+}
+#app:is(.sv-view-rider,.sv-view-horse)>form>.goldbtn{
+  width:100%!important;min-height:51px!important;margin-top:8px!important;
+  background:linear-gradient(110deg,#e9cc95,#c7a664)!important;
+  color:var(--team-navy)!important;border:0!important;
+  border-radius:14px!important;font:700 16px Arial,sans-serif!important;
+}
+#app:is(.sv-view-rider,.sv-view-horse)>.sv-delete-team{
+  display:block!important;width:auto!important;
+  margin:20px auto 28px!important;padding:10px 13px!important;
+  background:transparent!important;color:#804747!important;
+  border:1px solid #e6d4d2!important;border-radius:11px!important;
+  font:600 13px Arial,sans-serif!important;
+}
 </style></head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions" aria-label="Account"><button type="button" class="home-nav" aria-label="Go to Home" onclick="go('home')" hidden><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 9-8 9 8"/><path d="M5 10v11h14V10M9 21v-7h6v7"/></svg>Home</button><button type="button" class="calendar-nav" aria-label="Open calendar" title="Calendar" onclick="mode='calendar';go('plan')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></button><button type="button" onclick="signOut()">Sign out</button></nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><script>function signOut(){alert('Sign out will be connected when this prototype is integrated with your live account.');}
 const KEY='showviva-demo-v1';const initial={shows:[{id:1,name:'Wales and West',start:'2026-10-16',end:'2026-10-18',horses:[],riders:[]},{id:2,name:'Suffolk Equestrian',start:'2026-11-11',end:'2026-11-12',horses:[],riders:[]},{id:3,name:'Arena UK',start:'2026-11-25',end:'2026-11-30',horses:[],riders:[]}],horses:[],riders:[]};let data;try{data=JSON.parse(localStorage.getItem(KEY))||initial}catch{data=initial}if(!data||!Array.isArray(data.shows)||!Array.isArray(data.horses)||!Array.isArray(data.riders))data=initial;data.shows.forEach(s=>{if(!s.status)s.status='draft'});if(!Array.isArray(data.plannerCreations))data.plannerCreations=[];if(!('lastSubmittedShowId' in data))data.lastSubmittedShowId=null;let editingHorse=null;let editingRider=null;let activeTool=null;let view='home',mode='calendar',month=new Date(2026,9,1),selected=null;const app=document.getElementById('app');const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){/* Local files may block storage. */}};const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const fmt=s=>new Date(s+'T12:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short'});const dates=s=>fmt(s.start)+(s.end&&s.end!==s.start?' – '+fmt(s.end):'');const riderName=r=>typeof r==='string'?r:r.name;const horseName=h=>typeof h==='string'?h:(h.stableName||h.registeredName);const registeredName=h=>typeof h==='string'?h:h.registeredName;const todayISO=()=>new Date().toLocaleDateString('en-CA');const isPast=s=>s.end<todayISO();const ordered=()=>[...data.shows].sort((a,b)=>a.start.localeCompare(b.start));const creationMonth=()=>todayISO().slice(0,7);const monthlyCount=()=>data.plannerCreations.filter(m=>m===creationMonth()).length;const statusLabel=s=>isPast(s)?'Past show':s.status==='ready'?'Planner ready':s.status==='preparing'?'Planner being prepared':s.status==='submitted'?'Planner requested':'Show details';const showItem=s=>`<button class="item" onclick="openShow(${s.id})"><span><strong>${esc(s.name)}</strong><small>${dates(s)} · ${statusLabel(s)}</small></span><span class="arrow">›</span></button>`;const back=()=>`<button class="back" onclick="go('home')">← Home</button>`;function go(v){view=v;render();scrollTo(0,0)}function openShow(id){activeTool=null;selected=Number(id);go('show')}function render(){app.className='sv-view-'+view;const homeNav=document.querySelector('.home-nav');if(homeNav)homeNav.hidden=(view==='home');if(view==='confirmed'){const s=data.shows.find(x=>x.id===selected);app.innerHTML=`<div class="confirmation"><div class="eyebrow">Your ShowViva</div><h1>Planner requested ✓</h1><p class="intro">${s?esc(s.name):'Your show'} is saved. You can track its planner status from Home and My Shows.</p><button class="goldbtn" onclick="go('home')">Go to Home →</button><button class="smallbtn" onclick="go('show')">View request →</button></div>`;return}if(view==='home'){const shows=ordered().filter(s=>!isPast(s)),next=shows[0];app.innerHTML=`<div class="eyebrow">Your ShowViva</div><h1 class="home-title">Everything for your next show.</h1><div class="tiles home-actions"><button class="tile" onclick="go('add')"><span class="symbol">＋</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders →</small></button></div>${next?`<section class="next" aria-label="Up next"><div class="eyebrow">★ Up next</div><h2>${esc(next.name)}</h2><p>${dates(next)} · ${statusLabel(next)}</p>${next.status==='submitted'?'<p class="next-support">Request received. Your planner will appear here when ready.</p>':next.status==='preparing'?'<p class="next-support">Your planner is being prepared. Check here for its availability.</p>':''}<button class="goldbtn" onclick="${next.status==='ready'&&Number(next.id)===1?'window.location.href=&quot;planner.html&quot;':'openShow('+next.id+')'}">${next.status==='ready'&&Number(next.id)===1?'Open Planner →':next.status==='draft'?'Finish show details →':next.status==='submitted'?'Track planner request →':'View show →'}</button></section>`:''}<div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div>${shows.filter(s=>s.id!==next?.id).slice(0,5).map(showItem).join('')||'<p class="hint">No other upcoming shows.</p>'}`}
 else if(view==='past'){app.innerHTML=`${back()}<h1>Past Shows</h1><p class="intro">Your previous shows, all in one place.</p>${ordered().filter(isPast).reverse().map(showItem).join('')||'<p class="empty">No past shows yet.</p>'}`}
