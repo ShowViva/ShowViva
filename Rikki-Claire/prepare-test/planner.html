@@ -438,30 +438,59 @@ body{background:var(--cream)}
  .pill b{font-size:12px}
  .horse{font-size:18px}
 }
+
+/* Home-page-matched ShowViva visual language; functionality below unchanged. */
+:root{--navy:#0d2737;--gold:#e7b960;--cream:#fcfaf5;--text:#0d2737;--line:#eadfcf}
+body{background:#fcfaf5}
+.header{height:auto;display:block;background:#0d2737;color:#fff;padding:23px max(20px,calc((100vw - 820px)/2)) 28px}
+.header-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.header .brand{display:block;text-align:left;text-decoration:none;color:#fff;min-width:0}
+.header .brand-name{font:400 clamp(31px,5.5vw,43px)/1 Georgia,serif;letter-spacing:-1.7px}
+.header .brand-name span{color:#e7b960}
+.header .brand-tag{font:400 10px/1.5 Arial,Helvetica,sans-serif;letter-spacing:2.2px;margin-top:11px}
+.calendar-btn{flex:none;border:0;background:transparent;color:#f0c777;padding:3px;display:grid;place-items:center;width:43px;height:43px;border-radius:8px;cursor:pointer}
+.calendar-btn:focus-visible,.header .brand:focus-visible{outline:2px solid #e7b960;outline-offset:3px}
+.header-show{margin-top:33px}
+.header-kicker{font-size:10px;font-weight:700;letter-spacing:3px;color:#e7b960;margin-bottom:10px}
+.header-show h1{font:400 clamp(37px,7.6vw,61px)/1.09 Georgia,serif;letter-spacing:-1px;margin:0 0 13px}
+.header-show h1 span{color:#e7b960}
+.header-show p{font:400 clamp(17px,3vw,23px)/1.3 Georgia,serif;color:#fff;margin:0}
+.header-show .venue{font:400 13px/1.5 Arial,Helvetica,sans-serif;color:#dfdfd9;margin-top:10px}
+.wrap{padding-top:18px}
+.hero{background:transparent;border:0;border-radius:0;box-shadow:none;margin:0 0 25px}
+.dates{border:1px solid #e4d9c6;border-radius:15px;overflow:hidden}
+.date{background:#fffefa;color:#0d2737;border-right:1px solid #e4d9c6}
+.date.active{background:#f0dbad;color:#0d2737;box-shadow:inset 0 -3px #b78a40}
+.filtercell{background:#fffefa;border:1px solid #e5dccd}
+.filtercell select{color:#0d2737}
+.dayheading h2,.horse,.roundtime{color:#0d2737}
+.ride{border-color:#e9e1d6;box-shadow:0 3px 12px rgba(13,39,55,.025)}
+.time{border-left-color:#bf9c62}
+.pill b{color:#0d2737}
+.notes{color:#0d2737}
+.count{background:#e7b960;color:#0d2737}
+@media(max-width:760px){
+ .header{padding:23px 18px 26px}
+ .header-show{margin-top:30px}
+ .header-show h1{font-size:clamp(36px,9vw,48px)}
+ .header-show p{font-size:19px}
+ .header-show .venue{font-size:12px}
+ .wrap{padding-top:16px}
+ .hero{margin-bottom:22px}
+ .calendar-btn{width:40px;height:40px}
+}
 </style>
 </head>
 <body>
 <header class="header">
-  <a class="header-btn" href="./" aria-label="Back to ShowViva homepage">☰</a>
-  <div class="brand">
-    <div class="brand-name serif">Show<span>Viva</span></div>
-    <div class="brand-tag">YOUR EQUESTRIAN SHOW PLANNER</div>
+  <div class="header-top">
+    <a class="brand" href="index.html" aria-label="Back to ShowViva home"><div class="brand-name serif">Show<span>Viva</span></div><div class="brand-tag">EQUESTRIAN SHOWS, SIMPLIFIED</div></a>
+    <button class="calendar-btn" aria-label="Go to show dates" onclick="document.querySelector('.dates').scrollIntoView({behavior:'smooth'})"><svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></button>
   </div>
-  <button class="header-btn" aria-label="Choose day" onclick="document.querySelector('.dates').scrollIntoView({behavior:'smooth'})">▦</button>
+  <div class="header-show"><div class="header-kicker">YOUR SHOWVIVA PLAN</div><h1>Wales <span>and West.</span></h1><p>16–18 October 2026</p><p class="venue">CSI2* · National &amp; International Showjumping<br>Royal Welsh Showground, Builth Wells</p></div>
 </header>
-
 <main class="wrap">
-  <section class="hero">
-    <div class="hero-copy">
-      <p class="kicker">SHOWVIVA PLAN</p>
-      <h1>Wales and West</h1>
-      <p class="subtitle">CSI2* · National &amp; International Showjumping<br>Royal Welsh Showground, Builth Wells</p>
-      <div class="meta-row">
-        <span class="meta-chip">16–18 October 2026</span>
-      </div>
-    </div>
-    <div class="dates" id="dates"><button class="date" data-day="0">Fri<small>16 Oct</small></button><button class="date active" data-day="1">Sat<small>17 Oct</small></button><button class="date" data-day="2">Sun<small>18 Oct</small></button></div>
-  </section>
+  <section class="hero" aria-label="Show dates"><div class="dates" id="dates"><button class="date" data-day="0">Fri<small>16 Oct</small></button><button class="date active" data-day="1">Sat<small>17 Oct</small></button><button class="date" data-day="2">Sun<small>18 Oct</small></button></div></section>
 
   <section class="filters-panel">
     <div class="filters-top">
