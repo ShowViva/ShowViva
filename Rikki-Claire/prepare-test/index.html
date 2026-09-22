@@ -1,77 +1,439 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ShowViva — Your show co-pilot</title><style>:root{--navy:#192e47;--gold:#bd9b60;--cream:#fbf8f1;--line:#e8dfd0;--muted:#726e67}*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--navy);font-family:Arial,Helvetica,sans-serif}button,input,select{font:inherit}button{cursor:pointer}header{background:var(--navy);color:#fff;padding:18px 22px;display:flex;justify-content:space-between;align-items:center}.brand{font-family:Georgia,serif;font-size:24px;letter-spacing:2px}.brand{display:flex;align-items:center;gap:10px}.brand .crest{width:35px;height:39px;flex:none}.brand .crest text{font-family:Georgia,serif;font-size:16px;font-weight:bold;letter-spacing:-1px}header button{background:none;border:0;color:#fff;font-size:22px}main{max-width:680px;margin:auto;padding:27px 20px 70px}.eyebrow{font-size:11px;letter-spacing:2px;color:#977b4c;font-weight:700;text-transform:uppercase}h1,h2,h3{font-family:Georgia,serif;font-weight:400}h1{font-size:35px;margin:9px 0}h2{font-size:25px;margin:0}p{line-height:1.5}.intro{color:var(--muted);margin:0 0 28px}.next{background:var(--navy);color:white;border-radius:13px;padding:24px;margin:20px 0 22px}.next .eyebrow{color:#e0c68e}.next h2{font-size:31px;margin:13px 0 4px}.next p{color:#e5e3de;margin:4px 0 22px}.goldbtn{border:0;background:var(--gold);color:var(--navy);font-weight:700;border-radius:7px;padding:14px 18px;width:100%}.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}.tile{background:#f3ecdf;border:1px solid var(--line);border-radius:11px;padding:19px;text-align:left;color:var(--navy);min-height:117px}.tile .symbol{font-size:24px;color:#977b4c}.tile strong{display:block;font-family:Georgia,serif;font-size:22px;font-weight:400;margin:10px 0 4px}.tile small{color:var(--muted)}.sectionhead{display:flex;justify-content:space-between;align-items:center;margin:30px 0 13px}.link{border:0;background:none;color:#8d7042;font-weight:700}.item{display:flex;justify-content:space-between;align-items:center;text-align:left;width:100%;background:#fffdf9;border:1px solid var(--line);border-radius:9px;padding:16px;margin:9px 0;color:var(--navy)}.item strong{display:block;font-size:15px}.item small{display:block;color:var(--muted);margin-top:5px}.arrow{font-size:23px;color:#9e8255}.back{background:none;border:0;color:#8d7042;padding:0;margin-bottom:22px}.toolbar{display:flex;gap:9px;align-items:center;justify-content:space-between;margin:20px 0}.smallbtn{background:var(--navy);color:white;border:0;border-radius:7px;padding:11px 15px}.toggle{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}.toggle button{background:transparent;border:0;padding:10px 14px;color:var(--navy)}.toggle .active{background:var(--navy);color:white}.calendar{background:white;border:1px solid var(--line);border-radius:10px;padding:13px}.month{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.month button{border:0;background:none;color:var(--navy);font-size:22px}.days{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.day{text-align:center;padding:10px 0;font-size:13px;border:0;border-radius:5px;background:#f6f0e6;color:var(--navy);min-height:36px}.day.has{background:#d8c29b;font-weight:700}.day.blank{background:none}.field{display:block;margin:16px 0;font-size:13px;font-weight:700}.field input,.field select{display:block;width:100%;padding:13px;margin-top:7px;border:1px solid #d7cbb8;border-radius:7px;background:white;color:var(--navy)}.hint{color:var(--muted);font-size:13px}.empty{padding:22px;background:#f3ecdf;border-radius:10px;color:var(--muted)}.pill{display:inline-block;background:#f3ecdf;border-radius:30px;padding:7px 11px;margin:5px 5px 5px 0;font-size:13px}.subhead{font-size:18px;margin-top:26px}.hidden{display:none!important}@media(max-width:360px){main{padding:22px 15px}.tile{padding:13px}.tile strong{font-size:20px}}</style><style id="header-override">.site-header{display:block;background:#1b2c3a;color:#fff;padding:28px 22px 30px}.header-top{display:flex;align-items:center;justify-content:space-between;gap:10px}.brand-lockup{min-width:0}.brand-wordmark{font-family:Georgia,serif;font-size:clamp(29px,6vw,44px);letter-spacing:-1.7px;white-space:nowrap}.brand-wordmark span{color:#e7c17b}.brand-tagline{font-size:clamp(8px,1.7vw,12px);letter-spacing:2.7px;margin-top:7px;white-space:nowrap}.header-actions{display:flex;gap:7px}.site-header .header-actions button{font:inherit;font-size:13px;border:1px solid #6c7780;border-radius:11px;padding:10px 11px;white-space:nowrap;background:transparent;color:#fff}.header-message{margin-top:39px}.header-message h1{font-size:clamp(36px,8.5vw,64px);margin:0;line-height:1.12;white-space:nowrap;letter-spacing:-1.6px}.header-message h1 em{color:#e7c17b;font-style:normal}.header-message p{font-family:Georgia,serif;font-size:clamp(21px,4.7vw,30px);font-weight:400;letter-spacing:-.35px;margin:19px 0 0;color:#f5f1e9}@media(max-width:390px){.site-header{padding:24px 16px 28px}.header-actions{gap:4px}.site-header .header-actions button{font-size:11px;padding:9px 7px}.brand-tagline{letter-spacing:1.5px}.header-message{margin-top:34px}.header-message p{font-size:21px}}</style><style>.tiles{margin-top:18px}.tile{background:#192e47;color:#fff;border:0;min-height:132px}.tile .symbol{color:#e7c17b}.tile small{color:#e9dfce}.next{margin-top:25px}.sectionhead{margin-top:34px}@media(max-width:390px){.tile{padding:16px 12px}.tile strong{font-size:21px}}</style><style id="showviva-refinement">
-:root{--cream:#fcfaf5;--line:#e7e0d5;--gold:#b79a67}
-body{background:var(--cream)}
-.site-header{padding-bottom:26px}
-.header-message{margin-top:28px}
-.header-message h1{font-size:clamp(33px,7.5vw,54px)}
-.header-message p{font-size:clamp(17px,3.8vw,23px);margin-top:13px;color:#eee9df}
-main{padding-top:29px}
-.tiles{gap:12px;margin-top:17px}
-.tile{background:#fffefa;color:var(--navy);border:1px solid #dfd5c4;min-height:112px;padding:18px 19px;box-shadow:0 3px 14px rgba(25,46,71,.025)}
-.tile .symbol{color:#a68a57;font-size:23px}
-.tile strong{font-size:22px;margin:7px 0 4px}
-.tile small{color:#777167}
-.next{background:#fffefa;color:var(--navy);border:1px solid #d9c9aa;border-left:3px solid #b79a67;padding:21px 22px;margin-top:29px;margin-bottom:27px;box-shadow:0 5px 22px rgba(25,46,71,.035)}
-.next .eyebrow{color:#907448}
-.next h2{font-size:clamp(27px,6vw,36px);margin:12px 0 3px}
-.next p{color:#726e67;margin:5px 0 17px}
-.next .goldbtn{background:#192e47;color:white;width:auto;min-width:170px;padding:12px 20px;font-size:14px;letter-spacing:.4px}
-.sectionhead{margin-top:32px}
-.item{background:#fffefa;padding:17px 18px;border-radius:11px;margin:8px 0}
-.item strong{font-size:16px}
-@media(max-width:390px){.tile{padding:15px 13px;min-height:108px}.tile strong{font-size:20px}.next{padding:19px 18px}.header-message h1{font-size:clamp(31px,8vw,39px)}}
-.scanrow{display:flex;align-items:center;gap:11px;margin:16px 0 12px}.scan-trigger{border:1px solid #d9c9aa;background:#fffefa;color:#a68a57;width:43px;height:43px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;flex:none}.scan-trigger svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.scan-label{color:var(--navy);font-size:14px;font-weight:600;cursor:pointer}.scan-file{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}.scan-status{font-size:12px;color:var(--muted);margin:0 0 12px 54px}.scan-preview{max-width:100%;max-height:200px;object-fit:contain;border-radius:8px;margin:5px 0 10px 54px}.horsecard{display:block;width:100%;text-align:left;border:1px solid var(--line);background:#fffefa;border-radius:10px;padding:15px;margin:9px 0;color:var(--navy)}.horsecard small{display:block;color:var(--muted);margin-top:5px}.horse-actions{display:flex;gap:10px;margin:15px 0}.horse-actions button{flex:1}.notice{background:#f3ecdf;border-radius:8px;padding:12px;font-size:13px;color:var(--navy)}</style><style id="showviva-gold-detail">
-/* Refined gold framing: preserve typography, cream space and existing interactions. */
-.tile{border:2px solid #b79a67;background:#fffefa;box-shadow:0 4px 16px rgba(25,46,71,.035)}
-.next{border:2px solid #b79a67;border-left:2px solid #b79a67;background:#fffefa;box-shadow:0 6px 22px rgba(25,46,71,.04)}
-.item{border:1px solid #e7e0d5;background:#fffefa}
-.tile:focus-visible,.next button:focus-visible,.item:focus-visible{outline:2px solid #192e47;outline-offset:3px}
-</style><style id="showviva-show-journey">.show-journey{margin-top:26px;padding:21px;border:1px solid #d8c59f;background:#fffefa;border-radius:12px}.show-journey .intro{margin:10px 0 18px}.show-stage{border-top:1px solid #e8dfd0;padding:15px 0 8px}.show-stage strong{font-family:Georgia,serif;font-size:20px;font-weight:400}.show-stage p{font-size:14px;color:#726e67;margin:7px 0}.show-journey .goldbtn{margin-top:14px}</style><style id="connected-test-css">
-html,body{max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}main,section,.field{min-width:0;max-width:100%}.field input,.field select,.field textarea{max-width:100%;min-width:0;width:100%;font-size:16px}.hint,.intro,.notice,.field small{overflow-wrap:anywhere}.goldbtn,.smallbtn{max-width:100%}.show-tools{margin:24px 0;padding:20px;border:1px solid #d8c59f;border-radius:12px;background:#fffefa}.show-tools textarea{width:100%;min-height:110px;padding:12px;border:1px solid #d8c59f;border-radius:8px;font:inherit}.checkrow{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid #e8dfd0}.checkrow input{width:20px;height:20px;flex:none}.checkrow span{flex:1;min-width:0;overflow-wrap:anywhere}.checkrow button{flex:none}.show-tools .smallbtn{margin-top:12px}@media(max-width:420px){main{padding-left:17px;padding-right:17px}.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
-</style><style id="home-simplified-20260922">.home-title{font-size:clamp(28px,7vw,38px);line-height:1.15;margin:10px 0 20px}.home-actions{margin-top:0}.home-actions .tile{min-width:0;min-height:142px;border:2px solid #b79a67;background:#fffefa}.home-actions .tile strong{font-size:clamp(19px,5vw,25px)}.home-actions .tile small{display:block;line-height:1.4}.next{background:#192e47;color:#fff;border:2px solid #b79a67;margin:23px 0 26px}.next .eyebrow{color:#e7c17b}.next p{color:#f0e9dc}.next .goldbtn{background:#b79a67;color:#192e47;width:100%;max-width:100%}.sectionhead h2{font-size:26px}.item{min-width:0}.item span:first-child{min-width:0;overflow-wrap:anywhere}@media(max-width:390px){.home-actions{gap:10px}.home-actions .tile{padding:16px 12px}.next{padding:20px 17px}}html,body{max-width:100%;overflow-x:hidden}</style><style id="showviva-official-brand-20260922">
-/* Matches the ShowViva public website master typography and palette. */
-:root{--navy:#061f30;--gold:#dda94e;--cream:#f6f1e8;--line:#e5d8c2;--muted:#586572;--serif:Georgia,"Times New Roman",serif;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
-body{font-family:var(--sans);background:var(--cream);color:#092438}
-.site-header{background:#061f30;border-bottom:1px solid rgba(221,169,78,.35)}
-.brand-wordmark,.brand,.tile strong,h1,h2,h3,.next h2,.show-stage strong,.header-message p{font-family:var(--serif)}
-.brand-wordmark span,.header-message h1 em,.tile .symbol,.next .eyebrow{color:#dda94e}
-.header-message p{color:#fffdf8}
-.eyebrow,.link,.back{color:#947039}
-.tile,.item,.next,.show-tools,.show-journey,.horsecard{background:#fffdf8;border-color:#dda94e;color:#092438}
-.tile .symbol{color:#bc8b35}.tile small,.intro,.hint{color:#586572}
-.next{background:#061f30;color:#fffdf8;border:2px solid #dda94e}
-.next h2,.next p{color:#fffdf8}.next .eyebrow{color:#f0c36c}
-.next .goldbtn,.goldbtn{background:linear-gradient(135deg,#f3ca78,#dda94e);color:#132638;border-radius:999px;font-weight:700}
-.next .goldbtn{background:linear-gradient(135deg,#f3ca78,#dda94e);color:#132638}
-.smallbtn,.toggle .active{background:#061f30;color:#fffdf8;border-radius:999px}
-.field input,.field select,.show-tools textarea{border-color:#d8c59f;background:#fffdf8;color:#092438}
-.pill,.notice,.empty{background:#f5e8ce;color:#092438}
-.site-header .header-actions button{border-color:#b99759}
-html,body{max-width:100%;overflow-x:hidden}
-main,.tiles,.tile,.next,.field,.field input,.field select,.show-tools{min-width:0;max-width:100%}
-.hint,.intro,.notice,.field small{overflow-wrap:anywhere}
-@media(max-width:390px){.site-header{padding-left:16px;padding-right:16px}.brand-wordmark{font-size:clamp(26px,7vw,34px)}.header-message h1{white-space:normal}.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.tile{padding:14px 12px}.tile strong{font-size:19px}}
-</style><style id="final-ux">.show-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}.show-top h1{overflow-wrap:anywhere}.show-icons{display:flex;gap:8px;flex:none}.tool-icon{position:relative;min-width:43px;height:43px;border-radius:50%;border:1px solid #dda94e;background:#fffdf8;color:#092438;font-size:23px}.tool-dot{position:absolute;right:5px;top:5px;width:7px;height:7px;border-radius:50%;background:#dda94e}.checkrow{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #e8dfd0;font-size:16px}.checkrow input{width:22px!important;height:22px;flex:none;margin:0;accent-color:#092438}.checkrow span{flex:1;min-width:0}.tool-overlay{position:fixed;inset:0;background:rgba(6,31,48,.55);z-index:100;display:flex;align-items:flex-end;justify-content:center}.tool-panel{background:#fffdf8;color:#092438;border-radius:22px 22px 0 0;padding:24px 20px max(30px,env(safe-area-inset-bottom));width:100%;max-width:680px;max-height:88dvh;overflow:auto;box-shadow:0 -5px 30px #061f3033}.tool-head{display:flex;align-items:center;justify-content:space-between}.tool-close{width:44px;height:44px;border:1px solid #dda94e;border-radius:50%;background:transparent;color:#092438;font-size:30px}.tool-panel textarea{width:100%;min-height:160px;border:1px solid #d8c59f;border-radius:10px;padding:14px;font:inherit;font-size:16px;background:#fff;color:#092438;margin:8px 0 14px}.field input{font-size:16px!important}.site-header,.header-top,.header-message,main{max-width:100%} .field small{display:block;overflow-wrap:anywhere}@media(max-width:420px){.show-top h1{font-size:30px}.show-icons{gap:5px}.tool-icon{min-width:40px;height:40px}}</style><style id="confirmation-ux">.confirmation{max-width:640px;margin:22px auto;padding:30px 0}.confirmation .goldbtn{display:block;width:100%;margin:24px 0 12px}.confirmation .smallbtn{display:block;margin:0 auto}.checkrow input[type=checkbox]{appearance:auto!important;-webkit-appearance:checkbox!important;opacity:1!important;visibility:visible!important;accent-color:#102A3D!important;width:24px!important;height:24px!important;flex:0 0 24px!important;position:static!important}.checkrow{display:flex!important;align-items:center;gap:12px;min-height:48px}.past-heading{margin-top:30px;border-top:1px solid #d8c59f;padding-top:20px}.delete-show{display:block;margin:32px auto 8px;border:0;background:transparent;color:#9b3d36;text-decoration:underline;font:inherit;padding:12px}.past-label{display:inline-block;background:#f3ecdf;color:#102a3d;border-radius:20px;padding:5px 12px;font-size:12px;font-weight:700;margin:8px 0}</style></head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions" aria-label="Account"><button type="button" onclick="go('home')">⌂ Home</button><button type="button" onclick="signOut()">Sign out</button></nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><script>function signOut(){alert('Sign out will be connected when this prototype is integrated with your live account.');}
-const KEY='showviva-demo-v1';const initial={shows:[{id:1,name:'Wales and West',start:'2026-10-16',end:'2026-10-18',horses:[],riders:[]},{id:2,name:'Suffolk Equestrian',start:'2026-11-11',end:'2026-11-12',horses:[],riders:[]},{id:3,name:'Arena UK',start:'2026-11-25',end:'2026-11-30',horses:[],riders:[]}],horses:[],riders:[]};let data;try{data=JSON.parse(localStorage.getItem(KEY))||initial}catch{data=initial}if(!data||!Array.isArray(data.shows)||!Array.isArray(data.horses)||!Array.isArray(data.riders))data=initial;data.shows.forEach(s=>{if(!s.status)s.status='draft'});if(!Array.isArray(data.plannerCreations))data.plannerCreations=[];let editingHorse=null;let editingRider=null;let activeTool=null;let view='home',mode='calendar',month=new Date(2026,9,1),selected=null;const app=document.getElementById('app');const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){/* Local files may block storage. */}};const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const fmt=s=>new Date(s+'T12:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short'});const dates=s=>fmt(s.start)+(s.end&&s.end!==s.start?' – '+fmt(s.end):'');const riderName=r=>typeof r==='string'?r:r.name;const horseName=h=>typeof h==='string'?h:(h.stableName||h.registeredName);const registeredName=h=>typeof h==='string'?h:h.registeredName;const todayISO=()=>new Date().toLocaleDateString('en-CA');const isPast=s=>s.end<todayISO();const ordered=()=>[...data.shows].sort((a,b)=>a.start.localeCompare(b.start));const creationMonth=()=>todayISO().slice(0,7);const monthlyCount=()=>data.plannerCreations.filter(m=>m===creationMonth()).length;const statusLabel=s=>isPast(s)?'Past show':s.status==='ready'?'Planner ready':s.status==='preparing'?'Planner being prepared':s.status==='submitted'?'Show submitted':'Show details';const showItem=s=>`<button class="item" onclick="openShow(${s.id})"><span><strong>${esc(s.name)}</strong><small>${dates(s)} · ${statusLabel(s)}</small></span><span class="arrow">›</span></button>`;const back=()=>`<button class="back" onclick="go('home')">← Home</button>`;function go(v){view=v;render();scrollTo(0,0)}function openShow(id){activeTool=null;selected=Number(id);go('show')}function render(){if(view==='confirmed'){const s=data.shows.find(x=>x.id===selected);app.innerHTML=`<div class="confirmation"><div class="eyebrow">Your ShowViva</div><h1>Show added ✓</h1><p class="intro">${s?esc(s.name):'Your show'} is now in My Shows.</p><button class="goldbtn" onclick="go('home')">Go to Home →</button><button class="smallbtn" onclick="go('show')">Continue planning this show →</button></div>`;return}if(view==='home'){const shows=ordered().filter(s=>!isPast(s)),next=shows[0];app.innerHTML=`<div class="eyebrow">Your ShowViva</div><h1 class="home-title">Everything for your next show.</h1><div class="tiles home-actions"><button class="tile" onclick="go('add')"><span class="symbol">＋</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders →</small></button></div>${next?`<section class="next" aria-label="Up next"><div class="eyebrow">★ Up next</div><h2>${esc(next.name)}</h2><p>${dates(next)} · ${statusLabel(next)}</p><button class="goldbtn" onclick="${next.status==='ready'&&Number(next.id)===1?'window.location.href=&quot;planner.html&quot;':'openShow('+next.id+')'}">${next.status==='ready'&&Number(next.id)===1?'Open Planner →':next.status==='draft'?'Finish show details →':'View show →'}</button></section>`:''}<div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div>${shows.filter(s=>s.id!==next?.id).slice(0,5).map(showItem).join('')||'<p class="hint">No other upcoming shows.</p>'}${ordered().some(isPast)?'<div class="sectionhead past-heading"><h2>Past Shows</h2><button class="link" onclick="mode=\'list\';go(\'plan\')">View all →</button></div>'+ordered().filter(isPast).reverse().slice(0,3).map(showItem).join(''):''}`}
-else if(view==='plan'){app.innerHTML=`${back()}<h1>My Shows</h1><p class="intro">Plan your shows and find every planner here.</p><div class="toolbar"><button class="smallbtn" onclick="go('add')">+ Add Show</button><div class="toggle"><button class="${mode==='calendar'?'active':''}" onclick="mode='calendar';render()">Calendar</button><button class="${mode==='list'?'active':''}" onclick="mode='list';render()">List</button></div></div>${mode==='calendar'?calendar():ordered().filter(s=>!isPast(s)).map(showItem).join('')||'<p class="empty">No upcoming shows.</p>'}${ordered().some(isPast)?'<h2 class="past-heading">Past Shows</h2>'+ordered().filter(isPast).reverse().map(showItem).join(''):''}`}
-else if(view==='team'){app.innerHTML=`${back()}<h1>My Team</h1><p class="intro">Your horses and riders, ready for every competition.</p><h2 class="subhead">My Horses</h2>${data.horses.map((h,i)=>`<button class="horsecard" onclick="editHorse(${i})"><strong>${esc(horseName(h))}</strong><small>${esc(registeredName(h))}${typeof h==='object'&&h.ueln?' · UELN '+esc(h.ueln):''} · Edit →</small></button>`).join('')||'<p class="hint">No horses added yet.</p>'}<button class="smallbtn" onclick="editingHorse=null;go('horse')">+ Add Horse</button><h2 class="subhead">My Riders</h2>${data.riders.map((r,i)=>`<button class="horsecard" onclick="editingRider=${i};go('rider')"><strong>${esc(riderName(r))}</strong><small>${typeof r==='object'&&r.bs?'BS '+esc(r.bs)+' · ':''}${typeof r==='object'&&r.fei?'FEI '+esc(r.fei)+' · ':''}Edit →</small></button>`).join('')||'<p class="hint">No riders added yet.</p>'}<button class="smallbtn" onclick="editingRider=null;go('rider')">+ Add Rider</button>`}
-else if(view==='rider'){const r=editingRider===null?{}:data.riders[editingRider]||{},o=typeof r==='string'?{name:r}:r;app.innerHTML=`<button class="back" onclick="go('team')">← My Team</button><h1>${editingRider===null?'Add Rider':'Edit Rider'}</h1><form onsubmit="saveRider(event)"><label class="field">Rider name<input name="name" required maxlength="80" value="${esc(o.name||'')}"></label><label class="field">British Showjumping (BS) membership number (optional)<input name="bs" maxlength="60" value="${esc(o.bs||'')}"></label><label class="field">FEI ID (optional)<input name="fei" maxlength="60" value="${esc(o.fei||'')}"></label><button class="goldbtn">Save Rider →</button></form>`}
-else if(view==='horse'){const h=editingHorse===null?{}:data.horses[editingHorse]||{},obj=typeof h==='string'?{registeredName:h}:h;const field=(label,name,type='text',required=false)=>`<label class="field">${label}<input name="${name}" type="${type}" ${required?'required':''} value="${esc(obj[name]||'')}" ${type==='text'?'maxlength="100"':''}></label>`;app.innerHTML=`<button class="back" onclick="go('team')">← My Team</button><h1>${editingHorse===null?'Add Horse':'Edit Horse'}</h1><div class="scanrow"><label for="passport-photo" class="scan-trigger" aria-label="Tap to scan passport details"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h4l2-2h4l2 2h4v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg></label><label for="passport-photo" class="scan-label">Tap to scan passport details</label><input class="scan-file" id="passport-photo" type="file" accept="image/*" capture="environment" onchange="passportSelected(this)"></div><p id="scanstatus" class="scan-status" role="status"></p><img id="passport-preview" class="scan-preview" alt="Selected passport photo" hidden><p class="hint">Or enter details manually</p><form onsubmit="saveHorse(event)">${field('Registered name','registeredName','text',true)}${field('Stable name','stableName')}${field('Passport / UELN number','ueln')}${field('Last vaccination date','vaccination','date')}${field('FEI registration number','fei')}${field('British Showjumping (BS) number','bs')}<p class="hint">Only registered name is required. Check all details against the passport before saving.</p><button class="goldbtn">Save Horse →</button></form>`}
-else if(view==='add'){app.innerHTML=`<button class="back" onclick="go('home')">← Home</button><h1>Add Show</h1><p class="intro">Where are you competing?</p><p class="hint">${monthlyCount()} of 4 planners created this month.</p><form onsubmit="addShow(event)"><label class="field">Show name<input name="name" required maxlength="100" placeholder="Competition name"></label><label class="field">Show venue<input name="venue" required maxlength="150" placeholder="Where is the show?"></label><label class="field">Start date<input name="start" type="date" required></label><label class="field">End date<input name="end" type="date" required></label><label class="field">Show link (optional)<input name="showLink" type="url" placeholder="https://…"><small>Paste a show, entries or timetable link. You can add this later.</small></label><h2 class="subhead">Horses</h2>${data.horses.map(h=>`<label class="checkrow"><input type="checkbox" name="horses" value="${esc(registeredName(h))}"><span>${esc(horseName(h))}</span></label>`).join('')||'<p class="hint">Add horses in My Team first.</p>'}<h2 class="subhead">Riders</h2>${data.riders.map(r=>`<label class="checkrow"><input type="checkbox" name="riders" value="${esc(riderName(r))}"><span>${esc(riderName(r))}</span></label>`).join('')||'<p class="hint">Add riders in My Team first.</p>'}<button class="goldbtn">Submit Show →</button></form>`}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ShowViva | Wales and West</title>
+<style>
+:root{
+  --navy:#18263d;
+  --gold:#d8b974;
+  --gold-soft:#f6ecd2;
+  --blue-soft:#eaf1f8;
+  --cream:#fbf9f4;
+  --white:#ffffff;
+  --line:#dce3ee;
+  --text:#1b2942;
+  --muted:#617086;
+  --shadow:0 10px 28px rgba(24,38,61,.06);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--cream);color:var(--text)}
+body{font-family:Arial,Helvetica,sans-serif}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.serif{font-family:Georgia,"Times New Roman",serif}
+.header{
+  height:108px;
+  background:var(--navy);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 28px;
+}
+.header-btn{
+  border:0;
+  background:transparent;
+  color:#e6c685;
+  font-size:39px;
+  line-height:1;
+  width:42px;
+  text-decoration:none;
+}
+.brand{text-align:center}
+.brand-name{font:64px Georgia,serif;letter-spacing:-3px;line-height:1}
+.brand-name span{color:#e6c685}
+.brand-tag{font:12px Georgia,serif;letter-spacing:5px;margin-top:6px}
+.wrap{max-width:860px;margin:0 auto;padding:22px 26px 42px}
+.hero{
+  background:linear-gradient(180deg,#fffdf8 0%, #ffffff 100%);
+  border:1px solid #e5ebf3;
+  border-radius:30px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  margin-bottom:18px;
+}
+.hero-copy{padding:18px 22px 16px}
+.kicker{
+  margin:0 0 10px;
+  color:#a88a44;
+  font-size:11px;
+  letter-spacing:3.8px;
+  font-weight:700;
+}
+.hero h1{
+  margin:0 0 10px;
+  font:700 clamp(44px,7vw,66px) Georgia,serif;
+  letter-spacing:-1.8px;
+  line-height:1;
+  color:var(--navy);
+}
+.subtitle{
+  margin:0;
+  color:#45556e;
+  font:clamp(17px,2.6vw,24px)/1.32 Georgia,serif;
+}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.meta-chip{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:#f7f2e5;
+  color:#4f5f77;
+  font-size:13px;
+}
+.dates{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid #edf1f6;
+}
+.date{
+  background:#fff;
+  border:0;
+  border-right:1px solid var(--line);
+  min-height:100px;
+  color:var(--navy);
+  font:700 31px Georgia,serif;
+  line-height:1.15;
+}
+.date:last-child{border-right:0}
+.date.active{background:linear-gradient(180deg,#f3dfa9 0%,#d8b974 100%)}
+.date small{display:block;font-size:26px;margin-top:2px}
+.filters-panel{
+  background:#fff;
+  border:1px solid #e5ebf3;
+  border-radius:22px;
+  box-shadow:0 6px 18px rgba(24,38,61,.04);
+  padding:14px;
+  margin-bottom:24px;
+}
+.filters-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+.filters-top .label{font-size:11px;letter-spacing:3px;color:#a88a44;font-weight:700}
+.filters-top .hint{font-size:13px;color:#728198}
+.filterbar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.filtercell{border:1px solid #e2d7bf;border-radius:14px;background:#fffdf8;overflow:hidden;box-shadow:0 2px 7px rgba(24,38,61,.035);transition:border-color .15s,box-shadow .15s}
+.filtercell:focus-within{border-color:#bda05e;box-shadow:0 0 0 2px rgba(216,185,116,.17)}
+.filtercell select{
+  display:block;width:100%;appearance:none;border:0;background:transparent;color:var(--navy);
+  padding:13px 38px 13px 14px;font-size:15px;font-weight:600;outline:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23a88a44' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;
+}
+.dayheading{
+  display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+  margin:0 0 14px;
+}
+.dayheading h2{margin:0;font:700 clamp(34px,6vw,52px) Georgia,serif;letter-spacing:-1px;color:var(--navy)}
+.dayheading span{font-size:18px;color:#607086;white-space:nowrap}
+.ride{
+  position:relative;
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:0;
+  background:#fff;
+  border:1px solid #dde4ee;
+  border-radius:28px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  margin-bottom:13px;
+}
+.time{
+  padding:13px 14px 13px 16px;
+  border-left:7px solid var(--navy);
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.roundlabel{font-weight:700;letter-spacing:3px;font-size:12px;color:#5f6f84}
+.roundtime{font:700 49px/0.95 Georgia,serif;color:var(--navy);letter-spacing:-1px;margin:0 0 2px}
+.pill{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  border-radius:999px;
+  padding:8px 14px;
+  font-size:12px;
+  line-height:1;
+  white-space:nowrap;
+}
+.pill b{font-size:16px;color:var(--navy);font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.2px}
+.pill.warm{background:var(--gold-soft)}
+.pill.start{background:var(--blue-soft)}
+.info{
+  position:relative;
+  margin:14px 0;
+  padding:0 118px 0 26px;
+  border-left:1px solid var(--line);
+}
+.horse{font:700 34px/1.06 Georgia,serif;color:var(--navy);margin:0 0 8px;padding-right:28px}
+.classname{font:700 17px/1.25 Georgia,serif;color:#6a7890;margin:0 0 12px}
+.rider{font-size:22px;color:var(--navy);margin:0 0 10px}
+.arena,.draw{font-size:17px;color:#617086;line-height:1.35;margin:0 0 3px}
+.details{
+  position:absolute;right:24px;bottom:4px;
+  color:var(--navy);font-size:15px;text-decoration:underline;text-underline-offset:3px;
+}
+.notes{
+  position:absolute;top:18px;right:18px;
+  border:0;background:transparent;color:var(--navy);
+  font-size:33px;line-height:1;padding:0;
+}
+.count{
+  position:absolute;top:-7px;right:-8px;
+  width:30px;height:30px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--gold);border:2px solid #fff;
+  color:var(--navy);font-size:15px;font-weight:700;
+}
+.footer-note{margin-top:18px;padding-top:14px;border-top:1px solid #edf1f6;text-align:center;color:#6c7b90;font-size:12px}
+.empty{padding:28px;text-align:center;color:#6c7b90}
 
-else if(view==='show'){const s=data.shows.find(x=>x.id===selected);if(!s){go('home');return}const draft=s.status==='draft';app.innerHTML=`<button class="back" onclick="go('home')">← Home</button><div class="show-top"><div><div class="eyebrow">Your show</div><h1>${esc(s.name)}</h1><p class="intro">${dates(s)}</p>${isPast(s)?'<span class="past-label">Past Show</span>':''}</div><div class="show-icons"><button type="button" class="tool-icon" aria-label="Show checklist" title="Show checklist" onclick="openTool('checklist')">☑${(s.checklist||[]).some(t=>!t.done)?'<span class="tool-dot"></span>':''}</button><button type="button" class="tool-icon" aria-label="Show notes" title="Show notes" onclick="openTool('notes')">▤</button></div></div>${!draft&&!isPast(s)?`<div class="notice">${s.status==='ready'?'Planner ready':s.status==='preparing'?'We’re preparing your planner':'Show submitted'}</div>`:''}<form onsubmit="saveShowDetails(event)"><label class="field">Show venue<input name="venue" maxlength="150" required value="${esc(s.venue||'')}"></label><h2 class="subhead">Horses</h2>${data.horses.map(h=>{const n=registeredName(h);return `<label class="checkrow"><input type="checkbox" name="horses" value="${esc(n)}" ${s.horses.includes(n)?'checked':''}><span>${esc(horseName(h))}</span></label>`}).join('')||'<p class="hint">Add horses in My Team first.</p>'}<h2 class="subhead">Riders</h2>${data.riders.map(r=>{const n=riderName(r);return `<label class="checkrow"><input type="checkbox" name="riders" value="${esc(n)}" ${s.riders.includes(n)?'checked':''}><span>${esc(n)}</span></label>`}).join('')||'<p class="hint">Add riders in My Team first.</p>'}<label class="field">Show link (optional)<input name="showLink" type="url" placeholder="https://…" value="${esc(s.showLink||'')}"><small>Paste a show, entries or timetable link. You can add this later.</small></label><button class="goldbtn" type="submit">${draft?'Submit Show →':'Save changes →'}</button></form>${!draft&&!isPast(s)?`<section class="show-journey">${s.status==='ready'&&Number(s.id)===1?'<button class="goldbtn" onclick="window.location.href=\'planner.html\'">Open Planner →</button>':s.status==='ready'?'<p>Your planner will appear here when available.</p>':s.status==='submitted'?'<p>We’ll prepare your planner when show information is available.</p>':'<p>Your personalised planner will appear here when ready.</p>'}</section>`:''}<button type="button" class="delete-show" onclick="deleteShow()">Delete Show</button><div id="showTool" class="tool-overlay hidden" role="dialog" aria-modal="true" aria-label="Show tools"></div>`;if(activeTool)openTool(activeTool)}}
+dialog{
+  width:min(92vw,480px);
+  border:1px solid #e5ebf3;
+  border-radius:24px;
+  padding:24px;
+  color:var(--navy);
+}
+dialog::backdrop{background:rgba(24,38,61,.55)}
+dialog h3{margin:0 0 12px;font:700 34px/1.05 Georgia,serif}
+.dialog-sub{font-size:14px;color:#6d7b90;margin-bottom:18px}
+.warmcontrols{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.warmcontrols label{font-size:14px;color:#5b697f}
+.warmcontrols input{width:72px;padding:9px 10px;border:1px solid var(--line);border-radius:12px}
+dialog textarea{width:100%;min-height:112px;border:1px solid var(--line);border-radius:14px;padding:12px}
+.dialog-actions{display:flex;gap:10px;margin-top:14px}
+.primary,.secondary{
+  border:0;border-radius:14px;padding:12px 18px;font-weight:700
+}
+.primary{background:var(--gold);color:var(--navy)}
+.secondary{background:#eef2f7;color:var(--navy)}
 
-function openTool(which){activeTool=which;const s=data.shows.find(x=>x.id===selected),el=document.getElementById('showTool');if(!s||!el)return;el.classList.remove('hidden');el.innerHTML=`<div class="tool-panel"><div class="tool-head"><h2>${which==='notes'?'Show notes':'Show checklist'}</h2><button type="button" class="tool-close" onclick="closeTool()" aria-label="Close">×</button></div>${which==='notes'?`<p class="hint">Keep notes for this show before and during show day.</p><textarea id="sharedNotes" aria-label="Show notes" placeholder="Anything the team needs to know…">${esc(s.sharedNotes||'')}</textarea><button class="goldbtn" onclick="saveSharedNotes()">Save Note →</button><p class="hint">Test only: saved on this device, not yet shared between phones.</p>`:`<p class="hint">Get ready for this show.</p>${(s.checklist||[]).map((item,i)=>`<div class="checkrow"><input type="checkbox" aria-label="Complete ${esc(item.text)}" ${item.done?'checked':''} onchange="toggleCheck(${i},this.checked)"><span>${esc(item.text)}</span><button class="link" onclick="removeCheck(${i})" aria-label="Remove task">×</button></div>`).join('')||'<p class="hint">No tasks yet.</p>'}<form onsubmit="addCheck(event)"><label class="field">Add a task<input name="task" required maxlength="120" placeholder="e.g. Pack passports"></label><button class="smallbtn">+ Add Task</button></form>`}</div>`}
-function closeTool(){activeTool=null;document.getElementById('showTool')?.classList.add('hidden')}
-function addCheck(e){e.preventDefault();const s=data.shows.find(x=>x.id===selected);if(!s)return;const t=e.target.elements.task.value.trim();if(!t)return;(s.checklist||(s.checklist=[])).push({text:t,done:false});save();openTool('checklist')}
-function toggleCheck(i,done){const s=data.shows.find(x=>x.id===selected);if(!s?.checklist?.[i])return;s.checklist[i].done=done;save();openTool('checklist')}
-function removeCheck(i){const s=data.shows.find(x=>x.id===selected);if(!s?.checklist)return;s.checklist.splice(i,1);save();openTool('checklist')}
-function saveSharedNotes(){const s=data.shows.find(x=>x.id===selected);if(!s)return;s.sharedNotes=document.getElementById('sharedNotes').value;save();const b=document.querySelector('#showTool .goldbtn');if(b)b.textContent='Saved ✓'}
-function saveShowDetails(e){e.preventDefault();const s=data.shows.find(x=>x.id===selected);if(!s)return;const f=e.target;const horses=[...f.querySelectorAll('input[name="horses"]:checked')].map(x=>x.value),riders=[...f.querySelectorAll('input[name="riders"]:checked')].map(x=>x.value);if(!horses.length||!riders.length){alert('Choose at least one horse and rider.');return}s.venue=f.elements.venue.value.trim();s.horses=horses;s.riders=riders;s.showLink=f.elements.showLink.value.trim();if(s.status==='draft'){s.status='submitted';save();go('confirmed');return}save();render()}
-function submitShow(){const s=data.shows.find(x=>x.id===selected);if(!s)return;if(!s.horses.length||!s.riders.length){alert('Choose at least one horse and rider before submitting.');return}s.status='submitted';save();render()}
-function demoValidate(){const s=data.shows.find(x=>x.id===selected);if(!s||s.status!=='submitted')return;s.status='preparing';save();render()}
-function demoReady(){const s=data.shows.find(x=>x.id===selected);if(!s||s.status!=='preparing')return;s.status='ready';save();render()}
-function calendar(){const y=month.getFullYear(),m=month.getMonth(),first=(new Date(y,m,1).getDay()+6)%7,last=new Date(y,m+1,0).getDate();let days=['M','T','W','T','F','S','S'].map(d=>`<div class="day blank">${d}</div>`).join('');for(let i=0;i<first;i++)days+='<div class="day blank"></div>';for(let d=1;d<=last;d++){const date=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`,hits=data.shows.filter(s=>s.start<=date&&s.end>=date);days+=`<button class="day ${hits.length?'has':''}" onclick="calendarDate('${date}')" title="${hits.map(s=>esc(s.name)).join(', ')}">${d}</button>`}return `<div class="calendar"><div class="month"><button onclick="shift(-1)">‹</button><strong>${month.toLocaleDateString('en-GB',{month:'long',year:'numeric'})}</strong><button onclick="shift(1)">›</button></div><div class="days">${days}</div></div><div id="dateShows" style="margin-top:16px">${ordered().filter(s=>s.start.slice(0,7)===`${y}-${String(m+1).padStart(2,'0')}`).map(showItem).join('')||'<p class="hint">No shows starting this month.</p>'}</div>`}function shift(n){month=new Date(month.getFullYear(),month.getMonth()+n,1);render()}function calendarDate(date){document.getElementById('dateShows').innerHTML=data.shows.filter(s=>s.start<=date&&s.end>=date).map(showItem).join('')||'<p class="hint">No shows on this date.</p>'}function editHorse(i){editingHorse=i;go('horse')}function passportSelected(input){const status=document.getElementById('scanstatus'),preview=document.getElementById('passport-preview'),file=input.files&&input.files[0];if(!file)return;if(status)status.textContent='Passport photo selected. Check and enter the details below.';if(preview){if(preview.dataset.url)URL.revokeObjectURL(preview.dataset.url);const url=URL.createObjectURL(file);preview.dataset.url=url;preview.src=url;preview.hidden=false;}}function saveHorse(e){e.preventDefault();const f=e.target.elements;const h={registeredName:f.registeredName.value.trim(),stableName:f.stableName.value.trim(),ueln:f.ueln.value.trim(),vaccination:f.vaccination.value,fei:f.fei.value.trim(),bs:f.bs.value.trim()};if(!h.registeredName)return;if(editingHorse===null)data.horses.push(h);else {const old=registeredName(data.horses[editingHorse]);data.horses[editingHorse]=h;if(old!==h.registeredName)data.shows.forEach(s=>s.horses=s.horses.map(n=>n===old?h.registeredName:n))}save();go('team')}function addTeam(e,k){e.preventDefault();const name=e.target.elements.name.value.trim();if(name&&!data[k].includes(name)){data[k].push(name);save()}render()}function saveRider(e){e.preventDefault();const f=e.target.elements,r={name:f.name.value.trim(),bs:f.bs.value.trim(),fei:f.fei.value.trim()};if(!r.name)return;if(editingRider===null)data.riders.push(r);else{const old=riderName(data.riders[editingRider]);data.riders[editingRider]=r;if(old!==r.name)data.shows.forEach(s=>s.riders=s.riders.map(n=>n===old?r.name:n))}save();go('team')}
-function deleteShow(){const s=data.shows.find(x=>x.id===selected);if(!s)return;if(!confirm('Delete '+s.name+'? This removes the show, its checklist and notes from this device. This cannot be undone.'))return;data.shows=data.shows.filter(x=>x.id!==selected);selected=null;activeTool=null;save();go('home')}function addShow(e){e.preventDefault();if(monthlyCount()>=4){alert('You have created all 4 planners for this month.');return}const f=e.target.elements;if(f.end.value<f.start.value){alert('End date must be on or after start date.');return}const horses=[...e.target.querySelectorAll('input[name="horses"]:checked')].map(x=>x.value),riders=[...e.target.querySelectorAll('input[name="riders"]:checked')].map(x=>x.value);if(!horses.length||!riders.length){alert('Choose at least one horse and rider.');return}const s={id:Date.now(),name:f.name.value.trim(),start:f.start.value,end:f.end.value,horses,riders,venue:f.venue.value.trim(),showLink:f.showLink.value.trim(),status:'submitted',checklist:[],sharedNotes:''};data.shows.push(s);data.plannerCreations.push(creationMonth());save();selected=s.id;activeTool=null;go('confirmed')}
-try{render()}catch(e){console.error('ShowViva render failed',e)}
-</script></body></html>
+@media (max-width:760px){
+  .header{height:94px;padding:10px 18px}
+  .header-btn{font-size:30px;width:34px}
+  .brand-name{font-size:46px;letter-spacing:-2px}
+  .brand-tag{font-size:8px;letter-spacing:3px;margin-top:4px}
+  .wrap{padding:14px 14px 32px}
+  .hero{border-radius:24px;margin-bottom:14px}
+  .hero-copy{padding:14px 16px 14px}
+  .kicker{font-size:10px;letter-spacing:3px;margin-bottom:8px}
+  .hero h1{font-size:clamp(36px,10.4vw,54px);margin-bottom:8px}
+  .subtitle{font-size:14px;line-height:1.34}
+  .meta-row{margin-top:10px;gap:6px}
+  .meta-chip{font-size:11.5px;padding:7px 10px}
+  .date{min-height:76px;font-size:24px}
+  .date small{font-size:19px}
+  .filters-panel{border-radius:18px;padding:12px;margin-bottom:18px}
+  .filters-top{margin-bottom:10px}
+  .filters-top .label{font-size:10px;letter-spacing:2.5px}
+  .filters-top .hint{font-size:12px}
+  .filterbar{gap:7px}
+  .filtercell{border-radius:12px}
+  .filtercell select{font-size:12.5px;padding:11px 28px 11px 11px;background-position:right 10px center}
+  .dayheading{margin-bottom:12px}
+  .dayheading h2{font-size:clamp(28px,8.2vw,40px)}
+  .dayheading span{font-size:12px}
+  .ride{grid-template-columns:154px minmax(0,1fr);border-radius:24px;margin-bottom:12px}
+  .time{padding:11px 8px 11px 11px;border-left-width:6px;gap:5px;min-width:0}
+  .roundlabel{font-size:9px;letter-spacing:2.1px}
+  .roundtime{font-size:37px}
+  .pill{padding:7px 8px;font-size:10px;gap:3px;min-width:0}
+  .pill b{font-size:13px;flex-shrink:0}
+  .info{margin:11px 0;padding:0 12px 25px 16px;min-width:0}
+  .horse{font-size:24px;margin-bottom:6px;padding-right:30px;overflow-wrap:anywhere}
+  .classname{font-size:12px;margin-bottom:10px}
+  .rider{font-size:16px;margin-bottom:8px}
+  .arena,.draw{font-size:12px;margin-bottom:2px}
+  .details{right:14px;bottom:0;font-size:12.5px}
+  .notes{top:13px;right:12px;font-size:26px}
+  .count{width:26px;height:26px;font-size:13px;top:-5px;right:-6px}
+  dialog{padding:18px;border-radius:20px}
+  dialog h3{font-size:28px}
+}
+@media(max-width:380px){
+  .ride{grid-template-columns:146px minmax(0,1fr)}
+  .pill{font-size:9px;padding:7px 6px}
+  .pill b{font-size:12px}
+  .roundtime{font-size:35px}
+  .horse{font-size:21px}
+  .info{padding-left:12px}
+}
+
+/* Calm visual pass — the locked premium master remains untouched. */
+.hero{box-shadow:none;border-color:#ebe8e1;border-radius:22px}
+.hero-copy{padding:17px 20px 16px}
+.hero h1{font-size:clamp(36px,5.6vw,52px);letter-spacing:-1px}
+.kicker{letter-spacing:2.6px;color:#a08b5d}
+.date.active{background:#ead8ad}
+.filters-panel{background:transparent;border:0;border-radius:0;box-shadow:none;padding:0;margin-bottom:23px}
+.filters-top{display:none}
+.filterbar{gap:8px}
+.filtercell{background:#fff;border:1px solid #e2e1dc;border-radius:11px;box-shadow:none}
+.filtercell select{font-weight:400;background-color:transparent}
+.dayheading h2{font-size:clamp(29px,4.9vw,41px)}
+.dayheading span{font-size:14px}
+.ride{border:1px solid #e6e8eb;box-shadow:0 3px 12px rgba(24,38,61,.025);border-radius:17px;margin-bottom:17px}
+.time{border-left-width:4px;padding:11px 12px 11px 14px;gap:5px}
+.roundtime{font-size:43px;margin-bottom:4px}
+.pill{border-radius:9px;padding:7px 9px}
+.pill b{font-size:15px}
+.pill.warm{background:#f8f3e6}
+.pill.start{background:#f0f3f7}
+.info{margin:13px 0;padding-left:21px}
+.horse{font-size:28px;margin-bottom:6px}
+.classname{font-size:15px;margin-bottom:9px}
+.rider{font-size:18px;margin-bottom:8px}
+.arena,.draw{font-size:14px}
+@media(max-width:760px){
+ .hero-copy{padding:13px 15px 14px}
+ .hero h1{font-size:clamp(32px,8.9vw,43px)}
+ .filters-panel{margin-bottom:23px}
+ .filtercell select{font-size:12px;padding:11px 26px 11px 10px}
+ .dayheading h2{font-size:clamp(27px,7vw,34px)}
+ .dayheading span{font-size:12px}
+ .ride{grid-template-columns:154px minmax(0,1fr);border-radius:16px;margin-bottom:15px}
+ .time{border-left-width:4px;padding:11px 8px 11px 10px;gap:5px}
+ .roundtime{font-size:32px}
+ .pill{padding:7px 7px;font-size:10px}
+ .pill b{font-size:13px}
+ .info{margin:12px 0;padding:0 12px 25px 15px}
+ .horse{font-size:22px}
+ .classname{font-size:12px}
+ .rider{font-size:15px}
+ .arena,.draw{font-size:12px}
+}
+@media(max-width:380px){.ride{grid-template-columns:146px minmax(0,1fr)}.roundtime{font-size:31px}.pill b{font-size:12px}}
+.date{display:flex;flex-direction:column;align-items:center;justify-content:center;text-decoration:none}.date small{display:block}</style>
+</head>
+<body>
+<header class="header">
+  <a class="header-btn" href="./" aria-label="Back to ShowViva homepage">☰</a>
+  <div class="brand">
+    <div class="brand-name serif">Show<span>Viva</span></div>
+    <div class="brand-tag">YOUR EQUESTRIAN SHOW PLANNER</div>
+  </div>
+  <button class="header-btn" aria-label="Choose day" onclick="document.querySelector('.dates').scrollIntoView({behavior:'smooth'})">▦</button>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="kicker">SHOWVIVA PLAN</p>
+      <h1>Wales and West</h1>
+      <p class="subtitle">CSI2* · National &amp; International Showjumping<br>Royal Welsh Showground, Builth Wells</p>
+      <div class="meta-row">
+        <span class="meta-chip">16–18 October 2026</span>
+      </div>
+    </div>
+    <div class="dates" id="dates"><a class="date " href="friday.html" data-day="0">Fri<small>16 Oct</small></a><a class="date active" href="index.html" data-day="1">Sat<small>17 Oct</small></a><a class="date " href="sunday.html" data-day="2">Sun<small>18 Oct</small></a></div>
+  </section>
+
+  <section class="filters-panel">
+    <div class="filters-top">
+      <div class="label">YOUR PLAN</div>
+      <div class="hint">Filter by horse, rider or arena</div>
+    </div>
+    <div class="filterbar" aria-label="Filter show rounds">
+      <div class="filtercell">
+        <select id="horse" aria-label="My horses">
+          <option value="">My horses</option>
+          <option>Summer Escape</option>
+          <option>Autumn Jazz</option>
+          <option>Chacco Iron</option>
+        </select>
+      </div>
+      <div class="filtercell">
+        <select id="rider" aria-label="My riders">
+          <option value="">My riders</option>
+          <option>Jodie Baker</option>
+          <option>Lucy Stranham</option>
+          <option>David Lock</option>
+        </select>
+      </div>
+      <div class="filtercell">
+        <select id="ring" aria-label="Arenas">
+          <option value="">Arenas</option>
+          <option>International Arena</option>
+          <option>Main Arena</option>
+          <option>Outdoor Arena 2</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <div class="dayheading">
+    <h2 id="daytitle">Sat 17 October</h2>
+    <span id="summary">4 rides · 3 horses</span>
+  </div>
+
+  <section id="rides"><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">08:30</div><div class="pill warm"><span>Warm up</span><b>08:05</b></div><div class="pill start"><span>Class starts</span><b>08:30</b></div></div><div class="info"><div class="horse">Summer Escape</div><div class="classname">CSI2* 1.35m Two Phase</div><div class="rider">Jodie Baker</div><div class="arena">International Arena</div><div class="draw">Draw 12 of 48</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" data-id="1-0" aria-label="Warm-up and notes for Summer Escape">▤<span class="count">2</span></button></div></article><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">10:15</div><div class="pill warm"><span>Warm up</span><b>09:50</b></div><div class="pill start"><span>Class starts</span><b>10:15</b></div></div><div class="info"><div class="horse">Autumn Jazz</div><div class="classname">CSI2* 1.40m Table A</div><div class="rider">Lucy Stranham</div><div class="arena">Main Arena</div><div class="draw">Draw 7 of 52</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" data-id="1-1" aria-label="Warm-up and notes for Autumn Jazz">▤<span class="count">1</span></button></div></article><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">12:20</div><div class="pill warm"><span>Warm up</span><b>11:55</b></div><div class="pill start"><span>Class starts</span><b>12:20</b></div></div><div class="info"><div class="horse">Chacco Iron</div><div class="classname">CSI2* 1.45m Grand Prix Qualifier</div><div class="rider">David Lock</div><div class="arena">International Arena</div><div class="draw">Draw 28 of 60</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" data-id="1-2" aria-label="Warm-up and notes for Chacco Iron">▤<span class="count">3</span></button></div></article><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">14:35</div><div class="pill warm"><span>Warm up</span><b>14:10</b></div><div class="pill start"><span>Class starts</span><b>14:35</b></div></div><div class="info"><div class="horse">Summer Escape</div><div class="classname">CSI2* 1.40m Accumulator</div><div class="rider">Jodie Baker</div><div class="arena">Outdoor Arena 2</div><div class="draw">Draw 5 of 44</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" data-id="1-3" aria-label="Warm-up and notes for Summer Escape">▤<span class="count">0</span></button></div></article></section>
+
+  <p class="footer-note">Illustrative demonstration schedule · Confirm official timings with the organiser.</p>
+</main>
+
+<dialog id="notedialog">
+  <h3 id="notetitle">Warm-up time</h3>
+  <div class="dialog-sub" id="dialogsub">Set your custom warm-up time and add notes for this round.</div>
+  <div class="warmcontrols">
+    <label for="warmminutes">Warm-up minutes</label>
+    <input type="number" id="warmminutes" min="0" max="180" value="25">
+  </div>
+  <label for="notetext" style="display:block;font-size:14px;color:#5b697f;margin-bottom:8px">Notes</label>
+  <textarea id="notetext" placeholder="Add notes for this round…"></textarea>
+  <div class="dialog-actions">
+    <button class="primary" id="save">Save</button>
+    <button class="secondary" onclick="notedialog.close()">Close</button>
+  </div>
+</dialog>
+
+<script>
+const dayFiles=['friday.html','index.html','sunday.html'];
+const days=[['Fri','16 Oct','Fri 16 October'],['Sat','17 Oct','Sat 17 October'],['Sun','18 Oct','Sun 18 October']];
+let selected=1,editing=null;
+const base=[
+  {horse:'Summer Escape',rider:'Jodie Baker',time:'08:30',class:'CSI2* 1.35m Two Phase',arena:'International Arena',draw:'12 of 48',notes:['Check studs','Take boots off']},
+  {horse:'Autumn Jazz',rider:'Lucy Stranham',time:'10:15',class:'CSI2* 1.40m Table A',arena:'Main Arena',draw:'7 of 52',notes:['Walk course']},
+  {horse:'Chacco Iron',rider:'David Lock',time:'12:20',class:'CSI2* 1.45m Grand Prix Qualifier',arena:'International Arena',draw:'28 of 60',notes:['Check draw','Groom ready','Bring water']},
+  {horse:'Summer Escape',rider:'Jodie Baker',time:'14:35',class:'CSI2* 1.40m Accumulator',arena:'Outdoor Arena 2',draw:'5 of 44',notes:[]}
+];
+let entries=days.flatMap((d,day)=>base.map((r,i)=>({...r,id:day+'-'+i,day,time:shift(r.time,day===1?0:day===0?-20:25),warm:25,notes:[...r.notes]})));
+try{
+  const saved=JSON.parse(localStorage.getItem('showviva-ww-demo-v1')||'{}');
+  entries.forEach(r=>{if(saved[r.id]){r.warm=saved[r.id].warm;r.notes=saved[r.id].notes}})
+}catch(e){}
+function shift(t,n){let [h,m]=t.split(':').map(Number);let x=(h*60+m+n+1440)%1440;return String(Math.floor(x/60)).padStart(2,'0')+':'+String(x%60).padStart(2,'0')}
+const $=id=>document.getElementById(id);
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function render(){
+  $('dates').innerHTML=days.map((d,i)=>`<a class="date ${i===selected?'active':''}" href="${dayFiles[i]}" data-day="${i}">${d[0]}<small>${d[1]}</small></a>`).join('');
+  document.querySelectorAll('[data-day]').forEach(b=>b.onclick=e=>{e.preventDefault();selected=+b.dataset.day;render()});
+  $('daytitle').textContent=days[selected][2];
+  let rows=entries.filter(r=>r.day===selected&&(!$('horse').value||r.horse===$('horse').value)&&(!$('rider').value||r.rider===$('rider').value)&&(!$('ring').value||r.arena===$('ring').value));
+  $('summary').textContent=rows.length+' rides · '+new Set(rows.map(r=>r.horse)).size+' horses';
+  $('rides').innerHTML=rows.length?rows.map(r=>`<article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">${r.time}</div><div class="pill warm"><span>Warm up</span><b>${shift(r.time,-r.warm)}</b></div><div class="pill start"><span>Class starts</span><b>${r.time}</b></div></div><div class="info"><div class="horse">${esc(r.horse)}</div><div class="classname">${esc(r.class)}</div><div class="rider">${esc(r.rider)}</div><div class="arena">${esc(r.arena)}</div><div class="draw">Draw ${esc(r.draw)}</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" data-id="${r.id}" aria-label="Warm-up and notes for ${esc(r.horse)}">▤<span class="count">${r.notes.length}</span></button></div></article>`).join(''):'<p class="empty">No rides match these filters.</p>';
+  document.querySelectorAll('.notes').forEach(b=>b.onclick=()=>{
+    editing=entries.find(r=>r.id===b.dataset.id);
+    $('notetitle').textContent='Warm-up time';
+    $('dialogsub').textContent=editing.horse+' · '+editing.rider+' · Round '+editing.time;
+    $('warmminutes').value=editing.warm;
+    $('notetext').value=editing.notes.join('\n');
+    $('notedialog').showModal();
+  })
+}
+['horse','rider','ring'].forEach(id=>$(id).addEventListener('change',render));
+$('save').onclick=()=>{
+  if(!editing)return;
+  editing.warm=Math.max(0,Math.min(180,Number($('warmminutes').value)||0));
+  editing.notes=$('notetext').value.split('\n').map(s=>s.trim()).filter(Boolean);
+  try{localStorage.setItem('showviva-ww-demo-v1',JSON.stringify(Object.fromEntries(entries.map(r=>[r.id,{warm:r.warm,notes:r.notes}]))))}catch(e){}
+  $('notedialog').close();
+  render();
+};
+render();
+</script>
+</body>
+</html>
