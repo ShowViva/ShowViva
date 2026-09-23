@@ -1,0 +1,51 @@
+
+name: ShowViva Browser Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  browser-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Playwright
+        run: |
+          npm install playwright
+          npx playwright install chromium --with-deps
+
+      - name: Run browser test
+        run: |
+          node <<'EOF'
+          const { chromium } = require('playwright');
+
+          (async () => {
+            const browser = await chromium.launch();
+            const page = await browser.newPage();
+
+            await page.goto('https://example.com');
+            console.log('Page title:', await page.title());
+            console.log('Heading:', await page.locator('h1').innerText());
+
+            await page.screenshot({
+              path: 'showviva-browser-test.png',
+              fullPage: true
+            });
+
+            await browser.close();
+          })().catch(error => {
+            console.error(error);
+            process.exit(1);
+          });
+          EOF
+
+      - name: Save screenshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: showviva-browser-test
+          path: showviva-browser-test.png
