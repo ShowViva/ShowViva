@@ -479,13 +479,66 @@ body{background:#fcfaf5}
  .hero{margin-bottom:22px}
  .calendar-btn{width:40px;height:40px}
 }
+
+/* Matching ShowViva home: understated cream, deep navy and brushed gold. */
+.sv-modal{position:relative;width:min(92vw,510px);max-height:85dvh;overflow:auto;border:0;border-radius:24px;
+  background:#fffdf8;color:#0d2737;padding:25px 23px 26px;box-shadow:0 24px 75px rgba(13,39,55,.22)}
+.sv-modal::backdrop{background:rgba(13,31,48,.69);backdrop-filter:blur(4px)}
+.sv-kicker{letter-spacing:4px;font-size:10px;font-weight:700;color:#998047;margin-bottom:19px}
+.sv-modal h3{font:400 clamp(29px,7vw,42px)/1.1 Georgia,serif;margin:0 54px 9px 0;color:#0d2737}
+.sv-sub{font-size:14px;line-height:1.45;color:#6c7787;margin:0 0 22px}
+.sv-close{position:absolute;top:20px;right:19px;background:#fffdf8;color:#0d2737;border:1px solid #cdb17b;
+  width:43px;height:43px;border-radius:50%;font-size:28px;line-height:1;display:grid;place-items:center}
+.sv-round{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;
+  border-top:1px solid #dedfdf;border-bottom:1px solid #dedfdf;font-size:16px}
+.sv-round strong{font:400 37px Georgia,serif}
+.sv-presets{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:20px 0 14px}
+.sv-presets button{min-width:0;background:#fff;color:#0d2737;border:1px solid #dce3ec;border-radius:12px;
+  padding:12px 2px;font:700 13px Arial,sans-serif}
+.sv-presets button.active{background:#0d2737;color:#fff;border-color:#0d2737}
+.sv-custom{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;color:#617086}
+.sv-custom input{width:75px;border:1px solid #d6dce5;border-radius:10px;padding:10px;background:white;color:#0d2737;text-align:center}
+.sv-result{display:flex;align-items:baseline;justify-content:center;gap:13px;margin:20px 0 23px;font-size:20px}
+.sv-result strong{font:400 40px Georgia,serif;color:#a18a54}
+.sv-save{display:block;width:100%;background:linear-gradient(120deg,#ecd29b,#c1a368);color:#0d2737;border:0;
+  border-radius:16px;padding:15px;font-weight:700;font-size:17px}
+.sv-notelabel{display:block;font-size:13px;color:#617086;margin-bottom:8px}
+.sv-modal textarea{background:#fff;width:100%;min-height:160px;padding:13px;border:1px solid #dce3ec;
+  border-radius:13px;font-size:16px;line-height:1.4;color:#0d2737;resize:vertical;margin:0 0 16px}
+.warm-trigger{width:100%;border:0;background:transparent;color:inherit;padding:0;font:inherit;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:4px;text-align:left}
+.warm-trigger b{font:inherit;font-weight:700}
+.warm-trigger:focus-visible,.notes:focus-visible{outline:2px solid #ba975c;outline-offset:3px;border-radius:4px}
+
+/* 23 Sep: Warm-up and notes share the same premium sheet style. */
+.sv-modal{width:min(calc(100vw - 30px),510px);max-height:min(86dvh,750px);padding:27px 24px 25px;border-radius:28px;background:#fffefa;color:#202c42;box-shadow:0 28px 85px #071b3040}
+.sv-modal::backdrop{background:rgba(22,36,60,.72);backdrop-filter:blur(3px)}
+.sv-kicker{font-size:11px;letter-spacing:4px;color:#9b8555;margin:0 54px 18px 0}
+.sv-modal h3{font:400 clamp(34px,7vw,43px)/1.1 Georgia,serif;margin:0 55px 9px 0;color:#202c42}
+.sv-sub{font-size:15px;color:#6b7587;margin:0 0 30px}
+.sv-close{top:20px;right:20px;width:53px;height:53px;border:3px double #a58b57;outline:2px solid #202c42;outline-offset:3px;border-radius:50%;background:#fffefa;color:#202c42;font-size:30px}
+.sv-round{padding:21px 0;border-color:#dae1ea;font-size:19px}
+.sv-round strong{font:400 clamp(36px,8vw,47px) Georgia,serif;color:#202c42}
+.sv-presets{gap:8px;margin:24px 0 20px}
+.sv-presets button{padding:15px 2px;min-height:51px;border-radius:14px;border-color:#d9e0ee;font-size:14px}
+.sv-presets button.active{background:#202c42;color:#fff;border-color:#202c42}
+.sv-custom{border-top:1px solid #edf0f3;padding-top:16px;margin-top:5px;font-size:14px;color:#687587}
+.sv-custom input{font-size:16px}
+.sv-result{margin:24px 0 25px;font-size:20px;color:#202c42}
+.sv-result strong{font:400 clamp(38px,8vw,49px) Georgia,serif;color:#97834f}
+.sv-save{min-height:60px;border-radius:17px;background:linear-gradient(115deg,#e8d09a,#bea36b);color:#202c42;font-size:18px}
+.sv-notelabel{display:block;border-top:1px solid #dae1ea;padding-top:23px;margin-bottom:11px;font-size:15px;color:#657187}
+.sv-modal textarea{min-height:170px;background:#fffefa;border:1px solid #d9e0ee;border-radius:14px;padding:16px;color:#202c42;font-size:16px;margin-bottom:20px}
+.warm-trigger{min-height:28px;touch-action:manipulation}
+.warm-trigger:hover,.warm-trigger:focus-visible{color:#9b7740}
+@media(max-width:390px){.sv-modal{padding:25px 20px}.sv-presets{gap:6px}.sv-presets button{font-size:13px;padding:13px 0}.sv-close{width:45px;height:45px}}
 </style>
 </head>
 <body>
 <header class="header">
   <div class="header-top">
     <a class="brand" href="index.html" aria-label="Back to ShowViva home"><div class="brand-name serif">Show<span>Viva</span></div><div class="brand-tag">EQUESTRIAN SHOWS, SIMPLIFIED</div></a>
-    <button class="calendar-btn" aria-label="Go to show dates" onclick="document.querySelector('.dates').scrollIntoView({behavior:'smooth'})"><svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></button>
+    <button class="calendar-btn" aria-label="Open ShowViva calendar" title="Open calendar" onclick="window.location.href='index.html#calendar'"><svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></button>
   </div>
   <div class="header-show"><div class="header-kicker">YOUR SHOWVIVA PLAN</div><h1>Wales <span>and West.</span></h1><p>16–18 October 2026</p><p class="venue">CSI2* · National &amp; International Showjumping<br>Royal Welsh Showground, Builth Wells</p></div>
 </header>
@@ -530,26 +583,39 @@ body{background:#fcfaf5}
     <span id="summary">4 rides · 3 horses</span>
   </div>
 
-  <section id="rides"><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">08:30</div><div class="pill warm"><span>Warm up</span><b>08:05</b></div><div class="pill start"><span>Class starts</span><b>08:30</b></div></div><div class="info"><div class="horse">Summer Escape</div><div class="classname">CSI2* 1.35m Two Phase</div><div class="rider">Jodie Baker</div><div class="arena">International Arena</div><div class="draw">Draw 12 of 48</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" aria-label="Warm-up and notes for Summer Escape">▤<span class="count">2</span></button></div></article><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">10:15</div><div class="pill warm"><span>Warm up</span><b>09:50</b></div><div class="pill start"><span>Class starts</span><b>10:15</b></div></div><div class="info"><div class="horse">Autumn Jazz</div><div class="classname">CSI2* 1.40m Table A</div><div class="rider">Lucy Stranham</div><div class="arena">Main Arena</div><div class="draw">Draw 7 of 52</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" aria-label="Warm-up and notes for Autumn Jazz">▤<span class="count">1</span></button></div></article><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">12:20</div><div class="pill warm"><span>Warm up</span><b>11:55</b></div><div class="pill start"><span>Class starts</span><b>12:20</b></div></div><div class="info"><div class="horse">Chacco Iron</div><div class="classname">CSI2* 1.45m Grand Prix Qualifier</div><div class="rider">David Lock</div><div class="arena">International Arena</div><div class="draw">Draw 28 of 60</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" aria-label="Warm-up and notes for Chacco Iron">▤<span class="count">3</span></button></div></article><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">14:35</div><div class="pill warm"><span>Warm up</span><b>14:10</b></div><div class="pill start"><span>Class starts</span><b>14:35</b></div></div><div class="info"><div class="horse">Summer Escape</div><div class="classname">CSI2* 1.40m Accumulator</div><div class="rider">Jodie Baker</div><div class="arena">Outdoor Arena 2</div><div class="draw">Draw 5 of 44</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" aria-label="Warm-up and notes for Summer Escape">▤<span class="count">0</span></button></div></article></section>
+  <section id="rides"><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">08:30</div><div class="pill warm"><button class="warm-trigger" type="button" data-id="1-0" aria-label="Edit warm-up time for Summer Escape"><span>Warm up</span><b>08:05</b></button></div><div class="pill start"><span>Class starts</span><b>08:30</b></div></div><div class="info"><div class="horse">Summer Escape</div><div class="classname">CSI2* 1.35m Two Phase</div><div class="rider">Jodie Baker</div><div class="arena">International Arena</div><div class="draw">Draw 12 of 48</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" aria-label="Warm-up and notes for Summer Escape">▤<span class="count">2</span></button></div></article><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">10:15</div><div class="pill warm"><span>Warm up</span><b>09:50</b></div><div class="pill start"><span>Class starts</span><b>10:15</b></div></div><div class="info"><div class="horse">Autumn Jazz</div><div class="classname">CSI2* 1.40m Table A</div><div class="rider">Lucy Stranham</div><div class="arena">Main Arena</div><div class="draw">Draw 7 of 52</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" aria-label="Warm-up and notes for Autumn Jazz">▤<span class="count">1</span></button></div></article><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">12:20</div><div class="pill warm"><span>Warm up</span><b>11:55</b></div><div class="pill start"><span>Class starts</span><b>12:20</b></div></div><div class="info"><div class="horse">Chacco Iron</div><div class="classname">CSI2* 1.45m Grand Prix Qualifier</div><div class="rider">David Lock</div><div class="arena">International Arena</div><div class="draw">Draw 28 of 60</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" aria-label="Warm-up and notes for Chacco Iron">▤<span class="count">3</span></button></div></article><article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">14:35</div><div class="pill warm"><span>Warm up</span><b>14:10</b></div><div class="pill start"><span>Class starts</span><b>14:35</b></div></div><div class="info"><div class="horse">Summer Escape</div><div class="classname">CSI2* 1.40m Accumulator</div><div class="rider">Jodie Baker</div><div class="arena">Outdoor Arena 2</div><div class="draw">Draw 5 of 44</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" aria-label="Warm-up and notes for Summer Escape">▤<span class="count">0</span></button></div></article></section>
 
   <p class="footer-note">Illustrative demonstration schedule · Confirm official timings with the organiser.</p>
 </main>
 
-<dialog id="notedialog">
-  <h3 id="notetitle">Warm-up time</h3>
-  <div class="dialog-sub" id="dialogsub">Set your custom warm-up time and add notes for this round.</div>
-  <div class="warmcontrols">
-    <label for="warmminutes">Warm-up minutes</label>
-    <input type="number" id="warmminutes" min="0" max="180" value="25">
+<dialog id="warmdialog" class="sv-modal">
+  <div class="sv-kicker">SHOWVIVA PLAN</div>
+  <button type="button" class="sv-close" aria-label="Close warm-up" onclick="document.getElementById('warmdialog').close()">×</button>
+  <h3>Warm-up time</h3>
+  <p class="sv-sub" id="warmsub"></p>
+  <div class="sv-round"><span>Round</span><strong id="warmround"></strong></div>
+  <div class="sv-presets" role="group" aria-label="Minutes before round">
+    <button type="button" data-minutes="10">10 min</button>
+    <button type="button" data-minutes="15">15 min</button>
+    <button type="button" data-minutes="20">20 min</button>
+    <button type="button" data-minutes="30">30 min</button>
   </div>
-  <label for="notetext" style="display:block;font-size:14px;color:#5b697f;margin-bottom:8px">Notes</label>
-  <textarea id="notetext" placeholder="Add notes for this round…"></textarea>
-  <div class="dialog-actions">
-    <button class="primary" id="save">Save</button>
-    <button class="secondary" onclick="notedialog.close()">Close</button>
-  </div>
+  <label class="sv-custom" for="warmminutes">Other warm-up minutes
+    <input type="number" id="warmminutes" min="0" max="180" inputmode="numeric" value="20">
+  </label>
+  <div class="sv-result">Warm up <strong id="warmresult"></strong></div>
+  <button class="sv-save" type="button" id="savewarm">Save</button>
 </dialog>
-
+<dialog id="notesdialog" class="sv-modal">
+  <div class="sv-kicker">SHOWVIVA PLAN</div>
+  <button type="button" class="sv-close" aria-label="Close notes" onclick="document.getElementById('notesdialog').close()">×</button>
+  <h3>Round notes</h3>
+  <p class="sv-sub" id="notessub"></p>
+  <div class="sv-round"><span>Round</span><strong id="notesround"></strong></div>
+  <label class="sv-notelabel" for="notetext">Notes for this round</label>
+  <textarea id="notetext" placeholder="Add notes for your team…"></textarea>
+  <button class="sv-save" type="button" id="savenotes">Save notes</button>
+</dialog>
 <script>
 const days=[['Fri','16 Oct','Fri 16 October'],['Sat','17 Oct','Sat 17 October'],['Sun','18 Oct','Sun 18 October']];
 let selected=1,editing=null;
@@ -559,7 +625,7 @@ const base=[
   {horse:'Chacco Iron',rider:'David Lock',time:'12:20',class:'CSI2* 1.45m Grand Prix Qualifier',arena:'International Arena',draw:'28 of 60',notes:['Check draw','Groom ready','Bring water']},
   {horse:'Summer Escape',rider:'Jodie Baker',time:'14:35',class:'CSI2* 1.40m Accumulator',arena:'Outdoor Arena 2',draw:'5 of 44',notes:[]}
 ];
-let entries=days.flatMap((d,day)=>base.map((r,i)=>({...r,id:day+'-'+i,day,time:shift(r.time,day===1?0:day===0?-20:25),warm:25,notes:[...r.notes]})));
+let entries=days.flatMap((d,day)=>base.map((r,i)=>({...r,id:day+'-'+i,day,time:shift(r.time,day===1?0:day===0?-20:25),warm:20,notes:[...r.notes]})));
 try{
   const saved=JSON.parse(localStorage.getItem('showviva-ww-demo-v1')||'{}');
   entries.forEach(r=>{if(saved[r.id]){r.warm=saved[r.id].warm;r.notes=saved[r.id].notes}})
@@ -573,24 +639,53 @@ function render(){
   $('daytitle').textContent=days[selected][2];
   let rows=entries.filter(r=>r.day===selected&&(!$('horse').value||r.horse===$('horse').value)&&(!$('rider').value||r.rider===$('rider').value)&&(!$('ring').value||r.arena===$('ring').value));
   $('summary').textContent=rows.length+' rides · '+new Set(rows.map(r=>r.horse)).size+' horses';
-  $('rides').innerHTML=rows.length?rows.map(r=>`<article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">${r.time}</div><div class="pill warm"><span>Warm up</span><b>${shift(r.time,-r.warm)}</b></div><div class="pill start"><span>Class starts</span><b>${r.time}</b></div></div><div class="info"><div class="horse">${esc(r.horse)}</div><div class="classname">${esc(r.class)}</div><div class="rider">${esc(r.rider)}</div><div class="arena">${esc(r.arena)}</div><div class="draw">Draw ${esc(r.draw)}</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" data-id="${r.id}" aria-label="Warm-up and notes for ${esc(r.horse)}">▤<span class="count">${r.notes.length}</span></button></div></article>`).join(''):'<p class="empty">No rides match these filters.</p>';
-  document.querySelectorAll('.notes').forEach(b=>b.onclick=()=>{
-    editing=entries.find(r=>r.id===b.dataset.id);
-    $('notetitle').textContent='Warm-up time';
-    $('dialogsub').textContent=editing.horse+' · '+editing.rider+' · Round '+editing.time;
-    $('warmminutes').value=editing.warm;
-    $('notetext').value=editing.notes.join('\n');
-    $('notedialog').showModal();
-  })
+  $('rides').innerHTML=rows.length?rows.map(r=>`<article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">${r.time}</div><div class="pill warm"><button type="button" class="warm-trigger" data-id="${r.id}" aria-label="Edit warm-up time for ${esc(r.horse)}"><span>Warm up</span><b>${shift(r.time,-r.warm)}</b></button></div><div class="pill start"><span>Class starts</span><b>${r.time}</b></div></div><div class="info"><div class="horse">${esc(r.horse)}</div><div class="classname">${esc(r.class)}</div><div class="rider">${esc(r.rider)}</div><div class="arena">${esc(r.arena)}</div><div class="draw">Draw ${esc(r.draw)}</div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" data-id="${r.id}" aria-label="Round notes for ${esc(r.horse)}">▤<span class="count">${r.notes.length}</span></button></div></article>`).join(''):'<p class="empty">No rides match these filters.</p>';
+  document.querySelectorAll('.warm-trigger').forEach(b=>b.onclick=()=>openWarm(b.dataset.id));
+  document.querySelectorAll('.notes').forEach(b=>b.onclick=()=>openNotes(b.dataset.id));
 }
 ['horse','rider','ring'].forEach(id=>$(id).addEventListener('change',render));
-$('save').onclick=()=>{
+function openWarm(id){
+  editing=entries.find(r=>r.id===id);if(!editing)return;
+  $('warmsub').textContent=editing.horse+' · '+editing.rider;
+  $('warmround').textContent=editing.time;
+  $('warmminutes').value=editing.warm;
+  updateWarmPreview();
+  $('warmdialog').showModal();
+}
+function updateWarmPreview(){
+  if(!editing)return;
+  let v=Math.max(0,Math.min(180,Number($('warmminutes').value)||0));
+  $('warmresult').textContent=shift(editing.time,-v);
+  document.querySelectorAll('[data-minutes]').forEach(b=>{
+    b.classList.toggle('active',Number(b.dataset.minutes)===v);
+    b.setAttribute('aria-pressed',String(Number(b.dataset.minutes)===v));
+  });
+}
+document.querySelectorAll('[data-minutes]').forEach(b=>b.onclick=()=>{
+  $('warmminutes').value=b.dataset.minutes;updateWarmPreview();
+});
+$('warmminutes').addEventListener('input',updateWarmPreview);
+function openNotes(id){
+  editing=entries.find(r=>r.id===id);if(!editing)return;
+  $('notessub').textContent=editing.horse+' · '+editing.rider;
+  $('notesround').textContent=editing.time;
+  $('notetext').value=editing.notes.join('\n');
+  $('notesdialog').showModal();
+}
+function persist(){
+  try{localStorage.setItem('showviva-ww-demo-v1',JSON.stringify(
+    Object.fromEntries(entries.map(r=>[r.id,{warm:r.warm,notes:r.notes}]))
+  ))}catch(e){}
+}
+$('savewarm').onclick=()=>{
   if(!editing)return;
   editing.warm=Math.max(0,Math.min(180,Number($('warmminutes').value)||0));
+  persist();$('warmdialog').close();render();
+};
+$('savenotes').onclick=()=>{
+  if(!editing)return;
   editing.notes=$('notetext').value.split('\n').map(s=>s.trim()).filter(Boolean);
-  try{localStorage.setItem('showviva-ww-demo-v1',JSON.stringify(Object.fromEntries(entries.map(r=>[r.id,{warm:r.warm,notes:r.notes}]))))}catch(e){}
-  $('notedialog').close();
-  render();
+  persist();$('notesdialog').close();render();
 };
 render();
 </script>
