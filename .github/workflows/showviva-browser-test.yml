@@ -19,33 +19,69 @@ jobs:
           npm install playwright
           npx playwright install chromium --with-deps
 
-      - name: Run browser test
+      - name: Find Claire Lewis entries
         run: |
           node <<'EOF'
           const { chromium } = require('playwright');
+          const fs = require('fs');
 
           (async () => {
             const browser = await chromium.launch();
-            const page = await browser.newPage();
-
-            await page.goto('https://example.com');
-            console.log('Page title:', await page.title());
-            console.log('Heading:', await page.locator('h1').innerText());
-
-            await page.screenshot({
-              path: 'showviva-browser-test.png',
-              fullPage: true
+            const page = await browser.newPage({
+              viewport: { width: 390, height: 844 }
             });
 
-            await browser.close();
+            try {
+              await page.goto(
+                'https://online.equipe.com/shows/76890',
+                { waitUntil: 'domcontentloaded', timeout: 30000 }
+              );
+
+              await page.getByText('Riders', {
+                exact: true
+              }).first().click();
+
+              await page.getByText('Claire Lewis', {
+                exact: true
+              }).first().click();
+
+              await page.waitForTimeout(1500);
+
+              const result = {
+                show: 'Onley Grounds',
+                rider: 'Claire Lewis',
+                sourceUrl: page.url(),
+                capturedAt: new Date().toISOString(),
+                visiblePageText: await page.locator('body').innerText()
+              };
+
+              fs.writeFileSync(
+                'claire-lewis-test.json',
+                JSON.stringify(result, null, 2)
+              );
+
+              console.log(result.visiblePageText);
+
+              await page.screenshot({
+                path: 'claire-lewis-test.png',
+                fullPage: true
+              });
+
+            } finally {
+              await browser.close();
+            }
           })().catch(error => {
             console.error(error);
             process.exit(1);
           });
           EOF
 
-      - name: Save screenshot
+      - name: Save test results
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: showviva-browser-test
-          path: showviva-browser-test.png
+          name: claire-lewis-test
+          path: |
+            claire-lewis-test.json
+            claire-lewis-test.png
+          if-no-files-found: warn
