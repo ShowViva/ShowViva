@@ -713,6 +713,22 @@ form .goldbtn{
 #app.sv-view-home .sv-bs-calendar-copy small{display:none!important}
 #app.sv-view-home .sectionhead{margin-top:23px!important}
 @media(max-width:390px){#app.sv-view-home .home-actions .tile{padding:12px!important;min-height:89px!important}}
+</style><style id="sv-all-pages-gold-home-20260924">
+/* One consistent gold Home action across Add Show, My Team, shows and calendar. */
+#app.sv-view-add > button.back,
+#app.sv-view-team > button.back,
+#app.sv-view-horse > button.back,
+#app.sv-view-rider > button.back,
+#app.sv-view-show > button.back,
+#app.sv-view-plan > button.back,
+#app button.back.sv-consistent-home[onclick="go('home')"] {
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  width:auto!important;min-height:46px!important;margin:0 0 24px!important;
+  padding:11px 18px!important;background:linear-gradient(110deg,#e9cc95,#c7a664)!important;
+  border:1px solid #c7a664!important;border-radius:12px!important;
+  color:#10283a!important;box-shadow:none!important;
+  font:700 15px/1.4 Arial,Helvetica,sans-serif!important;text-decoration:none!important;
+}
 </style></head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions" aria-label="Account"><button type="button" class="calendar-nav" aria-label="Open calendar" title="Calendar" onclick="mode='calendar';go('plan')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></button><button type="button" class="notebook-nav" aria-label="Open shared notebook" title="Shared notebook" onclick="go('notebook')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v18M10 8h6M10 12h6M10 16h4"/></svg></button></nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><script>function signOut(){alert('Sign out will be connected when this prototype is integrated with your live account.');}
 const KEY='showviva-demo-v1';
 const initial={shows:[],horses:[],riders:[],plannerCreations:[],lastSubmittedShowId:null,teamNotes:'',teamNotebookNotes:[],teamMembers:[]};
