@@ -321,22 +321,6 @@ form .goldbtn{
 .site-header.sv-header-home .header-actions .calendar-nav{position:static!important;left:auto!important;top:auto!important;display:inline-flex!important;justify-content:center;align-items:center;width:48px!important;min-width:48px!important;height:48px!important;border:1.5px solid #e7c17b!important;background:rgba(231,193,123,.13)!important;border-radius:12px!important;color:#f0c777!important;box-shadow:none!important}
 .site-header.sv-header-home .header-actions .calendar-nav svg{width:27px!important;height:27px!important}
 @media(max-width:380px){.site-header.sv-header-home .brand-lockup{padding-left:0!important}.site-header.sv-header-home .header-actions .calendar-nav{width:44px!important;min-width:44px!important;height:44px!important}}
-</style><style id="sv-calendar-double-size-20260923">
-/* Double the visual size of the top-right calendar; all other UI and shared storage unchanged. */
-.site-header.sv-header-home .header-actions .calendar-nav{width:96px!important;min-width:96px!important;height:96px!important;border-radius:20px!important}
-.site-header.sv-header-home .header-actions .calendar-nav svg{width:54px!important;height:54px!important}
-@media(max-width:380px){.site-header.sv-header-home .header-actions .calendar-nav{width:88px!important;min-width:88px!important;height:88px!important}}
-</style><style id="sv-calendar-visible-size-fix">
-/* Explicitly target the actual header button, regardless of the active view class. */
-.site-header .header-top .header-actions .calendar-nav{
-  position:static!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;
-  width:76px!important;min-width:76px!important;height:76px!important;
-  padding:9px!important;border:2px solid #e7c17b!important;border-radius:16px!important;
-  background:rgba(231,193,123,.12)!important;color:#f0c777!important;
-  box-sizing:border-box!important;flex:0 0 76px!important;
-}
-.site-header .header-top .header-actions .calendar-nav svg{width:48px!important;height:48px!important;flex:none!important}
-@media(max-width:380px){.site-header .header-top .header-actions .calendar-nav{width:68px!important;min-width:68px!important;height:68px!important;flex-basis:68px!important}.site-header .header-top .header-actions .calendar-nav svg{width:43px!important;height:43px!important}}
 </style><style id="sv-consistent-save-home-20260923">
 /* Make Home identical on My Shows, My Team and Add Show. */
 #app .back.sv-consistent-home{display:inline-flex!important;align-items:center;justify-content:center;gap:8px;background:#fffefa!important;border:1.5px solid #d8bd88!important;border-radius:12px!important;min-height:44px;padding:11px 17px!important;font:700 14px Arial,Helvetica,sans-serif!important;color:#10283a!important;box-shadow:none!important;text-decoration:none!important;margin:0 0 24px!important}
@@ -347,24 +331,6 @@ form .goldbtn{
 .sv-saved-dialog h1{font:400 clamp(34px,7vw,45px) Georgia,serif;margin:0 0 15px;color:#10283a}
 .sv-saved-dialog p{font-size:16px;line-height:1.5;color:#586572;margin:0 0 25px}
 .sv-saved-dialog .goldbtn{min-height:50px;width:100%;background:linear-gradient(110deg,#e7c88c,#c7a45e);color:#10283a;border-radius:14px;font-weight:700}
-</style><style id="sv-calendar-refined-size-and-style-20260923">
-/* Smaller calendar, visually matched to the gold-outline Home button. */
-.site-header .header-top .header-actions .calendar-nav,
-.site-header.sv-header-home .header-top .header-actions .calendar-nav{
-  position:static!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;
-  width:54px!important;min-width:54px!important;height:54px!important;flex:0 0 54px!important;
-  padding:10px!important;border:1.5px solid #d8bd88!important;border-radius:12px!important;
-  background:transparent!important;color:#e7c17b!important;box-shadow:none!important;
-}
-.site-header .header-top .header-actions .calendar-nav svg,
-.site-header.sv-header-home .header-top .header-actions .calendar-nav svg{
-  width:29px!important;height:29px!important;flex:none!important;
-}
-@media(max-width:380px){
- .site-header .header-top .header-actions .calendar-nav,
- .site-header.sv-header-home .header-top .header-actions .calendar-nav{width:50px!important;min-width:50px!important;height:50px!important;flex-basis:50px!important}
- .site-header .header-top .header-actions .calendar-nav svg{width:27px!important;height:27px!important}
-}
 </style><style id="sv-team-add-visual-consistency-final">
 /* Presentation only: align My Team and Add Show using the same page-level type scale. */
 #app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider){
@@ -406,7 +372,63 @@ form .goldbtn{
 #app:is(.sv-view-team,.sv-view-add) .subhead{
   color:#10283a!important;font:400 clamp(25px,6vw,29px)/1.2 Georgia,'Times New Roman',serif!important;
 }
-</style></head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions" aria-label="Account"><button type="button" class="home-nav" aria-label="Go to Home" onclick="go('home')" hidden><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 9-8 9 8"/><path d="M5 10v11h14V10M9 21v-7h6v7"/></svg>Home</button><button type="button" class="calendar-nav" aria-label="Open calendar" title="Calendar" onclick="mode='calendar';go('plan')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></button></nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><script>function signOut(){alert('Sign out will be connected when this prototype is integrated with your live account.');}
+</style><style id="sv-calendar-single-final-20260923">
+/* One authoritative size: same visual scale as the header Home control. */
+.site-header .header-top .header-actions .calendar-nav,
+.site-header.sv-header-home .header-top .header-actions .calendar-nav {
+ position:static!important;left:auto!important;top:auto!important;
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ width:44px!important;min-width:44px!important;max-width:44px!important;
+ height:44px!important;min-height:44px!important;max-height:44px!important;
+ flex:0 0 44px!important;padding:8px!important;
+ border:1.5px solid #d8bd88!important;border-radius:11px!important;
+ background:transparent!important;color:#e7c17b!important;box-shadow:none!important;
+}
+.site-header .header-top .header-actions .calendar-nav svg,
+.site-header.sv-header-home .header-top .header-actions .calendar-nav svg {
+ width:23px!important;min-width:23px!important;height:23px!important;max-height:23px!important;flex:none!important;
+}
+</style><style id="sv-my-team-matches-add-show-20260923">
+/* Add Show is the visual reference. Only the My Team branch is restyled. */
+#app.sv-view-team > .sv-branch-intro{margin:4px 0 24px!important;padding:0 0 21px!important;border-bottom:1px solid #e6dfd3!important}
+#app.sv-view-team > .sv-branch-intro .sv-eyebrow{margin:0 0 12px!important;color:#95753f!important;font:700 11px/1.4 Arial,Helvetica,sans-serif!important;letter-spacing:3px!important}
+#app.sv-view-team > .sv-branch-intro h1{margin:0 0 10px!important;color:#10283a!important;font:400 clamp(36px,9vw,48px)/1.1 Georgia,'Times New Roman',serif!important;letter-spacing:-.7px!important}
+#app.sv-view-team > .sv-branch-intro .intro{margin:0!important;color:#657180!important;font:400 16px/1.5 Arial,Helvetica,sans-serif!important}
+#app.sv-view-team > .subhead{margin:26px 0 14px!important;color:#10283a!important;font:400 clamp(25px,6vw,29px)/1.2 Georgia,'Times New Roman',serif!important}
+/* Keep names legible and use Add Show's tidy white paper cards and consistent sizing. */
+#app.sv-view-team .horsecard{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:8px 16px!important;min-height:72px!important;margin:9px 0!important;padding:17px 18px!important;border:1px solid #e6dfd3!important;border-radius:16px!important;background:#fffefa!important;box-shadow:none!important;text-align:left!important}
+#app.sv-view-team .horsecard strong{font:400 20px/1.2 Georgia,'Times New Roman',serif!important;color:#10283a!important;margin:0!important;min-width:0!important}
+#app.sv-view-team .horsecard small{font:400 13px/1.45 Arial,Helvetica,sans-serif!important;color:#657180!important;margin:0!important;min-width:0!important;overflow-wrap:anywhere!important}
+#app.sv-view-team > .smallbtn{font:700 15px/1.4 Arial,Helvetica,sans-serif!important;min-height:50px!important;padding:12px 18px!important;border-radius:14px!important}
+#app.sv-view-team > button.back{background:#fffefa!important;border:1.5px solid #d8bd88!important;border-radius:12px!important;color:#10283a!important;min-height:44px!important;padding:11px 17px!important;font:700 14px/1.4 Arial,Helvetica,sans-serif!important;margin:0 0 24px!important}
+@media(max-width:420px){#app.sv-view-team .horsecard{flex-wrap:wrap!important}#app.sv-view-team .horsecard small{width:100%!important}}
+</style><style id="sv-unified-form-and-home-20260924">
+/* Scope to presentation only. Keep the existing navigation, calendar and shared data code. */
+#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider,.sv-view-show) {
+  font-family:Arial,Helvetica,sans-serif!important;
+}
+/* Identical serif display headings across the team and show forms. */
+#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider,.sv-view-show) :is(.sv-branch-intro h1,.show-top h1,.subhead,.horsecard strong){
+  font-family:Georgia,'Times New Roman',serif!important;
+}
+/* Consistent text and form-field fonts across the two branches. */
+#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider,.sv-view-show) :is(.intro,.field,.field input,.field select,.field textarea,.hint,.horsecard small,.checkrow,.sv-eyebrow){
+  font-family:Arial,Helvetica,sans-serif!important;
+}
+/* Every in-content Home button, including dynamically rendered show and calendar pages. */
+#app button.back, #app .back.sv-consistent-home {
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  gap:8px!important;width:auto!important;min-height:44px!important;
+  margin:0 0 24px!important;padding:11px 17px!important;
+  background:linear-gradient(110deg,#e7c88c,#c7a45e)!important;
+  border:1px solid #c7a45e!important;border-radius:12px!important;
+  box-shadow:none!important;color:#10283a!important;
+  font:700 14px/1.4 Arial,Helvetica,sans-serif!important;text-decoration:none!important;
+}
+#app button.back:focus-visible, #app .back.sv-consistent-home:focus-visible {
+ outline:2px solid #a77b39!important;outline-offset:3px!important;
+}
+</style></head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions" aria-label="Account"><button type="button" class="calendar-nav" aria-label="Open calendar" title="Calendar" onclick="mode='calendar';go('plan')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></button></nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><script>function signOut(){alert('Sign out will be connected when this prototype is integrated with your live account.');}
 const KEY='showviva-demo-v1';
 const initial={shows:[],horses:[],riders:[],plannerCreations:[],lastSubmittedShowId:null};
 let data=structuredClone(initial),editingHorse=null,editingRider=null,activeTool=null;
@@ -451,7 +473,7 @@ else if(view==='plan'){app.innerHTML=`${back()}<h1>My Shows</h1><p class="intro"
 else if(view==='team'){app.innerHTML=`${back()}<div class="sv-branch-intro"><div class="sv-eyebrow">YOUR SHOWVIVA</div><h1>My Team</h1><p class="intro">Your horses and riders, ready for every competition.</p></div><h2 class="subhead">My Horses</h2>${data.horses.map((h,i)=>`<button class="horsecard" onclick="editHorse(${i})"><strong>${esc(horseName(h))}</strong><small>${esc(registeredName(h))}${typeof h==='object'&&h.ueln?' · UELN '+esc(h.ueln):''} · Edit →</small></button>`).join('')||'<p class="hint">No horses added yet.</p>'}<button class="smallbtn" onclick="editingHorse=null;go('horse')">+ Add Horse</button><h2 class="subhead">My Riders</h2>${data.riders.map((r,i)=>`<button class="horsecard" onclick="editingRider=${i};go('rider')"><strong>${esc(riderName(r))}</strong><small>${typeof r==='object'&&r.bs?'BS '+esc(r.bs)+' · ':''}${typeof r==='object'&&r.fei?'FEI '+esc(r.fei)+' · ':''}Edit →</small></button>`).join('')||'<p class="hint">No riders added yet.</p>'}<button class="smallbtn" onclick="editingRider=null;go('rider')">+ Add Rider</button>`}
 else if(view==='rider'){const r=editingRider===null?{}:data.riders[editingRider]||{},o=typeof r==='string'?{name:r}:r;app.innerHTML=`<button class="back" onclick="go('team')">← My Team</button><div class="sv-branch-intro"><div class="sv-eyebrow">MY TEAM · RIDER</div><h1>${editingRider===null?'Add Rider':'Edit Rider'}</h1></div><form onsubmit="saveRider(event)"><label class="field">Rider name<input name="name" required maxlength="80" value="${esc(o.name||'')}"></label><label class="field">British Showjumping (BS) membership number (optional)<input name="bs" maxlength="60" value="${esc(o.bs||'')}"></label><label class="field">FEI ID (optional)<input name="fei" maxlength="60" value="${esc(o.fei||'')}"></label><button class="goldbtn">Save Rider →</button></form>${editingRider!==null?`<button type="button" class="sv-delete-team" onclick="deleteRider()">Delete rider</button>`:``}`}
 else if(view==='horse'){const h=editingHorse===null?{}:data.horses[editingHorse]||{},obj=typeof h==='string'?{registeredName:h}:h;const field=(label,name,type='text',required=false)=>`<label class="field">${label}<input name="${name}" type="${type}" ${required?'required':''} value="${esc(obj[name]||'')}" ${type==='text'?'maxlength="100"':''}></label>`;app.innerHTML=`<button class="back" onclick="go('team')">← My Team</button><div class="sv-branch-intro"><div class="sv-eyebrow">MY TEAM · HORSE</div><h1>${editingHorse===null?'Add Horse':'Edit Horse'}</h1></div><div class="scanrow"><label for="passport-photo" class="scan-trigger" aria-label="Tap to scan passport details"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h4l2-2h4l2 2h4v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg></label><label for="passport-photo" class="scan-label">Tap to scan passport details</label><input class="scan-file" id="passport-photo" type="file" accept="image/*" capture="environment" onchange="passportSelected(this)"></div><p id="scanstatus" class="scan-status" role="status"></p><img id="passport-preview" class="scan-preview" alt="Selected passport photo" hidden><p class="hint">Or enter details manually</p><form onsubmit="saveHorse(event)">${field('Registered name','registeredName','text',true)}${field('Stable name','stableName')}${field('Passport / UELN number','ueln')}${field('Last vaccination date','vaccination','date')}${field('FEI registration number','fei')}${field('British Showjumping (BS) number','bs')}<p class="hint">Only registered name is required. Check all details against the passport before saving.</p><button class="goldbtn">Save Horse →</button></form>${editingHorse!==null?`<button type="button" class="sv-delete-team" onclick="deleteHorse()">Delete horse</button>`:``}`}
-else if(view==='add'){app.innerHTML=`<button class="back sv-consistent-home" onclick="go('home')">← Home</button><div class="sv-branch-intro"><div class="sv-eyebrow">YOUR NEXT SHOW</div><h1>Add Show</h1><p class="intro">Where are you competing?</p></div><p class="hint">${monthlyCount()} of 4 planners created this month.</p><form onsubmit="addShow(event)"><label class="field">Show name<input name="name" required maxlength="100" placeholder="Competition name"></label><label class="field">Show venue<input name="venue" required maxlength="150" placeholder="Where is the show?"></label><label class="field">Start date<input name="start" type="date" required></label><label class="field">End date<input name="end" type="date" required></label><label class="field">Show link (optional)<input name="showLink" type="url" placeholder="https://…"><small>Paste a show, entries or timetable link. You can add this later.</small></label><h2 class="subhead">Horses</h2>${data.horses.map(h=>`<label class="checkrow"><input type="checkbox" name="horses" value="${esc(registeredName(h))}"><span>${esc(horseName(h))}</span></label>`).join('')||'<p class="hint">Add horses in My Team first.</p>'}<h2 class="subhead">Riders</h2>${data.riders.map(r=>`<label class="checkrow"><input type="checkbox" name="riders" value="${esc(riderName(r))}"><span>${esc(riderName(r))}</span></label>`).join('')||'<p class="hint">Add riders in My Team first.</p>'}<button class="goldbtn">Save show</button></form>`}
+else if(view==='add'){app.innerHTML=`<button class="back sv-consistent-home" onclick="go('home')">← Home</button><div class="sv-branch-intro"><div class="sv-eyebrow">YOUR NEXT SHOW</div><h1>Add Show</h1><p class="intro">Where are you competing?</p></div><form onsubmit="addShow(event)"><label class="field">Show name<input name="name" required maxlength="100" placeholder="Competition name"></label><label class="field">Show venue<input name="venue" required maxlength="150" placeholder="Where is the show?"></label><label class="field">Start date<input name="start" type="date" required></label><label class="field">End date<input name="end" type="date" required></label><label class="field">Show link (optional)<input name="showLink" type="url" placeholder="https://…"><small>Paste a show, entries or timetable link. You can add this later.</small></label><h2 class="subhead">Horses</h2>${data.horses.map(h=>`<label class="checkrow"><input type="checkbox" name="horses" value="${esc(registeredName(h))}"><span>${esc(horseName(h))}</span></label>`).join('')||'<p class="hint">Add horses in My Team first.</p>'}<h2 class="subhead">Riders</h2>${data.riders.map(r=>`<label class="checkrow"><input type="checkbox" name="riders" value="${esc(riderName(r))}"><span>${esc(riderName(r))}</span></label>`).join('')||'<p class="hint">Add riders in My Team first.</p>'}<button class="goldbtn">Save show</button></form>`}
 
 else if(view==='show'){const s=data.shows.find(x=>x.id===selected);if(!s){go('home');return}const draft=s.status==='draft';app.innerHTML=`<button class="back sv-consistent-home" onclick="go('home')">← Home</button><div class="show-top"><div><div class="eyebrow">Your show</div><h1>${esc(s.name)}</h1><p class="intro">${dates(s)}</p>${isPast(s)?'<span class="past-label">Past Show</span>':''}</div></div>${!draft&&!isPast(s)?`<div class="notice">${s.status==='ready'?'Planner ready':s.status==='preparing'?'Planner being prepared':'Planner requested'}</div>`:''}<form onsubmit="saveShowDetails(event)"><label class="field">Show venue<input name="venue" maxlength="150" required value="${esc(s.venue||'')}"></label><h2 class="subhead">Horses</h2>${data.horses.map(h=>{const n=registeredName(h);return `<label class="checkrow"><input type="checkbox" name="horses" value="${esc(n)}" ${s.horses.includes(n)?'checked':''}><span>${esc(horseName(h))}</span></label>`}).join('')||'<p class="hint">Add horses in My Team first.</p>'}<h2 class="subhead">Riders</h2>${data.riders.map(r=>{const n=riderName(r);return `<label class="checkrow"><input type="checkbox" name="riders" value="${esc(n)}" ${s.riders.includes(n)?'checked':''}><span>${esc(n)}</span></label>`}).join('')||'<p class="hint">Add riders in My Team first.</p>'}<label class="field">Show link (optional)<input name="showLink" type="url" placeholder="https://…" value="${esc(s.showLink||'')}"><small>Paste a show, entries or timetable link. You can add this later.</small></label><button class="goldbtn" type="submit">${draft?'Submit Show →':'Save changes →'}</button></form>${!draft&&!isPast(s)?`<section class="show-journey">${s.status==='ready'&&Number(s.id)===1?'<button class="goldbtn" onclick="window.location.href=\'planner.html\'">Open Planner →</button>':s.status==='ready'?'<p>Planner marked ready. Your personal planner link will appear here once it is connected.</p>':s.status==='submitted'?'<p>Your planner request is received. Your planner will appear here once it is ready.</p>':'<p>Your planner is being prepared. Check here for its availability.</p>'}</section>`:''}<button type="button" class="delete-show" onclick="deleteShow()">Delete Show</button><div id="showTool" class="tool-overlay hidden" role="dialog" aria-modal="true" aria-label="Show tools"></div>`;}}
 
@@ -480,7 +502,7 @@ function deleteRider(){
   data.riders.splice(editingRider,1);
   editingRider=null;save();go('team');
 }
-function deleteShow(){const s=data.shows.find(x=>x.id===selected);if(!s)return;if(!confirm('Delete '+s.name+'? This removes the show, its checklist and notes for everyone on the team. This cannot be undone.'))return;data.shows=data.shows.filter(x=>x.id!==selected);if(data.lastSubmittedShowId===selected)data.lastSubmittedShowId=null;selected=null;activeTool=null;save();go('home')}function addShow(e){e.preventDefault();if(monthlyCount()>=4){alert('You have created all 4 planners for this month.');return}const f=e.target.elements;if(f.end.value<f.start.value){alert('End date must be on or after start date.');return}const horses=[...e.target.querySelectorAll('input[name="horses"]:checked')].map(x=>x.value),riders=[...e.target.querySelectorAll('input[name="riders"]:checked')].map(x=>x.value);if(!horses.length||!riders.length){alert('Choose at least one horse and rider.');return}const s={id:Date.now(),name:f.name.value.trim(),start:f.start.value,end:f.end.value,horses,riders,venue:f.venue.value.trim(),showLink:f.showLink.value.trim(),status:'draft',checklist:[],sharedNotes:''};data.shows.push(s);data.lastSubmittedShowId=s.id;data.plannerCreations.push(creationMonth());save();selected=s.id;activeTool=null;teamPending.then(()=>{if(!teamError)go('confirmed')})}
+function deleteShow(){const s=data.shows.find(x=>x.id===selected);if(!s)return;if(!confirm('Delete '+s.name+'? This removes the show, its checklist and notes for everyone on the team. This cannot be undone.'))return;data.shows=data.shows.filter(x=>x.id!==selected);if(data.lastSubmittedShowId===selected)data.lastSubmittedShowId=null;selected=null;activeTool=null;save();go('home')}function addShow(e){e.preventDefault();const f=e.target.elements;if(f.end.value<f.start.value){alert('End date must be on or after start date.');return}const horses=[...e.target.querySelectorAll('input[name="horses"]:checked')].map(x=>x.value),riders=[...e.target.querySelectorAll('input[name="riders"]:checked')].map(x=>x.value);if(!horses.length||!riders.length){alert('Choose at least one horse and rider.');return}const s={id:Date.now(),name:f.name.value.trim(),start:f.start.value,end:f.end.value,horses,riders,venue:f.venue.value.trim(),showLink:f.showLink.value.trim(),status:'draft',checklist:[],sharedNotes:''};data.shows.push(s);data.lastSubmittedShowId=s.id;save();selected=s.id;activeTool=null;teamPending.then(()=>{if(!teamError)go('confirmed')})}
 startTeam();
 </script><script>
 (function(){
