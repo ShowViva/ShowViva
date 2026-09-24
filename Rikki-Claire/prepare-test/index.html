@@ -1,0 +1,844 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ShowViva — Your show co-pilot</title><style>:root{--navy:#192e47;--gold:#bd9b60;--cream:#fbf8f1;--line:#e8dfd0;--muted:#726e67}*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--navy);font-family:Arial,Helvetica,sans-serif}button,input,select{font:inherit}button{cursor:pointer}header{background:var(--navy);color:#fff;padding:18px 22px;display:flex;justify-content:space-between;align-items:center}.brand{font-family:Georgia,serif;font-size:24px;letter-spacing:2px}.brand{display:flex;align-items:center;gap:10px}.brand .crest{width:35px;height:39px;flex:none}.brand .crest text{font-family:Georgia,serif;font-size:16px;font-weight:bold;letter-spacing:-1px}header button{background:none;border:0;color:#fff;font-size:22px}main{max-width:680px;margin:auto;padding:27px 20px 70px}.eyebrow{font-size:11px;letter-spacing:2px;color:#977b4c;font-weight:700;text-transform:uppercase}h1,h2,h3{font-family:Georgia,serif;font-weight:400}h1{font-size:35px;margin:9px 0}h2{font-size:25px;margin:0}p{line-height:1.5}.intro{color:var(--muted);margin:0 0 28px}.next{background:var(--navy);color:white;border-radius:13px;padding:24px;margin:20px 0 22px}.next .eyebrow{color:#e0c68e}.next h2{font-size:31px;margin:13px 0 4px}.next p{color:#e5e3de;margin:4px 0 22px}.goldbtn{border:0;background:var(--gold);color:var(--navy);font-weight:700;border-radius:7px;padding:14px 18px;width:100%}.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}.tile{background:#f3ecdf;border:1px solid var(--line);border-radius:11px;padding:19px;text-align:left;color:var(--navy);min-height:117px}.tile .symbol{font-size:24px;color:#977b4c}.tile strong{display:block;font-family:Georgia,serif;font-size:22px;font-weight:400;margin:10px 0 4px}.tile small{color:var(--muted)}.sectionhead{display:flex;justify-content:space-between;align-items:center;margin:30px 0 13px}.link{border:0;background:none;color:#8d7042;font-weight:700}.item{display:flex;justify-content:space-between;align-items:center;text-align:left;width:100%;background:#fffdf9;border:1px solid var(--line);border-radius:9px;padding:16px;margin:9px 0;color:var(--navy)}.item strong{display:block;font-size:15px}.item small{display:block;color:var(--muted);margin-top:5px}.arrow{font-size:23px;color:#9e8255}.back{background:none;border:0;color:#8d7042;padding:0;margin-bottom:22px}.toolbar{display:flex;gap:9px;align-items:center;justify-content:space-between;margin:20px 0}.smallbtn{background:var(--navy);color:white;border:0;border-radius:7px;padding:11px 15px}.toggle{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}.toggle button{background:transparent;border:0;padding:10px 14px;color:var(--navy)}.toggle .active{background:var(--navy);color:white}.calendar{background:white;border:1px solid var(--line);border-radius:10px;padding:13px}.month{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.month button{border:0;background:none;color:var(--navy);font-size:22px}.days{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.day{text-align:center;padding:10px 0;font-size:13px;border:0;border-radius:5px;background:#f6f0e6;color:var(--navy);min-height:36px}.day.has{background:#d8c29b;font-weight:700}.day.past{background:#e5e7eb;color:#62676b;font-weight:700}.site-header .header-actions .calendar-nav{font-size:23px;line-height:1;padding:8px 10px}.day.blank{background:none}.field{display:block;margin:16px 0;font-size:13px;font-weight:700}.field input,.field select{display:block;width:100%;padding:13px;margin-top:7px;border:1px solid #d7cbb8;border-radius:7px;background:white;color:var(--navy)}.hint{color:var(--muted);font-size:13px}.empty{padding:22px;background:#f3ecdf;border-radius:10px;color:var(--muted)}.pill{display:inline-block;background:#f3ecdf;border-radius:30px;padding:7px 11px;margin:5px 5px 5px 0;font-size:13px}.subhead{font-size:18px;margin-top:26px}.hidden{display:none!important}@media(max-width:360px){main{padding:22px 15px}.tile{padding:13px}.tile strong{font-size:20px}}</style><style id="header-override">.site-header{display:block;background:#1b2c3a;color:#fff;padding:28px 22px 30px}.header-top{display:flex;align-items:center;justify-content:space-between;gap:10px}.brand-lockup{min-width:0}.brand-wordmark{font-family:Georgia,serif;font-size:clamp(29px,6vw,44px);letter-spacing:-1.7px;white-space:nowrap}.brand-wordmark span{color:#e7c17b}.brand-tagline{font-size:clamp(8px,1.7vw,12px);letter-spacing:2.7px;margin-top:7px;white-space:nowrap}.header-actions{display:flex;gap:7px}.site-header .header-actions button{font:inherit;font-size:13px;border:1px solid #6c7780;border-radius:11px;padding:10px 11px;white-space:nowrap;background:transparent;color:#fff}.header-message{margin-top:39px}.header-message h1{font-size:clamp(36px,8.5vw,64px);margin:0;line-height:1.12;white-space:nowrap;letter-spacing:-1.6px}.header-message h1 em{color:#e7c17b;font-style:normal}.header-message p{font-family:Georgia,serif;font-size:clamp(21px,4.7vw,30px);font-weight:400;letter-spacing:-.35px;margin:19px 0 0;color:#f5f1e9}@media(max-width:390px){.site-header{padding:24px 16px 28px}.header-actions{gap:4px}.site-header .header-actions button{font-size:11px;padding:9px 7px}.brand-tagline{letter-spacing:1.5px}.header-message{margin-top:34px}.header-message p{font-size:21px}}</style><style>.tiles{margin-top:18px}.tile{background:#192e47;color:#fff;border:0;min-height:132px}.tile .symbol{color:#e7c17b}.tile small{color:#e9dfce}.next{margin-top:25px}.sectionhead{margin-top:34px}@media(max-width:390px){.tile{padding:16px 12px}.tile strong{font-size:21px}}</style><style id="showviva-refinement">
+:root{--cream:#fcfaf5;--line:#e7e0d5;--gold:#b79a67}
+body{background:var(--cream)}
+.site-header{padding-bottom:26px}
+.header-message{margin-top:28px}
+.header-message h1{font-size:clamp(33px,7.5vw,54px)}
+.header-message p{font-size:clamp(17px,3.8vw,23px);margin-top:13px;color:#eee9df}
+main{padding-top:29px}
+.tiles{gap:12px;margin-top:17px}
+.tile{background:#fffefa;color:var(--navy);border:1px solid #dfd5c4;min-height:112px;padding:18px 19px;box-shadow:0 3px 14px rgba(25,46,71,.025)}
+.tile .symbol{color:#a68a57;font-size:23px}
+.tile strong{font-size:22px;margin:7px 0 4px}
+.tile small{color:#777167}
+.next{background:#fffefa;color:var(--navy);border:1px solid #d9c9aa;border-left:3px solid #b79a67;padding:21px 22px;margin-top:29px;margin-bottom:27px;box-shadow:0 5px 22px rgba(25,46,71,.035)}
+.next .eyebrow{color:#907448}
+.next h2{font-size:clamp(27px,6vw,36px);margin:12px 0 3px}
+.next p{color:#726e67;margin:5px 0 17px}
+.next .goldbtn{background:#192e47;color:white;width:auto;min-width:170px;padding:12px 20px;font-size:14px;letter-spacing:.4px}
+.sectionhead{margin-top:32px}
+.item{background:#fffefa;padding:17px 18px;border-radius:11px;margin:8px 0}
+.item strong{font-size:16px}
+@media(max-width:390px){.tile{padding:15px 13px;min-height:108px}.tile strong{font-size:20px}.next{padding:19px 18px}.header-message h1{font-size:clamp(31px,8vw,39px)}}
+.scanrow{display:flex;align-items:center;gap:11px;margin:16px 0 12px}.scan-trigger{border:1px solid #d9c9aa;background:#fffefa;color:#a68a57;width:43px;height:43px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;flex:none}.scan-trigger svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.scan-label{color:var(--navy);font-size:14px;font-weight:600;cursor:pointer}.scan-file{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}.scan-status{font-size:12px;color:var(--muted);margin:0 0 12px 54px}.scan-preview{max-width:100%;max-height:200px;object-fit:contain;border-radius:8px;margin:5px 0 10px 54px}.horsecard{display:block;width:100%;text-align:left;border:1px solid var(--line);background:#fffefa;border-radius:10px;padding:15px;margin:9px 0;color:var(--navy)}.horsecard small{display:block;color:var(--muted);margin-top:5px}.horse-actions{display:flex;gap:10px;margin:15px 0}.horse-actions button{flex:1}.notice{background:#f3ecdf;border-radius:8px;padding:12px;font-size:13px;color:var(--navy)}</style><style id="showviva-gold-detail">
+/* Refined gold framing: preserve typography, cream space and existing interactions. */
+.tile{border:2px solid #b79a67;background:#fffefa;box-shadow:0 4px 16px rgba(25,46,71,.035)}
+.next{border:2px solid #b79a67;border-left:2px solid #b79a67;background:#fffefa;box-shadow:0 6px 22px rgba(25,46,71,.04)}
+.item{border:1px solid #e7e0d5;background:#fffefa}
+.tile:focus-visible,.next button:focus-visible,.item:focus-visible{outline:2px solid #192e47;outline-offset:3px}
+</style><style id="showviva-show-journey">.show-journey{margin-top:26px;padding:21px;border:1px solid #d8c59f;background:#fffefa;border-radius:12px}.show-journey .intro{margin:10px 0 18px}.show-stage{border-top:1px solid #e8dfd0;padding:15px 0 8px}.show-stage strong{font-family:Georgia,serif;font-size:20px;font-weight:400}.show-stage p{font-size:14px;color:#726e67;margin:7px 0}.show-journey .goldbtn{margin-top:14px}</style><style id="connected-test-css">
+html,body{max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}main,section,.field{min-width:0;max-width:100%}.field input,.field select,.field textarea{max-width:100%;min-width:0;width:100%;font-size:16px}.hint,.intro,.notice,.field small{overflow-wrap:anywhere}.goldbtn,.smallbtn{max-width:100%}.show-tools{margin:24px 0;padding:20px;border:1px solid #d8c59f;border-radius:12px;background:#fffefa}.show-tools textarea{width:100%;min-height:110px;padding:12px;border:1px solid #d8c59f;border-radius:8px;font:inherit}.checkrow{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid #e8dfd0}.checkrow input{width:20px;height:20px;flex:none}.checkrow span{flex:1;min-width:0;overflow-wrap:anywhere}.checkrow button{flex:none}.show-tools .smallbtn{margin-top:12px}@media(max-width:420px){main{padding-left:17px;padding-right:17px}.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style><style id="home-simplified-20260922">.home-title{font-size:clamp(28px,7vw,38px);line-height:1.15;margin:10px 0 20px}.home-actions{margin-top:0}.home-actions .tile{min-width:0;min-height:142px;border:2px solid #b79a67;background:#fffefa}.home-actions .tile strong{font-size:clamp(19px,5vw,25px)}.home-actions .tile small{display:block;line-height:1.4}.next{background:#192e47;color:#fff;border:2px solid #b79a67;margin:23px 0 26px}.next .eyebrow{color:#e7c17b}.next p{color:#f0e9dc}.next .goldbtn{background:#b79a67;color:#192e47;width:100%;max-width:100%}.sectionhead h2{font-size:26px}.item{min-width:0}.item span:first-child{min-width:0;overflow-wrap:anywhere}@media(max-width:390px){.home-actions{gap:10px}.home-actions .tile{padding:16px 12px}.next{padding:20px 17px}}html,body{max-width:100%;overflow-x:hidden}</style><style id="showviva-official-brand-20260922">
+/* Matches the ShowViva public website master typography and palette. */
+:root{--navy:#061f30;--gold:#dda94e;--cream:#f6f1e8;--line:#e5d8c2;--muted:#586572;--serif:Georgia,"Times New Roman",serif;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+body{font-family:var(--sans);background:var(--cream);color:#092438}
+.site-header{background:#061f30;border-bottom:1px solid rgba(221,169,78,.35)}
+.brand-wordmark,.brand,.tile strong,h1,h2,h3,.next h2,.show-stage strong,.header-message p{font-family:var(--serif)}
+.brand-wordmark span,.header-message h1 em,.tile .symbol,.next .eyebrow{color:#dda94e}
+.header-message p{color:#fffdf8}
+.eyebrow,.link,.back{color:#947039}
+.tile,.item,.next,.show-tools,.show-journey,.horsecard{background:#fffdf8;border-color:#dda94e;color:#092438}
+.tile .symbol{color:#bc8b35}.tile small,.intro,.hint{color:#586572}
+.next{background:#061f30;color:#fffdf8;border:2px solid #dda94e}
+.next h2,.next p{color:#fffdf8}.next .eyebrow{color:#f0c36c}
+.next .goldbtn,.goldbtn{background:linear-gradient(135deg,#f3ca78,#dda94e);color:#132638;border-radius:999px;font-weight:700}
+.next .goldbtn{background:linear-gradient(135deg,#f3ca78,#dda94e);color:#132638}
+.smallbtn,.toggle .active{background:#061f30;color:#fffdf8;border-radius:999px}
+.field input,.field select,.show-tools textarea{border-color:#d8c59f;background:#fffdf8;color:#092438}
+.pill,.notice,.empty{background:#f5e8ce;color:#092438}
+.site-header .header-actions button{border-color:#b99759}
+html,body{max-width:100%;overflow-x:hidden}
+main,.tiles,.tile,.next,.field,.field input,.field select,.show-tools{min-width:0;max-width:100%}
+.hint,.intro,.notice,.field small{overflow-wrap:anywhere}
+@media(max-width:390px){.site-header{padding-left:16px;padding-right:16px}.brand-wordmark{font-size:clamp(26px,7vw,34px)}.header-message h1{white-space:normal}.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.tile{padding:14px 12px}.tile strong{font-size:19px}}
+</style><style id="final-ux">.show-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}.show-top h1{overflow-wrap:anywhere}.show-icons{display:flex;gap:8px;flex:none}.tool-icon{position:relative;min-width:43px;height:43px;border-radius:50%;border:1px solid #dda94e;background:#fffdf8;color:#092438;font-size:23px}.tool-dot{position:absolute;right:5px;top:5px;width:7px;height:7px;border-radius:50%;background:#dda94e}.checkrow{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #e8dfd0;font-size:16px}.checkrow input{width:22px!important;height:22px;flex:none;margin:0;accent-color:#092438}.checkrow span{flex:1;min-width:0}.tool-overlay{position:fixed;inset:0;background:rgba(6,31,48,.55);z-index:100;display:flex;align-items:flex-end;justify-content:center}.tool-panel{background:#fffdf8;color:#092438;border-radius:22px 22px 0 0;padding:24px 20px max(30px,env(safe-area-inset-bottom));width:100%;max-width:680px;max-height:88dvh;overflow:auto;box-shadow:0 -5px 30px #061f3033}.tool-head{display:flex;align-items:center;justify-content:space-between}.tool-close{width:44px;height:44px;border:1px solid #dda94e;border-radius:50%;background:transparent;color:#092438;font-size:30px}.tool-panel textarea{width:100%;min-height:160px;border:1px solid #d8c59f;border-radius:10px;padding:14px;font:inherit;font-size:16px;background:#fff;color:#092438;margin:8px 0 14px}.field input{font-size:16px!important}.site-header,.header-top,.header-message,main{max-width:100%} .field small{display:block;overflow-wrap:anywhere}@media(max-width:420px){.show-top h1{font-size:30px}.show-icons{gap:5px}.tool-icon{min-width:40px;height:40px}}</style><style id="confirmation-ux">.confirmation{max-width:640px;margin:22px auto;padding:30px 0}.confirmation .goldbtn{display:block;width:100%;margin:24px 0 12px}.confirmation .smallbtn{display:block;margin:0 auto}.checkrow input[type=checkbox]{appearance:auto!important;-webkit-appearance:checkbox!important;opacity:1!important;visibility:visible!important;accent-color:#102A3D!important;width:24px!important;height:24px!important;flex:0 0 24px!important;position:static!important}.checkrow{display:flex!important;align-items:center;gap:12px;min-height:48px}.past-heading{margin-top:30px;border-top:1px solid #d8c59f;padding-top:20px}.delete-show{display:block;margin:32px auto 8px;border:0;background:transparent;color:#9b3d36;text-decoration:underline;font:inherit;padding:12px}.past-label{display:inline-block;background:#f3ecdf;color:#102a3d;border-radius:20px;padding:5px 12px;font-size:12px;font-weight:700;margin:8px 0}</style><style id="calendar-header-fix">.site-header .header-top{gap:12px;flex-wrap:wrap}.site-header .brand-lockup{flex:1 1 210px}.site-header .header-actions{flex:0 0 auto;align-items:center;gap:8px}.site-header .header-actions .calendar-nav{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;min-width:38px;padding:0;border:0;border-radius:8px;color:#e7c17b;background:transparent}.site-header .header-actions .calendar-nav svg{display:block;flex:none}.site-header .header-actions .calendar-nav:focus-visible{outline:2px solid #e7c17b;outline-offset:3px}@media(max-width:550px){.site-header .header-top{align-items:flex-start}.site-header .brand-lockup{flex-basis:100%}.site-header .header-actions{width:100%;justify-content:flex-end}.site-header .header-message{margin-top:26px}}@media(min-width:551px){.site-header .brand-lockup{flex-basis:0}}</style><style id="elegant-header-20260922">.site-header{padding:24px 22px 27px}.site-header .header-top{display:flex;flex-wrap:nowrap;align-items:center;gap:10px}.site-header .brand-lockup{flex:1 1 auto;min-width:0}.site-header .header-actions{display:flex;flex:0 0 auto;width:auto;align-items:center;justify-content:flex-end;gap:9px}.site-header .header-actions .calendar-nav{width:38px;height:38px;min-width:38px;padding:0;border:0;background:transparent;color:#e7c17b}.site-header .header-actions button:not(.calendar-nav){border:1px solid rgba(231,193,123,.65);border-radius:9px;padding:9px 11px;font-size:13px}.site-header .header-message{margin-top:29px}@media(max-width:550px){.site-header{padding:22px 16px 27px}.site-header .header-top{flex-wrap:nowrap;align-items:center}.site-header .brand-lockup{flex:1 1 auto;min-width:0}.site-header .brand-wordmark{font-size:clamp(26px,7vw,34px)}.site-header .brand-tagline{font-size:clamp(6px,1.35vw,9px);letter-spacing:clamp(.7px,.25vw,1.6px)}.site-header .header-actions{width:auto;flex:0 0 auto;gap:6px}.site-header .header-actions .calendar-nav{width:34px;height:38px;min-width:34px}.site-header .header-actions button:not(.calendar-nav){padding:8px 9px;font-size:12px}.site-header .header-message{margin-top:30px}}@media(max-width:350px){.site-header .brand-wordmark{font-size:25px}.site-header .brand-tagline{letter-spacing:.45px;font-size:6px}.site-header .header-actions{gap:3px}.site-header .header-actions button:not(.calendar-nav){padding:8px 7px}}</style><style id="showviva-ux-refinement">
+/* A consistent way home, wherever you are in the app. */
+.site-header .header-actions .home-nav{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:38px;padding:7px 9px!important;background:transparent;border:1px solid rgba(231,193,123,.65)!important;border-radius:9px;color:#fff9ef;font:600 13px Arial,sans-serif;text-decoration:none;white-space:nowrap}
+.site-header .header-actions .home-nav svg{width:15px;height:15px;flex:none;stroke:#e7c17b}
+.site-header .header-actions .home-nav:focus-visible{outline:2px solid #e7c17b;outline-offset:2px}
+.back{display:inline-flex!important;align-items:center;gap:8px;background:#f5eee0!important;border:1px solid #dfc99c!important;border-radius:11px!important;padding:11px 16px!important;color:var(--navy)!important;font-weight:700!important;text-decoration:none!important;margin-bottom:23px!important}
+.calendar-section-title{font:400 25px Georgia,serif;color:var(--navy);margin:25px 0 11px}
+.calendar-section-title.past{border-top:1px solid #d8c59f;padding-top:23px;margin-top:25px}
+.calendar-section-note{font-size:13px;color:var(--muted);margin:0 0 11px}
+.just-submitted{background:#fffdf7;border:1.5px solid #cba65e;border-radius:14px;padding:18px;margin:16px 0 20px;box-shadow:0 4px 15px rgba(13,39,55,.04)}
+.just-submitted .eyebrow{color:#96713a;margin:0 0 6px}
+.just-submitted h2{font:400 26px Georgia,serif;margin:0 0 5px;color:var(--navy)}
+.just-submitted p{margin:0 0 12px;color:var(--muted);font-size:14px}
+.just-submitted button{display:inline-flex;align-items:center;gap:7px;border:0;background:var(--navy);color:white;border-radius:9px;padding:11px 15px;font-weight:700}
+@media(max-width:440px){.site-header .header-actions{gap:5px!important}.site-header .header-actions .home-nav{font-size:12px;padding:7px 8px!important}.site-header .header-actions .home-nav svg{width:13px;height:13px}.site-header .header-actions button:not(.calendar-nav):not(.home-nav){font-size:12px;padding:9px 8px}}
+.home-nav[hidden]{display:none!important}</style><style id="sv-team-show-premium-polish">
+/* 22 Sep: restrained ShowViva design alignment for My Team and Add Show only.
+   The home, calendar, planner and business logic are intentionally untouched. */
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add){--formnavy:#10283a;--formgold:#c9a460;--formline:#e6dfd3;color:var(--formnavy)}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add) .sv-branch-intro{margin:4px 0 25px;padding:0 0 21px;border-bottom:1px solid #e6dfd3}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add) .sv-eyebrow{font:bold 10px/1.4 Arial,sans-serif;letter-spacing:3px;color:#95753f;margin:0 0 12px}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add) .sv-branch-intro h1{font:400 clamp(34px,9vw,45px)/1.12 Georgia,serif;letter-spacing:-.7px;margin:0 0 9px}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add) .sv-branch-intro .intro{margin:0;color:#657180;font-size:15px;line-height:1.5}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add) .back{font-size:14px;margin:0 0 24px}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add) .subhead{font:400 clamp(23px,6vw,29px)/1.2 Georgia,serif;color:var(--formnavy);margin:26px 0 14px}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add) .hint{color:#687686;font-size:13px;line-height:1.5}
+#app.sv-view-team .horsecard{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:72px;padding:16px 17px;background:#fffefa;border:1px solid var(--formline);border-radius:16px;margin:8px 0;box-shadow:0 3px 12px rgba(13,39,55,.025);text-align:left}
+#app.sv-view-team .horsecard strong{display:block;font:400 20px/1.2 Georgia,serif;color:var(--formnavy);margin:0 0 6px}
+#app.sv-view-team .horsecard small{display:block;color:#647181;font-size:12px;line-height:1.45;overflow-wrap:anywhere}
+#app.sv-view-team .smallbtn{background:#10283a;color:#fffdfa;border:1px solid #10283a;border-radius:12px;padding:13px 18px;margin:4px 0 7px;font-size:14px;font-weight:600}
+#app:is(.sv-view-add,.sv-view-horse,.sv-view-rider) form{background:#fffefa;border:1px solid var(--formline);border-radius:20px;padding:18px 18px 21px;box-shadow:0 6px 22px rgba(13,39,55,.035)}
+#app:is(.sv-view-add,.sv-view-horse,.sv-view-rider) .field{display:block;margin:0 0 18px;font-size:13px;font-weight:600;color:#253b4f;line-height:1.4}
+#app:is(.sv-view-add,.sv-view-horse,.sv-view-rider) .field input,#app:is(.sv-view-add,.sv-view-horse,.sv-view-rider) .field select{display:block;width:100%;border:1px solid #d9dfdf;border-radius:12px;background:white;min-height:49px;margin-top:7px;padding:12px 14px;color:#10283a;font-size:16px;box-shadow:none;outline-offset:2px}
+#app:is(.sv-view-add,.sv-view-horse,.sv-view-rider) .field input:focus-visible{outline:2px solid #bd9b60;border-color:#bd9b60}
+#app:is(.sv-view-add,.sv-view-horse,.sv-view-rider) .field input::placeholder{color:#89919a}
+#app:is(.sv-view-add,.sv-view-horse,.sv-view-rider) .field small{display:block;margin-top:8px;color:#727d88;font-size:12px;font-weight:400;line-height:1.45}
+#app.sv-view-add form .subhead{border-top:1px solid var(--formline);padding-top:22px;margin:20px 0 8px}
+#app.sv-view-add .checkrow{display:flex;align-items:center;gap:12px;min-height:49px;padding:10px 4px;border-bottom:1px solid #f0ece5;color:#23384d;font-size:15px}
+#app.sv-view-add .checkrow input{width:20px!important;height:20px;accent-color:#10283a;flex:none}
+#app:is(.sv-view-add,.sv-view-horse,.sv-view-rider) form .goldbtn{background:linear-gradient(110deg,#e7c88c,#c7a45e);color:#10283a;border:0;border-radius:14px;min-height:51px;padding:13px 19px;margin-top:22px;box-shadow:none;font-size:15px;font-weight:700}
+#app.sv-view-add>.hint{display:inline-block;background:#f5efe4;border:1px solid #e8ddca;border-radius:999px;padding:8px 13px;margin:0 0 15px;color:#796d5b}
+#app.sv-view-horse .scanrow{padding:13px 14px;background:#fffefa;border:1px solid var(--formline);border-radius:14px;margin:0 0 14px}
+#app.sv-view-horse .scan-trigger{border-radius:12px}
+#app.sv-view-horse>.hint{margin:14px 0}
+@media(min-width:640px){#app:is(.sv-view-add,.sv-view-horse,.sv-view-rider) form{padding:25px 30px 30px}#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add) .sv-branch-intro{margin-bottom:28px}}
+</style><style id="sv-team-delete-style">
+#app:is(.sv-view-horse,.sv-view-rider) .sv-delete-team{display:block;margin:20px auto 6px;padding:10px 15px;
+ background:transparent;color:#7c4141;border:1px solid #e6d4d2;border-radius:11px;font:600 13px Arial,sans-serif}
+#app:is(.sv-view-horse,.sv-view-rider) .sv-delete-team:focus-visible{outline:2px solid #a17749;outline-offset:3px}
+</style><style id="sv-show-details-premium-20260922">
+/* Show details: match the approved cream/navy/gold My Team and Add Show treatment. */
+#app.sv-view-show{--detailnavy:#10283a;--detailgold:#c9a460;--detailline:#e6dfd3;color:var(--detailnavy)}
+#app.sv-view-show .back{margin:0 0 25px!important;font-size:14px}
+#app.sv-view-show .show-top{display:block;margin:4px 0 24px;padding:0 0 22px;border-bottom:1px solid var(--detailline)}
+#app.sv-view-show .show-top .eyebrow{font:bold 10px/1.4 Arial,sans-serif;letter-spacing:3px;color:#95753f;margin:0 0 12px}
+#app.sv-view-show .show-top h1{font:400 clamp(34px,9vw,45px)/1.12 Georgia,serif;letter-spacing:-.7px;color:var(--detailnavy);margin:0 0 10px}
+#app.sv-view-show .show-top .intro{margin:0;font-size:15px;line-height:1.5;color:#657180}
+#app.sv-view-show .notice{display:inline-block;max-width:100%;margin:0 0 20px;padding:9px 14px;border:1px solid #e4cf9f;border-radius:999px;background:#f5efe4;color:#796d5b;font-size:12px;letter-spacing:.3px;font-weight:700}
+#app.sv-view-show form{background:#fffefa;border:1px solid var(--detailline);border-radius:20px;padding:18px 18px 23px;box-shadow:0 6px 22px rgba(13,39,55,.035)}
+#app.sv-view-show form .field{display:block;margin:0 0 19px;font-size:13px;font-weight:600;color:#253b4f;line-height:1.4}
+#app.sv-view-show form .field input{display:block;width:100%;border:1px solid #d9dfdf;border-radius:12px;background:#fff;min-height:49px;margin-top:7px;padding:12px 14px;color:#10283a;font-size:16px}
+#app.sv-view-show form .field input:focus-visible{outline:2px solid #bd9b60;border-color:#bd9b60}
+#app.sv-view-show form .field input::placeholder{color:#89919a}
+#app.sv-view-show form .field small{display:block;margin-top:8px;color:#727d88;font-size:12px;font-weight:400;line-height:1.45}
+#app.sv-view-show form .subhead{font:400 clamp(23px,6vw,29px)/1.2 Georgia,serif;color:var(--detailnavy);border-top:1px solid var(--detailline);padding-top:22px;margin:22px 0 9px}
+#app.sv-view-show form .checkrow{display:flex;align-items:center;gap:12px;min-height:49px;padding:11px 4px;border-bottom:1px solid #f0ece5;color:#23384d;font-size:15px}
+#app.sv-view-show form .checkrow input{width:20px!important;height:20px!important;flex:0 0 20px!important;accent-color:#10283a}
+#app.sv-view-show form .hint{color:#687686;font-size:13px;line-height:1.5}
+#app.sv-view-show form .goldbtn{width:100%;background:linear-gradient(110deg,#e7c88c,#c7a45e);color:#10283a;border:0;border-radius:14px;min-height:51px;padding:13px 19px;margin-top:22px;box-shadow:none;font-size:15px;font-weight:700}
+#app.sv-view-show .show-journey{margin:21px 0 0;background:#fffefa;border:1px solid var(--detailline);border-radius:18px;padding:22px 20px;box-shadow:0 4px 17px rgba(13,39,55,.025)}
+#app.sv-view-show .show-journey p{color:#647181;font-size:14px;line-height:1.55;margin:0}
+#app.sv-view-show .show-journey .goldbtn{width:100%;background:#10283a;color:#fffdfa;border-radius:13px;min-height:49px;margin:0;font-size:15px}
+#app.sv-view-show .delete-show{margin:24px auto 8px;padding:10px 15px;background:transparent;border:1px solid #e6d4d2;border-radius:11px;color:#7c4141;text-decoration:none;font:600 13px Arial,sans-serif}
+#app.sv-view-show .past-label{margin-top:14px}
+@media(min-width:640px){#app.sv-view-show form{padding:25px 30px 30px}#app.sv-view-show .show-journey{padding:25px 30px}}
+</style><style id="sv-show-pages-match-team-20260922">
+/* Add Show and Show Details use exactly the same visual vocabulary as My Team.
+   Scoped to show branches: no impact on Home, Calendar, Team or planner. */
+#app:is(.sv-view-add,.sv-view-show){--svn:#10283a;--svg:#c9a460;--svline:#e6dfd3;color:var(--svn)}
+#app:is(.sv-view-add,.sv-view-show) .back{display:inline-flex;align-items:center;gap:5px;margin:0 0 24px!important;padding:5px 0;color:#907448;font-size:14px;font-weight:500;text-decoration:none}
+#app:is(.sv-view-add,.sv-view-show) .sv-branch-intro,
+#app.sv-view-show .show-top{margin:4px 0 22px;padding:0 0 21px;border-bottom:1px solid var(--svline)}
+#app:is(.sv-view-add,.sv-view-show) .sv-eyebrow,
+#app.sv-view-show .show-top .eyebrow{font:700 10px/1.4 Arial,sans-serif;letter-spacing:3px;color:#95753f;margin:0 0 12px}
+#app:is(.sv-view-add,.sv-view-show) .sv-branch-intro h1,
+#app.sv-view-show .show-top h1{font:400 clamp(34px,9vw,45px)/1.12 Georgia,serif;letter-spacing:-.7px;color:var(--svn);margin:0 0 10px}
+#app:is(.sv-view-add,.sv-view-show) .sv-branch-intro .intro,
+#app.sv-view-show .show-top .intro{font-size:15px;line-height:1.5;color:#657180;margin:0}
+#app:is(.sv-view-add,.sv-view-show) form{background:#fffefa;border:1px solid var(--svline);border-radius:20px;padding:20px 18px 24px;box-shadow:0 6px 22px rgba(13,39,55,.035);min-width:0}
+#app:is(.sv-view-add,.sv-view-show) form>.field{display:block;margin:0 0 18px;color:#253b4f;font-size:13px;line-height:1.4;font-weight:600}
+#app:is(.sv-view-add,.sv-view-show) form>.field input{display:block;width:100%;min-width:0;max-width:100%;height:50px;min-height:50px;margin-top:8px;padding:10px 13px;border:1px solid #d9dfdf;border-radius:12px;background:#fff;color:var(--svn);font:400 16px/1.3 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;box-shadow:none;-webkit-appearance:none;appearance:none}
+#app:is(.sv-view-add,.sv-view-show) form>.field input[type=date]{-webkit-appearance:auto;appearance:auto;color-scheme:light}
+#app:is(.sv-view-add,.sv-view-show) form>.field input::placeholder{color:#89919a;font-weight:400}
+#app:is(.sv-view-add,.sv-view-show) form>.field input:focus-visible{outline:2px solid #bd9b60;outline-offset:2px;border-color:#bd9b60}
+#app:is(.sv-view-add,.sv-view-show) form>.field small{display:block;margin:8px 0 0;color:#727d88;font-size:12px;line-height:1.45;font-weight:400}
+#app:is(.sv-view-add,.sv-view-show) form>.subhead{font:400 clamp(25px,6.3vw,29px)/1.2 Georgia,serif;color:var(--svn);border-top:1px solid var(--svline);padding:23px 0 6px;margin:24px 0 5px}
+#app:is(.sv-view-add,.sv-view-show) form>.checkrow{display:flex;align-items:center;gap:13px;width:100%;min-height:61px;margin:9px 0;padding:12px 14px;border:1px solid #e8e0d4;border-radius:14px;background:#fff;color:var(--svn);font-size:15px;line-height:1.4;cursor:pointer}
+#app:is(.sv-view-add,.sv-view-show) form>.checkrow:has(input:checked){border-color:#c7a45e;background:#fcf8f0}
+#app:is(.sv-view-add,.sv-view-show) form>.checkrow input[type=checkbox]{display:block!important;position:static!important;flex:0 0 22px!important;width:22px!important;height:22px!important;margin:0;accent-color:#10283a;opacity:1!important;visibility:visible!important}
+#app:is(.sv-view-add,.sv-view-show) form>.checkrow span{font-size:15px;line-height:1.4;color:#253b4f;overflow-wrap:anywhere}
+#app:is(.sv-view-add,.sv-view-show) form>.goldbtn{display:block;width:100%;min-height:52px;margin:26px 0 0;padding:13px 18px;border:0;border-radius:14px;background:linear-gradient(110deg,#e7c88c,#c7a45e);color:#10283a;font:700 15px/1.4 Arial,sans-serif;box-shadow:none}
+#app.sv-view-show .show-journey{margin:20px 0 0;border:1px solid var(--svline);border-radius:18px;background:#fffefa;padding:20px 18px}
+#app.sv-view-show .show-journey .goldbtn{border-radius:13px;background:#10283a;color:#fffdfa}
+@media(min-width:640px){#app:is(.sv-view-add,.sv-view-show) form{padding:26px 30px 30px}}
+</style>
+<style id="showviva-unified-brand-test">
+/* SHOWVIVA: ONE BRAND SYSTEM ACROSS THE TEST EXPERIENCE.
+   The public website's navy / cream / warm gold is the visual reference.
+   CSS-only: existing routes, records, forms and handlers are unchanged. */
+:root {
+  --navy:#0e2838; --gold:#d9ad60; --cream:#fbf8f1;
+  --line:#e6d9c5; --muted:#62707a;
+  --sv-navy:#0e2838; --sv-gold:#d9ad60; --sv-cream:#fbf8f1;
+  --sv-paper:#fffdf9; --sv-line:#e6d9c5;
+}
+body{background:var(--sv-cream);color:var(--sv-navy)}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add,.sv-view-show){
+  --formnavy:var(--sv-navy);--formgold:var(--sv-gold);--formline:var(--sv-line);
+  --detailnavy:var(--sv-navy);--detailgold:var(--sv-gold);--detailline:var(--sv-line);
+  --svn:var(--sv-navy);--svg:var(--sv-gold);--svline:var(--sv-line);
+  color:var(--sv-navy);
+}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add,.sv-view-show)
+:is(.sv-branch-intro h1,.show-top h1,.subhead,.horsecard strong){
+  color:var(--sv-navy);font-family:Georgia,"Times New Roman",serif;font-weight:400;
+}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add,.sv-view-show)
+:is(.sv-eyebrow,.show-top .eyebrow){color:#9b783d;letter-spacing:3.5px}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add,.sv-view-show)
+:is(.sv-branch-intro,.show-top){border-bottom-color:var(--sv-line)}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add,.sv-view-show)
+:is(.horsecard,form,.show-journey){
+  background:var(--sv-paper);border:1px solid var(--sv-line);
+  border-radius:18px;box-shadow:0 5px 20px rgba(14,40,56,.035);
+}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add,.sv-view-show)
+:is(.field input,.field select,.field textarea){
+  background:#fff;color:var(--sv-navy);border-color:#dedad2;border-radius:12px;
+  font-size:16px;min-height:50px;
+}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add,.sv-view-show)
+:is(.field input,.field select,.field textarea):focus-visible{
+  outline:2px solid #b9914b;outline-offset:2px;border-color:#b9914b;
+}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add,.sv-view-show)
+:is(.field,.intro,.hint,.horsecard small,.checkrow){line-height:1.5}
+#app:is(.sv-view-horse,.sv-view-rider,.sv-view-add,.sv-view-show)
+form .goldbtn{
+  background:linear-gradient(115deg,#f2cd83,#d9ad60);
+  color:var(--sv-navy);border:0;border-radius:999px;
+  min-height:52px;font-weight:700;letter-spacing:.1px;
+}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add,.sv-view-show)
+:is(.smallbtn,.show-journey .goldbtn){
+  background:var(--sv-navy);color:#fffdf7;border-radius:999px;
+}
+#app:is(.sv-view-add,.sv-view-show) form>.checkrow{
+  background:#fffefa;border:1px solid var(--sv-line);
+  border-radius:12px;margin:7px 0;padding:13px 12px;
+}
+#app:is(.sv-view-add,.sv-view-show) form>.checkrow:has(input:checked){
+  background:#f8efdF;border-color:#c5a161;
+}
+#app:is(.sv-view-add,.sv-view-show) form>.checkrow input[type=checkbox]{accent-color:var(--sv-navy)}
+#app.sv-view-show .show-journey .goldbtn{background:var(--sv-navy);color:#fffdf7}
+@media(max-width:440px){
+ #app:is(.sv-view-team,.sv-view-horse,.sv-view-rider,.sv-view-add,.sv-view-show)
+ :is(.sv-branch-intro h1,.show-top h1){font-size:clamp(34px,9vw,45px)}
+}
+</style><style id="sv-planner-request-ux">
+/* Clear planner-request journey: a single Up Next card, never a duplicate submitted banner. */
+#app.sv-view-home .next-support{font-size:14px;line-height:1.5;color:#f5e7c9;margin:9px 0 16px}
+#app.sv-view-show .notice{background:#f5eddb;color:#10283a;border:1px solid #d4b473;border-radius:13px;padding:13px 16px;font-weight:700}
+</style><style id="sv-team-edit-unified-20260922">
+/* ShowViva TEST: My Team and its editing branches share one layout language.
+   This layer changes presentation only, not saving, deletion, or navigation. */
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider){
+  --team-navy:#10283a;--team-gold:#c9a460;--team-line:#e6dfd3;
+  color:var(--team-navy);
+}
+/* A small, recognisable return link—not a competing call-to-action. */
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider)>.back{
+  display:inline-flex!important;align-items:center!important;gap:6px!important;
+  width:auto!important;min-height:0!important;margin:0 0 20px!important;
+  padding:5px 0!important;background:transparent!important;border:0!important;
+  border-radius:0!important;box-shadow:none!important;
+  color:#876b3b!important;font:600 14px/1.35 Arial,sans-serif!important;
+  text-decoration:none!important;
+}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider)>.sv-branch-intro{
+  margin:0 0 22px!important;padding:0 0 21px!important;
+  border-bottom:1px solid var(--team-line)!important;
+}
+#app:is(.sv-view-team,.sv-view-horse,.sv-view-rider)>.sv-branch-intro h1{
+  font:400 clamp(36px,9vw,48px)/1.08 Georgia,serif!important;
+  letter-spacing:-1px!important;color:var(--team-navy)!important;
+  margin:0 0 9px!important;
+}
+/* Align the list cards with the edit form's same premium paper treatment. */
+#app.sv-view-team .horsecard{
+  display:flex!important;flex-wrap:wrap!important;
+  align-items:center!important;justify-content:space-between!important;
+  gap:5px 14px!important;padding:18px 20px!important;
+  border:1px solid var(--team-line)!important;border-radius:17px!important;
+  background:#fffefa!important;min-height:75px!important;box-shadow:none!important;
+}
+#app.sv-view-team .horsecard strong{
+  font:400 clamp(22px,5.6vw,28px)/1.15 Georgia,serif!important;
+  color:var(--team-navy)!important;min-width:0!important;
+}
+#app.sv-view-team .horsecard small{
+  font:400 13px/1.4 Arial,sans-serif!important;
+  color:#637181!important;overflow-wrap:anywhere!important;
+  min-width:0!important;max-width:100%!important;
+  margin:0!important;text-align:left!important;
+}
+#app:is(.sv-view-rider,.sv-view-horse)>form{
+  background:#fffefa!important;border:1px solid var(--team-line)!important;
+  border-radius:18px!important;box-shadow:none!important;
+  padding:20px 18px 22px!important;
+}
+#app:is(.sv-view-rider,.sv-view-horse)>form>.field{
+  display:block!important;margin:0 0 18px!important;
+  font:600 14px/1.45 Arial,sans-serif!important;color:#293d50!important;
+}
+#app:is(.sv-view-rider,.sv-view-horse)>form>.field input{
+  display:block!important;width:100%!important;min-width:0!important;
+  min-height:50px!important;height:50px!important;
+  margin-top:9px!important;padding:10px 13px!important;
+  background:white!important;color:var(--team-navy)!important;
+  border:1px solid #dedad2!important;border-radius:12px!important;
+  font:400 16px/1.3 Arial,sans-serif!important;
+}
+#app:is(.sv-view-rider,.sv-view-horse)>form>.goldbtn{
+  width:100%!important;min-height:51px!important;margin-top:8px!important;
+  background:linear-gradient(110deg,#e9cc95,#c7a664)!important;
+  color:var(--team-navy)!important;border:0!important;
+  border-radius:14px!important;font:700 16px Arial,sans-serif!important;
+}
+#app:is(.sv-view-rider,.sv-view-horse)>.sv-delete-team{
+  display:block!important;width:auto!important;
+  margin:20px auto 28px!important;padding:10px 13px!important;
+  background:transparent!important;color:#804747!important;
+  border:1px solid #e6d4d2!important;border-radius:11px!important;
+  font:600 13px Arial,sans-serif!important;
+}
+</style><style id="sv-team-shared-indicator">.sv-team-sharing{max-width:680px;margin:14px auto 0;padding:10px 16px;border:1px solid #e4d3af;border-radius:12px;background:#fffdf8;color:#10283a;font:600 12px Arial,sans-serif;text-align:center}</style><style id="sv-shared-home-cohesion-20260923">
+/* Presentation-only: retain the existing shared-team Supabase logic and private access. */
+#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider){--sv-unified-navy:#10283a;--sv-unified-gold:#c9a460;--sv-unified-line:#e6dfd3;color:var(--sv-unified-navy)}
+#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider)>.sv-branch-intro{margin:4px 0 24px!important;padding:0 0 21px!important;border-bottom:1px solid var(--sv-unified-line)!important}
+#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider)>.sv-branch-intro h1{font:400 clamp(34px,9vw,45px)/1.12 Georgia,serif!important;letter-spacing:-.7px!important;color:var(--sv-unified-navy)!important;margin:0 0 9px!important}
+#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider)>.sv-branch-intro .intro{font-size:15px!important;color:#657180!important;line-height:1.5!important}
+/* Make the My Team return control the same clear boxed navigation as Add Show. */
+#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider)>.back{display:inline-flex!important;align-items:center!important;gap:8px!important;min-height:42px!important;margin:0 0 23px!important;padding:10px 15px!important;background:#fffefa!important;border:1px solid #dfc99c!important;border-radius:11px!important;box-shadow:none!important;color:#10283a!important;font:600 14px/1.3 Arial,sans-serif!important;text-decoration:none!important}
+#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider)>.back:focus-visible{outline:2px solid #c9a460;outline-offset:3px}
+/* Clear, gold-framed calendar shortcut in the TOP LEFT of the homepage header only. */
+.site-header.sv-header-home .header-top{position:relative}
+.site-header.sv-header-home .header-actions .calendar-nav{position:absolute;left:0;top:0;display:inline-flex!important;justify-content:center;align-items:center;width:46px!important;height:46px!important;min-width:46px!important;border:1.5px solid #e7c17b!important;background:rgba(231,193,123,.13)!important;border-radius:12px!important;color:#f0c777!important;box-shadow:0 0 0 3px rgba(231,193,123,.07)!important}
+.site-header.sv-header-home .header-actions .calendar-nav svg{width:26px;height:26px}
+.site-header.sv-header-home .brand-lockup{padding-left:59px}
+.site-header.sv-header-home .header-actions{padding-left:0}
+@media(max-width:380px){.site-header.sv-header-home .brand-lockup{padding-left:53px}.site-header.sv-header-home .header-actions .calendar-nav{width:42px!important;height:42px!important;min-width:42px!important}.site-header.sv-header-home .brand-wordmark{font-size:25px}}
+</style><style id="sv-calendar-right-no-signout-20260923">
+/* Keep private link and Supabase behaviour; adjust header presentation only. */
+.site-header.sv-header-home .header-top{position:relative}
+.site-header.sv-header-home .brand-lockup{padding-left:0!important}
+.site-header.sv-header-home .header-actions{padding-left:0!important;margin-left:auto;justify-content:flex-end}
+.site-header.sv-header-home .header-actions .calendar-nav{position:static!important;left:auto!important;top:auto!important;display:inline-flex!important;justify-content:center;align-items:center;width:48px!important;min-width:48px!important;height:48px!important;border:1.5px solid #e7c17b!important;background:rgba(231,193,123,.13)!important;border-radius:12px!important;color:#f0c777!important;box-shadow:none!important}
+.site-header.sv-header-home .header-actions .calendar-nav svg{width:27px!important;height:27px!important}
+@media(max-width:380px){.site-header.sv-header-home .brand-lockup{padding-left:0!important}.site-header.sv-header-home .header-actions .calendar-nav{width:44px!important;min-width:44px!important;height:44px!important}}
+</style><style id="sv-consistent-save-home-20260923">
+/* Make Home identical on My Shows, My Team and Add Show. */
+#app .back.sv-consistent-home{display:inline-flex!important;align-items:center;justify-content:center;gap:8px;background:#fffefa!important;border:1.5px solid #d8bd88!important;border-radius:12px!important;min-height:44px;padding:11px 17px!important;font:700 14px Arial,Helvetica,sans-serif!important;color:#10283a!important;box-shadow:none!important;text-decoration:none!important;margin:0 0 24px!important}
+#app .back.sv-consistent-home:focus-visible{outline:2px solid #c9a460;outline-offset:3px}
+.sv-saved-overlay{position:fixed;inset:0;background:rgba(6,31,48,.48);z-index:999;display:flex;align-items:center;justify-content:center;padding:22px}
+.sv-saved-dialog{width:min(100%,470px);background:#fffefa;color:#10283a;border:2px solid #d8bd88;border-radius:23px;box-shadow:0 18px 60px rgba(6,31,48,.22);padding:32px 26px;text-align:center}
+.sv-saved-dialog .sv-eyebrow{font-size:11px;letter-spacing:3px;color:#967541;font-weight:700;margin-bottom:16px}
+.sv-saved-dialog h1{font:400 clamp(34px,7vw,45px) Georgia,serif;margin:0 0 15px;color:#10283a}
+.sv-saved-dialog p{font-size:16px;line-height:1.5;color:#586572;margin:0 0 25px}
+.sv-saved-dialog .goldbtn{min-height:50px;width:100%;background:linear-gradient(110deg,#e7c88c,#c7a45e);color:#10283a;border-radius:14px;font-weight:700}
+</style><style id="sv-team-add-visual-consistency-final">
+/* Presentation only: align My Team and Add Show using the same page-level type scale. */
+#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider){
+  --sv-matched-navy:#10283a;--sv-matched-gold:#d8bd88;--sv-matched-paper:#fffefa;
+  color:var(--sv-matched-navy);
+}
+/* Same cream, gold framed return control across all branch pages. Override older transparent team styles. */
+#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider) > button.back,
+#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider) > .back.sv-consistent-home{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  width:auto!important;min-height:44px!important;padding:11px 17px!important;
+  margin:0 0 24px!important;gap:8px!important;
+  background:#fffefa!important;border:1.5px solid #d8bd88!important;
+  border-radius:12px!important;box-shadow:none!important;
+  color:#10283a!important;font:700 14px/1.4 Arial,Helvetica,sans-serif!important;
+  text-decoration:none!important;
+}
+#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider) > button.back:focus-visible{
+  outline:2px solid #c9a460;outline-offset:3px;
+}
+/* Identical headings, kicker, supporting copy and spacing on My Team and Add Show. */
+#app:is(.sv-view-team,.sv-view-add) > .sv-branch-intro{
+  margin:4px 0 24px!important;padding:0 0 21px!important;
+  border-bottom:1px solid #e6dfd3!important;
+}
+#app:is(.sv-view-team,.sv-view-add) > .sv-branch-intro .sv-eyebrow{
+  margin:0 0 12px!important;color:#95753f!important;
+  font:700 11px/1.4 Arial,Helvetica,sans-serif!important;letter-spacing:3px!important;
+}
+#app:is(.sv-view-team,.sv-view-add) > .sv-branch-intro h1{
+  margin:0 0 10px!important;
+  color:#10283a!important;font:400 clamp(36px,9vw,48px)/1.1 Georgia,'Times New Roman',serif!important;
+  letter-spacing:-.7px!important;
+}
+#app:is(.sv-view-team,.sv-view-add) > .sv-branch-intro .intro{
+  margin:0!important;color:#657180!important;
+  font:400 16px/1.5 Arial,Helvetica,sans-serif!important;
+}
+#app:is(.sv-view-team,.sv-view-add) .subhead{
+  color:#10283a!important;font:400 clamp(25px,6vw,29px)/1.2 Georgia,'Times New Roman',serif!important;
+}
+</style><style id="sv-calendar-single-final-20260923">
+/* One authoritative size: same visual scale as the header Home control. */
+.site-header .header-top .header-actions .calendar-nav,
+.site-header.sv-header-home .header-top .header-actions .calendar-nav {
+ position:static!important;left:auto!important;top:auto!important;
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ width:44px!important;min-width:44px!important;max-width:44px!important;
+ height:44px!important;min-height:44px!important;max-height:44px!important;
+ flex:0 0 44px!important;padding:8px!important;
+ border:1.5px solid #d8bd88!important;border-radius:11px!important;
+ background:transparent!important;color:#e7c17b!important;box-shadow:none!important;
+}
+.site-header .header-top .header-actions .calendar-nav svg,
+.site-header.sv-header-home .header-top .header-actions .calendar-nav svg {
+ width:23px!important;min-width:23px!important;height:23px!important;max-height:23px!important;flex:none!important;
+}
+</style><style id="sv-my-team-matches-add-show-20260923">
+/* Add Show is the visual reference. Only the My Team branch is restyled. */
+#app.sv-view-team > .sv-branch-intro{margin:4px 0 24px!important;padding:0 0 21px!important;border-bottom:1px solid #e6dfd3!important}
+#app.sv-view-team > .sv-branch-intro .sv-eyebrow{margin:0 0 12px!important;color:#95753f!important;font:700 11px/1.4 Arial,Helvetica,sans-serif!important;letter-spacing:3px!important}
+#app.sv-view-team > .sv-branch-intro h1{margin:0 0 10px!important;color:#10283a!important;font:400 clamp(36px,9vw,48px)/1.1 Georgia,'Times New Roman',serif!important;letter-spacing:-.7px!important}
+#app.sv-view-team > .sv-branch-intro .intro{margin:0!important;color:#657180!important;font:400 16px/1.5 Arial,Helvetica,sans-serif!important}
+#app.sv-view-team > .subhead{margin:26px 0 14px!important;color:#10283a!important;font:400 clamp(25px,6vw,29px)/1.2 Georgia,'Times New Roman',serif!important}
+/* Keep names legible and use Add Show's tidy white paper cards and consistent sizing. */
+#app.sv-view-team .horsecard{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:8px 16px!important;min-height:72px!important;margin:9px 0!important;padding:17px 18px!important;border:1px solid #e6dfd3!important;border-radius:16px!important;background:#fffefa!important;box-shadow:none!important;text-align:left!important}
+#app.sv-view-team .horsecard strong{font:400 20px/1.2 Georgia,'Times New Roman',serif!important;color:#10283a!important;margin:0!important;min-width:0!important}
+#app.sv-view-team .horsecard small{font:400 13px/1.45 Arial,Helvetica,sans-serif!important;color:#657180!important;margin:0!important;min-width:0!important;overflow-wrap:anywhere!important}
+#app.sv-view-team > .smallbtn{font:700 15px/1.4 Arial,Helvetica,sans-serif!important;min-height:50px!important;padding:12px 18px!important;border-radius:14px!important}
+#app.sv-view-team > button.back{background:#fffefa!important;border:1.5px solid #d8bd88!important;border-radius:12px!important;color:#10283a!important;min-height:44px!important;padding:11px 17px!important;font:700 14px/1.4 Arial,Helvetica,sans-serif!important;margin:0 0 24px!important}
+@media(max-width:420px){#app.sv-view-team .horsecard{flex-wrap:wrap!important}#app.sv-view-team .horsecard small{width:100%!important}}
+</style><style id="sv-unified-form-and-home-20260924">
+/* Scope to presentation only. Keep the existing navigation, calendar and shared data code. */
+#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider,.sv-view-show) {
+  font-family:Arial,Helvetica,sans-serif!important;
+}
+/* Identical serif display headings across the team and show forms. */
+#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider,.sv-view-show) :is(.sv-branch-intro h1,.show-top h1,.subhead,.horsecard strong){
+  font-family:Georgia,'Times New Roman',serif!important;
+}
+/* Consistent text and form-field fonts across the two branches. */
+#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider,.sv-view-show) :is(.intro,.field,.field input,.field select,.field textarea,.hint,.horsecard small,.checkrow,.sv-eyebrow){
+  font-family:Arial,Helvetica,sans-serif!important;
+}
+/* Every in-content Home button, including dynamically rendered show and calendar pages. */
+#app button.back, #app .back.sv-consistent-home {
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  gap:8px!important;width:auto!important;min-height:44px!important;
+  margin:0 0 24px!important;padding:11px 17px!important;
+  background:linear-gradient(110deg,#e7c88c,#c7a45e)!important;
+  border:1px solid #c7a45e!important;border-radius:12px!important;
+  box-shadow:none!important;color:#10283a!important;
+  font:700 14px/1.4 Arial,Helvetica,sans-serif!important;text-decoration:none!important;
+}
+#app button.back:focus-visible, #app .back.sv-consistent-home:focus-visible {
+ outline:2px solid #a77b39!important;outline-offset:3px!important;
+}
+
+/* Show-specific class wishes and independently confirmed competition entries. */
+#app .sv-horse-plan{border:1px solid #e8e0d4;border-radius:15px;padding:13px 14px;margin:12px 0;background:#fffefa}
+#app .sv-horse-plan>.checkrow{border:0!important;padding:3px 0!important;margin:0 0 9px!important;background:transparent!important}
+#app .sv-class-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 12px;margin-top:10px}
+#app .sv-class-options label{font:400 14px/1.4 Arial,sans-serif;color:#253b4f;display:flex;align-items:center;gap:7px}
+#app .sv-class-options input{width:18px;height:18px;accent-color:#c7a45e;flex-shrink:0}
+#app .sv-horse-plan .sv-other-class{display:block;width:100%;border:1px solid #d9dfdf;border-radius:10px;padding:11px 13px;font:400 16px Arial,sans-serif;margin:10px 0 0;color:#10283a;background:white}
+#app .sv-horse-plan:not(:has(input[name="horses"]:checked)) .sv-class-fields{display:none}
+#app .sv-entry-confirm{display:flex!important;align-items:flex-start;gap:12px;margin:19px 0;padding:15px!important;border:1px solid #d8bd88;border-radius:14px;background:#fcf8f0;font:600 15px/1.45 Arial,sans-serif;color:#10283a}
+#app .sv-entry-confirm input{width:22px;height:22px;flex:none;accent-color:#c7a45e;margin:0}
+#app .sv-entry-confirm small{display:block;color:#687686;font-size:12px;font-weight:400;margin-top:5px}
+</style><style id="sv-show-planning-v2">
+#app .sv-show-section{margin:24px 0;padding:20px 17px;background:#fffefa;border:1px solid #e7dfd2;border-radius:17px;color:#10283a;font-family:Arial,Helvetica,sans-serif}
+#app .sv-show-section h2{font:400 clamp(25px,7vw,32px)/1.2 Georgia,serif;color:#10283a;margin:0 0 7px}
+#app .sv-show-section p.sv-support{font:400 14px/1.55 Arial,sans-serif;color:#687585;margin:0 0 16px}
+#app .sv-show-section .sv-entry-horse{padding:13px 0;border-top:1px solid #eee7da}
+#app .sv-show-section .sv-entry-horse strong{display:block;color:#10283a;font:700 15px Arial,sans-serif}
+#app .sv-show-section .sv-entry-horse span{display:block;font:400 14px/1.55 Arial,sans-serif;color:#566879;margin:6px 0}
+#app .sv-show-section .sv-outline{color:#92703d;background:#fffdf7;border:1px solid #c9a460;border-radius:9px;padding:8px 12px;font:700 13px Arial,sans-serif}
+#app .sv-show-section .sv-inline-editor{background:#fcf8f0;padding:13px;border-radius:12px;margin:10px 0}
+#app .sv-show-section .sv-entry-confirm{margin:15px 0 0!important}
+#app .sv-show-section .sv-task{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #eee7da;font:400 15px/1.35 Arial,sans-serif}
+#app .sv-show-section .sv-task input{width:20px;height:20px;flex:none;accent-color:#c9a460}
+#app .sv-show-section .sv-task .sv-task-label{flex:1;min-width:0}
+#app .sv-show-section .sv-task button{border:0;background:transparent;color:#92703d;padding:7px;font:600 13px Arial,sans-serif}
+#app .sv-show-section .sv-task-form{display:flex;gap:8px;margin:16px 0 0}
+#app .sv-show-section .sv-task-form input{min-width:0;flex:1;border:1px solid #d8d6d0;border-radius:9px;padding:11px;font:400 16px Arial,sans-serif}
+#app .sv-show-section .sv-task-form button{border-radius:9px;background:#c9a460;color:#10283a;border:0;padding:10px 13px;font:700 13px Arial,sans-serif}
+#app .sv-show-section textarea{width:100%;min-height:115px;border:1px solid #d8d6d0;border-radius:10px;padding:13px;font:400 16px/1.5 Arial,sans-serif;color:#10283a;background:white;box-sizing:border-box}
+#app .sv-show-section .sv-task-label[contenteditable=true]{border:1px solid #c9a460;border-radius:5px;padding:5px}
+</style><style id="sv-show-checklist-accordions-save-v3">
+/* Match existing cream cards, serif page headings, gold navigation and navy text. */
+#app .sv-checklist-accordion{padding:0;overflow:hidden;background:#fffefa}
+#app .sv-checklist-accordion>summary{display:flex;align-items:center;gap:12px;list-style:none;cursor:pointer;padding:20px 17px;min-height:70px}
+#app .sv-checklist-accordion>summary::-webkit-details-marker{display:none}
+#app .sv-checklist-accordion>summary::marker{content:''}
+#app .sv-checklist-accordion .sv-checklist-title{flex:1;min-width:0;font:400 clamp(25px,7vw,32px)/1.2 Georgia,serif;color:#10283a}
+#app .sv-checklist-accordion .sv-checklist-count{white-space:nowrap;font:500 12px Arial,sans-serif;color:#92703d}
+#app .sv-checklist-accordion .sv-checklist-chevron{display:inline-block;font:400 28px/1 Arial,sans-serif;color:#92703d;transition:transform .18s ease}
+#app .sv-checklist-accordion[open] .sv-checklist-chevron{transform:rotate(180deg)}
+#app .sv-checklist-accordion .sv-checklist-content{padding:0 17px 20px;border-top:1px solid #eee7da}
+#app .sv-checklist-accordion .sv-support{padding-top:15px}
+#app .sv-bottom-save{display:flex;flex-direction:column;align-items:stretch;gap:8px;margin:30px 0 45px}
+#app .sv-bottom-save .sv-save-home{width:100%;min-height:50px;background:#c9a460!important;color:#10283a!important;border:1px solid #c9a460!important;border-radius:12px;font:700 16px Arial,sans-serif}
+#app .sv-bottom-save .sv-save-home:disabled{opacity:.65;cursor:wait}
+#app #sv-bottom-save-status{font:400 13px Arial,sans-serif;color:#687585}
+@media(max-width:380px){#app .sv-checklist-accordion>summary{gap:7px;padding:18px 13px}#app .sv-checklist-accordion .sv-checklist-title{font-size:24px}#app .sv-checklist-accordion .sv-checklist-count{font-size:11px}}
+</style><style id="sv-show-final-cohesion-20260924">
+/* Styling only; preserve the shared team API, private token, calendar and planner. */
+#app.sv-view-show .sv-show-section{background:#fffefa!important;border:1px solid #e6dfd3!important;border-radius:17px!important;box-shadow:none!important;padding:20px 18px!important;margin:0 0 16px!important}
+#app.sv-view-show .sv-show-section:not(details)>h2{font:400 clamp(27px,7vw,34px)/1.2 Georgia,'Times New Roman',serif!important;margin:0 0 10px!important;color:#10283a!important}
+#app.sv-view-show .sv-show-section .sv-support{font:400 14px/1.5 Arial,Helvetica,sans-serif!important;color:#647180!important;margin:8px 0 14px!important}
+#app.sv-view-show .sv-checklist-accordion{padding:0!important;overflow:hidden!important}
+#app.sv-view-show .sv-checklist-accordion>summary{padding:18px!important;min-height:68px!important;gap:10px!important;align-items:center!important}
+#app.sv-view-show .sv-checklist-accordion .sv-checklist-title{font:400 clamp(25px,6.5vw,32px)/1.16 Georgia,'Times New Roman',serif!important;letter-spacing:-.4px!important}
+#app.sv-view-show .sv-checklist-accordion .sv-checklist-count{font:500 12px Arial,Helvetica,sans-serif!important}
+#app.sv-view-show .sv-checklist-accordion .sv-checklist-content{padding:6px 18px 20px!important}
+#app.sv-view-show .sv-class-summary{margin-top:23px;padding:17px 16px;background:#fbf8f1;border:1px solid #e4d6bb;border-radius:14px}
+#app.sv-view-show .sv-class-summary h3{font:400 clamp(22px,5.6vw,28px)/1.2 Georgia,'Times New Roman',serif!important;color:#10283a;margin:0 0 8px}
+#app.sv-view-show .sv-class-group{margin-top:12px;padding:13px 14px;border:1px solid #e6dfd3;border-radius:12px;background:#fffefa}
+#app.sv-view-show .sv-class-group>strong{display:block;font:700 15px Arial,Helvetica,sans-serif;color:#92703d;margin:0 0 7px}
+#app.sv-view-show .sv-class-entry{display:flex;flex-wrap:wrap;gap:3px 9px;align-items:baseline;padding:8px 0;border-top:1px solid #eee8dd;font:600 15px/1.4 Arial,Helvetica,sans-serif;color:#10283a}
+#app.sv-view-show .sv-class-entry small{font:400 12px Arial,Helvetica,sans-serif;color:#647180}
+#app.sv-view-show .sv-notes-accordion textarea{width:100%;box-sizing:border-box;min-height:120px;font:400 16px/1.5 Arial,Helvetica,sans-serif}
+#app.sv-view-show .sv-bottom-save .sv-save-home{opacity:1!important;background:#c9a460!important;color:#10283a!important}
+@media(max-width:420px){#app.sv-view-show .sv-checklist-accordion .sv-checklist-title{font-size:26px!important}}
+</style><style id="sv-direct-class-entry-20260924">
+#app.sv-view-show .sv-entry-add-form{display:grid;gap:12px;margin:20px 0 23px;padding:18px;border:1px solid #e6dfd3;border-radius:16px;background:#fffefa}
+#app.sv-view-show .sv-entry-add-form .field{display:block;margin:0;font:600 14px/1.4 Arial,Helvetica,sans-serif;color:#293d50}
+#app.sv-view-show .sv-entry-add-form :is(select,input){display:block;box-sizing:border-box;width:100%;min-height:49px;margin-top:8px;padding:11px 12px;border:1px solid #dedad2;border-radius:12px;background:#fff;color:#10283a;font:400 16px Arial,Helvetica,sans-serif}
+#app.sv-view-show .sv-entry-add-form .sv-entry-add-button{width:100%;min-height:49px;background:#c9a460!important;color:#10283a!important;border-radius:12px}
+#app.sv-view-show .sv-class-summary{margin-top:12px}
+#app.sv-view-show .sv-class-entry{align-items:center;justify-content:space-between;gap:12px}
+#app.sv-view-show .sv-class-entry-name{display:flex;flex-direction:column;gap:4px;min-width:0;overflow-wrap:anywhere}
+#app.sv-view-show .sv-entry-remove{padding:8px 10px;flex-shrink:0;border:1px solid #dccba9;border-radius:10px;background:#fff;color:#80643a;font:600 13px Arial,Helvetica,sans-serif}
+#app.sv-view-show .sv-class-summary h3{font-size:clamp(24px,6vw,31px)!important}
+#app.sv-view-show .sv-entry-confirm{margin-top:22px}
+</style><style id="sv-premium-shared-notebook-20260924">
+/* Two equally sized gold-outline navigation buttons, no navy Home header button. */
+.site-header .header-top{position:relative!important}
+.site-header .header-actions{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:9px!important;padding-left:0!important}
+.site-header .header-actions :is(.calendar-nav,.notebook-nav),
+.site-header.sv-header-home .header-actions .calendar-nav{
+ position:static!important;display:inline-flex!important;flex:0 0 43px!important;
+ align-items:center!important;justify-content:center!important;
+ width:43px!important;height:43px!important;min-width:43px!important;
+ border:1.5px solid #e7c17b!important;border-radius:12px!important;
+ background:rgba(231,193,123,.13)!important;color:#f0c777!important;
+ box-shadow:0 0 0 3px rgba(231,193,123,.07)!important;
+ cursor:pointer!important;padding:0!important}
+.site-header .header-actions :is(.calendar-nav,.notebook-nav) svg{width:23px;height:23px}
+.site-header.sv-header-home .brand-lockup{padding-left:0!important}
+#app.sv-view-notebook{font-family:Arial,Helvetica,sans-serif;color:#10283a}
+#app.sv-view-notebook .sv-branch-intro h1{font:400 clamp(34px,9vw,45px)/1.12 Georgia,serif;color:#10283a}
+#app.sv-view-notebook .sv-notebook-card,#app.sv-view-notebook .sv-notebook-archive{
+ margin:0 0 18px;padding:21px 18px;background:#fffefa;border:1px solid #e6dfd3;
+ border-radius:17px;box-shadow:none}
+#app.sv-view-notebook .sv-notebook-card h2{font:400 clamp(29px,7vw,36px)/1.16 Georgia,serif;margin:7px 0 10px;color:#10283a}
+#app.sv-view-notebook .sv-notebook-help{font:400 14px/1.55 Arial,Helvetica,sans-serif;color:#647180;margin:8px 0 17px}
+#app.sv-view-notebook #sv-team-notes{display:block;box-sizing:border-box;width:100%;min-height:240px;
+ padding:15px;border:1px solid #dedad2;border-radius:13px;background:#fff;color:#10283a;
+ font:400 16px/1.6 Arial,Helvetica,sans-serif;resize:vertical}
+#app.sv-view-notebook #sv-team-notes:focus{outline:2px solid #c9a460;outline-offset:2px}
+#app.sv-view-notebook .sv-notebook-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:15px}
+#app.sv-view-notebook .sv-notebook-actions .goldbtn{background:#c9a460!important;color:#10283a!important;border-radius:12px;min-height:48px;padding:11px 24px}
+#app.sv-view-notebook #sv-team-note-status{font:500 13px Arial,sans-serif;color:#647180}
+#app.sv-view-notebook .sv-notebook-archive{padding:0;overflow:hidden}
+#app.sv-view-notebook .sv-notebook-archive summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:15px;padding:20px 18px;font:400 25px/1.2 Georgia,serif;color:#10283a}
+#app.sv-view-notebook .sv-notebook-archive summary::-webkit-details-marker{display:none}
+#app.sv-view-notebook .sv-notebook-archive summary span{font:600 13px Arial,sans-serif;color:#92703d}
+#app.sv-view-notebook .sv-notebook-archive>.sv-notebook-help{padding:0 18px;margin:0 0 16px}
+#app.sv-view-notebook .sv-notebook-legacy{margin:0 18px 13px;padding:14px;border:1px solid #e6dfd3;border-radius:12px;background:#fff}
+#app.sv-view-notebook .sv-notebook-legacy strong{font:600 15px Arial,sans-serif;color:#92703d}
+#app.sv-view-notebook .sv-notebook-legacy p{white-space:pre-wrap;overflow-wrap:anywhere;font:400 15px/1.5 Arial,sans-serif;margin:9px 0 0}
+#app.sv-view-notebook .sv-notebook-home{display:block;width:100%;min-height:50px;background:#c9a460!important;color:#10283a!important;border-radius:12px;margin:21px 0 42px}
+@media(max-width:430px){.site-header .header-actions{gap:6px!important}.site-header .header-actions :is(.calendar-nav,.notebook-nav),.site-header.sv-header-home .header-actions .calendar-nav{flex-basis:39px!important;width:39px!important;height:39px!important;min-width:39px!important}}
+</style><style id="sv-shared-note-cards-20260924">
+#app.sv-view-notebook #sv-note-form .field{display:block;margin:0 0 16px;font:600 14px/1.5 Arial,Helvetica,sans-serif;color:#293d50}
+#app.sv-view-notebook #sv-note-form select{display:block;box-sizing:border-box;width:100%;min-height:48px;margin-top:8px;padding:10px 13px;border:1px solid #dedad2;border-radius:12px;background:#fff;color:#10283a;font:400 16px Arial,Helvetica,sans-serif}
+#app.sv-view-notebook #sv-team-notes{min-height:126px;margin-top:8px}
+#app.sv-view-notebook .sv-notes-list h2{margin-bottom:20px}
+#app.sv-view-notebook .sv-note-item{padding:17px 16px;margin:0 0 13px;background:#fff;border:1px solid #e6dfd3;border-radius:14px;box-shadow:none}
+#app.sv-view-notebook .sv-note-item:last-child{margin-bottom:0}
+#app.sv-view-notebook .sv-note-meta{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:5px 16px;border-bottom:1px solid #eee7da;padding-bottom:11px}
+#app.sv-view-notebook .sv-note-meta strong{color:#10283a;font:700 15px Arial,Helvetica,sans-serif}
+#app.sv-view-notebook .sv-note-meta time{color:#92703d;font:500 12px Arial,Helvetica,sans-serif}
+#app.sv-view-notebook .sv-note-item p{margin:12px 0 0;color:#10283a;white-space:pre-wrap;overflow-wrap:anywhere;font:400 16px/1.55 Arial,Helvetica,sans-serif}
+</style><style id="sv-matched-icons-editable-team-notes-20260924">
+/* Force exactly matching calendar and notebook icon containers at every viewport. */
+.site-header .header-top .header-actions :is(.calendar-nav,.notebook-nav),
+.site-header.sv-header-home .header-top .header-actions :is(.calendar-nav,.notebook-nav){
+ position:static!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ box-sizing:border-box!important;width:44px!important;min-width:44px!important;max-width:44px!important;
+ height:44px!important;min-height:44px!important;max-height:44px!important;flex:0 0 44px!important;
+ padding:8px!important;border:1.5px solid #d8bd88!important;border-radius:12px!important;
+ background:rgba(231,193,123,.13)!important;color:#e7c17b!important;box-shadow:none!important;
+}
+.site-header .header-top .header-actions :is(.calendar-nav,.notebook-nav) svg,
+.site-header.sv-header-home .header-top .header-actions :is(.calendar-nav,.notebook-nav) svg{
+ display:block!important;width:23px!important;min-width:23px!important;max-width:23px!important;
+ height:23px!important;min-height:23px!important;max-height:23px!important;flex:0 0 23px!important;
+}
+#app.sv-view-notebook .sv-note-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:14px}
+#app.sv-view-notebook .sv-note-actions button{padding:8px 13px;border:1px solid #d8bd88;border-radius:10px;background:#fffefa;color:#80643a;font:600 13px Arial,Helvetica,sans-serif;cursor:pointer}
+#app.sv-view-notebook .sv-note-actions .sv-note-remove{border-color:#e6d4d2;color:#804747}
+#app.sv-view-notebook .sv-note-edit-form{padding-top:14px}
+#app.sv-view-notebook .sv-note-edit-form textarea{box-sizing:border-box;width:100%;min-height:110px;margin-top:8px;padding:12px;border:1px solid #dedad2;border-radius:12px;background:#fff;color:#10283a;font:400 16px/1.5 Arial,Helvetica,sans-serif}
+#app.sv-view-notebook .sv-note-edited{display:block;margin-top:6px;color:#647180;font:400 12px Arial,sans-serif}
+</style><style id="sv-compact-show-overview-20260924">
+#app.sv-view-show .sv-entries-overview .sv-class-summary{margin:14px 0 16px!important;padding:16px!important}
+#app.sv-view-show .sv-entries-overview .sv-class-summary h3{font:400 clamp(23px,6vw,29px)/1.15 Georgia,serif!important;margin-bottom:10px!important}
+#app.sv-view-show .sv-entry-editor{margin:16px 0 20px;border:1px solid #e4d6bb;border-radius:14px;background:#fffefa;overflow:hidden}
+#app.sv-view-show .sv-entry-editor>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;padding:16px 18px;list-style:none;color:#80643a;font:700 15px/1.3 Arial,Helvetica,sans-serif}
+#app.sv-view-show .sv-entry-editor>summary::-webkit-details-marker{display:none}
+#app.sv-view-show .sv-entry-editor>summary::marker{content:''}
+#app.sv-view-show .sv-entry-editor[open]>summary{border-bottom:1px solid #e9dfcc}
+#app.sv-view-show .sv-entry-chevron{font-size:24px;font-weight:400;line-height:1}
+#app.sv-view-show .sv-entry-editor[open] .sv-entry-chevron{transform:rotate(180deg)}
+#app.sv-view-show .sv-entry-editor-body{padding:5px 15px 17px}
+#app.sv-view-show .sv-entry-add-form{margin:10px 0 0!important}
+#app.sv-view-show .sv-entries-overview .sv-entry-remove{display:none}
+#app.sv-view-show .sv-entries-overview:has(.sv-entry-editor[open]) .sv-entry-remove{display:inline-flex}
+#app.sv-view-show .sv-checklist-accordion>summary{min-height:65px!important;padding:15px 17px!important}
+#app.sv-view-show .sv-checklist-accordion .sv-checklist-title{font:400 clamp(23px,5.7vw,29px)/1.16 Georgia,serif!important;letter-spacing:-.35px!important}
+#app.sv-view-show .sv-checklist-accordion .sv-checklist-count{font-size:12px!important}
+</style><style id="sv-single-shared-notebook-20260924">
+/* One shared editable box, matching the existing premium ShowViva cards. */
+#app.sv-view-notebook .sv-one-notebook-intro{margin-bottom:23px!important}
+#app.sv-view-notebook .sv-one-notebook-card{padding:20px 18px 22px!important}
+#app.sv-view-notebook .sv-one-notebook-label{display:block;font:400 clamp(25px,6.3vw,31px)/1.2 Georgia,'Times New Roman',serif;color:#10283a;margin:0 0 15px}
+#app.sv-view-notebook .sv-one-notebook-card #sv-team-notes{min-height:220px!important;line-height:1.55!important;resize:vertical}
+#app.sv-view-notebook .sv-one-notebook-card .sv-notebook-actions{margin-top:15px}
+#app.sv-view-notebook .sv-one-notebook-card .sv-notebook-actions button{width:100%;border-radius:12px!important}
+#app.sv-view-notebook .sv-notebook-home{margin-top:17px!important}
+</style><style id="sv-capitol-one-notebook-20260924">
+#app.sv-view-notebook .sv-one-notebook-intro{margin-bottom:22px!important}
+#app.sv-view-notebook .sv-capitol-notes{padding:22px 18px!important}
+#app.sv-view-notebook .sv-capitol-notes h2{margin:0 0 20px;font:400 clamp(29px,7vw,36px)/1.16 Georgia,serif;color:#10283a}
+#app.sv-view-notebook #sv-note-form .field{display:block;margin:0 0 15px;font:600 14px/1.5 Arial,sans-serif;color:#293d50}
+#app.sv-view-notebook #sv-note-form select,#app.sv-view-notebook #sv-note-form textarea{display:block;box-sizing:border-box;width:100%;margin-top:8px;padding:12px 14px;border:1px solid #dedad2;border-radius:12px;background:#fff;color:#10283a;font:400 16px/1.5 Arial,sans-serif}
+#app.sv-view-notebook #sv-note-form select{min-height:49px}
+#app.sv-view-notebook #sv-note-form #sv-team-notes{min-height:108px!important;resize:vertical}
+#app.sv-view-notebook .sv-capitol-add{display:block;width:100%;min-height:49px;margin:8px 0 20px;background:#c9a460!important;color:#10283a!important;border-radius:12px}
+#app.sv-view-notebook .sv-capitol-feed{border-top:1px solid #e6dfd3;padding-top:17px}
+#app.sv-view-notebook .sv-capitol-feed .sv-note-item{padding:15px;margin-bottom:12px;border:1px solid #e6dfd3;border-radius:13px;background:white}
+#app.sv-view-notebook .sv-capitol-feed .sv-note-meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;padding-bottom:9px;border-bottom:1px solid #eee7da}
+#app.sv-view-notebook .sv-capitol-feed .sv-note-meta strong{font:700 14px Arial,sans-serif;color:#10283a}
+#app.sv-view-notebook .sv-capitol-feed .sv-note-meta time{font:500 12px Arial,sans-serif;color:#92703d}
+#app.sv-view-notebook .sv-capitol-feed .sv-note-item p{white-space:pre-wrap;overflow-wrap:anywhere;font:400 16px/1.5 Arial,sans-serif;color:#10283a}
+#app.sv-view-notebook .sv-note-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:12px}
+#app.sv-view-notebook .sv-note-actions button{background:#fffefa;border:1px solid #d8bd88;border-radius:10px;padding:8px 12px;color:#80643a;font:600 13px Arial,sans-serif}
+#app.sv-view-notebook .sv-note-edit-form textarea{box-sizing:border-box;width:100%;min-height:90px;margin-top:7px;padding:12px;border:1px solid #dedad2;border-radius:12px;font:400 16px Arial,sans-serif}
+</style></head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions" aria-label="Account"><button type="button" class="calendar-nav" aria-label="Open calendar" title="Calendar" onclick="mode='calendar';go('plan')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></button><button type="button" class="notebook-nav" aria-label="Open shared notebook" title="Shared notebook" onclick="go('notebook')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v18M10 8h6M10 12h6M10 16h4"/></svg></button></nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><script>function signOut(){alert('Sign out will be connected when this prototype is integrated with your live account.');}
+const KEY='showviva-demo-v1';
+const initial={shows:[],horses:[],riders:[],plannerCreations:[],lastSubmittedShowId:null,teamNotes:'',teamNotebookNotes:[]};
+let data=structuredClone(initial),editingHorse=null,editingRider=null,activeTool=null;
+let view='home',mode='calendar',month=new Date(),selected=null;
+const svChecklistOpen={planning:false,packing:false,notes:false,details:false};
+const app=document.getElementById('app');
+const TEAM_API='https://yumqgvabwmekqvqwxldt.supabase.co/functions/v1/sv-team-home';
+const TEAM_TOKEN=(new URLSearchParams(location.hash.substring(1))).get('team')||'';
+let teamRevision=0,teamReady=false,teamError=false,teamPending=Promise.resolve();
+const teamApi=async(method,payload)=>{
+  const result=await fetch(TEAM_API,{method,headers:{'Content-Type':'application/json','x-team-token':TEAM_TOKEN},body:payload?JSON.stringify(payload):undefined,cache:'no-store'});
+  let response={};try{response=await result.json()}catch{}
+  if(!result.ok)throw Object.assign(new Error(response.error||'Connection failed'),{status:result.status});
+  return response;
+};
+const save=()=>{
+ if(!teamReady||teamError)return;
+ const snapshot=structuredClone(data);
+ teamPending=teamPending.then(async()=>{
+  const response=await teamApi('PUT',{revision:teamRevision,state:snapshot});
+  teamRevision=response.revision;
+ }).catch(e=>{
+   teamError=true;
+   alert(e.status===409?'Someone updated the team on another phone. Your change was not saved. Please reload to see the latest information.':'This change was not saved. Check your connection, then reload before editing again.');
+ });
+};
+const startTeam=async()=>{
+ app.innerHTML='<div class="empty">Connecting to your shared team…</div>';
+ if(!TEAM_TOKEN){app.innerHTML='<div class="empty"><h2>Private team link required</h2><p>Open the complete private link supplied to your team. This page cannot be accessed without it.</p></div>';return;}
+ try{
+  const response=await teamApi('GET');
+  data=response.state;teamRevision=response.revision;
+  if(!data||!Array.isArray(data.shows)||!Array.isArray(data.horses)||!Array.isArray(data.riders))throw Error('Invalid team data');
+  data.shows.forEach(s=>{if(!s.status)s.status='draft'});
+  if(!Array.isArray(data.plannerCreations))data.plannerCreations=[];
+  if(!('lastSubmittedShowId' in data))data.lastSubmittedShowId=null;
+  if(typeof data.teamNotes!=='string')data.teamNotes='';
+  // Preserve the original shared text as an unattributed card; no invented author or time.
+  if(!Array.isArray(data.teamNotebookNotes))data.teamNotebookNotes=data.teamNotes.trim()?[{id:'legacy-team-notes',text:data.teamNotes,author:null,createdAt:null}]:[];
+  teamReady=true;render();
+ }catch(e){app.innerHTML='<div class="empty"><h2>Could not open your team</h2><p>The link may be incomplete, revoked, or the connection unavailable. Check the private link and try again.</p></div>';}
+};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const fmt=s=>new Date(s+'T12:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short'});const dates=s=>fmt(s.start)+(s.end&&s.end!==s.start?' – '+fmt(s.end):'');const riderName=r=>typeof r==='string'?r:r.name;const horseName=h=>typeof h==='string'?h:(h.stableName||h.registeredName);const registeredName=h=>typeof h==='string'?h:h.registeredName;const todayISO=()=>new Date().toLocaleDateString('en-CA');const isPast=s=>s.end<todayISO();const ordered=()=>[...data.shows].sort((a,b)=>a.start.localeCompare(b.start));const creationMonth=()=>todayISO().slice(0,7);const monthlyCount=()=>data.plannerCreations.filter(m=>m===creationMonth()).length;const statusLabel=s=>isPast(s)?'Past show':s.entriesSubmitted?'Entries submitted':(s.horses||[]).some(h=>(s.plannedClasses?.[h]||[]).length)?'Planning entries':'Show added';const showItem=s=>`<button class="item" onclick="openShow(${s.id})"><span><strong>${esc(s.name)}</strong><small>${dates(s)} · ${statusLabel(s)}</small></span><span class="arrow">›</span></button>`;const back=()=>`<button class="back sv-consistent-home" onclick="go('home')">← Home</button>`;function go(v){view=v;render();scrollTo(0,0)}function openShow(id){activeTool=null;selected=Number(id);go('show')}function render(){app.className='sv-view-'+view;document.querySelector('.site-header')?.classList.toggle('sv-header-home',view==='home');const homeNav=document.querySelector('.home-nav');if(homeNav)homeNav.hidden=(view==='home');if(view==='confirmed'){app.innerHTML=`<div class="sv-saved-overlay" role="dialog" aria-modal="true" aria-labelledby="sv-saved-title"><div class="sv-saved-dialog"><div class="sv-eyebrow">YOUR SHOWVIVA</div><h1 id="sv-saved-title">Show saved</h1><p>Your show has been added to your ShowViva calendar.</p><button class="goldbtn" onclick="go('home')">Home</button></div></div>`;return}if(view==='home'){const shows=ordered().filter(s=>!isPast(s)),next=shows[0];app.innerHTML=`<div class="eyebrow">Your ShowViva</div><h1 class="home-title">Everything for your next show.</h1><div class="tiles home-actions"><button class="tile" onclick="go('add')"><span class="symbol">＋</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders →</small></button></div>${next?`<section class="next" aria-label="Up next"><div class="eyebrow">★ Up next</div><h2>${esc(next.name)}</h2><p>${dates(next)} · ${statusLabel(next)}</p><button class="goldbtn" onclick="openShow(${next.id})">View show →</button></section>`:''}<div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div>${shows.filter(s=>s.id!==next?.id).slice(0,5).map(showItem).join('')||'<p class="hint">No other upcoming shows.</p>'}`}
+else if(view==='notebook'){
+const notes=capitolNotes().slice().sort((a,b)=>(b.createdAt||'').localeCompare(a.createdAt||''));
+const notesHtml=notes.map(n=>{const i=capitolNotes().findIndex(x=>x.id===n.id);return `<article class="sv-note-item"><div class="sv-note-meta"><strong>${esc(n.author||'Earlier team note')}</strong>${n.createdAt?`<time datetime="${esc(n.createdAt)}">${esc(new Date(n.createdAt).toLocaleString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}))}</time>`:''}</div>${svEditingNoteIndex===i?`<form class="sv-note-edit-form" onsubmit="saveCapitolEdit(event,${i})"><label class="field">Edit note<textarea name="note" required maxlength="5000">${esc(n.text)}</textarea></label><div class="sv-note-actions"><button type="submit" class="sv-note-edit">Save changes</button><button type="button" class="sv-note-remove" onclick="svEditingNoteIndex=null;render()">Cancel</button></div></form>`:`<p>${esc(n.text)}</p>${n.editedAt?`<small class="sv-note-edited">Edited ${esc(new Date(n.editedAt).toLocaleString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}))}</small>`:''}<div class="sv-note-actions"><button type="button" class="sv-note-edit" onclick="svEditingNoteIndex=${i};render()">Edit</button><button type="button" class="sv-note-remove" onclick="deleteCapitolNote(${i})">Delete</button></div>`}</article>`}).join('');
+app.innerHTML=`${back()}<div class="sv-branch-intro sv-one-notebook-intro"><div class="sv-eyebrow">CAPITOL STUD</div><h1>Shared Notes</h1><p class="intro">One shared space for your yard.</p></div><section class="sv-notebook-card sv-capitol-notes"><h2>Team notes</h2><form id="sv-note-form" onsubmit="addCapitolNote(event)"><label class="field">Your name<select name="author" required><option value="">Select your name</option><option value="Claire">Claire</option><option value="Rikki">Rikki</option></select></label><label class="field">Note<textarea name="note" id="sv-team-notes" required maxlength="5000" placeholder="Write a note for the team…"></textarea></label><button type="submit" class="goldbtn sv-capitol-add">Add note</button><span id="sv-team-note-status" role="status" aria-live="polite"></span></form><div class="sv-capitol-feed" aria-label="Shared team notes">${notesHtml||'<p class="sv-notebook-help">No notes yet.</p>'}</div></section><button type="button" class="goldbtn sv-notebook-home" onclick="returnNotebookHome(this)">Return Home →</button>`}
+else if(view==='past'){app.innerHTML=`${back()}<h1>Past Shows</h1><p class="intro">Your previous shows, all in one place.</p>${ordered().filter(isPast).reverse().map(showItem).join('')||'<p class="empty">No past shows yet.</p>'}`}
+else if(view==='plan'){app.innerHTML=`${back()}<h1>My Shows</h1><p class="intro">Plan your shows, entries and preparations in one place.</p><div class="toolbar"><button class="smallbtn" onclick="go('add')">+ Add Show</button><div class="toggle"><button class="${mode==='calendar'?'active':''}" onclick="mode='calendar';render()">Calendar</button><button class="${mode==='list'?'active':''}" onclick="mode='list';render()">List</button></div></div>${mode==='calendar'?calendar():''}<h2 class="calendar-section-title">Upcoming Shows</h2>${ordered().filter(s=>!isPast(s)).map(showItem).join('')||'<p class="empty">No upcoming shows.</p>'}<h2 class="calendar-section-title past">Past Shows</h2>${ordered().filter(isPast).reverse().map(showItem).join('')||'<p class="empty">No past shows yet.</p>'}`}
+else if(view==='team'){app.innerHTML=`${back()}<div class="sv-branch-intro"><div class="sv-eyebrow">YOUR SHOWVIVA</div><h1>My Team</h1><p class="intro">Your horses and riders, ready for every competition.</p></div><h2 class="subhead">My Horses</h2>${data.horses.map((h,i)=>`<button class="horsecard" onclick="editHorse(${i})"><strong>${esc(horseName(h))}</strong><small>${esc(registeredName(h))}${typeof h==='object'&&h.ueln?' · UELN '+esc(h.ueln):''} · Edit →</small></button>`).join('')||'<p class="hint">No horses added yet.</p>'}<button class="smallbtn" onclick="editingHorse=null;go('horse')">+ Add Horse</button><h2 class="subhead">My Riders</h2>${data.riders.map((r,i)=>`<button class="horsecard" onclick="editingRider=${i};go('rider')"><strong>${esc(riderName(r))}</strong><small>${typeof r==='object'&&r.bs?'BS '+esc(r.bs)+' · ':''}${typeof r==='object'&&r.fei?'FEI '+esc(r.fei)+' · ':''}Edit →</small></button>`).join('')||'<p class="hint">No riders added yet.</p>'}<button class="smallbtn" onclick="editingRider=null;go('rider')">+ Add Rider</button>`}
+else if(view==='rider'){const r=editingRider===null?{}:data.riders[editingRider]||{},o=typeof r==='string'?{name:r}:r;app.innerHTML=`<button class="back" onclick="go('team')">← My Team</button><div class="sv-branch-intro"><div class="sv-eyebrow">MY TEAM · RIDER</div><h1>${editingRider===null?'Add Rider':'Edit Rider'}</h1></div><form onsubmit="saveRider(event)"><label class="field">Rider name<input name="name" required maxlength="80" value="${esc(o.name||'')}"></label><label class="field">British Showjumping (BS) membership number (optional)<input name="bs" maxlength="60" value="${esc(o.bs||'')}"></label><label class="field">FEI ID (optional)<input name="fei" maxlength="60" value="${esc(o.fei||'')}"></label><button class="goldbtn">Save Rider →</button></form>${editingRider!==null?`<button type="button" class="sv-delete-team" onclick="deleteRider()">Delete rider</button>`:``}`}
+else if(view==='horse'){const h=editingHorse===null?{}:data.horses[editingHorse]||{},obj=typeof h==='string'?{registeredName:h}:h;const field=(label,name,type='text',required=false)=>`<label class="field">${label}<input name="${name}" type="${type}" ${required?'required':''} value="${esc(obj[name]||'')}" ${type==='text'?'maxlength="100"':''}></label>`;app.innerHTML=`<button class="back" onclick="go('team')">← My Team</button><div class="sv-branch-intro"><div class="sv-eyebrow">MY TEAM · HORSE</div><h1>${editingHorse===null?'Add Horse':'Edit Horse'}</h1></div><div class="scanrow"><label for="passport-photo" class="scan-trigger" aria-label="Tap to scan passport details"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h4l2-2h4l2 2h4v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg></label><label for="passport-photo" class="scan-label">Tap to scan passport details</label><input class="scan-file" id="passport-photo" type="file" accept="image/*" capture="environment" onchange="passportSelected(this)"></div><p id="scanstatus" class="scan-status" role="status"></p><img id="passport-preview" class="scan-preview" alt="Selected passport photo" hidden><p class="hint">Or enter details manually</p><form onsubmit="saveHorse(event)">${field('Registered name','registeredName','text',true)}${field('Stable name','stableName')}${field('Passport / UELN number','ueln')}${field('Last vaccination date','vaccination','date')}${field('FEI registration number','fei')}${field('British Showjumping (BS) number','bs')}<p class="hint">Only registered name is required. Check all details against the passport before saving.</p><button class="goldbtn">Save Horse →</button></form>${editingHorse!==null?`<button type="button" class="sv-delete-team" onclick="deleteHorse()">Delete horse</button>`:``}`}
+else if(view==='add'){app.innerHTML=`<button class="back sv-consistent-home" onclick="go('home')">← Home</button><div class="sv-branch-intro"><div class="sv-eyebrow">YOUR NEXT SHOW</div><h1>Add Show</h1><p class="intro">Where are you competing?</p></div><form onsubmit="addShow(event)"><label class="field">Show name<input name="name" required maxlength="100" placeholder="Competition name"></label><label class="field">Show venue<input name="venue" required maxlength="150" placeholder="Where is the show?"></label><label class="field">Start date<input name="start" type="date" required></label><label class="field">End date<input name="end" type="date" required></label><label class="field">Show link (optional)<input name="showLink" type="url" placeholder="https://…"><small>Paste a show, entries or timetable link. You can add this later.</small></label><button class="goldbtn">Save show</button></form>`}
+
+else if(view==='show'){const s=data.shows.find(x=>x.id===selected);if(!s){go('home');return}ensureShowLists(s);const classesByName=new Map();Object.entries(s.plannedClasses||{}).forEach(([n,classes])=>{const h=data.horses.find(x=>registeredName(x)===n);(classes||[]).forEach(c=>{if(!classesByName.has(c))classesByName.set(c,[]);classesByName.get(c).push({registered:n,stable:h?horseName(h):n})})});const classList=[...classesByName.entries()].sort((a,b)=>a[0].localeCompare(b[0],undefined,{numeric:true})).map(([c,horses])=>`<div class="sv-class-group"><strong>${esc(c)}</strong>${horses.map(h=>`<div class="sv-class-entry"><div class="sv-class-entry-name"><span>${esc(h.registered)}</span>${h.stable!==h.registered?`<small>${esc(h.stable)}</small>`:''}</div><button type="button" class="sv-entry-remove" aria-label="Remove ${esc(h.registered)} from ${esc(c)}" onclick="removeClassEntry(${JSON.stringify(h.registered).replace(/"/g,'&quot;')},${JSON.stringify(c).replace(/"/g,'&quot;')})">Remove</button></div>`).join('')}</div>`).join('');app.innerHTML=`<button class="back sv-consistent-home" onclick="go('home')">← Home</button><div class="show-top"><div><div class="eyebrow">Your show</div><h1>${esc(s.name)}</h1><p class="intro">${dates(s)} · ${esc(s.venue||'')}</p>${isPast(s)?'<span class="past-label">Past Show</span>':''}</div></div><section class="sv-show-section sv-entries-overview"><h2>Your Entries</h2><p class="sv-support">${s.entriesSubmitted?'Your record of the classes entered for this show.':'Your planned classes, ready for online entry.'}</p><div class="sv-class-summary"><h3>Classes &amp; registered names</h3>${classList||'<p class="hint">No entries yet. Open Add or edit entries to get started.</p>'}</div><details class="sv-entry-editor" ${!classList?'open':''}><summary><span>+ Add or edit entries</span><span class="sv-entry-chevron" aria-hidden="true">⌄</span></summary><div class="sv-entry-editor-body"><p class="sv-support">Choose a horse and class to add to your list. Remove an entry using its button above.</p><form class="sv-entry-add-form" onsubmit="addClassEntry(event)"><label class="field">Horse<select name="entryHorse" required><option value="">Select horse</option>${data.horses.map(h=>`<option value="${esc(registeredName(h))}">${esc(horseName(h))} · ${esc(registeredName(h))}</option>`).join('')}</select></label><label class="field">Class<select name="entryClass" required onchange="this.form.querySelector('.sv-entry-other').hidden=this.value!=='Other';this.form.querySelector('.sv-entry-other input').required=this.value==='Other'"><option value="">Select class</option>${SV_CLASS_CHOICES.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('')}<option value="Other">Other</option></select></label><label class="field sv-entry-other" hidden>Other class<input name="entryOther" maxlength="100" placeholder="Enter class name"></label><button type="submit" class="goldbtn sv-entry-add-button">+ Add to entries</button></form></div></details><label class="sv-entry-confirm"><input type="checkbox" ${s.entriesSubmitted?'checked':''} onchange="setEntriesSubmitted(this.checked)"><span>Entries submitted<small>Tick once the entries for this show have been submitted to the organiser.</small></span></label></section><details class="sv-show-section sv-checklist-accordion" ${svChecklistOpen.planning?'open':''} ontoggle="svChecklistOpen.planning=this.open"><summary><span class="sv-checklist-title">Pre-show Planning</span><span class="sv-checklist-count">${s.planningChecklist.filter(t=>t.done).length} of ${s.planningChecklist.length} complete</span><span class="sv-checklist-chevron" aria-hidden="true">⌄</span></summary><div class="sv-checklist-content"><p class="sv-support">Arrangements to make before your show.</p>${showTasks(s,'planning')}</div></details><details class="sv-show-section sv-checklist-accordion" ${svChecklistOpen.packing?'open':''} ontoggle="svChecklistOpen.packing=this.open"><summary><span class="sv-checklist-title">Packing &amp; Departure</span><span class="sv-checklist-count">${s.packingChecklist.filter(t=>t.done).length} of ${s.packingChecklist.length} complete</span><span class="sv-checklist-chevron" aria-hidden="true">⌄</span></summary><div class="sv-checklist-content"><p class="sv-support">Prepare and check everything before leaving.</p>${showTasks(s,'packing')}</div></details><details class="sv-show-section sv-checklist-accordion sv-details-accordion" ${svChecklistOpen.details?'open':''} ontoggle="svChecklistOpen.details=this.open"><summary><span class="sv-checklist-title">Edit show details</span><span class="sv-checklist-chevron" aria-hidden="true">⌄</span></summary><div class="sv-checklist-content"><form onsubmit="saveShowDetails(event)"><label class="field">Show venue<input name="venue" maxlength="150" required value="${esc(s.venue||'')}"></label><label class="field">Show link (optional)<input name="showLink" type="url" value="${esc(s.showLink||'')}"></label><button class="goldbtn" type="submit">Save show details</button></form></div></details><button type="button" class="delete-show" onclick="deleteShow()">Delete Show</button><div class="sv-bottom-save"><button type="button" class="goldbtn sv-save-home" onclick="saveShowAndGoHome(this)">Save &amp; return Home →</button><span id="sv-bottom-save-status" role="status" aria-live="polite"></span></div>`;}}
+
+
+const SV_PLANNING_DEFAULTS=['Stabling booked','Farrier booked','Transport arranged','Accommodation booked','Passports and vaccinations checked'];
+const SV_PACKING_DEFAULTS=['Tack and equipment','Rugs and horse boots','Feed, hay and supplements','Buckets and stable equipment','Passports','Rider and groom equipment','Lorry or trailer checked and fuelled','Water'];
+function ensureShowLists(s){if(!Array.isArray(s.planningChecklist))s.planningChecklist=SV_PLANNING_DEFAULTS.map(text=>({text,done:false}));if(!Array.isArray(s.packingChecklist))s.packingChecklist=SV_PACKING_DEFAULTS.map(text=>({text,done:false}));if(!s.plannedClasses)s.plannedClasses={};}
+function showTasks(s,kind){const list=kind==='packing'?s.packingChecklist:s.planningChecklist;return `<div>${list.map((t,i)=>`<div class="sv-task"><input type="checkbox" aria-label="${esc(t.text)}" ${t.done?'checked':''} onchange="setTask('${kind}',${i},this.checked)"><span class="sv-task-label" id="sv-${kind}-${i}">${esc(t.text)}</span><button type="button" onclick="editTask('${kind}',${i})" aria-label="Edit ${esc(t.text)}">Edit</button><button type="button" onclick="removeTask('${kind}',${i})" aria-label="Remove ${esc(t.text)}">×</button></div>`).join('')}</div><form class="sv-task-form" onsubmit="addShowTask(event,'${kind}')"><input name="task" aria-label="Add ${kind} task" maxlength="120" required placeholder="Add your own task…"><button type="submit">+ Add</button></form>`}
+function taskList(kind){const s=data.shows.find(x=>x.id===selected);ensureShowLists(s);return kind==='packing'?s.packingChecklist:s.planningChecklist}
+function setTask(kind,i,done){const t=taskList(kind)[i];if(!t)return;t.done=done;save()}
+function removeTask(kind,i){taskList(kind).splice(i,1);save();render()}
+function editTask(kind,i){const t=taskList(kind)[i];if(!t)return;const next=prompt('Edit checklist item',t.text);if(next===null)return;const val=next.trim();if(!val)return;t.text=val.slice(0,120);save();render()}
+function addShowTask(e,kind){e.preventDefault();const val=e.target.elements.task.value.trim();if(!val)return;taskList(kind).push({text:val.slice(0,120),done:false});save();render()}
+async function saveShowAndGoHome(button){
+ if(button?.disabled)return;
+ if(button){button.disabled=true;button.textContent='Saving…';}
+ const notes=document.getElementById('sv-show-notes');
+ const show=data.shows.find(x=>x.id===selected);
+ if(notes&&show&&show.sharedNotes!==notes.value){show.sharedNotes=notes.value;save();}
+ // Allow an earlier asynchronous write to finish before returning to Home.
+ await teamPending;
+ if(teamError){if(button){button.disabled=false;button.textContent='Save & return Home →';}return;}
+ go('home');
+}
+// Single Capitol Stud notebook. Preserve earlier consolidated notes without assigning an invented author/date.
+let svEditingNoteIndex=null;
+function capitolNotes(){
+ if(data.teamNotebookV3)return data.teamNotebookNotes||[];
+ if(data.teamNotebookConsolidated&&data.teamNotes?.trim())return [{id:'capitol-legacy',text:data.teamNotes,author:null,createdAt:null}];
+ if(Array.isArray(data.teamNotebookNotes)&&data.teamNotebookNotes.length)return data.teamNotebookNotes;
+ return data.teamNotes?.trim()?[{id:'capitol-legacy',text:data.teamNotes,author:null,createdAt:null}]:[];
+}
+function prepareCapitolNotes(){
+ if(data.teamNotebookV3)return;
+ const current=capitolNotes().map(n=>({...n}));
+ // Retain the old records in storage, even if the consolidated text replaced their display.
+ if(!data.teamNotebookArchiveV3)data.teamNotebookArchiveV3=structuredClone(data.teamNotebookNotes||[]);
+ data.teamNotebookNotes=current;data.teamNotebookV3=true;
+}
+async function addCapitolNote(e){
+ e.preventDefault();if(teamError)return;
+ const f=e.target, author=f.elements.author.value, text=f.elements.note.value.trim();
+ if(!['Claire','Rikki'].includes(author)||!text)return;
+ const btn=f.querySelector('button[type="submit"]');btn.disabled=true;btn.textContent='Saving…';
+ prepareCapitolNotes();data.teamNotebookNotes.push({id:Date.now()+'-'+Math.random().toString(36).slice(2),author,text,createdAt:new Date().toISOString()});
+ save();await teamPending;if(teamError){btn.disabled=false;btn.textContent='Add note';return;}
+ render();
+}
+async function saveCapitolEdit(e,i){
+ e.preventDefault();if(teamError)return;const text=e.target.elements.note.value.trim();if(!text)return;
+ prepareCapitolNotes();const n=data.teamNotebookNotes[i];if(!n)return;
+ if(n.text!==text){n.text=text;n.editedAt=new Date().toISOString();save();await teamPending;}
+ if(!teamError){svEditingNoteIndex=null;render();}
+}
+async function deleteCapitolNote(i){
+ if(teamError||!capitolNotes()[i]||!confirm('Delete this note for everyone?'))return;
+ prepareCapitolNotes();data.teamNotebookNotes.splice(i,1);svEditingNoteIndex=null;save();await teamPending;if(!teamError)render();
+}
+function singleSharedNotebookText(){
+ if(data.teamNotebookConsolidated)return data.teamNotes||'';
+ const cards=Array.isArray(data.teamNotebookNotes)?data.teamNotebookNotes:[];
+ if(!cards.length)return data.teamNotes||'';
+ const sorted=cards.slice().sort((a,b)=>(a.createdAt||'').localeCompare(b.createdAt||''));
+ const parts=sorted.filter(n=>n&&typeof n.text==='string'&&n.text.trim()).map(n=>{
+  const meta=[n.author,n.createdAt?new Date(n.createdAt).toLocaleString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}):''].filter(Boolean).join(' · ');
+  return (meta?meta+'\n':'')+n.text.trim();
+ });
+ // Older single-text notes may predate cards: include only if not already represented.
+ if(data.teamNotes?.trim()&&!sorted.some(n=>n.text?.trim()===data.teamNotes.trim()))parts.unshift(data.teamNotes.trim());
+ return parts.join('\n\n');
+}
+async function saveSingleNotebook(button,goHome=false){
+ if(button?.disabled||teamError)return;
+ const field=document.getElementById('sv-team-notes');
+ if(!field)return;
+ const status=document.getElementById('sv-team-note-status');
+ button.disabled=true;const original=button.textContent;button.textContent='Saving…';
+ if(!data.teamNotebookConsolidated||data.teamNotes!==field.value){
+  data.teamNotes=field.value;data.teamNotebookConsolidated=true;
+  // Historical per-author cards remain in storage as a backup, not displayed.
+  save();
+ }
+ await teamPending;
+ if(teamError){button.disabled=false;button.textContent=original;if(status)status.textContent='Not saved. Reload before editing further.';return;}
+ if(goHome){go('home');return;}
+ button.disabled=false;button.textContent='Save notes';
+ if(status)status.textContent='Saved ✓';
+}
+async function addTeamNotebookNote(e){
+ e.preventDefault();if(teamError)return;
+ const f=e.target, author=f.elements.author.value, note=f.elements.note.value.trim();
+ if(!['Claire','Rikki'].includes(author)||!note)return;
+ const button=f.querySelector('button[type="submit"]'),status=document.getElementById('sv-team-note-status');
+ button.disabled=true;button.textContent='Saving…';
+ if(!Array.isArray(data.teamNotebookNotes))data.teamNotebookNotes=[];
+ data.teamNotebookNotes.push({id:Date.now()+'-'+Math.random().toString(36).slice(2),author,text:note,createdAt:new Date().toISOString()});
+ save();await teamPending;
+ if(teamError){status.textContent='Save failed. Please reload before making further changes.';button.disabled=false;button.textContent='Add note';return;}
+ render();
+}
+
+async function saveNotebookEdit(e,i){
+ e.preventDefault();if(teamError)return;
+ const n=data.teamNotebookNotes?.[i],text=e.target.elements.note.value.trim();
+ if(!n||!text)return;
+ if(n.text!==text){n.text=text;n.editedAt=new Date().toISOString();save();await teamPending;}
+ if(teamError){alert('Your change could not be saved. Please reload before editing further.');return;}
+ svEditingNoteIndex=null;render();
+}
+async function deleteNotebookNote(i){
+ if(teamError||!data.teamNotebookNotes?.[i])return;
+ if(!confirm('Delete this team note for everyone? This cannot be undone.'))return;
+ data.teamNotebookNotes.splice(i,1);svEditingNoteIndex=null;save();await teamPending;
+ if(teamError){alert('The deletion could not be saved. Please reload.');return;}
+ render();
+}
+async function returnNotebookHome(button){
+ if(button?.disabled)return;
+ if(button){button.disabled=true;button.textContent='Saving…';}
+ await teamPending;
+ if(teamError){if(button){button.disabled=false;button.textContent='Return Home →';}return;}
+ go('home');
+}
+function saveInlineNotes(){const s=data.shows.find(x=>x.id===selected),box=document.getElementById('sv-show-notes');if(!s||!box)return;if(s.sharedNotes===box.value)return;s.sharedNotes=box.value;save();const label=document.getElementById('sv-note-status');if(label)label.textContent='Saved ✓'}
+function setEntriesSubmitted(checked){const s=data.shows.find(x=>x.id===selected);if(!s)return;s.entriesSubmitted=checked;save();render()}
+function confirmEntryChange(s){if(!s.entriesSubmitted)return; if(!confirm('Entries were marked as submitted. Have you also updated the entries with the show organiser? OK keeps the submitted tick; Cancel clears it until the changes are entered.'))s.entriesSubmitted=false;}
+function addClassEntry(e){e.preventDefault();const s=data.shows.find(x=>x.id===selected);if(!s)return;const f=e.target;const horse=f.elements.entryHorse.value;const choice=f.elements.entryClass.value;const c=(choice==='Other'?f.elements.entryOther.value:choice).trim();if(!horse||!c)return;if((s.plannedClasses[horse]||[]).includes(c)){alert('This horse is already listed in that class.');return}confirmEntryChange(s);(s.plannedClasses[horse]||(s.plannedClasses[horse]=[])).push(c);if(!s.horses.includes(horse))s.horses.push(horse);save();render()}
+function removeClassEntry(horse,c){const s=data.shows.find(x=>x.id===selected);if(!s||!s.plannedClasses?.[horse]?.includes(c))return;confirmEntryChange(s);s.plannedClasses[horse]=s.plannedClasses[horse].filter(x=>x!==c);if(!s.plannedClasses[horse].length){delete s.plannedClasses[horse];s.horses=s.horses.filter(x=>x!==horse)}save();render()}
+const SV_CLASS_CHOICES=['British Novice','Discovery','Newcomers','Foxhunter','130cm'];
+function horsePlan(h,show){const n=registeredName(h),selected=!!show?.horses?.includes(n),saved=show?.plannedClasses?.[n]||[];const other=saved.filter(c=>!SV_CLASS_CHOICES.includes(c)).join(', ');return `<div class="sv-horse-plan"><label class="checkrow"><input type="checkbox" name="horses" value="${esc(n)}" ${selected?'checked':''} onchange="this.closest('.sv-horse-plan').querySelector('.sv-class-fields').hidden=!this.checked"><span>${esc(horseName(h))}</span></label><div class="sv-class-fields" ${selected?'':'hidden'}><p class="hint">Which classes are you planning for this horse? Select all that apply.</p><div class="sv-class-options">${SV_CLASS_CHOICES.map(c=>`<label><input type="checkbox" name="plannedClass" value="${esc(c)}" ${saved.includes(c)?'checked':''}>${esc(c)}</label>`).join('')}</div><label class="field" style="margin-top:12px">Other class(es) (optional)<input class="sv-other-class" name="otherClass" maxlength="180" placeholder="e.g. 1.20m Open" value="${esc(other)}"></label></div></div>`}
+function readHorsePlans(form){const chosen=[...form.querySelectorAll('input[name="horses"]:checked')].map(x=>x.value),plans={};for(const el of form.querySelectorAll('.sv-horse-plan')){const horse=el.querySelector('input[name="horses"]');if(!horse?.checked)continue;const classes=[...el.querySelectorAll('input[name="plannedClass"]:checked')].map(x=>x.value);const custom=el.querySelector('input[name="otherClass"]')?.value.trim();if(custom)classes.push(...custom.split(',').map(x=>x.trim()).filter(Boolean));plans[horse.value]=[...new Set(classes)];}return {chosen,plans}}
+function openTool(which){activeTool=which;const s=data.shows.find(x=>x.id===selected),el=document.getElementById('showTool');if(!s||!el)return;el.classList.remove('hidden');el.innerHTML=`<div class="tool-panel"><div class="tool-head"><h2>${which==='notes'?'Show notes':'Show checklist'}</h2><button type="button" class="tool-close" onclick="closeTool()" aria-label="Close">×</button></div>${which==='notes'?`<p class="hint">Keep notes for this show before and during show day.</p><textarea id="sharedNotes" aria-label="Show notes" placeholder="Anything the team needs to know…">${esc(s.sharedNotes||'')}</textarea><button class="goldbtn" onclick="saveSharedNotes()">Save Note →</button><p class="hint">Shared with your team.</p>`:`<p class="hint">Get ready for this show.</p>${(s.checklist||[]).map((item,i)=>`<div class="checkrow"><input type="checkbox" aria-label="Complete ${esc(item.text)}" ${item.done?'checked':''} onchange="toggleCheck(${i},this.checked)"><span>${esc(item.text)}</span><button class="link" onclick="removeCheck(${i})" aria-label="Remove task">×</button></div>`).join('')||'<p class="hint">No tasks yet.</p>'}<form onsubmit="addCheck(event)"><label class="field">Add a task<input name="task" required maxlength="120" placeholder="e.g. Pack passports"></label><button class="smallbtn">+ Add Task</button></form>`}</div>`}
+function closeTool(){activeTool=null;document.getElementById('showTool')?.classList.add('hidden')}
+function addCheck(e){e.preventDefault();const s=data.shows.find(x=>x.id===selected);if(!s)return;const t=e.target.elements.task.value.trim();if(!t)return;(s.checklist||(s.checklist=[])).push({text:t,done:false});save();openTool('checklist')}
+function toggleCheck(i,done){const s=data.shows.find(x=>x.id===selected);if(!s?.checklist?.[i])return;s.checklist[i].done=done;save();openTool('checklist')}
+function removeCheck(i){const s=data.shows.find(x=>x.id===selected);if(!s?.checklist)return;s.checklist.splice(i,1);save();openTool('checklist')}
+function saveSharedNotes(){const s=data.shows.find(x=>x.id===selected);if(!s)return;s.sharedNotes=document.getElementById('sharedNotes').value;save();const b=document.querySelector('#showTool .goldbtn');if(b)b.textContent='Saved ✓'}
+function saveShowDetails(e){e.preventDefault();const s=data.shows.find(x=>x.id===selected);if(!s)return;const f=e.target;s.venue=f.elements.venue.value.trim();s.showLink=f.elements.showLink.value.trim();save();render()}
+function calendar(){const y=month.getFullYear(),m=month.getMonth(),first=(new Date(y,m,1).getDay()+6)%7,last=new Date(y,m+1,0).getDate();let days=['M','T','W','T','F','S','S'].map(d=>`<div class="day blank">${d}</div>`).join('');for(let i=0;i<first;i++)days+='<div class="day blank"></div>';for(let d=1;d<=last;d++){const date=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`,hits=data.shows.filter(s=>s.start<=date&&s.end>=date);days+=`<button class="day ${hits.length?(hits.every(isPast)?'past':'has'):''}" onclick="calendarDate('${date}')" title="${hits.map(s=>esc(s.name)).join(', ')}">${d}</button>`}return `<div class="calendar"><div class="month"><button onclick="shift(-1)">‹</button><strong>${month.toLocaleDateString('en-GB',{month:'long',year:'numeric'})}</strong><button onclick="shift(1)">›</button></div><div class="days">${days}</div></div><div id="dateShows" style="margin-top:16px"><p class="hint">Select a highlighted date to see its shows.</p></div>`}function shift(n){month=new Date(month.getFullYear(),month.getMonth()+n,1);render()}function calendarDate(date){document.getElementById('dateShows').innerHTML=data.shows.filter(s=>s.start<=date&&s.end>=date).map(showItem).join('')||'<p class="hint">No shows on this date.</p>'}function editHorse(i){editingHorse=i;go('horse')}function passportSelected(input){const status=document.getElementById('scanstatus'),preview=document.getElementById('passport-preview'),file=input.files&&input.files[0];if(!file)return;if(status)status.textContent='Passport photo selected. Check and enter the details below.';if(preview){if(preview.dataset.url)URL.revokeObjectURL(preview.dataset.url);const url=URL.createObjectURL(file);preview.dataset.url=url;preview.src=url;preview.hidden=false;}}function saveHorse(e){e.preventDefault();const f=e.target.elements;const h={registeredName:f.registeredName.value.trim(),stableName:f.stableName.value.trim(),ueln:f.ueln.value.trim(),vaccination:f.vaccination.value,fei:f.fei.value.trim(),bs:f.bs.value.trim()};if(!h.registeredName)return;if(editingHorse===null)data.horses.push(h);else {const old=registeredName(data.horses[editingHorse]);data.horses[editingHorse]=h;if(old!==h.registeredName)data.shows.forEach(s=>s.horses=s.horses.map(n=>n===old?h.registeredName:n))}save();go('team')}function addTeam(e,k){e.preventDefault();const name=e.target.elements.name.value.trim();if(name&&!data[k].includes(name)){data[k].push(name);save()}render()}function saveRider(e){e.preventDefault();const f=e.target.elements,r={name:f.name.value.trim(),bs:f.bs.value.trim(),fei:f.fei.value.trim()};if(!r.name)return;if(editingRider===null)data.riders.push(r);else{const old=riderName(data.riders[editingRider]);data.riders[editingRider]=r;if(old!==r.name)data.shows.forEach(s=>s.riders=s.riders.map(n=>n===old?r.name:n))}save();go('team')}
+function deleteHorse(){
+  if(editingHorse===null||!data.horses[editingHorse])return;
+  const name=registeredName(data.horses[editingHorse]);
+  if(!confirm('Delete '+name+' from My Team? Existing show records will be kept. This cannot be undone.'))return;
+  data.horses.splice(editingHorse,1);
+  editingHorse=null;save();go('team');
+}
+function deleteRider(){
+  if(editingRider===null||!data.riders[editingRider])return;
+  const name=riderName(data.riders[editingRider]);
+  if(!confirm('Delete '+name+' from My Team? Existing show records will be kept. This cannot be undone.'))return;
+  data.riders.splice(editingRider,1);
+  editingRider=null;save();go('team');
+}
+function deleteShow(){const s=data.shows.find(x=>x.id===selected);if(!s)return;if(!confirm('Delete '+s.name+'? This removes the show and its checklists for everyone on the team. Existing notes from this show will also be removed from the previous-show notes archive. This cannot be undone.'))return;data.shows=data.shows.filter(x=>x.id!==selected);if(data.lastSubmittedShowId===selected)data.lastSubmittedShowId=null;selected=null;activeTool=null;save();go('home')}function addShow(e){e.preventDefault();const f=e.target.elements;if(f.end.value<f.start.value){alert('End date must be on or after start date.');return}const s={id:Date.now(),name:f.name.value.trim(),start:f.start.value,end:f.end.value,horses:[],riders:[],plannedClasses:{},entriesSubmitted:false,venue:f.venue.value.trim(),showLink:f.showLink.value.trim(),status:'draft',checklist:[],planningChecklist:SV_PLANNING_DEFAULTS.map(text=>({text,done:false})),packingChecklist:SV_PACKING_DEFAULTS.map(text=>({text,done:false})),sharedNotes:''};data.shows.push(s);save();selected=s.id;activeTool=null;teamPending.then(()=>{if(!teamError)go('show')})}
+
+startTeam();
+</script><script>
+(function(){
+  function openLinkedCalendar(){
+    if(window.location.hash==='#calendar' && typeof go==='function'){
+      mode='calendar';go('plan');
+    }
+  }
+  window.addEventListener('hashchange',openLinkedCalendar);
+  openLinkedCalendar();
+})();
+</script></body></html>
