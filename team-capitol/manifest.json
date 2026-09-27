@@ -1,0 +1,23 @@
+{
+  "name": "ShowViva \u2014 Capitol Stud",
+  "short_name": "ShowViva",
+  "start_url": "./#team=PBxXrymZIAv01ck2BxqczZsDQ6_MsmxbKOV8iQHpThg",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f1e7",
+  "theme_color": "#0b1f33",
+  "icons": [
+    {
+      "src": "./icons/showviva-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/showviva-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
