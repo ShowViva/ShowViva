@@ -566,18 +566,6 @@ body{background:#fcfaf5}
 .time .pill.warm .warm-trigger span{font:600 11px/1.2 Arial,Helvetica,sans-serif!important;color:#9b7535!important;white-space:nowrap!important;text-align:right!important}
 .time .pill.warm .warm-trigger:hover,.time .pill.warm .warm-trigger:focus-visible{background:#f6e7bf!important;border-color:#c9a460!important;outline-offset:2px}
 @media(max-width:380px){.time .pill.warm .warm-trigger{padding:7px 5px!important}.time .pill.warm .warm-trigger b{font-size:17px!important}.time .pill.warm .warm-trigger span{font-size:10px!important}}
-</style><style id="sv-notes-authorship-20260923">
-.sv-notes-list{max-height:33dvh;overflow:auto;margin:5px 0 16px;border-top:1px solid #dae1ea}
-.sv-note-item{padding:15px 0;border-bottom:1px solid #e8e5df}
-.sv-note-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#202c42;font-size:14px}
-.sv-note-meta strong{overflow-wrap:anywhere}
-.sv-note-item p{margin:9px 0 0;font-size:15px;line-height:1.45;white-space:pre-wrap;overflow-wrap:anywhere;color:#34435a}
-.sv-note-delete{border:1px solid #d6bd8d;background:#fff9ef;color:#765933;border-radius:999px;padding:7px 12px;font-size:13px;flex:none}
-.sv-notes-empty{color:#687587;font-size:14px;padding:10px 0}
-.sv-note-author{width:100%;padding:13px 15px;border:1px solid #d9e0ee;border-radius:14px;background:#fffefa;color:#202c42;font-size:16px}
-.sv-note-message-label{border-top:0!important;padding-top:15px!important}
-#notesdialog .sv-sub{margin-bottom:17px}
-#notesdialog .sv-modal textarea,#notesdialog textarea{min-height:100px}
 </style></head>
 <body>
 <header class="header">
@@ -585,7 +573,7 @@ body{background:#fcfaf5}
     <a class="brand" href="index.html" aria-label="Back to ShowViva home"><div class="brand-name serif">Show<span>Viva</span></div><div class="brand-tag">EQUESTRIAN SHOWS, SIMPLIFIED</div></a>
     <button class="calendar-btn" aria-label="Open ShowViva calendar" title="Open calendar" onclick="window.location.href='index.html#calendar'"><svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></button>
   </div>
-  <div class="header-show"><div class="header-kicker">YOUR SHOWVIVA PLAN</div><h1>Wales <span>and West.</span></h1><p>16–18 October 2026</p><p class="venue">CSI2* · National &amp; International Showjumping<br>Royal Welsh Showground, Builth Wells</p></div>
+  <div class="header-show"><div class="header-kicker">YOUR SHOWVIVA PLAN</div><h1 id="sv-show-title">Loading <span>planner…</span></h1><p id="sv-show-dates"></p><p class="venue" id="sv-show-venue"></p></div>
 </header>
 <main class="wrap">
   <section class="hero" aria-label="Show dates"><div class="dates" id="dates"><button class="date" data-day="0">Fri<small>16 Oct</small></button><button class="date active" data-day="1">Sat<small>17 Oct</small></button><button class="date" data-day="2">Sun<small>18 Oct</small></button></div></section>
@@ -654,104 +642,49 @@ body{background:#fcfaf5}
 <dialog id="notesdialog" class="sv-modal">
   <div class="sv-kicker">SHOWVIVA PLAN</div>
   <button type="button" class="sv-close" aria-label="Close notes" onclick="document.getElementById('notesdialog').close()">×</button>
-  <h3>Notes</h3>
+  <h3>Round notes</h3>
   <p class="sv-sub" id="notessub"></p>
-  <div id="noteslist" class="sv-notes-list" aria-live="polite"></div>
-  <label class="sv-notelabel" for="noteauthor">Your name</label>
-  <input id="noteauthor" class="sv-note-author" autocomplete="name" placeholder="e.g. Claire" maxlength="80">
-  <label class="sv-notelabel sv-note-message-label" for="notetext">Add a note</label>
-  <textarea id="notetext" placeholder="Add a note for your team…"></textarea>
-  <button class="sv-save" type="button" id="savenotes">Add note</button>
+  <div class="sv-round"><span>Round</span><strong id="notesround"></strong></div>
+  <label class="sv-notelabel" for="notetext">Notes for this round</label>
+  <textarea id="notetext" placeholder="Add notes for your team…"></textarea>
+  <button class="sv-save" type="button" id="savenotes">Save notes</button>
 </dialog>
 <script>
-const days=[['Fri','16 Oct','Fri 16 October'],['Sat','17 Oct','Sat 17 October'],['Sun','18 Oct','Sun 18 October']];
-let selected=1,editing=null;
-const base=[
-  {horse:'Summer Escape',rider:'Jodie Baker',time:'08:30',class:'CSI2* 1.35m Two Phase',arena:'International Arena',draw:'12 of 48',notes:['Check studs','Take boots off']},
-  {horse:'Autumn Jazz',rider:'Lucy Stranham',time:'10:15',class:'CSI2* 1.40m Table A',arena:'Main Arena',draw:'7 of 52',notes:['Walk course']},
-  {horse:'Chacco Iron',rider:'David Lock',time:'12:20',class:'CSI2* 1.45m Grand Prix Qualifier',arena:'International Arena',draw:'28 of 60',notes:['Check draw','Groom ready','Bring water']},
-  {horse:'Summer Escape',rider:'Jodie Baker',time:'14:35',class:'CSI2* 1.40m Accumulator',arena:'Outdoor Arena 2',draw:'5 of 44',notes:[]}
-];
-let entries=days.flatMap((d,day)=>base.map((r,i)=>({...r,id:day+'-'+i,day,time:shift(r.time,day===1?0:day===0?-20:25),warm:20,notes:[...r.notes]})));
-try{
-  const saved=JSON.parse(localStorage.getItem('showviva-ww-demo-v1')||'{}');
-  entries.forEach(r=>{if(saved[r.id]){r.warm=saved[r.id].warm;r.notes=Array.isArray(saved[r.id].notes)?saved[r.id].notes:r.notes}})
-}catch(e){}
-function shift(t,n){let [h,m]=t.split(':').map(Number);let x=(h*60+m+n+1440)%1440;return String(Math.floor(x/60)).padStart(2,'0')+':'+String(x%60).padStart(2,'0')}
+const TEAM_API='https://yumqgvabwmekqvqwxldt.supabase.co/functions/v1/sv-team-home';
+const TEAM_TOKEN=(new URLSearchParams(location.hash.substring(1))).get('team')||'';
+const SHOW_ID=Number(new URLSearchParams(location.search).get('show'));
+let days=[],entries=[],selected=0,editing=null,currentShow=null;
 const $=id=>document.getElementById(id);
-try{$('noteauthor').value=localStorage.getItem('showviva-demo-note-author')||''}catch(e){}
-function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function normalNotes(r){return (r.notes||[]).map((n,i)=>typeof n==='string'?{text:n,author:'Earlier note',id:'old-'+i}:n).filter(n=>n&&n.text)}
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function shift(t,n){if(!/^\d{1,2}:\d{2}$/.test(t||''))return '--:--';let [h,m]=t.split(':').map(Number);let x=(h*60+m+n+1440)%1440;return String(Math.floor(x/60)).padStart(2,'0')+':'+String(x%60).padStart(2,'0')}
+function dateRange(start,end){const out=[];let d=new Date(start+'T12:00:00'),z=new Date((end||start)+'T12:00:00');for(let i=0;d<=z&&i<14;i++,d.setDate(d.getDate()+1)){const iso=d.toLocaleDateString('en-CA');out.push([d.toLocaleDateString('en-GB',{weekday:'short'}),d.toLocaleDateString('en-GB',{day:'numeric',month:'short'}),d.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'long'}),iso])}return out}
+function keyFor(r,i){return [SHOW_ID,r.date||'',r.horse||'',r.rider||'',r.class_number||'',r.class_name||'',r.drawn_order??'',i].join('|')}
+function storageKey(){return 'showviva-showday-'+SHOW_ID+'-v1'}
+function loadSaved(){try{return JSON.parse(localStorage.getItem(storageKey())||'{}')}catch{return {}}}
+function saveLocal(){const obj={};entries.forEach(r=>obj[r.id]={warm:r.warm,notes:r.notes});localStorage.setItem(storageKey(),JSON.stringify(obj))}
+function populateFilters(){const horses=[...new Set(entries.map(r=>r.horse).filter(Boolean))].sort();const riders=[...new Set(entries.map(r=>r.rider).filter(Boolean))].sort();const rings=[...new Set(entries.map(r=>r.arena).filter(Boolean))].sort();$('horse').innerHTML='<option value="">My horses</option>'+horses.map(x=>`<option>${esc(x)}</option>`).join('');$('rider').innerHTML='<option value="">My riders</option>'+riders.map(x=>`<option>${esc(x)}</option>`).join('');$('ring').innerHTML='<option value="">Arenas</option>'+rings.map(x=>`<option>${esc(x)}</option>`).join('')}
 function render(){
-  $('dates').innerHTML=days.map((d,i)=>`<button class="date ${i===selected?'active':''}" data-day="${i}">${d[0]}<small>${d[1]}</small></button>`).join('');
-  document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>{selected=+b.dataset.day;render()});
-  $('daytitle').textContent=days[selected][2];
-  let rows=entries.filter(r=>r.day===selected&&(!$('horse').value||r.horse===$('horse').value)&&(!$('rider').value||r.rider===$('rider').value)&&(!$('ring').value||r.arena===$('ring').value));
-  $('summary').textContent=rows.length+' rides · '+new Set(rows.map(r=>r.horse)).size+' horses';
-  $('rides').innerHTML=rows.length?rows.map(r=>`<article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">${r.time}</div><div class="pill warm"><button type="button" class="warm-trigger" data-id="${r.id}" aria-label="Edit warm-up time for ${esc(r.horse)}"><b>${shift(r.time,-r.warm)}</b><span>Warm up</span></button></div></div><div class="info"><div class="horse">${esc(r.horse)}</div><div class="classname">${esc(r.class)}</div><div class="rider">${esc(r.rider)}</div><div class="arena">${esc(r.arena)}</div><div class="draw">Draw ${esc(r.draw)}</div><div class="class-start-info">Class starts <strong>${esc(r.classStart || r.time)}</strong></div><span class="details" title="Official class link not available for illustrative demo">Class details ↗</span><button class="notes" data-id="${r.id}" aria-label="Round notes for ${esc(r.horse)}">▤<span class="count">${normalNotes(r).length}</span></button></div></article>`).join(''):'<p class="empty">No rides match these filters.</p>';
-  document.querySelectorAll('.warm-trigger').forEach(b=>b.onclick=()=>openWarm(b.dataset.id));
-  document.querySelectorAll('.notes').forEach(b=>b.onclick=()=>openNotes(b.dataset.id));
+ $('dates').innerHTML=days.map((d,i)=>`<button class="date ${i===selected?'active':''}" data-day="${i}">${esc(d[0])}<small>${esc(d[1])}</small></button>`).join('');
+ document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>{selected=+b.dataset.day;render()});
+ $('daytitle').textContent=days[selected]?.[2]||'Show Day';
+ const iso=days[selected]?.[3];
+ let rows=entries.filter(r=>(!iso||r.date===iso)&&(!$('horse').value||r.horse===$('horse').value)&&(!$('rider').value||r.rider===$('rider').value)&&(!$('ring').value||r.arena===$('ring').value));
+ $('summary').textContent=rows.length+' rides · '+new Set(rows.map(r=>r.horse)).size+' horses';
+ $('rides').innerHTML=rows.length?rows.map(r=>`<article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">${esc(r.time)}</div><div class="pill warm"><button type="button" class="warm-trigger" data-id="${esc(r.id)}" aria-label="Edit warm-up time for ${esc(r.horse)}"><b>${shift(r.time,-r.warm)}</b><span>Warm up</span></button></div></div><div class="info"><div class="horse">${esc(r.horse)}</div><div class="classname">${esc(r.class)}</div><div class="rider">${esc(r.rider||'')}</div><div class="arena">${esc(r.arena||'')}</div><div class="draw">${r.drawnOrder?'Draw '+esc(r.drawnOrder)+(r.drawTotal?' of '+esc(r.drawTotal):''):'Draw order not published'}</div><div class="class-start-info">Class starts <strong>${esc(r.classStart||'Not published')}</strong></div>${r.url?`<a class="details" href="${esc(r.url)}" target="_blank" rel="noopener noreferrer">Class details ↗</a>`:'<span class="details">Class details unavailable</span>'}<button class="notes" data-id="${esc(r.id)}" aria-label="Round notes for ${esc(r.horse)}">▤<span class="count">${r.notes.length}</span></button></div></article>`).join(''):'<p class="empty">No rides match these filters for this day.</p>';
+ document.querySelectorAll('.warm-trigger').forEach(b=>b.onclick=()=>openWarm(b.dataset.id));document.querySelectorAll('.notes').forEach(b=>b.onclick=()=>openNotes(b.dataset.id));
 }
 ['horse','rider','ring'].forEach(id=>$(id).addEventListener('change',render));
-function openWarm(id){
-  editing=entries.find(r=>r.id===id);if(!editing)return;
-  $('warmsub').textContent=editing.horse+' · '+editing.rider;
-  $('warmround').textContent=editing.time;
-  $('warmminutes').value=editing.warm;
-  updateWarmPreview();
-  $('warmdialog').showModal();
-}
-function updateWarmPreview(){
-  if(!editing)return;
-  let v=Math.max(0,Math.min(180,Number($('warmminutes').value)||0));
-  $('warmresult').textContent=shift(editing.time,-v);
-  document.querySelectorAll('[data-minutes]').forEach(b=>{
-    b.classList.toggle('active',Number(b.dataset.minutes)===v);
-    b.setAttribute('aria-pressed',String(Number(b.dataset.minutes)===v));
-  });
-}
-document.querySelectorAll('[data-minutes]').forEach(b=>b.onclick=()=>{
-  $('warmminutes').value=b.dataset.minutes;updateWarmPreview();
-});
-$('warmminutes').addEventListener('input',updateWarmPreview);
-function openNotes(id){
-  editing=entries.find(r=>r.id===id);if(!editing)return;
-  $('notessub').textContent=editing.horse+' · '+editing.class;
-  $('notetext').value='';
-  renderNotes();
-  $('notesdialog').showModal();
-}
-function renderNotes(){
-  if(!editing)return;
-  const notes=normalNotes(editing);
-  $('noteslist').innerHTML=notes.length?notes.map((n,i)=>`<div class="sv-note-item"><div class="sv-note-meta"><strong>${esc(n.author||'Earlier note')}</strong><button type="button" class="sv-note-delete" data-note="${i}" aria-label="Delete note by ${esc(n.author||'Earlier note')}">Delete</button></div><p>${esc(n.text)}</p></div>`).join(''):'<p class="sv-notes-empty">No notes yet for this class.</p>';
-  $('noteslist').querySelectorAll('[data-note]').forEach(b=>b.onclick=()=>{
-    const i=Number(b.dataset.note),note=normalNotes(editing)[i];
-    if(!note||!confirm('Delete this note?'))return;
-    editing.notes=normalNotes(editing).filter((_,j)=>j!==i);
-    persist();renderNotes();render();
-  });
-}
-function persist(){
-  try{localStorage.setItem('showviva-ww-demo-v1',JSON.stringify(
-    Object.fromEntries(entries.map(r=>[r.id,{warm:r.warm,notes:r.notes}]))
-  ))}catch(e){}
-}
-$('savewarm').onclick=()=>{
-  if(!editing)return;
-  editing.warm=Math.max(0,Math.min(180,Number($('warmminutes').value)||0));
-  persist();$('warmdialog').close();render();
-};
-$('savenotes').onclick=()=>{
-  if(!editing)return;
-  const author=$('noteauthor').value.trim(),message=$('notetext').value.trim();
-  if(!author){$('noteauthor').focus();return}
-  if(!message){$('notetext').focus();return}
-  editing.notes=[...normalNotes(editing),{author,text:message,id:String(Date.now())}];
-  try{localStorage.setItem('showviva-demo-note-author',author)}catch(e){}
-  $('notetext').value='';persist();renderNotes();render();
-};
-render();
+function openWarm(id){editing=entries.find(r=>r.id===id);if(!editing)return;$('warmsub').textContent=editing.horse+' · '+(editing.rider||'');$('warmround').textContent=editing.time;$('warmminutes').value=editing.warm;updateWarmPreview();$('warmdialog').showModal()}
+function updateWarmPreview(){if(!editing)return;let v=Math.max(0,Math.min(180,Number($('warmminutes').value)||0));$('warmresult').textContent=shift(editing.time,-v);document.querySelectorAll('[data-minutes]').forEach(b=>{b.classList.toggle('active',Number(b.dataset.minutes)===v);b.setAttribute('aria-pressed',String(Number(b.dataset.minutes)===v))})}
+document.querySelectorAll('[data-minutes]').forEach(b=>b.onclick=()=>{$('warmminutes').value=b.dataset.minutes;updateWarmPreview()});$('warmminutes').addEventListener('input',updateWarmPreview);
+function openNotes(id){editing=entries.find(r=>r.id===id);if(!editing)return;$('notessub').textContent=editing.horse+' · '+(editing.rider||'');$('notesround').textContent=editing.time;$('notetext').value=editing.notes.join('\n');$('notesdialog').showModal()}
+$('savewarm').onclick=()=>{if(!editing)return;editing.warm=Math.max(0,Math.min(180,Number($('warmminutes').value)||0));saveLocal();$('warmdialog').close();render()};
+$('savenotes').onclick=()=>{if(!editing)return;editing.notes=$('notetext').value.split('\n').map(x=>x.trim()).filter(Boolean);saveLocal();$('notesdialog').close();render()};
+async function start(){
+ const home='index.html#team='+encodeURIComponent(TEAM_TOKEN); const cal='index.html?calendar=1#team='+encodeURIComponent(TEAM_TOKEN); document.querySelector('.brand')?.setAttribute('href',home); const cb=document.querySelector('.calendar-btn'); if(cb)cb.onclick=()=>{window.location.href=cal};
+ if(!TEAM_TOKEN||!Number.isSafeInteger(SHOW_ID)){document.querySelector('main').innerHTML='<p class="empty">Open this planner from your private ShowViva show page.</p>';return}
+ try{const resp=await fetch(TEAM_API,{headers:{'x-team-token':TEAM_TOKEN},cache:'no-store'});const result=await resp.json();if(!resp.ok)throw Error(result.error||'Could not load team');currentShow=(result.state?.shows||[]).find(s=>Number(s.id)===SHOW_ID);if(!currentShow)throw Error('Show not found');const p=currentShow.showDayPlanner||{};if(p.status!=='ready'||!Array.isArray(p.entries)||!p.entries.length)throw Error('This Show Day Planner is not ready yet.');days=dateRange(currentShow.start,currentShow.end);const saved=loadSaved();entries=p.entries.map((e,i)=>{const id=keyFor(e,i),v=saved[id]||{};return{id,date:e.date||currentShow.start,horse:e.horse||'Horse',rider:e.rider||'',time:e.individual_time||e.class_start||'--:--',class:e.class_name||('Class '+(e.class_number||'')),classStart:e.class_start||null,arena:e.ring||'',drawnOrder:e.drawn_order||null,drawTotal:e.draw_total||null,url:e.official_url||null,warm:Number.isFinite(v.warm)?v.warm:20,notes:Array.isArray(v.notes)?v.notes:[]}});$('sv-show-title').innerHTML=esc(currentShow.name).replace(/\s+([^\s]+)$/,' <span>$1</span>');$('sv-show-dates').textContent=(days[0]?.[1]||'')+(days.length>1?' – '+days.at(-1)[1]:'');$('sv-show-venue').textContent=currentShow.venue||'';selected=Math.max(0,days.findIndex(d=>d[3]===entries[0]?.date));populateFilters();render()}catch(e){document.querySelector('main').innerHTML=`<p class="empty"><strong>Planner unavailable.</strong><br>${esc(e.message||'Please return to the show and request it again.')}</p>`}}
+start();
 </script>
 </body>
 </html>
