@@ -1147,7 +1147,14 @@ function deleteRider(){
   data.riders.splice(editingRider,1);
   editingRider=null;save();go('team');
 }
-function deleteShow(){const s=data.shows.find(x=>x.id===selected);if(!s)return;if(!confirm('Delete '+s.name+'? This removes the show and its checklists for everyone on the team. Existing notes from this show will also be removed from the previous-show notes archive. This cannot be undone.'))return;data.shows=data.shows.filter(x=>x.id!==selected);if(data.lastSubmittedShowId===selected)data.lastSubmittedShowId=null;selected=null;activeTool=null;save();go('home')}function addShow(e){e.preventDefault();const f=e.target.elements;if(f.end.value<f.start.value){alert('End date must be on or after start date.');return}const s={id:Date.now(),name:f.venue.value.trim(),start:f.start.value,end:f.end.value,horses:[],riders:[],plannedClasses:{},entriesSubmitted:false,venue:f.venue.value.trim(),entrySystem:f.entrySystem.value,showLink:f.showLink?f.showLink.value.trim():'',autoPlanner:!!(f.entrySystem?.value&&f.showLink?.value.trim()),status:'draft',checklist:[],prepChecklist:SV_PREP_DEFAULTS.map(text=>({text,done:false})),sharedNotes:''};data.shows.push(s);save();selected=s.id;activeTool=null;teamPending.then(()=>{if(!teamError)go('show')})}
+function deleteShow(){const s=data.shows.find(x=>x.id===selected);if(!s)return;if(!confirm('Delete '+s.name+'? This removes the show and its checklists for everyone on the team. Existing notes from this show will also be removed from the previous-show notes archive. This cannot be undone.'))return;data.shows=data.shows.filter(x=>x.id!==selected);if(data.lastSubmittedShowId===selected)data.lastSubmittedShowId=null;selected=null;activeTool=null;save();go('home')}
+function showSavedChoice(show){
+ const existing=document.getElementById('sv-save-choice');if(existing)existing.remove();
+ const wrap=document.createElement('div');wrap.id='sv-save-choice';wrap.className='sv-save-choice';
+ wrap.innerHTML=`<div class="sv-save-choice-card" role="dialog" aria-modal="true" aria-labelledby="sv-save-choice-title"><div class="sv-save-tick">✓</div><h2 id="sv-save-choice-title">Show saved</h2><p>${esc(show.name)}</p><button type="button" class="goldbtn" onclick="document.getElementById('sv-save-choice')?.remove();go('show')">Add entries</button><button type="button" class="sv-save-home" onclick="document.getElementById('sv-save-choice')?.remove();go('home')">Home</button></div>`;
+ document.body.appendChild(wrap);
+}
+function addShow(e){e.preventDefault();const f=e.target.elements;if(f.end.value<f.start.value){alert('End date must be on or after start date.');return}const s={id:Date.now(),name:f.venue.value.trim(),start:f.start.value,end:f.end.value,horses:[],riders:[],plannedClasses:{},entriesSubmitted:false,venue:f.venue.value.trim(),entrySystem:f.entrySystem.value,showLink:f.showLink?f.showLink.value.trim():'',autoPlanner:!!(f.entrySystem?.value&&f.showLink?.value.trim()),status:'draft',checklist:[],prepChecklist:SV_PREP_DEFAULTS.map(text=>({text,done:false})),sharedNotes:''};data.shows.push(s);save();selected=s.id;activeTool=null;teamPending.then(()=>{if(!teamError)showSavedChoice(s)})}
 
 startTeam();
 </script><script>
@@ -1164,4 +1171,15 @@ startTeam();
 <script>
 if ('serviceWorker' in navigator) { window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js').catch(()=>{})); }
 </script>
+
+<style>
+.sv-save-choice{position:fixed;inset:0;z-index:9999;background:rgba(16,35,52,.36);display:flex;align-items:flex-end;justify-content:center;padding:18px;}
+.sv-save-choice-card{width:min(100%,520px);background:#fffdf8;border:1px solid #dfcda7;border-radius:26px;padding:28px 24px calc(26px + env(safe-area-inset-bottom));box-shadow:0 18px 60px rgba(16,35,52,.18);text-align:center;}
+.sv-save-choice-card h2{margin:8px 0 6px;font-size:30px;color:#183049;}
+.sv-save-choice-card p{margin:0 0 24px;color:#6b7785;font-size:18px;}
+.sv-save-tick{width:52px;height:52px;border-radius:50%;margin:0 auto 8px;display:grid;place-items:center;background:#cbaa68;color:#fff;font-size:28px;font-weight:800;}
+.sv-save-choice-card .goldbtn{width:100%;margin:0 0 10px;}
+.sv-save-home{width:100%;border:0;background:transparent;color:#183049;font:inherit;font-weight:800;padding:15px 10px;cursor:pointer;}
+@media(min-width:700px){.sv-save-choice{align-items:center}.sv-save-choice-card{padding-bottom:28px}}
+</style>
 </body></html>
