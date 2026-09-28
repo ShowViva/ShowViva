@@ -1,59 +1,4 @@
-<!doctype html><html lang="en"><head>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="ShowViva">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#0b1f33">
-<link rel="apple-touch-icon" sizes="180x180" href="./icons/showviva-icon-180.png">
-<link rel="manifest" href="./manifest.json">
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Team Capitol | ShowViva</title><style>:root{--navy:#192e47;--gold:#bd9b60;--cream:#fbf8f1;--line:#e8dfd0;--muted:#726e67}*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--navy);font-family:Arial,Helvetica,sans-serif}button,input,select{font:inherit}button{cursor:pointer}header{background:var(--navy);color:#fff;padding:18px 22px;display:flex;justify-content:space-between;align-items:center}.brand{font-family:Georgia,serif;font-size:24px;letter-spacing:2px}.brand{display:flex;align-items:center;gap:10px}.brand .crest{width:35px;height:39px;flex:none}.brand .crest text{font-family:Georgia,serif;font-size:16px;font-weight:bold;letter-spacing:-1px}header button{background:none;border:0;color:#fff;font-size:22px}main{max-width:680px;margin:auto;padding:27px 20px 70px}.eyebrow{font-size:11px;letter-spacing:2px;color:#977b4c;font-weight:700;text-transform:uppercase}h1,h2,h3{font-family:Georgia,serif;font-weight:400}h1{font-size:35px;margin:9px 0}h2{font-size:25px;margin:0}p{line-height:1.5}.intro{color:var(--muted);margin:0 0 28px}.next{background:var(--navy);color:white;border-radius:13px;padding:24px;margin:20px 0 22px}.next .eyebrow{color:#e0c68e}.next h2{font-size:31px;margin:13px 0 4px}.next p{color:#e5e3de;margin:4px 0 22px}.goldbtn{border:0;background:var(--gold);color:var(--navy);font-weight:700;border-radius:7px;padding:14px 18px;width:100%}.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}.tile{background:#f3ecdf;border:1px solid var(--line);border-radius:11px;padding:19px;text-align:left;color:var(--navy);min-height:117px}.tile .symbol{font-size:24px;color:#977b4c}.tile strong{display:block;font-family:Georgia,serif;font-size:22px;font-weight:400;margin:10px 0 4px}.tile small{color:var(--muted)}.sectionhead{display:flex;justify-content:space-between;align-items:center;margin:30px 0 13px}.link{border:0;background:none;color:#8d7042;font-weight:700}.item{display:flex;justify-content:space-between;align-items:center;text-align:left;width:100%;background:#fffdf9;border:1px solid var(--line);border-radius:9px;padding:16px;margin:9px 0;color:var(--navy)}.item strong{display:block;font-size:15px}.item small{display:block;color:var(--muted);margin-top:5px}.arrow{font-size:23px;color:#9e8255}.back{background:none;border:0;color:#8d7042;padding:0;margin-bottom:22px}.toolbar{display:flex;gap:9px;align-items:center;justify-content:space-between;margin:20px 0}.smallbtn{background:var(--navy);color:white;border:0;border-radius:7px;padding:11px 15px}.toggle{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}.toggle button{background:transparent;border:0;padding:10px 14px;color:var(--navy)}.toggle .active{background:var(--navy);color:white}.calendar{background:white;border:1px solid var(--line);border-radius:10px;padding:13px}.month{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.month button{border:0;background:none;color:var(--navy);font-size:22px}.days{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.day{text-align:center;padding:10px 0;font-size:13px;border:0;border-radius:5px;background:#f6f0e6;color:var(--navy);min-height:36px}.day.has{background:#d8c29b;font-weight:700}.day.past{background:#e5e7eb;color:#62676b;font-weight:700}.site-header .header-actions .calendar-nav{font-size:23px;line-height:1;padding:8px 10px}.day.blank{background:none}.field{display:block;margin:16px 0;font-size:13px;font-weight:700}.field input,.field select{display:block;width:100%;padding:13px;margin-top:7px;border:1px solid #d7cbb8;border-radius:7px;background:white;color:var(--navy)}.hint{color:var(--muted);font-size:13px}.empty{padding:22px;background:#f3ecdf;border-radius:10px;color:var(--muted)}.pill{display:inline-block;background:#f3ecdf;border-radius:30px;padding:7px 11px;margin:5px 5px 5px 0;font-size:13px}.subhead{font-size:18px;margin-top:26px}.hidden{display:none!important}@media(max-width:360px){main{padding:22px 15px}.tile{padding:13px}.tile strong{font-size:20px}}
-/* My Team: collapsible roster groups only; existing cards and actions unchanged. */
-#app.sv-view-team .sv-roster-fold{border:1px solid #d5bc8d;border-radius:18px;background:#fffefa;overflow:hidden;margin-bottom:16px}
-#app.sv-view-team .sv-roster-fold>summary{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:20px 22px;cursor:pointer;list-style:none;-webkit-tap-highlight-color:transparent}
-#app.sv-view-team .sv-roster-fold>summary::-webkit-details-marker{display:none}
-#app.sv-view-team .sv-roster-fold>summary .subhead{margin:0}
-#app.sv-view-team .sv-roster-chevron{width:11px;height:11px;flex:none;border-right:2px solid #a98a52;border-bottom:2px solid #a98a52;transform:rotate(45deg);transition:transform .2s ease;margin-right:5px}
-#app.sv-view-team .sv-roster-fold[open] .sv-roster-chevron{transform:rotate(225deg)}
-#app.sv-view-team .sv-roster-fold-content{padding:0 16px 18px}
-#app.sv-view-team .sv-roster-fold>summary:focus-visible{outline:2px solid #a98a52;outline-offset:-3px}
-
-/* ShowViva simplified saved-show UI */
-.sv-view-show .sv-entries-overview{padding:28px 30px}
-.sv-view-show .sv-entries-overview>.sv-support{display:none}
-.sv-view-show .sv-class-summary{margin-top:4px}
-.sv-view-show .sv-class-summary h3{font-size:1.1rem;margin-bottom:12px}
-.sv-view-show .sv-entry-confirm{margin-top:18px;padding:14px 16px;background:#fbf8f1;border-radius:16px}
-.sv-view-show .sv-planner-simple{text-align:left}
-.sv-view-show .sv-planner-simple .sv-primary-planner{display:block;text-align:center;text-decoration:none;margin-top:18px}
-.sv-view-show .sv-refresh-link{display:block;margin:14px auto 0;border:0;background:transparent;color:#6d6252;text-decoration:underline;text-underline-offset:3px;font:inherit;padding:8px 12px;cursor:pointer}
-.sv-view-show .sv-manage-show{margin-top:22px}
-.sv-view-show .sv-manage-show>summary{padding:24px 30px}
-.sv-view-show .sv-manage-show .sv-checklist-title{font-size:1.25rem}
-
-/* Calm secondary pages — one task at a time */
-.sv-view-add main,.sv-view-team main,.sv-view-plan main,.sv-view-notebook main,.sv-view-horse main,.sv-view-rider main,.sv-view-member main{max-width:760px}
-.sv-branch-intro{margin-bottom:22px}
-.sv-branch-intro .intro{max-width:34rem}
-.sv-simple-form{display:grid;gap:16px}
-.sv-simple-form .field{margin:0}
-.sv-secondary-fold{margin-top:18px;border:1px solid #e6dcc8;border-radius:20px;background:#fffdf8;overflow:hidden}
-.sv-secondary-fold>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;cursor:pointer;font-weight:700;color:#142b3d}
-.sv-secondary-fold>summary::-webkit-details-marker{display:none}
-.sv-secondary-fold>summary::after{content:'⌄';color:#9a7a3e;font-size:24px;line-height:1}
-.sv-secondary-fold[open]>summary::after{transform:rotate(180deg)}
-.sv-secondary-fold-content{padding:0 20px 20px}
-.sv-team-count{font-size:.84rem;color:#738096;font-weight:500;margin-left:auto}
-.sv-roster-card{padding:14px 0;border-bottom:1px solid #eee5d7}
-.sv-roster-card:last-child{border-bottom:0}
-.sv-roster-actions .sv-roster-delete{display:none}
-.sv-plan-past{margin-top:20px}
-.sv-plan-past summary{font-family:Georgia,serif;font-size:1.35rem;font-weight:600}
-.sv-add-helper{font-size:.9rem;color:#748094;margin:6px 0 0}
-.sv-optional-note{margin:0 0 14px;color:#748094;font-size:.92rem}
-.sv-inline-save{margin-top:8px}
-@media(max-width:640px){.sv-branch-intro h1{font-size:2.55rem}.sv-secondary-fold>summary{padding:16px 18px}.sv-secondary-fold-content{padding:0 18px 18px}}
-
-</style><style id="header-override">.site-header{display:block;background:#1b2c3a;color:#fff;padding:28px 22px 30px}.header-top{display:flex;align-items:center;justify-content:space-between;gap:10px}.brand-lockup{min-width:0}.brand-wordmark{font-family:Georgia,serif;font-size:clamp(29px,6vw,44px);letter-spacing:-1.7px;white-space:nowrap}.brand-wordmark span{color:#e7c17b}.brand-tagline{font-size:clamp(8px,1.7vw,12px);letter-spacing:2.7px;margin-top:7px;white-space:nowrap}.header-actions{display:flex;gap:7px}.site-header .header-actions button{font:inherit;font-size:13px;border:1px solid #6c7780;border-radius:11px;padding:10px 11px;white-space:nowrap;background:transparent;color:#fff}.header-message{margin-top:39px}.header-message h1{font-size:clamp(36px,8.5vw,64px);margin:0;line-height:1.12;white-space:nowrap;letter-spacing:-1.6px}.header-message h1 em{color:#e7c17b;font-style:normal}.header-message p{font-family:Georgia,serif;font-size:clamp(21px,4.7vw,30px);font-weight:400;letter-spacing:-.35px;margin:19px 0 0;color:#f5f1e9}@media(max-width:390px){.site-header{padding:24px 16px 28px}.header-actions{gap:4px}.site-header .header-actions button{font-size:11px;padding:9px 7px}.brand-tagline{letter-spacing:1.5px}.header-message{margin-top:34px}.header-message p{font-size:21px}}</style><style>.tiles{margin-top:18px}.tile{background:#192e47;color:#fff;border:0;min-height:132px}.tile .symbol{color:#e7c17b}.tile small{color:#e9dfce}.next{margin-top:25px}.sectionhead{margin-top:34px}@media(max-width:390px){.tile{padding:16px 12px}.tile strong{font-size:21px}}</style><style id="showviva-refinement">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ShowViva — Your show co-pilot</title><style>:root{--navy:#192e47;--gold:#bd9b60;--cream:#fbf8f1;--line:#e8dfd0;--muted:#726e67}*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--navy);font-family:Arial,Helvetica,sans-serif}button,input,select{font:inherit}button{cursor:pointer}header{background:var(--navy);color:#fff;padding:18px 22px;display:flex;justify-content:space-between;align-items:center}.brand{font-family:Georgia,serif;font-size:24px;letter-spacing:2px}.brand{display:flex;align-items:center;gap:10px}.brand .crest{width:35px;height:39px;flex:none}.brand .crest text{font-family:Georgia,serif;font-size:16px;font-weight:bold;letter-spacing:-1px}header button{background:none;border:0;color:#fff;font-size:22px}main{max-width:680px;margin:auto;padding:27px 20px 70px}.eyebrow{font-size:11px;letter-spacing:2px;color:#977b4c;font-weight:700;text-transform:uppercase}h1,h2,h3{font-family:Georgia,serif;font-weight:400}h1{font-size:35px;margin:9px 0}h2{font-size:25px;margin:0}p{line-height:1.5}.intro{color:var(--muted);margin:0 0 28px}.next{background:var(--navy);color:white;border-radius:13px;padding:24px;margin:20px 0 22px}.next .eyebrow{color:#e0c68e}.next h2{font-size:31px;margin:13px 0 4px}.next p{color:#e5e3de;margin:4px 0 22px}.goldbtn{border:0;background:var(--gold);color:var(--navy);font-weight:700;border-radius:7px;padding:14px 18px;width:100%}.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}.tile{background:#f3ecdf;border:1px solid var(--line);border-radius:11px;padding:19px;text-align:left;color:var(--navy);min-height:117px}.tile .symbol{font-size:24px;color:#977b4c}.tile strong{display:block;font-family:Georgia,serif;font-size:22px;font-weight:400;margin:10px 0 4px}.tile small{color:var(--muted)}.sectionhead{display:flex;justify-content:space-between;align-items:center;margin:30px 0 13px}.link{border:0;background:none;color:#8d7042;font-weight:700}.item{display:flex;justify-content:space-between;align-items:center;text-align:left;width:100%;background:#fffdf9;border:1px solid var(--line);border-radius:9px;padding:16px;margin:9px 0;color:var(--navy)}.item strong{display:block;font-size:15px}.item small{display:block;color:var(--muted);margin-top:5px}.arrow{font-size:23px;color:#9e8255}.back{background:none;border:0;color:#8d7042;padding:0;margin-bottom:22px}.toolbar{display:flex;gap:9px;align-items:center;justify-content:space-between;margin:20px 0}.smallbtn{background:var(--navy);color:white;border:0;border-radius:7px;padding:11px 15px}.toggle{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}.toggle button{background:transparent;border:0;padding:10px 14px;color:var(--navy)}.toggle .active{background:var(--navy);color:white}.calendar{background:white;border:1px solid var(--line);border-radius:10px;padding:13px}.month{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.month button{border:0;background:none;color:var(--navy);font-size:22px}.days{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.day{text-align:center;padding:10px 0;font-size:13px;border:0;border-radius:5px;background:#f6f0e6;color:var(--navy);min-height:36px}.day.has{background:#d8c29b;font-weight:700}.day.past{background:#e5e7eb;color:#62676b;font-weight:700}.site-header .header-actions .calendar-nav{font-size:23px;line-height:1;padding:8px 10px}.day.blank{background:none}.field{display:block;margin:16px 0;font-size:13px;font-weight:700}.field input,.field select{display:block;width:100%;padding:13px;margin-top:7px;border:1px solid #d7cbb8;border-radius:7px;background:white;color:var(--navy)}.hint{color:var(--muted);font-size:13px}.empty{padding:22px;background:#f3ecdf;border-radius:10px;color:var(--muted)}.pill{display:inline-block;background:#f3ecdf;border-radius:30px;padding:7px 11px;margin:5px 5px 5px 0;font-size:13px}.subhead{font-size:18px;margin-top:26px}.hidden{display:none!important}@media(max-width:360px){main{padding:22px 15px}.tile{padding:13px}.tile strong{font-size:20px}}</style><style id="header-override">.site-header{display:block;background:#1b2c3a;color:#fff;padding:28px 22px 30px}.header-top{display:flex;align-items:center;justify-content:space-between;gap:10px}.brand-lockup{min-width:0}.brand-wordmark{font-family:Georgia,serif;font-size:clamp(29px,6vw,44px);letter-spacing:-1.7px;white-space:nowrap}.brand-wordmark span{color:#e7c17b}.brand-tagline{font-size:clamp(8px,1.7vw,12px);letter-spacing:2.7px;margin-top:7px;white-space:nowrap}.header-actions{display:flex;gap:7px}.site-header .header-actions button{font:inherit;font-size:13px;border:1px solid #6c7780;border-radius:11px;padding:10px 11px;white-space:nowrap;background:transparent;color:#fff}.header-message{margin-top:39px}.header-message h1{font-size:clamp(36px,8.5vw,64px);margin:0;line-height:1.12;white-space:nowrap;letter-spacing:-1.6px}.header-message h1 em{color:#e7c17b;font-style:normal}.header-message p{font-family:Georgia,serif;font-size:clamp(21px,4.7vw,30px);font-weight:400;letter-spacing:-.35px;margin:19px 0 0;color:#f5f1e9}@media(max-width:390px){.site-header{padding:24px 16px 28px}.header-actions{gap:4px}.site-header .header-actions button{font-size:11px;padding:9px 7px}.brand-tagline{letter-spacing:1.5px}.header-message{margin-top:34px}.header-message p{font-size:21px}}</style><style>.tiles{margin-top:18px}.tile{background:#192e47;color:#fff;border:0;min-height:132px}.tile .symbol{color:#e7c17b}.tile small{color:#e9dfce}.next{margin-top:25px}.sectionhead{margin-top:34px}@media(max-width:390px){.tile{padding:16px 12px}.tile strong{font-size:21px}}</style><style id="showviva-refinement">
 :root{--cream:#fcfaf5;--line:#e7e0d5;--gold:#b79a67}
 body{background:var(--cream)}
 .site-header{padding-bottom:26px}
@@ -155,9 +100,6 @@ main,.tiles,.tile,.next,.field,.field input,.field select,.show-tools{min-width:
 #app:is(.sv-view-horse,.sv-view-rider) .sv-delete-team{display:block;margin:20px auto 6px;padding:10px 15px;
  background:transparent;color:#7c4141;border:1px solid #e6d4d2;border-radius:11px;font:600 13px Arial,sans-serif}
 #app:is(.sv-view-horse,.sv-view-rider) .sv-delete-team:focus-visible{outline:2px solid #a17749;outline-offset:3px}
-
-#app.sv-view-show .sv-edit-show-link{display:inline-block;margin-top:8px;padding:0;border:0;background:transparent;color:#8a6b35;font:700 15px Arial,sans-serif;text-decoration:underline;text-underline-offset:3px}
-#app.sv-view-show .sv-manage-show[hidden]{display:none!important}
 </style><style id="sv-show-details-premium-20260922">
 /* Show details: match the approved cream/navy/gold My Team and Add Show treatment. */
 #app.sv-view-show{--detailnavy:#10283a;--detailgold:#c9a460;--detailline:#e6dfd3;color:var(--detailnavy)}
@@ -355,907 +297,27 @@ form .goldbtn{
   border:1px solid #e6d4d2!important;border-radius:11px!important;
   font:600 13px Arial,sans-serif!important;
 }
-</style><style id="sv-team-shared-indicator">.sv-team-sharing{max-width:680px;margin:14px auto 0;padding:10px 16px;border:1px solid #e4d3af;border-radius:12px;background:#fffdf8;color:#10283a;font:600 12px Arial,sans-serif;text-align:center}</style><style id="sv-shared-home-cohesion-20260923">
-/* Presentation-only: retain the existing shared-team Supabase logic and private access. */
-#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider){--sv-unified-navy:#10283a;--sv-unified-gold:#c9a460;--sv-unified-line:#e6dfd3;color:var(--sv-unified-navy)}
-#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider)>.sv-branch-intro{margin:4px 0 24px!important;padding:0 0 21px!important;border-bottom:1px solid var(--sv-unified-line)!important}
-#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider)>.sv-branch-intro h1{font:400 clamp(34px,9vw,45px)/1.12 Georgia,serif!important;letter-spacing:-.7px!important;color:var(--sv-unified-navy)!important;margin:0 0 9px!important}
-#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider)>.sv-branch-intro .intro{font-size:15px!important;color:#657180!important;line-height:1.5!important}
-/* Make the My Team return control the same clear boxed navigation as Add Show. */
-#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider)>.back{display:inline-flex!important;align-items:center!important;gap:8px!important;min-height:42px!important;margin:0 0 23px!important;padding:10px 15px!important;background:#fffefa!important;border:1px solid #dfc99c!important;border-radius:11px!important;box-shadow:none!important;color:#10283a!important;font:600 14px/1.3 Arial,sans-serif!important;text-decoration:none!important}
-#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider)>.back:focus-visible{outline:2px solid #c9a460;outline-offset:3px}
-/* Clear, gold-framed calendar shortcut in the TOP LEFT of the homepage header only. */
-.site-header.sv-header-home .header-top{position:relative}
-.site-header.sv-header-home .header-actions .calendar-nav{position:absolute;left:0;top:0;display:inline-flex!important;justify-content:center;align-items:center;width:46px!important;height:46px!important;min-width:46px!important;border:1.5px solid #e7c17b!important;background:rgba(231,193,123,.13)!important;border-radius:12px!important;color:#f0c777!important;box-shadow:0 0 0 3px rgba(231,193,123,.07)!important}
-.site-header.sv-header-home .header-actions .calendar-nav svg{width:26px;height:26px}
-.site-header.sv-header-home .brand-lockup{padding-left:59px}
-.site-header.sv-header-home .header-actions{padding-left:0}
-@media(max-width:380px){.site-header.sv-header-home .brand-lockup{padding-left:53px}.site-header.sv-header-home .header-actions .calendar-nav{width:42px!important;height:42px!important;min-width:42px!important}.site-header.sv-header-home .brand-wordmark{font-size:25px}}
-</style><style id="sv-calendar-right-no-signout-20260923">
-/* Keep private link and Supabase behaviour; adjust header presentation only. */
-.site-header.sv-header-home .header-top{position:relative}
-.site-header.sv-header-home .brand-lockup{padding-left:0!important}
-.site-header.sv-header-home .header-actions{padding-left:0!important;margin-left:auto;justify-content:flex-end}
-.site-header.sv-header-home .header-actions .calendar-nav{position:static!important;left:auto!important;top:auto!important;display:inline-flex!important;justify-content:center;align-items:center;width:48px!important;min-width:48px!important;height:48px!important;border:1.5px solid #e7c17b!important;background:rgba(231,193,123,.13)!important;border-radius:12px!important;color:#f0c777!important;box-shadow:none!important}
-.site-header.sv-header-home .header-actions .calendar-nav svg{width:27px!important;height:27px!important}
-@media(max-width:380px){.site-header.sv-header-home .brand-lockup{padding-left:0!important}.site-header.sv-header-home .header-actions .calendar-nav{width:44px!important;min-width:44px!important;height:44px!important}}
-</style><style id="sv-consistent-save-home-20260923">
-/* Make Home identical on My Shows, My Team and Add Show. */
-#app .back.sv-consistent-home{display:inline-flex!important;align-items:center;justify-content:center;gap:8px;background:#fffefa!important;border:1.5px solid #d8bd88!important;border-radius:12px!important;min-height:44px;padding:11px 17px!important;font:700 14px Arial,Helvetica,sans-serif!important;color:#10283a!important;box-shadow:none!important;text-decoration:none!important;margin:0 0 24px!important}
-#app .back.sv-consistent-home:focus-visible{outline:2px solid #c9a460;outline-offset:3px}
-.sv-saved-overlay{position:fixed;inset:0;background:rgba(6,31,48,.48);z-index:999;display:flex;align-items:center;justify-content:center;padding:22px}
-.sv-saved-dialog{width:min(100%,470px);background:#fffefa;color:#10283a;border:2px solid #d8bd88;border-radius:23px;box-shadow:0 18px 60px rgba(6,31,48,.22);padding:32px 26px;text-align:center}
-.sv-saved-dialog .sv-eyebrow{font-size:11px;letter-spacing:3px;color:#967541;font-weight:700;margin-bottom:16px}
-.sv-saved-dialog h1{font:400 clamp(34px,7vw,45px) Georgia,serif;margin:0 0 15px;color:#10283a}
-.sv-saved-dialog p{font-size:16px;line-height:1.5;color:#586572;margin:0 0 25px}
-.sv-saved-dialog .goldbtn{min-height:50px;width:100%;background:linear-gradient(110deg,#e7c88c,#c7a45e);color:#10283a;border-radius:14px;font-weight:700}
-</style><style id="sv-team-add-visual-consistency-final">
-/* Presentation only: align My Team and Add Show using the same page-level type scale. */
-#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider){
-  --sv-matched-navy:#10283a;--sv-matched-gold:#d8bd88;--sv-matched-paper:#fffefa;
-  color:var(--sv-matched-navy);
-}
-/* Same cream, gold framed return control across all branch pages. Override older transparent team styles. */
-#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider) > button.back,
-#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider) > .back.sv-consistent-home{
-  display:inline-flex!important;align-items:center!important;justify-content:center!important;
-  width:auto!important;min-height:44px!important;padding:11px 17px!important;
-  margin:0 0 24px!important;gap:8px!important;
-  background:#fffefa!important;border:1.5px solid #d8bd88!important;
-  border-radius:12px!important;box-shadow:none!important;
-  color:#10283a!important;font:700 14px/1.4 Arial,Helvetica,sans-serif!important;
-  text-decoration:none!important;
-}
-#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider) > button.back:focus-visible{
-  outline:2px solid #c9a460;outline-offset:3px;
-}
-/* Identical headings, kicker, supporting copy and spacing on My Team and Add Show. */
-#app:is(.sv-view-team,.sv-view-add) > .sv-branch-intro{
-  margin:4px 0 24px!important;padding:0 0 21px!important;
-  border-bottom:1px solid #e6dfd3!important;
-}
-#app:is(.sv-view-team,.sv-view-add) > .sv-branch-intro .sv-eyebrow{
-  margin:0 0 12px!important;color:#95753f!important;
-  font:700 11px/1.4 Arial,Helvetica,sans-serif!important;letter-spacing:3px!important;
-}
-#app:is(.sv-view-team,.sv-view-add) > .sv-branch-intro h1{
-  margin:0 0 10px!important;
-  color:#10283a!important;font:400 clamp(36px,9vw,48px)/1.1 Georgia,'Times New Roman',serif!important;
-  letter-spacing:-.7px!important;
-}
-#app:is(.sv-view-team,.sv-view-add) > .sv-branch-intro .intro{
-  margin:0!important;color:#657180!important;
-  font:400 16px/1.5 Arial,Helvetica,sans-serif!important;
-}
-#app:is(.sv-view-team,.sv-view-add) .subhead{
-  color:#10283a!important;font:400 clamp(25px,6vw,29px)/1.2 Georgia,'Times New Roman',serif!important;
-}
-</style><style id="sv-calendar-single-final-20260923">
-/* One authoritative size: same visual scale as the header Home control. */
-.site-header .header-top .header-actions .calendar-nav,
-.site-header.sv-header-home .header-top .header-actions .calendar-nav {
- position:static!important;left:auto!important;top:auto!important;
- display:inline-flex!important;align-items:center!important;justify-content:center!important;
- width:44px!important;min-width:44px!important;max-width:44px!important;
- height:44px!important;min-height:44px!important;max-height:44px!important;
- flex:0 0 44px!important;padding:8px!important;
- border:1.5px solid #d8bd88!important;border-radius:11px!important;
- background:transparent!important;color:#e7c17b!important;box-shadow:none!important;
-}
-.site-header .header-top .header-actions .calendar-nav svg,
-.site-header.sv-header-home .header-top .header-actions .calendar-nav svg {
- width:23px!important;min-width:23px!important;height:23px!important;max-height:23px!important;flex:none!important;
-}
-</style><style id="sv-my-team-matches-add-show-20260923">
-/* Add Show is the visual reference. Only the My Team branch is restyled. */
-#app.sv-view-team > .sv-branch-intro{margin:4px 0 24px!important;padding:0 0 21px!important;border-bottom:1px solid #e6dfd3!important}
-#app.sv-view-team > .sv-branch-intro .sv-eyebrow{margin:0 0 12px!important;color:#95753f!important;font:700 11px/1.4 Arial,Helvetica,sans-serif!important;letter-spacing:3px!important}
-#app.sv-view-team > .sv-branch-intro h1{margin:0 0 10px!important;color:#10283a!important;font:400 clamp(36px,9vw,48px)/1.1 Georgia,'Times New Roman',serif!important;letter-spacing:-.7px!important}
-#app.sv-view-team > .sv-branch-intro .intro{margin:0!important;color:#657180!important;font:400 16px/1.5 Arial,Helvetica,sans-serif!important}
-#app.sv-view-team > .subhead{margin:26px 0 14px!important;color:#10283a!important;font:400 clamp(25px,6vw,29px)/1.2 Georgia,'Times New Roman',serif!important}
-/* Keep names legible and use Add Show's tidy white paper cards and consistent sizing. */
-#app.sv-view-team .horsecard{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:8px 16px!important;min-height:72px!important;margin:9px 0!important;padding:17px 18px!important;border:1px solid #e6dfd3!important;border-radius:16px!important;background:#fffefa!important;box-shadow:none!important;text-align:left!important}
-#app.sv-view-team .horsecard strong{font:400 20px/1.2 Georgia,'Times New Roman',serif!important;color:#10283a!important;margin:0!important;min-width:0!important}
-#app.sv-view-team .horsecard small{font:400 13px/1.45 Arial,Helvetica,sans-serif!important;color:#657180!important;margin:0!important;min-width:0!important;overflow-wrap:anywhere!important}
-#app.sv-view-team > .smallbtn{font:700 15px/1.4 Arial,Helvetica,sans-serif!important;min-height:50px!important;padding:12px 18px!important;border-radius:14px!important}
-#app.sv-view-team > button.back{background:#fffefa!important;border:1.5px solid #d8bd88!important;border-radius:12px!important;color:#10283a!important;min-height:44px!important;padding:11px 17px!important;font:700 14px/1.4 Arial,Helvetica,sans-serif!important;margin:0 0 24px!important}
-@media(max-width:420px){#app.sv-view-team .horsecard{flex-wrap:wrap!important}#app.sv-view-team .horsecard small{width:100%!important}}
-</style><style id="sv-unified-form-and-home-20260924">
-/* Scope to presentation only. Keep the existing navigation, calendar and shared data code. */
-#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider,.sv-view-show) {
-  font-family:Arial,Helvetica,sans-serif!important;
-}
-/* Identical serif display headings across the team and show forms. */
-#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider,.sv-view-show) :is(.sv-branch-intro h1,.show-top h1,.subhead,.horsecard strong){
-  font-family:Georgia,'Times New Roman',serif!important;
-}
-/* Consistent text and form-field fonts across the two branches. */
-#app:is(.sv-view-team,.sv-view-add,.sv-view-horse,.sv-view-rider,.sv-view-show) :is(.intro,.field,.field input,.field select,.field textarea,.hint,.horsecard small,.checkrow,.sv-eyebrow){
-  font-family:Arial,Helvetica,sans-serif!important;
-}
-/* Every in-content Home button, including dynamically rendered show and calendar pages. */
-#app button.back, #app .back.sv-consistent-home {
-  display:inline-flex!important;align-items:center!important;justify-content:center!important;
-  gap:8px!important;width:auto!important;min-height:44px!important;
-  margin:0 0 24px!important;padding:11px 17px!important;
-  background:linear-gradient(110deg,#e7c88c,#c7a45e)!important;
-  border:1px solid #c7a45e!important;border-radius:12px!important;
-  box-shadow:none!important;color:#10283a!important;
-  font:700 14px/1.4 Arial,Helvetica,sans-serif!important;text-decoration:none!important;
-}
-#app button.back:focus-visible, #app .back.sv-consistent-home:focus-visible {
- outline:2px solid #a77b39!important;outline-offset:3px!important;
-}
-
-/* Show-specific class wishes and independently confirmed competition entries. */
-#app .sv-horse-plan{border:1px solid #e8e0d4;border-radius:15px;padding:13px 14px;margin:12px 0;background:#fffefa}
-#app .sv-horse-plan>.checkrow{border:0!important;padding:3px 0!important;margin:0 0 9px!important;background:transparent!important}
-#app .sv-class-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 12px;margin-top:10px}
-#app .sv-class-options label{font:400 14px/1.4 Arial,sans-serif;color:#253b4f;display:flex;align-items:center;gap:7px}
-#app .sv-class-options input{width:18px;height:18px;accent-color:#c7a45e;flex-shrink:0}
-#app .sv-horse-plan .sv-other-class{display:block;width:100%;border:1px solid #d9dfdf;border-radius:10px;padding:11px 13px;font:400 16px Arial,sans-serif;margin:10px 0 0;color:#10283a;background:white}
-#app .sv-horse-plan:not(:has(input[name="horses"]:checked)) .sv-class-fields{display:none}
-#app .sv-entry-confirm{display:flex!important;align-items:flex-start;gap:12px;margin:19px 0;padding:15px!important;border:1px solid #d8bd88;border-radius:14px;background:#fcf8f0;font:600 15px/1.45 Arial,sans-serif;color:#10283a}
-#app .sv-entry-confirm input{width:22px;height:22px;flex:none;accent-color:#c7a45e;margin:0}
-#app .sv-entry-confirm small{display:block;color:#687686;font-size:12px;font-weight:400;margin-top:5px}
-</style><style id="sv-show-planning-v2">
-#app .sv-show-section{margin:24px 0;padding:20px 17px;background:#fffefa;border:1px solid #e7dfd2;border-radius:17px;color:#10283a;font-family:Arial,Helvetica,sans-serif}
-#app .sv-show-section h2{font:400 clamp(25px,7vw,32px)/1.2 Georgia,serif;color:#10283a;margin:0 0 7px}
-#app .sv-show-section p.sv-support{font:400 14px/1.55 Arial,sans-serif;color:#687585;margin:0 0 16px}
-#app .sv-show-section .sv-entry-horse{padding:13px 0;border-top:1px solid #eee7da}
-#app .sv-show-section .sv-entry-horse strong{display:block;color:#10283a;font:700 15px Arial,sans-serif}
-#app .sv-show-section .sv-entry-horse span{display:block;font:400 14px/1.55 Arial,sans-serif;color:#566879;margin:6px 0}
-#app .sv-show-section .sv-outline{color:#92703d;background:#fffdf7;border:1px solid #c9a460;border-radius:9px;padding:8px 12px;font:700 13px Arial,sans-serif}
-#app .sv-show-section .sv-inline-editor{background:#fcf8f0;padding:13px;border-radius:12px;margin:10px 0}
-#app .sv-show-section .sv-entry-confirm{margin:15px 0 0!important}
-#app .sv-show-section .sv-task{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #eee7da;font:400 15px/1.35 Arial,sans-serif}
-#app .sv-show-section .sv-task input{width:20px;height:20px;flex:none;accent-color:#c9a460}
-#app .sv-show-section .sv-task .sv-task-label{flex:1;min-width:0}
-#app .sv-show-section .sv-task button{border:0;background:transparent;color:#92703d;padding:7px;font:600 13px Arial,sans-serif}
-#app .sv-show-section .sv-task-form{display:flex;gap:8px;margin:16px 0 0}
-#app .sv-show-section .sv-task-form input{min-width:0;flex:1;border:1px solid #d8d6d0;border-radius:9px;padding:11px;font:400 16px Arial,sans-serif}
-#app .sv-show-section .sv-task-form button{border-radius:9px;background:#c9a460;color:#10283a;border:0;padding:10px 13px;font:700 13px Arial,sans-serif}
-#app .sv-show-section textarea{width:100%;min-height:115px;border:1px solid #d8d6d0;border-radius:10px;padding:13px;font:400 16px/1.5 Arial,sans-serif;color:#10283a;background:white;box-sizing:border-box}
-#app .sv-show-section .sv-task-label[contenteditable=true]{border:1px solid #c9a460;border-radius:5px;padding:5px}
-</style><style id="sv-show-checklist-accordions-save-v3">
-/* Match existing cream cards, serif page headings, gold navigation and navy text. */
-#app .sv-checklist-accordion{padding:0;overflow:hidden;background:#fffefa}
-#app .sv-checklist-accordion>summary{display:flex;align-items:center;gap:12px;list-style:none;cursor:pointer;padding:20px 17px;min-height:70px}
-#app .sv-checklist-accordion>summary::-webkit-details-marker{display:none}
-#app .sv-checklist-accordion>summary::marker{content:''}
-#app .sv-checklist-accordion .sv-checklist-title{flex:1;min-width:0;font:400 clamp(25px,7vw,32px)/1.2 Georgia,serif;color:#10283a}
-#app .sv-checklist-accordion .sv-checklist-count{white-space:nowrap;font:500 12px Arial,sans-serif;color:#92703d}
-#app .sv-checklist-accordion .sv-checklist-chevron{display:inline-block;font:400 28px/1 Arial,sans-serif;color:#92703d;transition:transform .18s ease}
-#app .sv-checklist-accordion[open] .sv-checklist-chevron{transform:rotate(180deg)}
-#app .sv-checklist-accordion .sv-checklist-content{padding:0 17px 20px;border-top:1px solid #eee7da}
-#app .sv-checklist-accordion .sv-support{padding-top:15px}
-#app .sv-bottom-save{display:flex;flex-direction:column;align-items:stretch;gap:8px;margin:30px 0 45px}
-#app .sv-bottom-save .sv-save-home{width:100%;min-height:50px;background:#c9a460!important;color:#10283a!important;border:1px solid #c9a460!important;border-radius:12px;font:700 16px Arial,sans-serif}
-#app .sv-bottom-save .sv-save-home:disabled{opacity:.65;cursor:wait}
-#app #sv-bottom-save-status{font:400 13px Arial,sans-serif;color:#687585}
-@media(max-width:380px){#app .sv-checklist-accordion>summary{gap:7px;padding:18px 13px}#app .sv-checklist-accordion .sv-checklist-title{font-size:24px}#app .sv-checklist-accordion .sv-checklist-count{font-size:11px}}
-</style><style id="sv-show-final-cohesion-20260924">
-/* Styling only; preserve the shared team API, private token, calendar and planner. */
-#app.sv-view-show .sv-show-section{background:#fffefa!important;border:1px solid #e6dfd3!important;border-radius:17px!important;box-shadow:none!important;padding:20px 18px!important;margin:0 0 16px!important}
-#app.sv-view-show .sv-show-section:not(details)>h2{font:400 clamp(27px,7vw,34px)/1.2 Georgia,'Times New Roman',serif!important;margin:0 0 10px!important;color:#10283a!important}
-#app.sv-view-show .sv-show-section .sv-support{font:400 14px/1.5 Arial,Helvetica,sans-serif!important;color:#647180!important;margin:8px 0 14px!important}
-#app.sv-view-show .sv-checklist-accordion{padding:0!important;overflow:hidden!important}
-#app.sv-view-show .sv-checklist-accordion>summary{padding:18px!important;min-height:68px!important;gap:10px!important;align-items:center!important}
-#app.sv-view-show .sv-checklist-accordion .sv-checklist-title{font:400 clamp(25px,6.5vw,32px)/1.16 Georgia,'Times New Roman',serif!important;letter-spacing:-.4px!important}
-#app.sv-view-show .sv-checklist-accordion .sv-checklist-count{font:500 12px Arial,Helvetica,sans-serif!important}
-#app.sv-view-show .sv-checklist-accordion .sv-checklist-content{padding:6px 18px 20px!important}
-#app.sv-view-show .sv-class-summary{margin-top:23px;padding:17px 16px;background:#fbf8f1;border:1px solid #e4d6bb;border-radius:14px}
-#app.sv-view-show .sv-class-summary h3{font:400 clamp(22px,5.6vw,28px)/1.2 Georgia,'Times New Roman',serif!important;color:#10283a;margin:0 0 8px}
-#app.sv-view-show .sv-class-group{margin-top:12px;padding:13px 14px;border:1px solid #e6dfd3;border-radius:12px;background:#fffefa}
-#app.sv-view-show .sv-class-group>strong{display:block;font:700 15px Arial,Helvetica,sans-serif;color:#92703d;margin:0 0 7px}
-#app.sv-view-show .sv-class-entry{display:flex;flex-wrap:wrap;gap:3px 9px;align-items:baseline;padding:8px 0;border-top:1px solid #eee8dd;font:600 15px/1.4 Arial,Helvetica,sans-serif;color:#10283a}
-#app.sv-view-show .sv-class-entry small{font:400 12px Arial,Helvetica,sans-serif;color:#647180}
-#app.sv-view-show .sv-notes-accordion textarea{width:100%;box-sizing:border-box;min-height:120px;font:400 16px/1.5 Arial,Helvetica,sans-serif}
-#app.sv-view-show .sv-bottom-save .sv-save-home{opacity:1!important;background:#c9a460!important;color:#10283a!important}
-@media(max-width:420px){#app.sv-view-show .sv-checklist-accordion .sv-checklist-title{font-size:26px!important}}
-</style><style id="sv-direct-class-entry-20260924">
-#app.sv-view-show .sv-entry-add-form{display:grid;gap:12px;margin:20px 0 23px;padding:18px;border:1px solid #e6dfd3;border-radius:16px;background:#fffefa}
-#app.sv-view-show .sv-entry-add-form .field{display:block;margin:0;font:600 14px/1.4 Arial,Helvetica,sans-serif;color:#293d50}
-#app.sv-view-show .sv-entry-add-form :is(select,input){display:block;box-sizing:border-box;width:100%;min-height:49px;margin-top:8px;padding:11px 12px;border:1px solid #dedad2;border-radius:12px;background:#fff;color:#10283a;font:400 16px Arial,Helvetica,sans-serif}
-#app.sv-view-show .sv-entry-add-form .sv-entry-add-button{width:100%;min-height:49px;background:#c9a460!important;color:#10283a!important;border-radius:12px}
-#app.sv-view-show .sv-class-summary{margin-top:12px}
-#app.sv-view-show .sv-class-entry{align-items:center;justify-content:space-between;gap:12px}
-#app.sv-view-show .sv-class-entry-name{display:flex;flex-direction:column;gap:4px;min-width:0;overflow-wrap:anywhere}
-#app.sv-view-show .sv-entry-remove{padding:8px 10px;flex-shrink:0;border:1px solid #dccba9;border-radius:10px;background:#fff;color:#80643a;font:600 13px Arial,Helvetica,sans-serif}
-#app.sv-view-show .sv-class-summary h3{font-size:clamp(24px,6vw,31px)!important}
-#app.sv-view-show .sv-entry-confirm{margin-top:22px}
-</style><style id="sv-premium-shared-notebook-20260924">
-/* Two equally sized gold-outline navigation buttons, no navy Home header button. */
-.site-header .header-top{position:relative!important}
-.site-header .header-actions{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:9px!important;padding-left:0!important}
-.site-header .header-actions :is(.calendar-nav,.notebook-nav),
-.site-header.sv-header-home .header-actions .calendar-nav{
- position:static!important;display:inline-flex!important;flex:0 0 43px!important;
- align-items:center!important;justify-content:center!important;
- width:43px!important;height:43px!important;min-width:43px!important;
- border:1.5px solid #e7c17b!important;border-radius:12px!important;
- background:rgba(231,193,123,.13)!important;color:#f0c777!important;
- box-shadow:0 0 0 3px rgba(231,193,123,.07)!important;
- cursor:pointer!important;padding:0!important}
-.site-header .header-actions :is(.calendar-nav,.notebook-nav) svg{width:23px;height:23px}
-.site-header.sv-header-home .brand-lockup{padding-left:0!important}
-#app.sv-view-notebook{font-family:Arial,Helvetica,sans-serif;color:#10283a}
-#app.sv-view-notebook .sv-branch-intro h1{font:400 clamp(34px,9vw,45px)/1.12 Georgia,serif;color:#10283a}
-#app.sv-view-notebook .sv-notebook-card,#app.sv-view-notebook .sv-notebook-archive{
- margin:0 0 18px;padding:21px 18px;background:#fffefa;border:1px solid #e6dfd3;
- border-radius:17px;box-shadow:none}
-#app.sv-view-notebook .sv-notebook-card h2{font:400 clamp(29px,7vw,36px)/1.16 Georgia,serif;margin:7px 0 10px;color:#10283a}
-#app.sv-view-notebook .sv-notebook-help{font:400 14px/1.55 Arial,Helvetica,sans-serif;color:#647180;margin:8px 0 17px}
-#app.sv-view-notebook #sv-team-notes{display:block;box-sizing:border-box;width:100%;min-height:240px;
- padding:15px;border:1px solid #dedad2;border-radius:13px;background:#fff;color:#10283a;
- font:400 16px/1.6 Arial,Helvetica,sans-serif;resize:vertical}
-#app.sv-view-notebook #sv-team-notes:focus{outline:2px solid #c9a460;outline-offset:2px}
-#app.sv-view-notebook .sv-notebook-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:15px}
-#app.sv-view-notebook .sv-notebook-actions .goldbtn{background:#c9a460!important;color:#10283a!important;border-radius:12px;min-height:48px;padding:11px 24px}
-#app.sv-view-notebook #sv-team-note-status{font:500 13px Arial,sans-serif;color:#647180}
-#app.sv-view-notebook .sv-notebook-archive{padding:0;overflow:hidden}
-#app.sv-view-notebook .sv-notebook-archive summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:15px;padding:20px 18px;font:400 25px/1.2 Georgia,serif;color:#10283a}
-#app.sv-view-notebook .sv-notebook-archive summary::-webkit-details-marker{display:none}
-#app.sv-view-notebook .sv-notebook-archive summary span{font:600 13px Arial,sans-serif;color:#92703d}
-#app.sv-view-notebook .sv-notebook-archive>.sv-notebook-help{padding:0 18px;margin:0 0 16px}
-#app.sv-view-notebook .sv-notebook-legacy{margin:0 18px 13px;padding:14px;border:1px solid #e6dfd3;border-radius:12px;background:#fff}
-#app.sv-view-notebook .sv-notebook-legacy strong{font:600 15px Arial,sans-serif;color:#92703d}
-#app.sv-view-notebook .sv-notebook-legacy p{white-space:pre-wrap;overflow-wrap:anywhere;font:400 15px/1.5 Arial,sans-serif;margin:9px 0 0}
-#app.sv-view-notebook .sv-notebook-home{display:block;width:100%;min-height:50px;background:#c9a460!important;color:#10283a!important;border-radius:12px;margin:21px 0 42px}
-@media(max-width:430px){.site-header .header-actions{gap:6px!important}.site-header .header-actions :is(.calendar-nav,.notebook-nav),.site-header.sv-header-home .header-actions .calendar-nav{flex-basis:39px!important;width:39px!important;height:39px!important;min-width:39px!important}}
-</style><style id="sv-shared-note-cards-20260924">
-#app.sv-view-notebook #sv-note-form .field{display:block;margin:0 0 16px;font:600 14px/1.5 Arial,Helvetica,sans-serif;color:#293d50}
-#app.sv-view-notebook #sv-note-form select{display:block;box-sizing:border-box;width:100%;min-height:48px;margin-top:8px;padding:10px 13px;border:1px solid #dedad2;border-radius:12px;background:#fff;color:#10283a;font:400 16px Arial,Helvetica,sans-serif}
-#app.sv-view-notebook #sv-team-notes{min-height:126px;margin-top:8px}
-#app.sv-view-notebook .sv-notes-list h2{margin-bottom:20px}
-#app.sv-view-notebook .sv-note-item{padding:17px 16px;margin:0 0 13px;background:#fff;border:1px solid #e6dfd3;border-radius:14px;box-shadow:none}
-#app.sv-view-notebook .sv-note-item:last-child{margin-bottom:0}
-#app.sv-view-notebook .sv-note-meta{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:5px 16px;border-bottom:1px solid #eee7da;padding-bottom:11px}
-#app.sv-view-notebook .sv-note-meta strong{color:#10283a;font:700 15px Arial,Helvetica,sans-serif}
-#app.sv-view-notebook .sv-note-meta time{color:#92703d;font:500 12px Arial,Helvetica,sans-serif}
-#app.sv-view-notebook .sv-note-item p{margin:12px 0 0;color:#10283a;white-space:pre-wrap;overflow-wrap:anywhere;font:400 16px/1.55 Arial,Helvetica,sans-serif}
-</style><style id="sv-matched-icons-editable-team-notes-20260924">
-/* Force exactly matching calendar and notebook icon containers at every viewport. */
-.site-header .header-top .header-actions :is(.calendar-nav,.notebook-nav),
-.site-header.sv-header-home .header-top .header-actions :is(.calendar-nav,.notebook-nav){
- position:static!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;
- box-sizing:border-box!important;width:44px!important;min-width:44px!important;max-width:44px!important;
- height:44px!important;min-height:44px!important;max-height:44px!important;flex:0 0 44px!important;
- padding:8px!important;border:1.5px solid #d8bd88!important;border-radius:12px!important;
- background:rgba(231,193,123,.13)!important;color:#e7c17b!important;box-shadow:none!important;
-}
-.site-header .header-top .header-actions :is(.calendar-nav,.notebook-nav) svg,
-.site-header.sv-header-home .header-top .header-actions :is(.calendar-nav,.notebook-nav) svg{
- display:block!important;width:23px!important;min-width:23px!important;max-width:23px!important;
- height:23px!important;min-height:23px!important;max-height:23px!important;flex:0 0 23px!important;
-}
-#app.sv-view-notebook .sv-note-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:14px}
-#app.sv-view-notebook .sv-note-actions button{padding:8px 13px;border:1px solid #d8bd88;border-radius:10px;background:#fffefa;color:#80643a;font:600 13px Arial,Helvetica,sans-serif;cursor:pointer}
-#app.sv-view-notebook .sv-note-actions .sv-note-remove{border-color:#e6d4d2;color:#804747}
-#app.sv-view-notebook .sv-note-edit-form{padding-top:14px}
-#app.sv-view-notebook .sv-note-edit-form textarea{box-sizing:border-box;width:100%;min-height:110px;margin-top:8px;padding:12px;border:1px solid #dedad2;border-radius:12px;background:#fff;color:#10283a;font:400 16px/1.5 Arial,Helvetica,sans-serif}
-#app.sv-view-notebook .sv-note-edited{display:block;margin-top:6px;color:#647180;font:400 12px Arial,sans-serif}
-</style><style id="sv-compact-show-overview-20260924">
-#app.sv-view-show .sv-entries-overview .sv-class-summary{margin:14px 0 16px!important;padding:16px!important}
-#app.sv-view-show .sv-entries-overview .sv-class-summary h3{font:400 clamp(23px,6vw,29px)/1.15 Georgia,serif!important;margin-bottom:10px!important}
-#app.sv-view-show .sv-entry-editor{margin:16px 0 20px;border:1px solid #e4d6bb;border-radius:14px;background:#fffefa;overflow:hidden}
-#app.sv-view-show .sv-entry-editor>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;padding:16px 18px;list-style:none;color:#80643a;font:700 15px/1.3 Arial,Helvetica,sans-serif}
-#app.sv-view-show .sv-entry-editor>summary::-webkit-details-marker{display:none}
-#app.sv-view-show .sv-entry-editor>summary::marker{content:''}
-#app.sv-view-show .sv-entry-editor[open]>summary{border-bottom:1px solid #e9dfcc}
-#app.sv-view-show .sv-entry-chevron{font-size:24px;font-weight:400;line-height:1}
-#app.sv-view-show .sv-entry-editor[open] .sv-entry-chevron{transform:rotate(180deg)}
-#app.sv-view-show .sv-entry-editor-body{padding:5px 15px 17px}
-#app.sv-view-show .sv-entry-add-form{margin:10px 0 0!important}
-#app.sv-view-show .sv-entries-overview .sv-entry-remove{display:none}
-#app.sv-view-show .sv-entries-overview:has(.sv-entry-editor[open]) .sv-entry-remove{display:inline-flex}
-#app.sv-view-show .sv-checklist-accordion>summary{min-height:65px!important;padding:15px 17px!important}
-#app.sv-view-show .sv-checklist-accordion .sv-checklist-title{font:400 clamp(23px,5.7vw,29px)/1.16 Georgia,serif!important;letter-spacing:-.35px!important}
-#app.sv-view-show .sv-checklist-accordion .sv-checklist-count{font-size:12px!important}
-</style><style id="sv-single-shared-notebook-20260924">
-/* One shared editable box, matching the existing premium ShowViva cards. */
-#app.sv-view-notebook .sv-one-notebook-intro{margin-bottom:23px!important}
-#app.sv-view-notebook .sv-one-notebook-card{padding:20px 18px 22px!important}
-#app.sv-view-notebook .sv-one-notebook-label{display:block;font:400 clamp(25px,6.3vw,31px)/1.2 Georgia,'Times New Roman',serif;color:#10283a;margin:0 0 15px}
-#app.sv-view-notebook .sv-one-notebook-card #sv-team-notes{min-height:220px!important;line-height:1.55!important;resize:vertical}
-#app.sv-view-notebook .sv-one-notebook-card .sv-notebook-actions{margin-top:15px}
-#app.sv-view-notebook .sv-one-notebook-card .sv-notebook-actions button{width:100%;border-radius:12px!important}
-#app.sv-view-notebook .sv-notebook-home{margin-top:17px!important}
-</style><style id="sv-capitol-one-notebook-20260924">
-#app.sv-view-notebook .sv-one-notebook-intro{margin-bottom:22px!important}
-#app.sv-view-notebook .sv-capitol-notes{padding:22px 18px!important}
-#app.sv-view-notebook .sv-capitol-notes h2{margin:0 0 20px;font:400 clamp(29px,7vw,36px)/1.16 Georgia,serif;color:#10283a}
-#app.sv-view-notebook #sv-note-form .field{display:block;margin:0 0 15px;font:600 14px/1.5 Arial,sans-serif;color:#293d50}
-#app.sv-view-notebook #sv-note-form select,#app.sv-view-notebook #sv-note-form textarea{display:block;box-sizing:border-box;width:100%;margin-top:8px;padding:12px 14px;border:1px solid #dedad2;border-radius:12px;background:#fff;color:#10283a;font:400 16px/1.5 Arial,sans-serif}
-#app.sv-view-notebook #sv-note-form select{min-height:49px}
-#app.sv-view-notebook #sv-note-form #sv-team-notes{min-height:108px!important;resize:vertical}
-#app.sv-view-notebook .sv-capitol-add{display:block;width:100%;min-height:49px;margin:8px 0 20px;background:#c9a460!important;color:#10283a!important;border-radius:12px}
-#app.sv-view-notebook .sv-capitol-feed{border-top:1px solid #e6dfd3;padding-top:17px}
-#app.sv-view-notebook .sv-capitol-feed .sv-note-item{padding:15px;margin-bottom:12px;border:1px solid #e6dfd3;border-radius:13px;background:white}
-#app.sv-view-notebook .sv-capitol-feed .sv-note-meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;padding-bottom:9px;border-bottom:1px solid #eee7da}
-#app.sv-view-notebook .sv-capitol-feed .sv-note-meta strong{font:700 14px Arial,sans-serif;color:#10283a}
-#app.sv-view-notebook .sv-capitol-feed .sv-note-meta time{font:500 12px Arial,sans-serif;color:#92703d}
-#app.sv-view-notebook .sv-capitol-feed .sv-note-item p{white-space:pre-wrap;overflow-wrap:anywhere;font:400 16px/1.5 Arial,sans-serif;color:#10283a}
-#app.sv-view-notebook .sv-note-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:12px}
-#app.sv-view-notebook .sv-note-actions button{background:#fffefa;border:1px solid #d8bd88;border-radius:10px;padding:8px 12px;color:#80643a;font:600 13px Arial,sans-serif}
-#app.sv-view-notebook .sv-note-edit-form textarea{box-sizing:border-box;width:100%;min-height:90px;margin-top:7px;padding:12px;border:1px solid #dedad2;border-radius:12px;font:400 16px Arial,sans-serif}
-</style><style id="sv-capitol-home-and-roster-20260924">
-/* All in-page Home controls match the existing gold action styling. */
-#app :is(button.back.sv-consistent-home,button.back[onclick="go('home')"],.sv-notebook-home){
- display:inline-flex!important;align-items:center!important;justify-content:center!important;
- background:linear-gradient(110deg,#e9cc95,#c7a664)!important;color:#10283a!important;
- border:1px solid #c7a664!important;border-radius:12px!important;box-shadow:none!important;
- min-height:46px!important;padding:11px 18px!important;font:700 15px/1.4 Arial,Helvetica,sans-serif!important;
- opacity:1!important;
-}
-#app .sv-team-member-row{display:flex;align-items:center;gap:10px;min-height:62px;padding:12px 15px;margin:8px 0;border:1px solid #e6dfd3;border-radius:14px;background:#fffefa;color:#10283a}
-#app .sv-team-member-row strong{flex:1;min-width:0;overflow-wrap:anywhere;font:400 21px Georgia,serif}
-#app .sv-team-member-row button{background:#fffefa;border:1px solid #d8bd88;border-radius:10px;padding:8px 11px;color:#80643a;font:600 13px Arial,sans-serif}
-#app .sv-team-member-form{display:block;margin:15px 0 28px;padding:17px;border:1px solid #e6dfd3;border-radius:16px;background:#fffefa}
-#app .sv-team-member-form .field{display:block;font:600 14px Arial,sans-serif}
-#app .sv-team-member-form input{display:block;width:100%;box-sizing:border-box;min-height:49px;padding:11px 13px;margin:9px 0 13px;border:1px solid #dedad2;border-radius:12px;font:400 16px Arial,sans-serif}
-#app .sv-team-member-form .goldbtn{background:#c9a460!important;color:#10283a!important;border-radius:12px}
-</style><style id="sv-top-show-checklist-shortcuts-20260924">
-/* Two compact navigation cards beside the show title on wide screens,
-   below show details on phones. The original checklists remain the sole editors. */
-#app.sv-view-show .show-top{display:flex!important;align-items:flex-start!important;justify-content:space-between!important;gap:16px!important;flex-wrap:wrap!important}
-#app.sv-view-show .show-top>div:first-child{flex:1 1 220px;min-width:0}
-#app.sv-view-show .sv-show-shortcuts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;flex:0 1 330px;min-width:260px}
-#app.sv-view-show .sv-show-shortcut{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;gap:11px;min-height:96px;min-width:0;padding:14px 13px;background:#fffefa;border:1.5px solid #c9a460;border-radius:14px;text-align:left;cursor:pointer;color:#10283a;box-shadow:none}
-#app.sv-view-show .sv-shortcut-title{font:400 19px/1.16 Georgia,'Times New Roman',serif;overflow-wrap:anywhere}
-#app.sv-view-show .sv-shortcut-foot{font:600 11px/1.4 Arial,Helvetica,sans-serif;color:#92703d}
-#app.sv-view-show .sv-shortcut-foot span{padding-left:3px;font-size:14px}
-#app.sv-view-show .sv-show-shortcut:focus-visible{outline:2px solid #95753f;outline-offset:3px}
-#app.sv-view-show #sv-show-planning,#app.sv-view-show #sv-show-packing{scroll-margin-top:16px}
-@media(max-width:650px){#app.sv-view-show .show-top{display:block!important}#app.sv-view-show .sv-show-shortcuts{margin-top:19px;min-width:0;width:100%;gap:10px}#app.sv-view-show .sv-show-shortcut{padding:13px 11px;min-height:90px}#app.sv-view-show .sv-shortcut-title{font-size:clamp(16px,4.5vw,20px)}#app.sv-view-show .sv-shortcut-foot{font-size:11px}}
-@media(max-width:350px){#app.sv-view-show .sv-show-shortcuts{gap:7px}#app.sv-view-show .sv-show-shortcut{padding:11px 9px}}
-</style><style id="sv-single-show-prep-20260924">
-#app.sv-view-show .show-top{display:block!important}
-#app.sv-view-show .sv-show-shortcuts{display:block!important;max-width:none!important;width:100%;margin-top:19px}
-#app.sv-view-show .sv-show-shortcut{width:100%;min-height:75px;gap:8px;padding:16px 18px}
-#app.sv-view-show .sv-shortcut-title{font-size:clamp(22px,5vw,29px)}
-#app.sv-view-show .sv-prep-in-place{display:block;margin:0 0 20px;border:1px solid #e6d8be;border-top:0;border-radius:0 0 14px 14px;background:#fffefa;padding:10px 18px 18px}
-#app.sv-view-show .sv-prep-in-place[hidden]{display:none!important}
-#app.sv-view-show .sv-prep-in-place .sv-checklist-content{padding:0!important}
-</style><style id="sv-bs-calendar-link-20260924">
-#app.sv-view-home .sv-bs-calendar-link{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:19px 0 22px;padding:16px 18px;border:1.5px solid #c9a460;border-radius:16px;background:#fffefa;color:#10283a;text-decoration:none;box-shadow:none}
-#app.sv-view-home .sv-bs-calendar-copy{display:flex;flex-direction:column;gap:5px;min-width:0}
-#app.sv-view-home .sv-bs-calendar-copy strong{font:400 clamp(20px,5vw,25px)/1.2 Georgia,'Times New Roman',serif;color:#10283a}
-#app.sv-view-home .sv-bs-calendar-copy small{font:400 13px/1.45 Arial,Helvetica,sans-serif;color:#647180}
-#app.sv-view-home .sv-bs-calendar-arrow{display:flex;align-items:center;justify-content:center;flex:0 0 40px;width:40px;height:40px;border-radius:12px;background:#c9a460;color:#10283a;font:700 23px Arial,sans-serif}
-#app.sv-view-home .sv-bs-calendar-link:focus-visible{outline:3px solid #c9a460;outline-offset:3px}
-</style><style id="sv-unified-team-roster-20260924">
-#app.sv-view-team .sv-roster-section{margin:0 0 34px}
-#app.sv-view-team .sv-roster-section .subhead{margin:0 0 14px;font:400 clamp(29px,7vw,36px)/1.17 Georgia,serif;color:#10283a}
-#app.sv-view-team .sv-roster-section .hint{margin:0 0 16px;font:400 14px/1.5 Arial,sans-serif;color:#647180}
-#app.sv-view-team .sv-roster-card{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 10px;padding:17px;border:1px solid #e6dfd3;border-radius:16px;background:#fffefa}
-#app.sv-view-team .sv-roster-info{display:flex;flex-direction:column;gap:7px;min-width:0;overflow-wrap:anywhere}
-#app.sv-view-team .sv-roster-info strong{font:400 clamp(21px,5.6vw,27px)/1.2 Georgia,serif;color:#10283a}
-#app.sv-view-team .sv-roster-info small{font:400 13px/1.4 Arial,sans-serif;color:#647180}
-#app.sv-view-team .sv-roster-actions{display:flex;flex-shrink:0;gap:7px}
-#app.sv-view-team .sv-roster-actions button{border:1px solid #d8bd88;border-radius:11px;background:#fffefa;color:#80643a;min-height:40px;padding:8px 11px;font:600 13px Arial,sans-serif}
-#app.sv-view-team .sv-roster-actions .sv-roster-delete{color:#804747;border-color:#e6d4d2}
-#app.sv-view-team .sv-roster-add{display:inline-flex;align-items:center;justify-content:center;min-height:51px;margin:9px 0 0;padding:12px 20px;background:linear-gradient(110deg,#e9cc95,#c7a664)!important;color:#10283a!important;border:1px solid #c7a664!important;border-radius:13px!important;font:700 16px Arial,sans-serif!important}
-#app.sv-view-member>.sv-member-details{background:#fffefa;border:1px solid #e6dfd3;border-radius:18px;padding:20px 18px 22px}
-#app.sv-view-member .sv-member-details .field{display:block;font:600 14px Arial,sans-serif;color:#293d50}
-#app.sv-view-member .sv-member-details input{display:block;box-sizing:border-box;width:100%;min-height:50px;margin:9px 0 18px;padding:12px 13px;border:1px solid #dedad2;border-radius:12px;font:400 16px Arial,sans-serif}
-#app.sv-view-member .sv-member-details .goldbtn{width:100%;min-height:51px;background:linear-gradient(110deg,#e9cc95,#c7a664)!important;color:#10283a!important;border-radius:13px}
-#app.sv-view-member .sv-branch-intro h1{font:400 clamp(34px,9vw,45px)/1.12 Georgia,serif;color:#10283a}
-@media(max-width:390px){#app.sv-view-team .sv-roster-card{flex-wrap:wrap}#app.sv-view-team .sv-roster-actions{width:100%;justify-content:flex-end}}
-</style><style id="sv-copilot-link-20260924">
-#app.sv-view-home .sv-copilot-link{display:flex;align-items:center;gap:10px;margin-top:18px;padding:13px 15px;border:1px solid #d7c29b;border-radius:11px;background:#f8f3e9;color:#192e47;text-decoration:none;font-size:14px;font-weight:700;letter-spacing:.1px}
-#app.sv-view-home .sv-copilot-link:focus-visible{outline:2px solid #95753f;outline-offset:3px}
-#app.sv-view-home .sv-copilot-sparkle{display:grid;place-items:center;width:28px;height:28px;flex:none;border-radius:50%;background:#192e47;color:#e7c17b;font-size:19px}
-#app.sv-view-home .sv-copilot-arrow{margin-left:auto;color:#987744;font-size:19px;font-weight:400}
-</style><style id="sv-home-luxury-calm-20260924">
-/* Home only: one primary show card, compact actions, quiet utilities. */
-.site-header.sv-header-home{padding-bottom:18px!important}
-.site-header.sv-header-home .header-message{margin-top:22px!important}
-.site-header.sv-header-home .header-message h1{font-size:clamp(31px,7.3vw,48px)!important;line-height:1.12!important}
-.site-header.sv-header-home .header-message p{font-size:clamp(17px,4.2vw,23px)!important;margin-top:11px!important}
-#app.sv-view-home{padding-top:22px}
-#app.sv-view-home>.eyebrow{margin-bottom:10px}
-#app.sv-view-home .next{margin:12px 0 16px!important;padding:22px 20px!important;border-radius:16px!important;background:#061f30!important;border:1.5px solid #c7a263!important;color:#fffdf8!important}
-#app.sv-view-home .next h2{font-size:clamp(30px,7vw,39px)!important;margin:8px 0 5px!important;color:#fffdf8!important}
-#app.sv-view-home .next p{margin:4px 0 16px!important;color:#e9dfce!important}
-#app.sv-view-home .next .goldbtn{width:100%!important;border-radius:10px!important;min-height:46px!important}
-#app.sv-view-home .home-actions{gap:12px!important;margin:0 0 10px!important}
-#app.sv-view-home .home-actions .tile{min-height:93px!important;padding:14px 16px!important;border:1px solid #b99a62!important;border-radius:13px!important;background:#fffefa!important;box-shadow:none!important}
-#app.sv-view-home .home-actions .tile .symbol{display:block!important;font-size:22px!important;line-height:1!important;color:#a78248!important}
-#app.sv-view-home .home-actions .tile strong{font-size:clamp(18px,4.6vw,22px)!important;margin:8px 0 0!important;color:#10283a!important}
-#app.sv-view-home .sv-copilot-link,#app.sv-view-home .sv-bs-calendar-link{display:flex!important;align-items:center!important;gap:10px!important;min-height:45px!important;margin:0!important;padding:12px 3px!important;border:0!important;border-bottom:1px solid #e7dcc8!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:#10283a!important;text-decoration:none!important}
-#app.sv-view-home .sv-copilot-link{font-size:15px!important;font-weight:600!important}
-#app.sv-view-home .sv-copilot-sparkle{display:inline!important;flex:none!important;width:auto!important;height:auto!important;border:0!important;border-radius:0!important;background:transparent!important;color:#a78248!important;font-size:22px!important}
-#app.sv-view-home .sv-copilot-arrow,#app.sv-view-home .sv-bs-calendar-arrow{display:block!important;flex:none!important;width:auto!important;height:auto!important;min-width:0!important;margin-left:auto!important;border:0!important;border-radius:0!important;background:transparent!important;color:#a78248!important;font:400 23px Arial,sans-serif!important}
-#app.sv-view-home .sv-bs-calendar-copy strong{font:600 15px/1.4 Arial,sans-serif!important;color:#10283a!important}
-#app.sv-view-home .sv-bs-calendar-copy small{display:none!important}
-#app.sv-view-home .sectionhead{margin-top:23px!important}
-@media(max-width:390px){#app.sv-view-home .home-actions .tile{padding:12px!important;min-height:89px!important}}
-</style><style id="sv-all-pages-gold-home-20260924">
-/* One consistent gold Home action across Add Show, My Team, shows and calendar. */
-#app.sv-view-add > button.back,
-#app.sv-view-team > button.back,
-#app.sv-view-horse > button.back,
-#app.sv-view-rider > button.back,
-#app.sv-view-show > button.back,
-#app.sv-view-plan > button.back,
-#app button.back.sv-consistent-home[onclick="go('home')"] {
-  display:inline-flex!important;align-items:center!important;justify-content:center!important;
-  width:auto!important;min-height:46px!important;margin:0 0 24px!important;
-  padding:11px 18px!important;background:linear-gradient(110deg,#e9cc95,#c7a664)!important;
-  border:1px solid #c7a664!important;border-radius:12px!important;
-  color:#10283a!important;box-shadow:none!important;
-  font:700 15px/1.4 Arial,Helvetica,sans-serif!important;text-decoration:none!important;
-}
-</style>
-<style id="sv-ios-date-input-fix">
-/* iPhone/PWA fix: keep Add Show date fields compact and aligned. */
-#app.sv-view-add input[type="date"],
-#app.sv-view-show input[type="date"]{
-  display:block;
-  width:100%;
-  max-width:100%;
-  height:50px !important;
-  min-height:50px !important;
-  padding:10px 13px !important;
-  line-height:1.2 !important;
-  border:1px solid #d9dfdf;
-  border-radius:12px;
-  background:#fff;
-  color:#10283a;
-  font-size:16px !important;
-  box-sizing:border-box;
-  -webkit-appearance:auto;
-  appearance:auto;
-}
-#app.sv-view-add input[type="date"]::-webkit-date-and-time-value,
-#app.sv-view-show input[type="date"]::-webkit-date-and-time-value{
-  text-align:left;
-  min-height:1.2em;
-}
-</style>
-
-
-<style id="sv-add-show-simple-20260928">
-/* Add Show: compact iPhone date controls and a quiet automatic-planner note. */
-#app.sv-view-add form>.field input[type="date"]{
-  -webkit-appearance:none !important;
-  appearance:none !important;
-  display:block !important;
-  width:100% !important;
-  height:48px !important;
-  min-height:48px !important;
-  max-height:48px !important;
-  padding:11px 13px !important;
-  margin-top:8px !important;
-  border:1px solid #d9dfdf !important;
-  border-radius:12px !important;
-  background:#fff !important;
-  color:#10283a !important;
-  font:400 16px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif !important;
-  box-sizing:border-box !important;
-}
-#app.sv-view-add form>.field input[type="date"]::-webkit-date-and-time-value{
-  text-align:left !important;
-  min-height:20px !important;
-  line-height:20px !important;
-}
-#app.sv-view-add .sv-auto-planner-note{
-  margin:18px 0 4px;
-  padding:0;
-  border:0;
-  background:transparent;
-  color:#687686;
-  font:400 13px/1.5 Arial,Helvetica,sans-serif;
-}
-#app.sv-view-add .sv-auto-planner-note strong{
-  color:#10283a;
-  font-size:14px;
-  font-weight:700;
-}
-</style>
-
-
-<style id="sv-add-show-final-polish-20260928">
-/* Final Add Show polish: compact native iOS dates */
-#app.sv-view-add input[type="date"],
-#app.sv-view-add input[name="start"],
-#app.sv-view-add input[name="end"]{
-  -webkit-appearance:none !important;
-  appearance:none !important;
-  width:100% !important;
-  height:54px !important;
-  min-height:54px !important;
-  max-height:54px !important;
-  padding:0 16px !important;
-  border-radius:14px !important;
-  box-sizing:border-box !important;
-  line-height:54px !important;
-}
-#app.sv-view-add input[type="date"]::-webkit-date-and-time-value{
-  min-height:0 !important;
-  height:auto !important;
-  line-height:normal !important;
-  text-align:left !important;
-}
-#app.sv-view-add .sv-show-link[hidden]{display:none !important;}
-
-/* Super-simple UX pass: low cognitive load, one clear action at a time */
-.sv-simple-intro .sv-eyebrow{display:none}
-.sv-add-show-minimal{gap:18px}
-.sv-date-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.sv-link-later{margin-top:2px;border:none!important;background:transparent!important;box-shadow:none!important}
-.sv-link-later summary{padding:14px 2px!important;font-size:16px!important;font-weight:700!important}
-.sv-link-later .sv-secondary-fold-content{padding:12px 0 0!important}
-.sv-show-top-simple{margin-bottom:18px}
-.sv-show-top-simple .intro{margin-bottom:0}
-.sv-entries-simple{padding:24px 20px}
-.sv-section-title-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
-.sv-section-title-row h2{margin:0}
-.sv-empty-friendly{margin:2px 0 18px;color:#687486;font-size:18px}
-.sv-simple-entry{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 0;border-bottom:1px solid rgba(160,128,70,.22)}
-.sv-simple-entry:first-of-type{border-top:1px solid rgba(160,128,70,.22)}
-.sv-simple-entry>div{display:flex;flex-direction:column;gap:3px;min-width:0}
-.sv-simple-entry strong{font-size:18px;color:#24364b}
-.sv-simple-entry small{font-size:15px;color:#6d7785}
-.sv-entry-confirm{margin-top:18px!important;padding:14px 0 0!important;border:none!important;background:transparent!important}
-.sv-entry-confirm span{font-size:17px!important}
-.sv-simple-fold summary{min-height:62px}
-.sv-checklist-foot{margin-left:auto;color:#6d7785;font-size:14px;font-weight:600}
-.sv-delete-inside{margin:18px 0 0!important;width:100%}
-.sv-bottom-save{display:none!important}
-.sv-auto-planner-note{display:none!important}
-@media(max-width:560px){.sv-date-pair{grid-template-columns:1fr}.sv-entries-simple{padding:22px 18px}.sv-entry-editor-body{padding-left:0!important;padding-right:0!important}}
-</style>
-
-
-<style id="sv-date-center-final-20260928">
-/* iPhone: keep date value visually centred inside the field. */
-#app.sv-view-add input[type="date"],
-#app.sv-view-add input[name="start"],
-#app.sv-view-add input[name="end"]{
-  text-align:center !important;
-  padding:0 16px !important;
-}
-#app.sv-view-add input[type="date"]::-webkit-date-and-time-value,
-#app.sv-view-add input[name="start"]::-webkit-date-and-time-value,
-#app.sv-view-add input[name="end"]::-webkit-date-and-time-value{
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  width:100% !important;
-  height:54px !important;
-  min-height:54px !important;
-  line-height:54px !important;
-  text-align:center !important;
-}
-</style>
-
-<style id="showviva-planner-hero-20260928">
-/* Show Day Planner is the hero product: surface its status prominently on Home. */
-#app.sv-view-home .sv-planner-hero{margin:18px 0 24px;padding:22px 20px;border:2px solid #dda94e;border-radius:20px;background:#061f30;color:#fffdf8;box-shadow:0 8px 28px rgba(6,31,48,.08)}
-#app.sv-view-home .sv-planner-hero .eyebrow{color:#f0c36c;margin-bottom:8px}
-#app.sv-view-home .sv-planner-hero h2{margin:0;font:400 clamp(27px,7vw,36px)/1.15 Georgia,serif;color:#fffdf8}
-#app.sv-view-home .sv-planner-hero .sv-planner-show{margin:8px 0 0;color:#eee6d8;font-size:15px}
-#app.sv-view-home .sv-planner-status{margin:22px 0 18px;padding-top:18px;border-top:1px solid rgba(221,169,78,.32)}
-#app.sv-view-home .sv-planner-status strong{display:block;font-size:18px;color:#fffdf8;margin-bottom:6px}
-#app.sv-view-home .sv-planner-status p{margin:0;color:#dfe3e5;font-size:14px;line-height:1.5}
-#app.sv-view-home .sv-planner-hero .goldbtn{display:block;width:100%;text-align:center;text-decoration:none;margin-top:18px}
-#app.sv-view-home .sv-planner-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
-#app.sv-view-home .sv-planner-menu{position:relative;margin:-8px -6px 0 0}
-#app.sv-view-home .sv-planner-menu>summary{list-style:none;width:44px;height:44px;display:grid;place-items:center;border:0;border-radius:50%;color:#f0c36c;font:700 20px/1 Arial,sans-serif;letter-spacing:2px;cursor:pointer;-webkit-tap-highlight-color:transparent}
-#app.sv-view-home .sv-planner-menu>summary::-webkit-details-marker{display:none}
-#app.sv-view-home .sv-planner-menu[open]>summary{background:rgba(255,255,255,.08)}
-#app.sv-view-home .sv-planner-menu-pop{position:absolute;right:0;top:48px;z-index:20;min-width:170px;padding:6px;background:#fffdf8;border:1px solid #dbc79f;border-radius:14px;box-shadow:0 12px 30px rgba(6,31,48,.22)}
-#app.sv-view-home .sv-planner-menu-pop button{display:block;width:100%;border:0;background:transparent;color:#10283a;text-align:left;padding:12px 13px;border-radius:9px;font:600 14px Arial,sans-serif}
-#app.sv-view-home .sv-planner-menu-pop button:active{background:#f4ecdf}
-#app.sv-view-home .sv-planner-menu-pop button.danger{color:#8a4e48}
-#app.sv-view-home .sv-planner-status{margin:20px 0 4px;padding-top:18px;border-top:1px solid rgba(221,169,78,.35)}
-#app.sv-view-home .sv-planner-status strong{display:block;font:700 18px/1.35 Arial,sans-serif;color:#fffdf8}
-#app.sv-view-home .sv-planner-status p{margin:7px 0 0!important;color:#e9dfce!important;font-size:14px;line-height:1.45}
-#app.sv-view-home .next{display:none}
-#app.sv-view-show .sv-connect-copy{margin:4px 0 18px}
-#app.sv-view-show .sv-connect-copy strong{display:block;font-size:18px;margin-bottom:6px}
-#app.sv-view-show .sv-create-planner-action[hidden],#app.sv-view-show .sv-show-link[hidden]{display:none!important}
-</style>
-
-<style id="showviva-save-toast-style">
-  #showviva-save-toast{
-    position:fixed;
-    left:50%;
-    bottom:28px;
-    transform:translate(-50%,18px);
-    background:#0b2235;
-    color:#fff;
-    border:1px solid rgba(214,176,94,.55);
-    border-radius:18px;
-    padding:14px 22px;
-    font:700 17px/1.2 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    box-shadow:0 10px 30px rgba(0,0,0,.18);
-    opacity:0;
-    pointer-events:none;
-    z-index:99999;
-    transition:opacity .18s ease, transform .18s ease;
-    white-space:nowrap;
-  }
-  #showviva-save-toast.show{
-    opacity:1;
-    transform:translate(-50%,0);
-  }
-</style>
-
-
-<style id="sv-delete-bottom-style">
-  .sv-delete-bottom{
-    margin:28px 0 110px;
-    text-align:center;
-  }
-  .sv-delete-bottom .delete-show{
-    width:100%;
-    min-height:54px;
-  }
-</style>
-
-
-<style id="sv-notebook-unread-style">
-.notebook-nav{position:relative}
-.sv-notebook-badge{position:absolute;top:-7px;right:-7px;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:#e5b957;color:#10283a;border:2px solid #10283a;display:none;align-items:center;justify-content:center;font:800 11px/1 Arial,sans-serif;box-sizing:border-box}
-.sv-notebook-badge.show{display:flex}
-</style>
-</head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions" aria-label="Account"><button type="button" class="calendar-nav" aria-label="Open calendar" title="Calendar" onclick="mode='calendar';go('plan')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></button><button type="button" class="notebook-nav" aria-label="Open shared notebook" title="Shared notebook" onclick="go('notebook')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v18M10 8h6M10 12h6M10 16h4"/></svg><span id="sv-notebook-badge" class="sv-notebook-badge" aria-hidden="true"></span></button></nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><script>function signOut(){alert('Sign out will be connected when this prototype is integrated with your live account.');}
-const KEY='showviva-demo-v1';
-const initial={shows:[],horses:[],riders:[],plannerCreations:[],lastSubmittedShowId:null,teamNotes:'',teamNotebookNotes:[],teamMembers:[]};
-let data=structuredClone(initial),editingHorse=null,editingRider=null,activeTool=null;
-let view='home',mode='calendar',month=new Date(),selected=null,editingTeamMember=null;
-const svChecklistOpen={prep:false,notes:false,details:false};
-const app=document.getElementById('app');
-const TEAM_API='https://yumqgvabwmekqvqwxldt.supabase.co/functions/v1/sv-team-home';
-const PLANNER_API='https://yumqgvabwmekqvqwxldt.supabase.co/functions/v1/request-show-day-planner';
-const TEAM_TOKEN=(new URLSearchParams(location.hash.substring(1))).get('team')||'';
-const SV_NOTE_SEEN_KEY='showviva-notes-seen-'+TEAM_TOKEN;
-function svSeenNoteIds(){try{return new Set(JSON.parse(localStorage.getItem(SV_NOTE_SEEN_KEY)||'[]'))}catch{return new Set()}}
-function svUnreadNotes(){const seen=svSeenNoteIds();return (Array.isArray(data.teamNotebookNotes)?data.teamNotebookNotes:[]).filter(n=>n?.id&&!seen.has(String(n.id))).length}
-function svUpdateNotebookBadge(){const b=document.getElementById('sv-notebook-badge');if(!b)return;const n=teamReady?svUnreadNotes():0;b.textContent=n>99?'99+':String(n);b.classList.toggle('show',n>0);b.setAttribute('aria-hidden',n>0?'false':'true');const btn=b.closest('.notebook-nav');if(btn)btn.setAttribute('aria-label',n?`Open shared notebook, ${n} unread ${n===1?'note':'notes'}`:'Open shared notebook')}
-function svMarkNotesSeen(){try{const ids=(Array.isArray(data.teamNotebookNotes)?data.teamNotebookNotes:[]).map(n=>String(n.id)).filter(Boolean);localStorage.setItem(SV_NOTE_SEEN_KEY,JSON.stringify(ids))}catch{}svUpdateNotebookBadge()}
-
-let teamRevision=0,teamReady=false,teamError=false,teamPending=Promise.resolve();
-const teamApi=async(method,payload)=>{
-  const result=await fetch(TEAM_API,{method,headers:{'Content-Type':'application/json','x-team-token':TEAM_TOKEN},body:payload?JSON.stringify(payload):undefined,cache:'no-store'});
-  let response={};try{response=await result.json()}catch{}
-  if(!result.ok)throw Object.assign(new Error(response.error||'Connection failed'),{status:result.status});
-  return response;
-};
-const save=()=>{
- if(!teamReady||teamError)return;
- const snapshot=structuredClone(data);
- teamPending=teamPending.then(async()=>{
-  const response=await teamApi('PUT',{revision:teamRevision,state:snapshot});
-  teamRevision=response.revision;
- }).catch(e=>{
-   teamError=true;
-   alert(e.status===409?'Someone updated the team on another phone. Your change was not saved. Please reload to see the latest information.':'This change was not saved. Check your connection, then reload before editing again.');
- });
-};
-const startTeam=async()=>{
- app.innerHTML='<div class="empty">Connecting to your shared team…</div>';
- if(!TEAM_TOKEN){app.innerHTML='<div class="empty"><h2>Private team link required</h2><p>Open the complete private link supplied to your team. This page cannot be accessed without it.</p></div>';return;}
- try{
-  const response=await teamApi('GET');
-  data=response.state;teamRevision=response.revision;
-  if(!data||!Array.isArray(data.shows)||!Array.isArray(data.horses)||!Array.isArray(data.riders))throw Error('Invalid team data');
-  data.shows.forEach(s=>{if(!s.status)s.status='draft'});
-  if(!Array.isArray(data.plannerCreations))data.plannerCreations=[];
-  if(!('lastSubmittedShowId' in data))data.lastSubmittedShowId=null;
-  if(typeof data.teamNotes!=='string')data.teamNotes='';
-  if(!Array.isArray(data.teamMembers))data.teamMembers=[];
-  // Preserve the original shared text as an unattributed card; no invented author or time.
-  if(!Array.isArray(data.teamNotebookNotes))data.teamNotebookNotes=data.teamNotes.trim()?[{id:'legacy-team-notes',text:data.teamNotes,author:null,createdAt:null}]:[];
-  teamReady=true;render();
- }catch(e){app.innerHTML='<div class="empty"><h2>Could not open your team</h2><p>The link may be incomplete, revoked, or the connection unavailable. Check the private link and try again.</p></div>';}
-};
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const fmt=s=>new Date(s+'T12:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short'});const dates=s=>fmt(s.start)+(s.end&&s.end!==s.start?' – '+fmt(s.end):'');const riderName=r=>typeof r==='string'?r:r.name;const horseName=h=>typeof h==='string'?h:(h.stableName||h.registeredName);const registeredName=h=>typeof h==='string'?h:h.registeredName;const todayISO=()=>new Date().toLocaleDateString('en-CA');const isPast=s=>s.end<todayISO();const ordered=()=>[...data.shows].sort((a,b)=>a.start.localeCompare(b.start));const creationMonth=()=>todayISO().slice(0,7);const monthlyCount=()=>data.plannerCreations.filter(m=>m===creationMonth()).length;const statusLabel=s=>isPast(s)?'Past show':s.entriesSubmitted?'Entries submitted':(s.horses||[]).some(h=>(s.plannedClasses?.[h]||[]).length)?'Planning entries':'Show added';
-function plannerHomeState(s){if(!s)return null;const st=s.showDayPlanner?.status;if(st==='ready')return{title:'Planner ready',copy:'',cta:'Open planner',ready:true};if(!s.entriesSubmitted)return{title:'Planner not set up',copy:'Confirm your entries first so ShowViva knows which horses to find.',cta:'Confirm entries',needsEntries:true};if(st==='building'||st==='creating')return{title:'Creating planner…',copy:'',cta:'View show'};if(s.entrySystem&&s.showLink)return{title:'Waiting for start list',copy:'We’ll create your planner when it’s published.',cta:'View show'};if(s.entrySystem)return{title:'Add show link',copy:'',cta:'Finish setup'};return{title:'Planner not set up',copy:'',cta:'Get planner'};}
-function openPlannerSetup(id){openShow(id);setTimeout(()=>{const d=document.querySelector('.sv-manage-show');if(d){d.hidden=false;d.open=true;d.scrollIntoView({behavior:'smooth',block:'start'});const system=d.querySelector('select[name="entrySystem"]');if(system)system.focus({preventScroll:true});}},60)};function editShowFromHome(id){openShow(id);setTimeout(()=>{const d=document.querySelector('.sv-manage-show');if(d){d.hidden=false;d.open=true;d.scrollIntoView({behavior:'smooth',block:'start'});}},60)}function deleteShowFromHome(id){selected=Number(id);deleteShow()}const showItem=s=>`<button class="item" onclick="openShow(${s.id})"><span><strong>${esc(s.name)}</strong><small>${dates(s)} · ${statusLabel(s)}</small></span><span class="arrow">›</span></button>`;const back=()=>`<button class="back sv-consistent-home" onclick="go('home')">← Home</button>`;function go(v){view=v;if(v==='notebook')svMarkNotesSeen();render();scrollTo(0,0)}function openShowChecklist(){
- const section=document.getElementById('sv-show-prep');
- if(!section)return;
- section.hidden=!section.hidden;
- svChecklistOpen.prep=!section.hidden;
-}
-
-async function checkPlannerNow(btn){const s=data.shows.find(x=>x.id===selected);if(!s)return;const status=document.getElementById('sv-planner-status');btn.disabled=true;if(status)status.textContent=' Checking published start lists…';try{const r=await fetch(PLANNER_API,{method:'POST',headers:{'Content-Type':'application/json','x-team-token':TEAM_TOKEN},body:JSON.stringify({show_id:s.id}),cache:'no-store'});const j=await r.json();if(!r.ok)throw new Error(j.error||'Could not check start lists');const refreshed=await teamApi('GET');data=refreshed.state;teamRevision=refreshed.revision;render();}catch(err){btn.disabled=false;if(status)status.textContent=' '+(err?.message||'Could not check right now.');}}
-function openShow(id){activeTool=null;selected=Number(id);go('show')}function render(){app.className='sv-view-'+view;svUpdateNotebookBadge();document.querySelector('.site-header')?.classList.toggle('sv-header-home',view==='home');const homeNav=document.querySelector('.home-nav');if(homeNav)homeNav.hidden=(view==='home');if(view==='confirmed'){app.innerHTML=`<div class="sv-saved-overlay" role="dialog" aria-modal="true" aria-labelledby="sv-saved-title"><div class="sv-saved-dialog"><div class="sv-eyebrow">YOUR SHOWVIVA</div><h1 id="sv-saved-title">Show saved</h1><p>Your show has been added to your ShowViva calendar.</p><button class="goldbtn" onclick="go('home')">Home</button></div></div>`;return}if(view==='home'){const shows=ordered().filter(s=>!isPast(s)),next=shows[0],planner=plannerHomeState(next);app.innerHTML=`<div class="eyebrow">Team Capitol</div>${next&&planner?`<section class="sv-planner-hero" aria-label="Show Day Planner status"><div class="sv-planner-head"><div class="eyebrow">NEXT UP</div><details class="sv-planner-menu"><summary aria-label="Show options" title="Show options">•••</summary><div class="sv-planner-menu-pop"><button type="button" onclick="editShowFromHome(${next.id})">Edit show</button><button type="button" onclick="openShow(${next.id})">View entries</button><button type="button" class="danger" onclick="deleteShowFromHome(${next.id})">Delete show</button></div></details></div><h2>${esc(next.name)}</h2><p class="sv-planner-show">${dates(next)}</p><div class="sv-planner-status"><strong>${esc(planner.title)}</strong>${planner.copy?`<p>${esc(planner.copy)}</p>`:''}</div>${planner.ready?`<a class="goldbtn" href="planner.html?show=${encodeURIComponent(next.id)}#team=${encodeURIComponent(TEAM_TOKEN)}">Open planner</a>`:`<button class="goldbtn" onclick="${planner.cta==='View show'||planner.needsEntries?`openShow(${next.id})`:`openPlannerSetup(${next.id})`}">${esc(planner.cta)}</button>`}</section>`:''}<div class="tiles home-actions"><button class="tile" onclick="go('add')"><span class="symbol">+</span><strong>Add Show</strong></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong></button></div><a class="sv-copilot-link" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" aria-label="Ask your Show Co-Pilot — opens ChatGPT in a new tab"><span class="sv-copilot-sparkle" aria-hidden="true">✦</span><span>Ask your Show Co-Pilot</span><span class="sv-copilot-arrow" aria-hidden="true">→</span></a><a class="sv-bs-calendar-link" href="https://www.britishshowjumping.co.uk/show-calendar.cfm" target="_blank" rel="noopener noreferrer" aria-label="Browse the British Showjumping show calendar (opens in a new tab)"><span class="sv-bs-calendar-copy"><strong>Find your next show</strong><small>Browse the British Showjumping show calendar</small></span><span class="sv-bs-calendar-arrow" aria-hidden="true">→</span></a><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div>${shows.filter(s=>s.id!==next?.id).slice(0,5).map(showItem).join('')||'<p class="hint">No other upcoming shows.</p>'}`}
-else if(view==='notebook'){
-svMarkNotesSeen();
-const notes=capitolNotes().slice().sort((a,b)=>(b.createdAt||'').localeCompare(a.createdAt||''));
-const notesHtml=notes.map(n=>{const i=capitolNotes().findIndex(x=>x.id===n.id);return `<article class="sv-note-item"><div class="sv-note-meta"><strong>${esc(n.author||'Earlier team note')}</strong>${n.createdAt?`<time datetime="${esc(n.createdAt)}">${esc(new Date(n.createdAt).toLocaleString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}))}</time>`:''}</div>${svEditingNoteIndex===i?`<form class="sv-note-edit-form" onsubmit="saveCapitolEdit(event,${i})"><label class="field">Edit note<textarea name="note" required maxlength="5000">${esc(n.text)}</textarea></label><div class="sv-note-actions"><button type="submit" class="sv-note-edit">Save changes</button><button type="button" class="sv-note-remove" onclick="svEditingNoteIndex=null;render()">Cancel</button></div></form>`:`<p>${esc(n.text)}</p>${n.editedAt?`<small class="sv-note-edited">Edited ${esc(new Date(n.editedAt).toLocaleString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}))}</small>`:''}<div class="sv-note-actions"><button type="button" class="sv-note-edit" onclick="svEditingNoteIndex=${i};render()">Edit</button><button type="button" class="sv-note-remove" onclick="deleteCapitolNote(${i})">Delete</button></div>`}</article>`}).join('');
-app.innerHTML=`${back()}<div class="sv-branch-intro sv-one-notebook-intro"><div class="sv-eyebrow">TEAM CAPITOL</div><h1>Shared Notes</h1><p class="intro">Add a note. Everyone on the team sees the same list.</p></div><section class="sv-notebook-card sv-capitol-notes"><h2>Add note</h2><form id="sv-note-form" onsubmit="addCapitolNote(event)"><label class="field">Your name<select name="author" required><option value="">Select your name</option>${capitolAuthorOptions()}</select></label><label class="field">Note<textarea name="note" id="sv-team-notes" required maxlength="5000" placeholder="Write a note for the team…"></textarea></label><button type="submit" class="goldbtn sv-capitol-add">Add note</button><span id="sv-team-note-status" role="status" aria-live="polite"></span></form><div class="sv-capitol-feed" aria-label="Shared team notes">${notesHtml||'<p class="sv-notebook-help">No notes yet.</p>'}</div></section>`}
+</style></head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions" aria-label="Account"><button type="button" class="home-nav" aria-label="Go to Home" onclick="go('home')" hidden><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 9-8 9 8"/><path d="M5 10v11h14V10M9 21v-7h6v7"/></svg>Home</button><button type="button" class="calendar-nav" aria-label="Open calendar" title="Calendar" onclick="mode='calendar';go('plan')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></button><button type="button" onclick="signOut()">Sign out</button></nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><script>function signOut(){alert('Sign out will be connected when this prototype is integrated with your live account.');}
+const KEY='showviva-demo-v1';const initial={shows:[{id:1,name:'Wales and West',start:'2026-10-16',end:'2026-10-18',horses:[],riders:[]},{id:2,name:'Suffolk Equestrian',start:'2026-11-11',end:'2026-11-12',horses:[],riders:[]},{id:3,name:'Arena UK',start:'2026-11-25',end:'2026-11-30',horses:[],riders:[]}],horses:[],riders:[]};let data;try{data=JSON.parse(localStorage.getItem(KEY))||initial}catch{data=initial}if(!data||!Array.isArray(data.shows)||!Array.isArray(data.horses)||!Array.isArray(data.riders))data=initial;data.shows.forEach(s=>{if(!s.status)s.status='draft'});if(!Array.isArray(data.plannerCreations))data.plannerCreations=[];if(!('lastSubmittedShowId' in data))data.lastSubmittedShowId=null;let editingHorse=null;let editingRider=null;let activeTool=null;let view='home',mode='calendar',month=new Date(2026,9,1),selected=null;const app=document.getElementById('app');const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){/* Local files may block storage. */}};const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const fmt=s=>new Date(s+'T12:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short'});const dates=s=>fmt(s.start)+(s.end&&s.end!==s.start?' – '+fmt(s.end):'');const riderName=r=>typeof r==='string'?r:r.name;const horseName=h=>typeof h==='string'?h:(h.stableName||h.registeredName);const registeredName=h=>typeof h==='string'?h:h.registeredName;const todayISO=()=>new Date().toLocaleDateString('en-CA');const isPast=s=>s.end<todayISO();const ordered=()=>[...data.shows].sort((a,b)=>a.start.localeCompare(b.start));const creationMonth=()=>todayISO().slice(0,7);const monthlyCount=()=>data.plannerCreations.filter(m=>m===creationMonth()).length;const statusLabel=s=>isPast(s)?'Past show':s.status==='ready'?'Planner ready':s.status==='preparing'?'Planner being prepared':s.status==='submitted'?'Planner requested':'Show details';const showItem=s=>`<button class="item" onclick="openShow(${s.id})"><span><strong>${esc(s.name)}</strong><small>${dates(s)} · ${statusLabel(s)}</small></span><span class="arrow">›</span></button>`;const back=()=>`<button class="back" onclick="go('home')">← Home</button>`;function go(v){view=v;render();scrollTo(0,0)}function openShow(id){activeTool=null;selected=Number(id);go('show')}function render(){app.className='sv-view-'+view;const homeNav=document.querySelector('.home-nav');if(homeNav)homeNav.hidden=(view==='home');if(view==='confirmed'){const s=data.shows.find(x=>x.id===selected);app.innerHTML=`<div class="confirmation"><div class="eyebrow">Your ShowViva</div><h1>Planner requested ✓</h1><p class="intro">${s?esc(s.name):'Your show'} is saved. You can track its planner status from Home and My Shows.</p><button class="goldbtn" onclick="go('home')">Go to Home →</button><button class="smallbtn" onclick="go('show')">View request →</button></div>`;return}if(view==='home'){const shows=ordered().filter(s=>!isPast(s)),next=shows[0];app.innerHTML=`<div class="eyebrow">Your ShowViva</div><h1 class="home-title">Everything for your next show.</h1><div class="tiles home-actions"><button class="tile" onclick="go('add')"><span class="symbol">＋</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders →</small></button></div>${next?`<section class="next" aria-label="Up next"><div class="eyebrow">★ Up next</div><h2>${esc(next.name)}</h2><p>${dates(next)} · ${statusLabel(next)}</p>${next.status==='submitted'?'<p class="next-support">Request received. Your planner will appear here when ready.</p>':next.status==='preparing'?'<p class="next-support">Your planner is being prepared. Check here for its availability.</p>':''}<button class="goldbtn" onclick="${next.status==='ready'&&Number(next.id)===1?'window.location.href=&quot;planner.html&quot;':'openShow('+next.id+')'}">${next.status==='ready'&&Number(next.id)===1?'Open Planner →':next.status==='draft'?'Finish show details →':next.status==='submitted'?'Track planner request →':'View show →'}</button></section>`:''}<div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div>${shows.filter(s=>s.id!==next?.id).slice(0,5).map(showItem).join('')||'<p class="hint">No other upcoming shows.</p>'}`}
 else if(view==='past'){app.innerHTML=`${back()}<h1>Past Shows</h1><p class="intro">Your previous shows, all in one place.</p>${ordered().filter(isPast).reverse().map(showItem).join('')||'<p class="empty">No past shows yet.</p>'}`}
-else if(view==='plan'){app.innerHTML=`${back()}<div class="sv-branch-intro"><h1>My shows</h1><p class="intro">Tap a show to open it.</p></div><button class="goldbtn" onclick="go('add')">+ Add Show</button>${calendar()}<h2 class="calendar-section-title">Upcoming</h2>${ordered().filter(s=>!isPast(s)).map(showItem).join('')||'<p class="empty">No upcoming shows.</p>'}<details class="sv-secondary-fold sv-plan-past"><summary>Past shows <span class="sv-team-count">${ordered().filter(isPast).length}</span></summary><div class="sv-secondary-fold-content">${ordered().filter(isPast).reverse().map(showItem).join('')||'<p class="empty">No past shows yet.</p>'}</div></details>`}
-else if(view==='team'){app.innerHTML=`${back()}<div class="sv-branch-intro"><h1>My team</h1><p class="intro">Your horses and people.</p></div><details class="sv-roster-section sv-roster-fold"><summary><h2 class="subhead">Horses</h2><span class="sv-team-count">${data.horses.length}</span><span class="sv-roster-chevron" aria-hidden="true"></span></summary><div class="sv-roster-fold-content">${data.horses.map((h,i)=>`<div class="sv-roster-card"><div class="sv-roster-info"><strong>${esc(horseName(h))}</strong><small>${esc(registeredName(h))}</small></div><div class="sv-roster-actions"><button type="button" onclick="editingHorse=${i};go('horse')">Edit</button></div></div>`).join('')||'<p class="hint">No horses yet.</p>'}<button type="button" class="goldbtn sv-roster-add" onclick="editingHorse=null;go('horse')">+ Add Horse</button></div></details><details class="sv-roster-section sv-roster-fold"><summary><h2 class="subhead">Riders</h2><span class="sv-team-count">${data.riders.length}</span><span class="sv-roster-chevron" aria-hidden="true"></span></summary><div class="sv-roster-fold-content">${data.riders.map((r,i)=>`<div class="sv-roster-card"><div class="sv-roster-info"><strong>${esc(riderName(r))}</strong></div><div class="sv-roster-actions"><button type="button" onclick="editingRider=${i};go('rider')">Edit</button></div></div>`).join('')||'<p class="hint">No riders yet.</p>'}<button type="button" class="goldbtn sv-roster-add" onclick="editingRider=null;go('rider')">+ Add Rider</button></div></details><details class="sv-roster-section sv-roster-fold"><summary><h2 class="subhead">Other team members</h2><span class="sv-team-count">${(data.teamMembers||[]).length}</span><span class="sv-roster-chevron" aria-hidden="true"></span></summary><div class="sv-roster-fold-content">${(data.teamMembers||[]).map((name,i)=>`<div class="sv-roster-card"><div class="sv-roster-info"><strong>${esc(name)}</strong></div><div class="sv-roster-actions"><button type="button" onclick="editingTeamMember=${i};go('member')">Edit</button></div></div>`).join('')||'<p class="hint">No other team members yet.</p>'}<button type="button" class="goldbtn sv-roster-add" onclick="editingTeamMember=null;go('member')">+ Add Team Member</button></div></details>`}
-else if(view==='member'){const name=editingTeamMember===null?'':data.teamMembers?.[editingTeamMember]||'';app.innerHTML=`<button class="back sv-consistent-home" onclick="go('team')">← My Team</button><div class="sv-branch-intro"><div class="sv-eyebrow">TEAM CAPITOL · TEAM MEMBER</div><h1>${editingTeamMember===null?'Add Team Member':'Edit Team Member'}</h1></div><form class="sv-member-details" onsubmit="saveTeamMember(event)"><label class="field">Team member name<input name="name" maxlength="80" required value="${esc(name)}" placeholder="Name"></label><button type="submit" class="goldbtn">Save Team Member →</button></form>${editingTeamMember!==null?`<button type="button" class="sv-delete-team" onclick="deleteTeamMember(${editingTeamMember})">Delete team member</button>`:''}`}
-else if(view==='rider'){const r=editingRider===null?{}:data.riders[editingRider]||{},o=typeof r==='string'?{name:r}:r;app.innerHTML=`<button class="back" onclick="go('team')">← My Team</button><div class="sv-branch-intro"><div class="sv-eyebrow">RIDER</div><h1>${editingRider===null?'Add Rider':'Edit Rider'}</h1></div><form class="sv-simple-form" onsubmit="saveRider(event)"><label class="field">Rider name<input name="name" required maxlength="80" value="${esc(o.name||'')}"></label><details class="sv-secondary-fold" ${o.bs||o.fei?'open':''}><summary>Registration details <span class="sv-team-count">Optional</span></summary><div class="sv-secondary-fold-content"><label class="field">British Showjumping number<input name="bs" maxlength="60" value="${esc(o.bs||'')}"></label><label class="field">FEI ID<input name="fei" maxlength="60" value="${esc(o.fei||'')}"></label></div></details><button class="goldbtn sv-inline-save">Save Rider →</button></form>${editingRider!==null?`<button type="button" class="sv-delete-team" onclick="deleteRider()">Delete rider</button>`:``}`}
-else if(view==='horse'){const h=editingHorse===null?{}:data.horses[editingHorse]||{},obj=typeof h==='string'?{registeredName:h}:h;const field=(label,name,type='text',required=false)=>`<label class="field">${label}<input name="${name}" type="${type}" ${required?'required':''} value="${esc(obj[name]||'')}" ${type==='text'?'maxlength="100"':''}></label>`;app.innerHTML=`<button class="back" onclick="go('team')">← My Team</button><div class="sv-branch-intro"><div class="sv-eyebrow">HORSE</div><h1>${editingHorse===null?'Add Horse':'Edit Horse'}</h1><p class="intro">Registered name is the only detail ShowViva needs to get started.</p></div><form class="sv-simple-form" onsubmit="saveHorse(event)">${field('Registered name','registeredName','text',true)}${field('Stable name','stableName')}<details class="sv-secondary-fold" ${obj.ueln||obj.vaccination||obj.fei||obj.bs?'open':''}><summary>Passport & registration <span class="sv-team-count">Optional</span></summary><div class="sv-secondary-fold-content"><div class="scanrow"><label for="passport-photo" class="scan-trigger" aria-label="Take a passport photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h4l2-2h4l2 2h4v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg></label><label for="passport-photo" class="scan-label">Take passport photo</label><input class="scan-file" id="passport-photo" type="file" accept="image/*" capture="environment" onchange="passportSelected(this)"></div><p id="scanstatus" class="scan-status" role="status"></p><img id="passport-preview" class="scan-preview" alt="Selected passport photo" hidden>${field('Passport / UELN number','ueln')}${field('Last vaccination date','vaccination','date')}${field('FEI registration number','fei')}${field('British Showjumping number','bs')}</div></details><button class="goldbtn sv-inline-save">Save Horse →</button></form>${editingHorse!==null?`<button type="button" class="sv-delete-team" onclick="deleteHorse()">Delete horse</button>`:``}`}
-else if(view==='add'){app.innerHTML=`<button class="back sv-consistent-home" onclick="go('home')">← Home</button><div class="sv-branch-intro sv-simple-intro"><h1>Add a show</h1><p class="intro">Just add where and when. You can add everything else later.</p></div><form class="sv-simple-form sv-add-show-minimal" onsubmit="addShow(event)"><label class="field">Where?<input name="venue" required maxlength="150" placeholder="e.g. Arena UK"></label><div class="sv-date-pair"><label class="field">Starts<input name="start" type="date" required></label><label class="field">Ends<input name="end" type="date" required></label></div><button class="goldbtn sv-inline-save">Save show</button></form>`}
+else if(view==='plan'){app.innerHTML=`${back()}<h1>My Shows</h1><p class="intro">Plan your shows and find every planner here.</p><div class="toolbar"><button class="smallbtn" onclick="go('add')">+ Add Show</button><div class="toggle"><button class="${mode==='calendar'?'active':''}" onclick="mode='calendar';render()">Calendar</button><button class="${mode==='list'?'active':''}" onclick="mode='list';render()">List</button></div></div>${mode==='calendar'?calendar():''}<h2 class="calendar-section-title">Upcoming Shows</h2>${ordered().filter(s=>!isPast(s)).map(showItem).join('')||'<p class="empty">No upcoming shows.</p>'}<h2 class="calendar-section-title past">Past Shows</h2>${ordered().filter(isPast).reverse().map(showItem).join('')||'<p class="empty">No past shows yet.</p>'}`}
+else if(view==='team'){app.innerHTML=`${back()}<div class="sv-branch-intro"><div class="sv-eyebrow">YOUR SHOWVIVA</div><h1>My Team</h1><p class="intro">Your horses and riders, ready for every competition.</p></div><h2 class="subhead">My Horses</h2>${data.horses.map((h,i)=>`<button class="horsecard" onclick="editHorse(${i})"><strong>${esc(horseName(h))}</strong><small>${esc(registeredName(h))}${typeof h==='object'&&h.ueln?' · UELN '+esc(h.ueln):''} · Edit →</small></button>`).join('')||'<p class="hint">No horses added yet.</p>'}<button class="smallbtn" onclick="editingHorse=null;go('horse')">+ Add Horse</button><h2 class="subhead">My Riders</h2>${data.riders.map((r,i)=>`<button class="horsecard" onclick="editingRider=${i};go('rider')"><strong>${esc(riderName(r))}</strong><small>${typeof r==='object'&&r.bs?'BS '+esc(r.bs)+' · ':''}${typeof r==='object'&&r.fei?'FEI '+esc(r.fei)+' · ':''}Edit →</small></button>`).join('')||'<p class="hint">No riders added yet.</p>'}<button class="smallbtn" onclick="editingRider=null;go('rider')">+ Add Rider</button>`}
+else if(view==='rider'){const r=editingRider===null?{}:data.riders[editingRider]||{},o=typeof r==='string'?{name:r}:r;app.innerHTML=`<button class="back" onclick="go('team')">← My Team</button><div class="sv-branch-intro"><div class="sv-eyebrow">MY TEAM · RIDER</div><h1>${editingRider===null?'Add Rider':'Edit Rider'}</h1></div><form onsubmit="saveRider(event)"><label class="field">Rider name<input name="name" required maxlength="80" value="${esc(o.name||'')}"></label><label class="field">British Showjumping (BS) membership number (optional)<input name="bs" maxlength="60" value="${esc(o.bs||'')}"></label><label class="field">FEI ID (optional)<input name="fei" maxlength="60" value="${esc(o.fei||'')}"></label><button class="goldbtn">Save Rider →</button></form>${editingRider!==null?`<button type="button" class="sv-delete-team" onclick="deleteRider()">Delete rider</button>`:``}`}
+else if(view==='horse'){const h=editingHorse===null?{}:data.horses[editingHorse]||{},obj=typeof h==='string'?{registeredName:h}:h;const field=(label,name,type='text',required=false)=>`<label class="field">${label}<input name="${name}" type="${type}" ${required?'required':''} value="${esc(obj[name]||'')}" ${type==='text'?'maxlength="100"':''}></label>`;app.innerHTML=`<button class="back" onclick="go('team')">← My Team</button><div class="sv-branch-intro"><div class="sv-eyebrow">MY TEAM · HORSE</div><h1>${editingHorse===null?'Add Horse':'Edit Horse'}</h1></div><div class="scanrow"><label for="passport-photo" class="scan-trigger" aria-label="Tap to scan passport details"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h4l2-2h4l2 2h4v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg></label><label for="passport-photo" class="scan-label">Tap to scan passport details</label><input class="scan-file" id="passport-photo" type="file" accept="image/*" capture="environment" onchange="passportSelected(this)"></div><p id="scanstatus" class="scan-status" role="status"></p><img id="passport-preview" class="scan-preview" alt="Selected passport photo" hidden><p class="hint">Or enter details manually</p><form onsubmit="saveHorse(event)">${field('Registered name','registeredName','text',true)}${field('Stable name','stableName')}${field('Passport / UELN number','ueln')}${field('Last vaccination date','vaccination','date')}${field('FEI registration number','fei')}${field('British Showjumping (BS) number','bs')}<p class="hint">Only registered name is required. Check all details against the passport before saving.</p><button class="goldbtn">Save Horse →</button></form>${editingHorse!==null?`<button type="button" class="sv-delete-team" onclick="deleteHorse()">Delete horse</button>`:``}`}
+else if(view==='add'){app.innerHTML=`<button class="back" onclick="go('home')">← Home</button><div class="sv-branch-intro"><div class="sv-eyebrow">YOUR NEXT SHOW</div><h1>Add Show</h1><p class="intro">Where are you competing?</p></div><p class="hint">${monthlyCount()} of 4 planners created this month.</p><form onsubmit="addShow(event)"><label class="field">Show name<input name="name" required maxlength="100" placeholder="Competition name"></label><label class="field">Show venue<input name="venue" required maxlength="150" placeholder="Where is the show?"></label><label class="field">Start date<input name="start" type="date" required></label><label class="field">End date<input name="end" type="date" required></label><label class="field">Show link (optional)<input name="showLink" type="url" placeholder="https://…"><small>Paste a show, entries or timetable link. You can add this later.</small></label><h2 class="subhead">Horses</h2>${data.horses.map(h=>`<label class="checkrow"><input type="checkbox" name="horses" value="${esc(registeredName(h))}"><span>${esc(horseName(h))}</span></label>`).join('')||'<p class="hint">Add horses in My Team first.</p>'}<h2 class="subhead">Riders</h2>${data.riders.map(r=>`<label class="checkrow"><input type="checkbox" name="riders" value="${esc(riderName(r))}"><span>${esc(riderName(r))}</span></label>`).join('')||'<p class="hint">Add riders in My Team first.</p>'}<button class="goldbtn">Submit Show →</button></form>`}
 
+else if(view==='show'){const s=data.shows.find(x=>x.id===selected);if(!s){go('home');return}const draft=s.status==='draft';app.innerHTML=`<button class="back" onclick="go('home')">← Home</button><div class="show-top"><div><div class="eyebrow">Your show</div><h1>${esc(s.name)}</h1><p class="intro">${dates(s)}</p>${isPast(s)?'<span class="past-label">Past Show</span>':''}</div></div>${!draft&&!isPast(s)?`<div class="notice">${s.status==='ready'?'Planner ready':s.status==='preparing'?'Planner being prepared':'Planner requested'}</div>`:''}<form onsubmit="saveShowDetails(event)"><label class="field">Show venue<input name="venue" maxlength="150" required value="${esc(s.venue||'')}"></label><h2 class="subhead">Horses</h2>${data.horses.map(h=>{const n=registeredName(h);return `<label class="checkrow"><input type="checkbox" name="horses" value="${esc(n)}" ${s.horses.includes(n)?'checked':''}><span>${esc(horseName(h))}</span></label>`}).join('')||'<p class="hint">Add horses in My Team first.</p>'}<h2 class="subhead">Riders</h2>${data.riders.map(r=>{const n=riderName(r);return `<label class="checkrow"><input type="checkbox" name="riders" value="${esc(n)}" ${s.riders.includes(n)?'checked':''}><span>${esc(n)}</span></label>`}).join('')||'<p class="hint">Add riders in My Team first.</p>'}<label class="field">Show link (optional)<input name="showLink" type="url" placeholder="https://…" value="${esc(s.showLink||'')}"><small>Paste a show, entries or timetable link. You can add this later.</small></label><button class="goldbtn" type="submit">${draft?'Submit Show →':'Save changes →'}</button></form>${!draft&&!isPast(s)?`<section class="show-journey">${s.status==='ready'&&Number(s.id)===1?'<button class="goldbtn" onclick="window.location.href=\'planner.html\'">Open Planner →</button>':s.status==='ready'?'<p>Planner marked ready. Your personal planner link will appear here once it is connected.</p>':s.status==='submitted'?'<p>Your planner request is received. Your planner will appear here once it is ready.</p>':'<p>Your planner is being prepared. Check here for its availability.</p>'}</section>`:''}<button type="button" class="delete-show" onclick="deleteShow()">Delete Show</button><div id="showTool" class="tool-overlay hidden" role="dialog" aria-modal="true" aria-label="Show tools"></div>`;}}
 
-else if(view==='show'){const s=data.shows.find(x=>x.id===selected);if(!s){go('home');return}ensureShowLists(s);const entryRows=[];Object.entries(s.plannedClasses||{}).forEach(([n,classes])=>{const h=data.horses.find(x=>registeredName(x)===n);(classes||[]).forEach(c=>entryRows.push({registered:n,stable:h?horseName(h):n,cls:c}))});entryRows.sort((a,b)=>a.cls.localeCompare(b.cls,undefined,{numeric:true}));const entryList=entryRows.map(h=>`<div class="sv-simple-entry"><div><strong>${esc(h.stable)}</strong><small>${esc(h.cls)}${h.stable!==h.registered?' · '+esc(h.registered):''}</small></div><button type="button" class="sv-entry-remove" aria-label="Remove ${esc(h.stable)} from ${esc(h.cls)}" onclick="removeClassEntry(${JSON.stringify(h.registered).replace(/"/g,'&quot;')},${JSON.stringify(h.cls).replace(/"/g,'&quot;')})">Remove</button></div>`).join('');app.innerHTML=`<button class="back sv-consistent-home" onclick="go('home')">← Home</button><div class="show-top sv-show-top-simple"><div><div class="eyebrow">Your show</div><h1>${esc(s.name)}</h1><p class="intro">${dates(s)}</p>${isPast(s)?'<span class="past-label">Past show</span>':''}<button type="button" class="link sv-edit-show-link" onclick="const d=document.querySelector('.sv-manage-show');if(d){d.hidden=false;d.open=true;d.scrollIntoView({behavior:'smooth',block:'start'});}">Edit show</button></div></div><section class="sv-show-section sv-entries-overview sv-entries-simple"><div class="sv-section-title-row"><h2>Plan entries</h2>${entryRows.length?`<span class="sv-team-count">${entryRows.length}</span>`:''}</div>${entryList||'<p class="sv-empty-friendly">Nothing planned yet.</p>'}<details class="sv-entry-editor"><summary><span>${entryRows.length?'+ Plan another entry':'+ Plan an entry'}</span><span class="sv-entry-chevron" aria-hidden="true">⌄</span></summary><div class="sv-entry-editor-body"><form class="sv-entry-add-form" onsubmit="addClassEntry(event)"><label class="field">Horse<select name="entryHorse" required><option value="">Choose horse</option>${data.horses.map(h=>`<option value="${esc(registeredName(h))}">${esc(horseName(h))}</option>`).join('')}</select></label><label class="field">Class<select name="entryClass" required onchange="this.form.querySelector('.sv-entry-other').hidden=this.value!=='Other';this.form.querySelector('.sv-entry-other input').required=this.value==='Other'"><option value="">Choose class</option>${SV_CLASS_CHOICES.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('')}<option value="Other">Other</option></select></label><label class="field sv-entry-other" hidden>Class name<input name="entryOther" maxlength="100" placeholder="Enter class name"></label><button type="submit" class="goldbtn sv-entry-add-button">Add to plan</button></form></div></details>${entryRows.length?`<label class="sv-entry-confirm"><input type="checkbox" ${s.entriesSubmitted?'checked':''} onchange="setEntriesSubmitted(this.checked)"><span>Entries submitted</span></label>`:''}</section><details id="sv-show-prep" class="sv-show-section sv-checklist-accordion sv-details-accordion sv-simple-fold" ${svChecklistOpen.prep?'open':''} ontoggle="svChecklistOpen.prep=this.open"><summary><span class="sv-checklist-title">Prepare</span><span class="sv-checklist-count">${s.prepChecklist.filter(x=>x.done).length}/${s.prepChecklist.length}</span><span class="sv-checklist-chevron" aria-hidden="true">⌄</span></summary><div class="sv-checklist-content"><p class="sv-support">Everything to get ready before you leave.</p>${showTasks(s,'prep')}</div></details>${s.showDayPlanner?.status==='ready'?`<section class="sv-show-section sv-planner-saved sv-planner-simple"><div class="sv-section-title-row"><h2>Show Day Planner</h2></div><p class="sv-support">Your planner is ready.</p><a class="goldbtn sv-primary-planner" href="planner.html?show=${encodeURIComponent(s.id)}#team=${encodeURIComponent(TEAM_TOKEN)}">Open planner</a></section>`:''}<details class="sv-show-section sv-checklist-accordion sv-details-accordion sv-manage-show sv-simple-fold" hidden ${svChecklistOpen.details?'open':''} ontoggle="svChecklistOpen.details=this.open"><summary><span class="sv-checklist-title">Show details</span><span class="sv-checklist-chevron" aria-hidden="true">⌄</span></summary><div class="sv-checklist-content"><form onsubmit="saveShowDetails(event)"><label class="field">Venue<input name="venue" maxlength="150" required value="${esc(s.venue||'')}"></label>${s.entriesSubmitted?`<div class="sv-connect-copy"><strong>Create your Show Day Planner</strong><p class="hint">Choose the system your show uses. Then add the show link so ShowViva can find the published start list and create your planner.</p></div><label class="field">Show system<select name="entrySystem" required onchange="toggleShowLink(this.form)"><option value="" ${!s.entrySystem?'selected':''} disabled>Choose system</option><option value="equipe" ${s.entrySystem==='equipe'?'selected':''}>Equipe</option><option value="myridinglife" ${s.entrySystem==='myridinglife'?'selected':''}>My Riding Life</option><option value="other" ${s.entrySystem==='other'?'selected':''}>Other</option></select></label><label class="field sv-show-link" ${s.entrySystem?'':'hidden'}>Show link<input name="showLink" type="url" ${s.entrySystem?'required':''} value="${esc(s.showLink||'')}" placeholder="Paste the link to your show"><small class="sv-show-link-help">${s.entrySystem==='equipe'?'Paste the Equipe show link.':s.entrySystem==='myridinglife'?'Paste the My Riding Life show link.':s.entrySystem==='other'?'Paste the show or timetable link.':'Paste the link to your show.'}</small></label><input type="hidden" name="autoPlanner" value="on"><button class="goldbtn sv-create-planner-action" type="submit" ${s.entrySystem?'':'hidden'}>Create planner</button>`:`<div class="sv-connect-copy"><strong>Show Day Planner</strong><p class="hint">Confirm your entries first. ShowViva needs to know which horses to find in the published start list.</p></div>`}</form></div></details><div class="sv-delete-bottom"><button type="button" class="delete-show" onclick="deleteShow()">Delete show</button></div>`;}}
-
-
-const SV_PREP_DEFAULTS=['Vaccinations & passports','Stabling & bedding (if staying overnight)','Yard cover','Hay, feed & supplements','Tack, boots & rugs','Show clothes, hats, gloves, whips & spurs','Grooming kit & buckets','Water','Dog food, human food & alcohol','Lorry checked & fuelled'];
-const SV_OLD_DEFAULTS=new Set(['Stabling booked','Farrier booked','Transport arranged','Accommodation booked','Passports and vaccinations checked','Tack and equipment','Rugs and horse boots','Feed, hay and supplements','Buckets and stable equipment','Passports','Rider and groom equipment','Lorry or trailer checked and fuelled','Water']);
-function ensureShowLists(s){
- if(!Array.isArray(s.prepChecklist)){
-  const old=[...(Array.isArray(s.planningChecklist)?s.planningChecklist:[]),...(Array.isArray(s.packingChecklist)?s.packingChecklist:[])];
-  const done=(...names)=>names.some(n=>old.some(t=>t.text===n&&t.done));
-  s.prepChecklist=SV_PREP_DEFAULTS.map((text,i)=>({text,done:[
-   done('Passports and vaccinations checked','Passports'),done('Stabling booked'),false,
-   done('Feed, hay and supplements'),done('Tack and equipment','Rugs and horse boots'),
-   done('Rider and groom equipment'),done('Buckets and stable equipment'),done('Water'),false,
-   done('Lorry or trailer checked and fuelled')][i]}));
-  // Retain any team-created tasks; do not silently discard their work.
-  for(const t of old)if(t&&t.text&&!SV_OLD_DEFAULTS.has(t.text)&&!s.prepChecklist.some(x=>x.text===t.text))s.prepChecklist.push({text:t.text,done:!!t.done});
- }
- if(!s.plannedClasses)s.plannedClasses={};
-}
-function showTasks(s,kind){const list=s.prepChecklist;return `<div>${list.map((t,i)=>`<div class="sv-task"><input type="checkbox" aria-label="${esc(t.text)}" ${t.done?'checked':''} onchange="setTask('${kind}',${i},this.checked)"><span class="sv-task-label" id="sv-${kind}-${i}">${esc(t.text)}</span><button type="button" onclick="editTask('${kind}',${i})" aria-label="Edit ${esc(t.text)}">Edit</button><button type="button" onclick="removeTask('${kind}',${i})" aria-label="Remove ${esc(t.text)}">×</button></div>`).join('')}</div><form class="sv-task-form" onsubmit="addShowTask(event,'${kind}')"><input name="task" aria-label="Add ${kind} task" maxlength="120" required placeholder="Add your own task…"><button type="submit">+ Add</button></form>`}
-function taskList(kind){const s=data.shows.find(x=>x.id===selected);ensureShowLists(s);return s.prepChecklist}
-function setTask(kind,i,done){const t=taskList(kind)[i];if(!t)return;t.done=done;save()}
-function removeTask(kind,i){taskList(kind).splice(i,1);save();render()}
-function editTask(kind,i){const t=taskList(kind)[i];if(!t)return;const next=prompt('Edit checklist item',t.text);if(next===null)return;const val=next.trim();if(!val)return;t.text=val.slice(0,120);save();render()}
-function addShowTask(e,kind){e.preventDefault();const val=e.target.elements.task.value.trim();if(!val)return;taskList(kind).push({text:val.slice(0,120),done:false});save();render()}
-async function saveShowAndGoHome(button){
- if(button?.disabled)return;
- if(button){button.disabled=true;button.textContent='Saving…';}
- const notes=document.getElementById('sv-show-notes');
- const show=data.shows.find(x=>x.id===selected);
- if(notes&&show&&show.sharedNotes!==notes.value){show.sharedNotes=notes.value;save();}
- // Allow an earlier asynchronous write to finish before returning to Home.
- await teamPending;
- if(teamError){if(button){button.disabled=false;button.textContent='Save & return Home →';}return;}
- go('home');
-}
-// Shared author choices reflect the team roster rather than fixed names.
-function capitolAuthorNames(){return [...new Set([...(data.riders||[]).map(riderName),...(data.teamMembers||[])].map(n=>String(n||'').trim()).filter(Boolean))].sort((a,b)=>a.localeCompare(b));}
-function capitolAuthorOptions(){const names=capitolAuthorNames();return names.length?names.map(n=>`<option value="${esc(n)}">${esc(n)}</option>`).join(''):'<option value="" disabled>Add riders or team members in My Team first</option>';}
-function addTeamMember(e){e.preventDefault();const name=e.target.elements.name.value.trim();if(!name)return;if(capitolNameExists(name)){alert('That person is already in My Team.');return;}data.teamMembers.push(name);save();render();}
-function capitolNameExists(name){return capitolAuthorNames().some(n=>n.toLocaleLowerCase()===name.toLocaleLowerCase());}
-function saveTeamMember(e){e.preventDefault();const name=e.target.elements.name.value.trim();if(!name)return;const old=editingTeamMember===null?null:data.teamMembers?.[editingTeamMember];if(name.toLocaleLowerCase()!==String(old||'').toLocaleLowerCase()&&capitolNameExists(name)){alert('That person is already in My Team.');return;}if(editingTeamMember===null)data.teamMembers.push(name);else data.teamMembers[editingTeamMember]=name;editingTeamMember=null;save();go('team');}
-function deleteHorseAt(i){editingHorse=i;deleteHorse();}
-function deleteRiderAt(i){editingRider=i;deleteRider();}
-function editTeamMember(i){const old=data.teamMembers?.[i];if(!old)return;const edited=prompt('Edit team member name',old);if(edited===null)return;const name=edited.trim();if(!name)return;if(name.toLocaleLowerCase()!==old.toLocaleLowerCase()&&capitolNameExists(name)){alert('That person is already in My Team.');return;}data.teamMembers[i]=name;save();render();}
-function deleteTeamMember(i){const name=data.teamMembers?.[i];if(!name||!confirm('Remove '+name+' from My Team? Their existing notes will remain.'))return;data.teamMembers.splice(i,1);editingTeamMember=null;save();go('team');}
-// Single Team Capitol notebook. Preserve earlier consolidated notes without assigning an invented author/date.
-let svEditingNoteIndex=null;
-function capitolNotes(){
- if(data.teamNotebookV3)return data.teamNotebookNotes||[];
- if(data.teamNotebookConsolidated&&data.teamNotes?.trim())return [{id:'capitol-legacy',text:data.teamNotes,author:null,createdAt:null}];
- if(Array.isArray(data.teamNotebookNotes)&&data.teamNotebookNotes.length)return data.teamNotebookNotes;
- return data.teamNotes?.trim()?[{id:'capitol-legacy',text:data.teamNotes,author:null,createdAt:null}]:[];
-}
-function prepareCapitolNotes(){
- if(data.teamNotebookV3)return;
- const current=capitolNotes().map(n=>({...n}));
- // Retain the old records in storage, even if the consolidated text replaced their display.
- if(!data.teamNotebookArchiveV3)data.teamNotebookArchiveV3=structuredClone(data.teamNotebookNotes||[]);
- data.teamNotebookNotes=current;data.teamNotebookV3=true;
-}
-async function addCapitolNote(e){
- e.preventDefault();if(teamError)return;
- const f=e.target, author=f.elements.author.value, text=f.elements.note.value.trim();
- if(!capitolAuthorNames().includes(author)||!text)return;
- const btn=f.querySelector('button[type="submit"]');btn.disabled=true;btn.textContent='Saving…';
- prepareCapitolNotes();data.teamNotebookNotes.push({id:Date.now()+'-'+Math.random().toString(36).slice(2),author,text,createdAt:new Date().toISOString()});
- save();await teamPending;if(teamError){btn.disabled=false;btn.textContent='Add note';return;}
- render();
-}
-async function saveCapitolEdit(e,i){
- e.preventDefault();if(teamError)return;const text=e.target.elements.note.value.trim();if(!text)return;
- prepareCapitolNotes();const n=data.teamNotebookNotes[i];if(!n)return;
- if(n.text!==text){n.text=text;n.editedAt=new Date().toISOString();save();await teamPending;}
- if(!teamError){svEditingNoteIndex=null;render();}
-}
-async function deleteCapitolNote(i){
- if(teamError||!capitolNotes()[i]||!confirm('Delete this note for everyone?'))return;
- prepareCapitolNotes();data.teamNotebookNotes.splice(i,1);svEditingNoteIndex=null;save();await teamPending;if(!teamError)render();
-}
-function singleSharedNotebookText(){
- if(data.teamNotebookConsolidated)return data.teamNotes||'';
- const cards=Array.isArray(data.teamNotebookNotes)?data.teamNotebookNotes:[];
- if(!cards.length)return data.teamNotes||'';
- const sorted=cards.slice().sort((a,b)=>(a.createdAt||'').localeCompare(b.createdAt||''));
- const parts=sorted.filter(n=>n&&typeof n.text==='string'&&n.text.trim()).map(n=>{
-  const meta=[n.author,n.createdAt?new Date(n.createdAt).toLocaleString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}):''].filter(Boolean).join(' · ');
-  return (meta?meta+'\n':'')+n.text.trim();
- });
- // Older single-text notes may predate cards: include only if not already represented.
- if(data.teamNotes?.trim()&&!sorted.some(n=>n.text?.trim()===data.teamNotes.trim()))parts.unshift(data.teamNotes.trim());
- return parts.join('\n\n');
-}
-async function saveSingleNotebook(button,goHome=false){
- if(button?.disabled||teamError)return;
- const field=document.getElementById('sv-team-notes');
- if(!field)return;
- const status=document.getElementById('sv-team-note-status');
- button.disabled=true;const original=button.textContent;button.textContent='Saving…';
- if(!data.teamNotebookConsolidated||data.teamNotes!==field.value){
-  data.teamNotes=field.value;data.teamNotebookConsolidated=true;
-  // Historical per-author cards remain in storage as a backup, not displayed.
-  save();
- }
- await teamPending;
- if(teamError){button.disabled=false;button.textContent=original;if(status)status.textContent='Not saved. Reload before editing further.';return;}
- if(goHome){go('home');return;}
- button.disabled=false;button.textContent='Save notes';
- if(status)status.textContent='Saved ✓';
-}
-async function addTeamNotebookNote(e){
- e.preventDefault();if(teamError)return;
- const f=e.target, author=f.elements.author.value, note=f.elements.note.value.trim();
- if(!['Claire','Rikki'].includes(author)||!note)return;
- const button=f.querySelector('button[type="submit"]'),status=document.getElementById('sv-team-note-status');
- button.disabled=true;button.textContent='Saving…';
- if(!Array.isArray(data.teamNotebookNotes))data.teamNotebookNotes=[];
- data.teamNotebookNotes.push({id:Date.now()+'-'+Math.random().toString(36).slice(2),author,text:note,createdAt:new Date().toISOString()});
- save();await teamPending;
- if(teamError){status.textContent='Save failed. Please reload before making further changes.';button.disabled=false;button.textContent='Add note';return;}
- render();
-}
-
-async function saveNotebookEdit(e,i){
- e.preventDefault();if(teamError)return;
- const n=data.teamNotebookNotes?.[i],text=e.target.elements.note.value.trim();
- if(!n||!text)return;
- if(n.text!==text){n.text=text;n.editedAt=new Date().toISOString();save();await teamPending;}
- if(teamError){alert('Your change could not be saved. Please reload before editing further.');return;}
- svEditingNoteIndex=null;render();
-}
-async function deleteNotebookNote(i){
- if(teamError||!data.teamNotebookNotes?.[i])return;
- if(!confirm('Delete this team note for everyone? This cannot be undone.'))return;
- data.teamNotebookNotes.splice(i,1);svEditingNoteIndex=null;save();await teamPending;
- if(teamError){alert('The deletion could not be saved. Please reload.');return;}
- render();
-}
-async function returnNotebookHome(button){
- if(button?.disabled)return;
- if(button){button.disabled=true;button.textContent='Saving…';}
- await teamPending;
- if(teamError){if(button){button.disabled=false;button.textContent='Return Home →';}return;}
- go('home');
-}
-function saveInlineNotes(){const s=data.shows.find(x=>x.id===selected),box=document.getElementById('sv-show-notes');if(!s||!box)return;if(s.sharedNotes===box.value)return;s.sharedNotes=box.value;save();const label=document.getElementById('sv-note-status');if(label)label.textContent='Saved ✓'}
-function setEntriesSubmitted(checked){
-  const s=data.shows.find(x=>x.id===selected);
-  if(!s)return;
-  s.entriesSubmitted=checked;
-  save();
-  render();
-  if(checked){
-    setTimeout(()=>{
-      const d=document.querySelector('.sv-manage-show');
-      if(d){
-        d.hidden=false;
-        d.open=true;
-        d.scrollIntoView({behavior:'smooth',block:'start'});
-        const system=d.querySelector('select[name="entrySystem"]');
-        if(system) system.focus({preventScroll:true});
-      }
-    },80);
-  }
-}
-function confirmEntryChange(s){if(!s.entriesSubmitted)return; if(!confirm('Entries were marked as submitted. Have you also updated the entries with the show organiser? OK keeps the submitted tick; Cancel clears it until the changes are entered.'))s.entriesSubmitted=false;}
-function addClassEntry(e){e.preventDefault();const s=data.shows.find(x=>x.id===selected);if(!s)return;const f=e.target;const horse=f.elements.entryHorse.value;const choice=f.elements.entryClass.value;const c=(choice==='Other'?f.elements.entryOther.value:choice).trim();if(!horse||!c)return;if((s.plannedClasses[horse]||[]).includes(c)){alert('This horse is already listed in that class.');return}confirmEntryChange(s);(s.plannedClasses[horse]||(s.plannedClasses[horse]=[])).push(c);if(!s.horses.includes(horse))s.horses.push(horse);const horseRecord=data.horses.find(x=>registeredName(x)===horse);const detail=`${horseRecord?horseName(horseRecord):horse} · ${c}`;window.__svSuppressNextToast=true;save();render();setTimeout(()=>showEntrySavedChoice({detail}),40)}
-function removeClassEntry(horse,c){const s=data.shows.find(x=>x.id===selected);if(!s||!s.plannedClasses?.[horse]?.includes(c))return;confirmEntryChange(s);s.plannedClasses[horse]=s.plannedClasses[horse].filter(x=>x!==c);if(!s.plannedClasses[horse].length){delete s.plannedClasses[horse];s.horses=s.horses.filter(x=>x!==horse)}save();render()}
-const SV_CLASS_CHOICES=['British Novice','Discovery','Newcomers','Foxhunter','130cm'];
-function horsePlan(h,show){const n=registeredName(h),selected=!!show?.horses?.includes(n),saved=show?.plannedClasses?.[n]||[];const other=saved.filter(c=>!SV_CLASS_CHOICES.includes(c)).join(', ');return `<div class="sv-horse-plan"><label class="checkrow"><input type="checkbox" name="horses" value="${esc(n)}" ${selected?'checked':''} onchange="this.closest('.sv-horse-plan').querySelector('.sv-class-fields').hidden=!this.checked"><span>${esc(horseName(h))}</span></label><div class="sv-class-fields" ${selected?'':'hidden'}><p class="hint">Which classes are you planning for this horse? Select all that apply.</p><div class="sv-class-options">${SV_CLASS_CHOICES.map(c=>`<label><input type="checkbox" name="plannedClass" value="${esc(c)}" ${saved.includes(c)?'checked':''}>${esc(c)}</label>`).join('')}</div><label class="field" style="margin-top:12px">Other class(es) (optional)<input class="sv-other-class" name="otherClass" maxlength="180" placeholder="e.g. 1.20m Open" value="${esc(other)}"></label></div></div>`}
-function readHorsePlans(form){const chosen=[...form.querySelectorAll('input[name="horses"]:checked')].map(x=>x.value),plans={};for(const el of form.querySelectorAll('.sv-horse-plan')){const horse=el.querySelector('input[name="horses"]');if(!horse?.checked)continue;const classes=[...el.querySelectorAll('input[name="plannedClass"]:checked')].map(x=>x.value);const custom=el.querySelector('input[name="otherClass"]')?.value.trim();if(custom)classes.push(...custom.split(',').map(x=>x.trim()).filter(Boolean));plans[horse.value]=[...new Set(classes)];}return {chosen,plans}}
-function openTool(which){activeTool=which;const s=data.shows.find(x=>x.id===selected),el=document.getElementById('showTool');if(!s||!el)return;el.classList.remove('hidden');el.innerHTML=`<div class="tool-panel"><div class="tool-head"><h2>${which==='notes'?'Show notes':'Show checklist'}</h2><button type="button" class="tool-close" onclick="closeTool()" aria-label="Close">×</button></div>${which==='notes'?`<p class="hint">Keep notes for this show before and during show day.</p><textarea id="sharedNotes" aria-label="Show notes" placeholder="Anything the team needs to know…">${esc(s.sharedNotes||'')}</textarea><button class="goldbtn" onclick="saveSharedNotes()">Save Note →</button><p class="hint">Shared with your team.</p>`:`<p class="hint">Get ready for this show.</p>${(s.checklist||[]).map((item,i)=>`<div class="checkrow"><input type="checkbox" aria-label="Complete ${esc(item.text)}" ${item.done?'checked':''} onchange="toggleCheck(${i},this.checked)"><span>${esc(item.text)}</span><button class="link" onclick="removeCheck(${i})" aria-label="Remove task">×</button></div>`).join('')||'<p class="hint">No tasks yet.</p>'}<form onsubmit="addCheck(event)"><label class="field">Add a task<input name="task" required maxlength="120" placeholder="e.g. Pack passports"></label><button class="smallbtn">+ Add Task</button></form>`}</div>`}
+function openTool(which){activeTool=which;const s=data.shows.find(x=>x.id===selected),el=document.getElementById('showTool');if(!s||!el)return;el.classList.remove('hidden');el.innerHTML=`<div class="tool-panel"><div class="tool-head"><h2>${which==='notes'?'Show notes':'Show checklist'}</h2><button type="button" class="tool-close" onclick="closeTool()" aria-label="Close">×</button></div>${which==='notes'?`<p class="hint">Keep notes for this show before and during show day.</p><textarea id="sharedNotes" aria-label="Show notes" placeholder="Anything the team needs to know…">${esc(s.sharedNotes||'')}</textarea><button class="goldbtn" onclick="saveSharedNotes()">Save Note →</button><p class="hint">Test only: saved on this device, not yet shared between phones.</p>`:`<p class="hint">Get ready for this show.</p>${(s.checklist||[]).map((item,i)=>`<div class="checkrow"><input type="checkbox" aria-label="Complete ${esc(item.text)}" ${item.done?'checked':''} onchange="toggleCheck(${i},this.checked)"><span>${esc(item.text)}</span><button class="link" onclick="removeCheck(${i})" aria-label="Remove task">×</button></div>`).join('')||'<p class="hint">No tasks yet.</p>'}<form onsubmit="addCheck(event)"><label class="field">Add a task<input name="task" required maxlength="120" placeholder="e.g. Pack passports"></label><button class="smallbtn">+ Add Task</button></form>`}</div>`}
 function closeTool(){activeTool=null;document.getElementById('showTool')?.classList.add('hidden')}
 function addCheck(e){e.preventDefault();const s=data.shows.find(x=>x.id===selected);if(!s)return;const t=e.target.elements.task.value.trim();if(!t)return;(s.checklist||(s.checklist=[])).push({text:t,done:false});save();openTool('checklist')}
 function toggleCheck(i,done){const s=data.shows.find(x=>x.id===selected);if(!s?.checklist?.[i])return;s.checklist[i].done=done;save();openTool('checklist')}
 function removeCheck(i){const s=data.shows.find(x=>x.id===selected);if(!s?.checklist)return;s.checklist.splice(i,1);save();openTool('checklist')}
 function saveSharedNotes(){const s=data.shows.find(x=>x.id===selected);if(!s)return;s.sharedNotes=document.getElementById('sharedNotes').value;save();const b=document.querySelector('#showTool .goldbtn');if(b)b.textContent='Saved ✓'}
-function toggleShowLink(form){const system=form.elements.entrySystem.value;const row=form.querySelector('.sv-show-link');const input=form.elements.showLink;const help=form.querySelector('.sv-show-link-help');const action=form.querySelector('.sv-create-planner-action');if(row)row.hidden=!system;if(action)action.hidden=!system;if(input)input.required=!!system;if(help)help.textContent=system==='equipe'?'Paste the Equipe show link.':system==='myridinglife'?'Paste the My Riding Life show link.':system==='other'?'Paste the show or timetable link.':'Paste the link to your show.';}function saveShowDetails(e){e.preventDefault();const s=data.shows.find(x=>x.id===selected);if(!s)return;const f=e.target;s.venue=f.elements.venue.value.trim();s.entrySystem=f.elements.entrySystem.value;s.showLink=f.elements.showLink?f.elements.showLink.value.trim():'';s.autoPlanner=true;save();render()}
+function saveShowDetails(e){e.preventDefault();const s=data.shows.find(x=>x.id===selected);if(!s)return;const f=e.target;const horses=[...f.querySelectorAll('input[name="horses"]:checked')].map(x=>x.value),riders=[...f.querySelectorAll('input[name="riders"]:checked')].map(x=>x.value);if(!horses.length||!riders.length){alert('Choose at least one horse and rider.');return}s.venue=f.elements.venue.value.trim();s.horses=horses;s.riders=riders;s.showLink=f.elements.showLink.value.trim();if(s.status==='draft'){s.status='submitted';data.lastSubmittedShowId=s.id;save();go('confirmed');return}save();render()}
+function submitShow(){const s=data.shows.find(x=>x.id===selected);if(!s)return;if(!s.horses.length||!s.riders.length){alert('Choose at least one horse and rider before submitting.');return}s.status='submitted';data.lastSubmittedShowId=s.id;save();go('confirmed')}
+function demoValidate(){const s=data.shows.find(x=>x.id===selected);if(!s||s.status!=='submitted')return;s.status='preparing';save();render()}
+function demoReady(){const s=data.shows.find(x=>x.id===selected);if(!s||s.status!=='preparing')return;s.status='ready';save();render()}
 function calendar(){const y=month.getFullYear(),m=month.getMonth(),first=(new Date(y,m,1).getDay()+6)%7,last=new Date(y,m+1,0).getDate();let days=['M','T','W','T','F','S','S'].map(d=>`<div class="day blank">${d}</div>`).join('');for(let i=0;i<first;i++)days+='<div class="day blank"></div>';for(let d=1;d<=last;d++){const date=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`,hits=data.shows.filter(s=>s.start<=date&&s.end>=date);days+=`<button class="day ${hits.length?(hits.every(isPast)?'past':'has'):''}" onclick="calendarDate('${date}')" title="${hits.map(s=>esc(s.name)).join(', ')}">${d}</button>`}return `<div class="calendar"><div class="month"><button onclick="shift(-1)">‹</button><strong>${month.toLocaleDateString('en-GB',{month:'long',year:'numeric'})}</strong><button onclick="shift(1)">›</button></div><div class="days">${days}</div></div><div id="dateShows" style="margin-top:16px"><p class="hint">Select a highlighted date to see its shows.</p></div>`}function shift(n){month=new Date(month.getFullYear(),month.getMonth()+n,1);render()}function calendarDate(date){document.getElementById('dateShows').innerHTML=data.shows.filter(s=>s.start<=date&&s.end>=date).map(showItem).join('')||'<p class="hint">No shows on this date.</p>'}function editHorse(i){editingHorse=i;go('horse')}function passportSelected(input){const status=document.getElementById('scanstatus'),preview=document.getElementById('passport-preview'),file=input.files&&input.files[0];if(!file)return;if(status)status.textContent='Passport photo selected. Check and enter the details below.';if(preview){if(preview.dataset.url)URL.revokeObjectURL(preview.dataset.url);const url=URL.createObjectURL(file);preview.dataset.url=url;preview.src=url;preview.hidden=false;}}function saveHorse(e){e.preventDefault();const f=e.target.elements;const h={registeredName:f.registeredName.value.trim(),stableName:f.stableName.value.trim(),ueln:f.ueln.value.trim(),vaccination:f.vaccination.value,fei:f.fei.value.trim(),bs:f.bs.value.trim()};if(!h.registeredName)return;if(editingHorse===null)data.horses.push(h);else {const old=registeredName(data.horses[editingHorse]);data.horses[editingHorse]=h;if(old!==h.registeredName)data.shows.forEach(s=>s.horses=s.horses.map(n=>n===old?h.registeredName:n))}save();go('team')}function addTeam(e,k){e.preventDefault();const name=e.target.elements.name.value.trim();if(name&&!data[k].includes(name)){data[k].push(name);save()}render()}function saveRider(e){e.preventDefault();const f=e.target.elements,r={name:f.name.value.trim(),bs:f.bs.value.trim(),fei:f.fei.value.trim()};if(!r.name)return;if(editingRider===null)data.riders.push(r);else{const old=riderName(data.riders[editingRider]);data.riders[editingRider]=r;if(old!==r.name)data.shows.forEach(s=>s.riders=s.riders.map(n=>n===old?r.name:n))}save();go('team')}
 function deleteHorse(){
   if(editingHorse===null||!data.horses[editingHorse])return;
@@ -1271,35 +333,8 @@ function deleteRider(){
   data.riders.splice(editingRider,1);
   editingRider=null;save();go('team');
 }
-function deleteShow(){const s=data.shows.find(x=>x.id===selected);if(!s)return;if(!confirm('Delete '+s.name+'? This removes the show and its checklists for everyone on the team. Existing notes from this show will also be removed from the previous-show notes archive. This cannot be undone.'))return;data.shows=data.shows.filter(x=>x.id!==selected);if(data.lastSubmittedShowId===selected)data.lastSubmittedShowId=null;selected=null;activeTool=null;save();go('home')}
-function showSavedChoice(show){
- const existing=document.getElementById('sv-save-choice');if(existing)existing.remove();
- const wrap=document.createElement('div');wrap.id='sv-save-choice';wrap.className='sv-save-choice';
- wrap.innerHTML=`<div class="sv-save-choice-card" role="dialog" aria-modal="true" aria-labelledby="sv-save-choice-title"><div class="sv-save-tick">✓</div><h2 id="sv-save-choice-title">Show saved</h2><p>${esc(show.name)}</p><button type="button" class="goldbtn" onclick="document.getElementById('sv-save-choice')?.remove();go('show')">Plan entries</button><button type="button" class="sv-save-home" onclick="document.getElementById('sv-save-choice')?.remove();go('home')">Home</button></div>`;
- document.body.appendChild(wrap);
-}
-function openEntryEditor(){
- const editor=document.querySelector('.sv-entry-editor');
- if(!editor)return;
- editor.open=true;
- requestAnimationFrame(()=>{
-  editor.scrollIntoView({behavior:'smooth',block:'start'});
-  const first=editor.querySelector('select,input,button');
-  if(first)first.focus({preventScroll:true});
- });
-}
-function showEntrySavedChoice(entry){
- const existing=document.getElementById('sv-save-choice');if(existing)existing.remove();
- const wrap=document.createElement('div');wrap.id='sv-save-choice';wrap.className='sv-save-choice';
- const detail = entry?.detail || '';
- wrap.innerHTML=`<div class="sv-save-choice-card" role="dialog" aria-modal="true" aria-labelledby="sv-save-choice-title"><div class="sv-save-tick">✓</div><h2 id="sv-save-choice-title">Entry saved</h2><p>${esc(detail)}</p><button type="button" class="goldbtn" onclick="document.getElementById('sv-save-choice')?.remove();openEntryEditor()">Add another entry</button><button type="button" class="sv-save-home" onclick="document.getElementById('sv-save-choice')?.remove();document.querySelector('.sv-entries-overview')?.scrollIntoView({behavior:'smooth',block:'start'})">View entries</button><button type="button" class="sv-save-home" onclick="document.getElementById('sv-save-choice')?.remove();go('home')">Home</button></div>`;
- document.body.appendChild(wrap);
-}
-function addShow(e){e.preventDefault();const f=e.target.elements;if(f.end.value<f.start.value){alert('End date must be on or after start date.');return}const s={id:Date.now(),name:f.venue.value.trim(),start:f.start.value,end:f.end.value,horses:[],riders:[],plannedClasses:{},entriesSubmitted:false,venue:f.venue.value.trim(),entrySystem:'',showLink:'',autoPlanner:false,status:'draft',checklist:[],prepChecklist:SV_PREP_DEFAULTS.map(text=>({text,done:false})),sharedNotes:''};data.shows.push(s);save();selected=s.id;activeTool=null;teamPending.then(()=>{if(!teamError)showSavedChoice(s)})}
-
-window.addEventListener('storage',e=>{if(e.key===SV_NOTE_SEEN_KEY)svUpdateNotebookBadge()});
-
-startTeam();
+function deleteShow(){const s=data.shows.find(x=>x.id===selected);if(!s)return;if(!confirm('Delete '+s.name+'? This removes the show, its checklist and notes from this device. This cannot be undone.'))return;data.shows=data.shows.filter(x=>x.id!==selected);if(data.lastSubmittedShowId===selected)data.lastSubmittedShowId=null;selected=null;activeTool=null;save();go('home')}function addShow(e){e.preventDefault();if(monthlyCount()>=4){alert('You have created all 4 planners for this month.');return}const f=e.target.elements;if(f.end.value<f.start.value){alert('End date must be on or after start date.');return}const horses=[...e.target.querySelectorAll('input[name="horses"]:checked')].map(x=>x.value),riders=[...e.target.querySelectorAll('input[name="riders"]:checked')].map(x=>x.value);if(!horses.length||!riders.length){alert('Choose at least one horse and rider.');return}const s={id:Date.now(),name:f.name.value.trim(),start:f.start.value,end:f.end.value,horses,riders,venue:f.venue.value.trim(),showLink:f.showLink.value.trim(),status:'submitted',checklist:[],sharedNotes:''};data.shows.push(s);data.lastSubmittedShowId=s.id;data.plannerCreations.push(creationMonth());save();selected=s.id;activeTool=null;go('confirmed')}
+try{render()}catch(e){console.error('ShowViva render failed',e)}
 </script><script>
 (function(){
   function openLinkedCalendar(){
@@ -1311,95 +346,303 @@ startTeam();
   openLinkedCalendar();
 })();
 </script>
-<script>
-if ('serviceWorker' in navigator) { window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js').catch(()=>{})); }
-</script>
+<script id="showviva-seamless-show-journey">
+/* ShowViva — Seamless next-show journey
+   Drop-in patch for the current Team Capitol build.
+   Homepage:
+     NEXT UP → Venue/date → OPEN MY SHOW
+   Show page:
+     Entries submitted → Add start list → Create my planner → Open planner
 
-<style>
-.sv-save-choice{position:fixed;inset:0;z-index:9999;background:rgba(16,35,52,.36);display:flex;align-items:flex-end;justify-content:center;padding:18px;}
-.sv-save-choice-card{width:min(100%,520px);background:#fffdf8;border:1px solid #dfcda7;border-radius:26px;padding:28px 24px calc(26px + env(safe-area-inset-bottom));box-shadow:0 18px 60px rgba(16,35,52,.18);text-align:center;}
-.sv-save-choice-card h2{margin:8px 0 6px;font-size:30px;color:#183049;}
-.sv-save-choice-card p{margin:0 0 24px;color:#6b7785;font-size:18px;}
-.sv-save-tick{width:52px;height:52px;border-radius:50%;margin:0 auto 8px;display:grid;place-items:center;background:#cbaa68;color:#fff;font-size:28px;font-weight:800;}
-.sv-save-choice-card .goldbtn{width:100%;margin:0 0 10px;}
-.sv-save-home{width:100%;border:0;background:transparent;color:#183049;font:inherit;font-weight:800;padding:15px 10px;cursor:pointer;}
-@media(min-width:700px){.sv-save-choice{align-items:center}.sv-save-choice-card{padding-bottom:28px}}
-</style>
+   Add before </body>:
+   <script src="./showviva-seamless-show-journey.js"></script>
+*/
+(() => {
+  const STYLE_ID = "sv-seamless-show-journey-style";
 
-<script id="showviva-save-toast-script">
-(function(){
-  if (window.__showVivaSaveToastInstalled) return;
-  window.__showVivaSaveToastInstalled = true;
-
-  let userAction = false;
-  let hideTimer = null;
-  let ready = false;
-
-  function ensureToast(){
-    let el = document.getElementById('showviva-save-toast');
-    if (!el){
-      el = document.createElement('div');
-      el.id = 'showviva-save-toast';
-      el.setAttribute('role','status');
-      el.setAttribute('aria-live','polite');
-      el.textContent = '✓ Saved';
-      document.body.appendChild(el);
-    }
-    return el;
+  const css = `
+  /* HOME — one obvious gateway */
+  .sv-planner-hero.sv-home-show-card{
+    margin:23px 0 27px;
+    padding:22px 20px 20px;
+    border:1.5px solid #dda94e;
+    border-radius:20px;
+    background:#061f30;
+    color:#fffdf8;
+    box-shadow:none;
   }
 
-  function showSaved(){
-    if (window.__svSuppressNextToast){
-      window.__svSuppressNextToast = false;
-      userAction = false;
-      return;
-    }
-    if (!ready || !userAction) return;
-    const el = ensureToast();
-    el.classList.add('show');
-    clearTimeout(hideTimer);
-    hideTimer = setTimeout(function(){ el.classList.remove('show'); }, 1400);
-    userAction = false;
+  .sv-home-show-card .sv-planner-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin:0 0 18px;
   }
 
-  ['pointerdown','keydown','change','input'].forEach(function(evt){
-    document.addEventListener(evt, function(e){
-      const target = e.target;
-      if (target && target.closest &&
-          target.closest('input,select,textarea,button,a,label,summary,[role="button"]')){
-        userAction = true;
+  .sv-home-show-card .sv-planner-head .eyebrow{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:0;
+    color:#dda94e;
+    font:800 10px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    letter-spacing:2.4px;
+  }
+
+  .sv-home-show-card .sv-planner-head .eyebrow::before{
+    content:"✦";
+    color:#dda94e;
+    font-size:15px;
+  }
+
+  .sv-home-show-card h2{
+    margin:0;
+    color:#fffdf8;
+    font:400 clamp(29px,7vw,38px)/1.08 Georgia,"Times New Roman",serif;
+    letter-spacing:-.6px;
+  }
+
+  .sv-home-show-card .sv-planner-show{
+    margin:7px 0 20px;
+    color:#e9dfcf;
+    font-size:14px;
+  }
+
+  .sv-home-show-card .sv-planner-status{
+    display:none!important;
+  }
+
+  .sv-home-show-card > .goldbtn{
+    width:100%!important;
+    min-height:50px;
+    margin:0!important;
+    padding:14px 18px!important;
+    border:0!important;
+    border-radius:14px!important;
+    background:linear-gradient(110deg,#e7c88c,#c7a45e)!important;
+    color:#10283a!important;
+    box-shadow:none!important;
+    font:800 14px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif!important;
+    letter-spacing:.1px!important;
+    text-transform:none!important;
+  }
+
+  .sv-home-show-card .sv-planner-menu summary{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:34px;
+    height:34px;
+    padding:0;
+    border:0;
+    background:transparent;
+    color:#e9c476;
+    list-style:none;
+    font-size:18px;
+  }
+  .sv-home-show-card .sv-planner-menu summary::-webkit-details-marker{display:none}
+
+  /* SHOW PAGE — progressive disclosure */
+  #app.sv-view-show .sv-seamless-next{
+    margin:22px 0 0;
+    padding:20px;
+    border:1px solid #e2d5c0;
+    border-radius:18px;
+    background:#fffdf8;
+  }
+
+  #app.sv-view-show .sv-seamless-next .sv-next-label{
+    margin:0 0 8px;
+    color:#947039;
+    font:800 10px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    letter-spacing:2px;
+    text-transform:uppercase;
+  }
+
+  #app.sv-view-show .sv-seamless-next h3{
+    margin:0 0 7px;
+    color:#10283a;
+    font:400 26px/1.15 Georgia,"Times New Roman",serif;
+  }
+
+  #app.sv-view-show .sv-seamless-next p{
+    margin:0 0 16px;
+    color:#657180;
+    font-size:14px;
+    line-height:1.45;
+  }
+
+  #app.sv-view-show .sv-seamless-next input{
+    width:100%;
+    min-height:49px;
+    margin:0 0 12px;
+    padding:12px 14px;
+    border:1px solid #d9dfdf;
+    border-radius:12px;
+    background:#fff;
+    color:#10283a;
+    font-size:16px;
+  }
+
+  #app.sv-view-show .sv-seamless-next .goldbtn{
+    width:100%;
+    min-height:50px;
+    border:0;
+    border-radius:14px;
+    background:linear-gradient(110deg,#e7c88c,#c7a45e);
+    color:#10283a;
+    font-weight:800;
+  }
+
+  #app.sv-view-show .sv-seamless-next .sv-secondary-link{
+    display:block;
+    margin:11px auto 0;
+    padding:5px 8px;
+    border:0;
+    background:transparent;
+    color:#8a6b35;
+    font:700 13px -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    text-decoration:underline;
+    text-underline-offset:3px;
+  }
+
+  @media(max-width:390px){
+    .sv-planner-hero.sv-home-show-card{padding:20px 17px 17px;border-radius:18px}
+    .sv-home-show-card h2{font-size:30px}
+    #app.sv-view-show .sv-seamless-next{padding:18px 16px}
+  }
+  `;
+
+  function injectStyle(){
+    if(document.getElementById(STYLE_ID)) return;
+    const s=document.createElement("style");
+    s.id=STYLE_ID;
+    s.textContent=css;
+    document.head.appendChild(s);
+  }
+
+  function updateHome(){
+    const hero=document.querySelector(".sv-planner-hero");
+    if(!hero) return;
+
+    hero.classList.add("sv-home-show-card");
+
+    const status=hero.querySelector(".sv-planner-status");
+    if(status) status.style.display="none";
+
+    const btn=hero.querySelector(":scope > .goldbtn");
+    if(btn) btn.textContent="Open my show →";
+  }
+
+  function getShowState(){
+    const page=document.querySelector("#app.sv-view-show");
+    if(!page) return null;
+
+    const text=(page.innerText||"").toLowerCase();
+
+    const plannerLink = [...page.querySelectorAll("a,button")].find(el =>
+      /open planner|view planner|show day planner/i.test((el.textContent||"").trim())
+    );
+
+    const createPlanner = [...page.querySelectorAll("button,a")].find(el =>
+      /create.*planner|build.*planner|generate.*planner|go/i.test((el.textContent||"").trim())
+    );
+
+    const urlInput = [...page.querySelectorAll('input[type="url"],input[type="text"]')].find(el =>
+      /url|link|start/i.test((el.placeholder||"")+" "+(el.name||"")+" "+(el.id||""))
+    );
+
+    const entriesControl = [...page.querySelectorAll("button,label,input")].find(el =>
+      /entries submitted|confirm entries|entered/i.test((el.textContent||"")+" "+(el.value||""))
+    );
+
+    if(plannerLink) return {type:"ready", action:plannerLink};
+    if(createPlanner && (urlInput?.value || /start list|show link|url/.test(text))) return {type:"create", action:createPlanner, input:urlInput};
+    if(/entries submitted|entered/.test(text) && /url|link|start list/.test(text)) return {type:"link", input:urlInput};
+    return {type:"entries", action:entriesControl};
+  }
+
+  function buildNextCard(){
+    const page=document.querySelector("#app.sv-view-show");
+    if(!page || page.querySelector(".sv-seamless-next")) return;
+
+    const state=getShowState();
+    if(!state) return;
+
+    const card=document.createElement("section");
+    card.className="sv-seamless-next";
+
+    const label=document.createElement("div");
+    label.className="sv-next-label";
+    label.textContent="Next step";
+    card.appendChild(label);
+
+    const title=document.createElement("h3");
+    const help=document.createElement("p");
+    const action=document.createElement("button");
+    action.type="button";
+    action.className="goldbtn";
+
+    if(state.type==="entries"){
+      title.textContent="Entered the show?";
+      help.textContent="Once your entries are in, we can start getting your planner ready.";
+      action.textContent="Entries submitted";
+      action.onclick=()=>state.action?.click();
+    }
+
+    if(state.type==="link"){
+      title.textContent="Add the show link";
+      help.textContent="Paste the start-list or show page link.";
+      if(state.input){
+        const clone=state.input.cloneNode(true);
+        clone.placeholder="Paste show link";
+        clone.value=state.input.value||"";
+        clone.addEventListener("input",()=>{state.input.value=clone.value; state.input.dispatchEvent(new Event("input",{bubbles:true}));});
+        card.appendChild(clone);
       }
-    }, true);
-  });
-
-  try{
-    const originalSetItem = Storage.prototype.setItem;
-    Storage.prototype.setItem = function(){
-      const result = originalSetItem.apply(this, arguments);
-      if (this === window.localStorage) setTimeout(showSaved, 0);
-      return result;
-    };
-  }catch(e){}
-
-  document.addEventListener('click', function(e){
-    const el = e.target && e.target.closest ? e.target.closest('button,a,[role="button"],label') : null;
-    if (!el) return;
-    const t = (el.textContent || '').trim().toLowerCase();
-    if (
-      t.includes('save show') ||
-      t.includes('save changes') ||
-      false /* entry saves use the matching modal instead */ ||
-      false /* entries submitted opens planner setup instead */
-    ){
-      setTimeout(showSaved, 250);
+      action.textContent="Continue →";
+      action.onclick=()=>{
+        const originalButton=[...page.querySelectorAll("button")].find(el=>/save|continue|confirm/i.test((el.textContent||"").trim()));
+        originalButton?.click();
+      };
     }
-  }, true);
 
-  document.addEventListener('DOMContentLoaded', function(){
-    ensureToast();
-    setTimeout(function(){ ready = true; userAction = false; }, 500);
-  });
+    if(state.type==="create"){
+      title.textContent="Ready to build your planner";
+      help.textContent="Your show details are set.";
+      action.textContent="Create my planner →";
+      action.onclick=()=>state.action?.click();
+    }
+
+    if(state.type==="ready"){
+      label.textContent="Ready";
+      title.textContent="Your planner is ready";
+      help.textContent="Everything you need for show day is waiting.";
+      action.textContent="Open planner →";
+      action.onclick=()=>state.action?.click();
+    }
+
+    card.appendChild(title);
+    card.appendChild(help);
+    card.appendChild(action);
+
+    const anchor=page.querySelector(".sv-entries-overview,.show-top");
+    if(anchor?.parentNode){
+      anchor.parentNode.insertBefore(card, anchor.nextSibling);
+    } else {
+      page.prepend(card);
+    }
+  }
+
+  function refresh(){
+    injectStyle();
+    updateHome();
+    buildNextCard();
+  }
+
+  refresh();
+  new MutationObserver(refresh).observe(document.documentElement,{childList:true,subtree:true});
 })();
 </script>
-
 </body></html>
