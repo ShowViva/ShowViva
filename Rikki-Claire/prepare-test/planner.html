@@ -566,6 +566,39 @@ body{background:#fcfaf5}
 .time .pill.warm .warm-trigger span{font:600 11px/1.2 Arial,Helvetica,sans-serif!important;color:#9b7535!important;white-space:nowrap!important;text-align:right!important}
 .time .pill.warm .warm-trigger:hover,.time .pill.warm .warm-trigger:focus-visible{background:#f6e7bf!important;border-color:#c9a460!important;outline-offset:2px}
 @media(max-width:380px){.time .pill.warm .warm-trigger{padding:7px 5px!important}.time .pill.warm .warm-trigger b{font-size:17px!important}.time .pill.warm .warm-trigger span{font-size:10px!important}}
+</style><style id="showviva-calm-ui-20260928">
+/* Calm planner: show only what helps the rider act. */
+.header{padding:16px max(18px,calc((100vw - 820px)/2)) 19px}
+.header .brand-name{font-size:clamp(29px,5vw,39px)}
+.header .brand-tag{font-size:9px;letter-spacing:2px;margin-top:8px}
+.header-show{margin-top:20px}
+.header-kicker{font-size:9px;letter-spacing:2.6px;margin-bottom:7px}
+.header-show h1{font-size:clamp(34px,7vw,50px);margin-bottom:8px}
+.header-show p{font-size:clamp(16px,2.7vw,20px)}
+.header-show .venue{display:none!important}
+.wrap{padding-top:13px}
+.hero{margin-bottom:17px}
+.date{min-height:72px;font-size:25px}
+.date small{font-size:19px}
+.filters-panel[hidden]{display:none!important}
+.filtercell[hidden]{display:none!important}
+.filterbar{grid-template-columns:repeat(var(--visible-filters,3),minmax(0,1fr))}
+.dayheading{margin:0 0 11px}
+.dayheading h2{font-size:clamp(29px,6vw,43px)}
+.dayheading span{font-size:14px}
+.footer-note{font-size:11px;line-height:1.45;margin-top:16px;padding-top:13px}
+@media(max-width:760px){
+ .header{padding:15px 18px 18px}
+ .header-show{margin-top:18px}
+ .header-show h1{font-size:40px}
+ .header-show p{font-size:17px}
+ .wrap{padding-top:12px}
+ .hero{margin-bottom:16px}
+ .date{min-height:67px;font-size:22px}
+ .date small{font-size:17px}
+ .dayheading h2{font-size:34px}
+ .dayheading span{font-size:12px}
+}
 </style></head>
 <body>
 <header class="header">
@@ -662,15 +695,24 @@ function keyFor(r,i){return [SHOW_ID,r.date||'',r.horse||'',r.rider||'',r.class_
 function storageKey(){return 'showviva-showday-'+SHOW_ID+'-v1'}
 function loadSaved(){try{return JSON.parse(localStorage.getItem(storageKey())||'{}')}catch{return {}}}
 function saveLocal(){const obj={};entries.forEach(r=>obj[r.id]={warm:r.warm,notes:r.notes});localStorage.setItem(storageKey(),JSON.stringify(obj))}
-function populateFilters(){const horses=[...new Set(entries.map(r=>r.horse).filter(Boolean))].sort();const riders=[...new Set(entries.map(r=>r.rider).filter(Boolean))].sort();const rings=[...new Set(entries.map(r=>r.arena).filter(Boolean))].sort();$('horse').innerHTML='<option value="">My horses</option>'+horses.map(x=>`<option>${esc(x)}</option>`).join('');$('rider').innerHTML='<option value="">My riders</option>'+riders.map(x=>`<option>${esc(x)}</option>`).join('');$('ring').innerHTML='<option value="">Arenas</option>'+rings.map(x=>`<option>${esc(x)}</option>`).join('')}
+function populateFilters(){
+ const groups=[
+  {id:'horse',label:'My horses',values:[...new Set(entries.map(r=>r.horse).filter(Boolean))].sort()},
+  {id:'rider',label:'My riders',values:[...new Set(entries.map(r=>r.rider).filter(Boolean))].sort()},
+  {id:'ring',label:'Arenas',values:[...new Set(entries.map(r=>r.arena).filter(Boolean))].sort()}
+ ];
+ let visible=0;
+ groups.forEach(g=>{const el=$(g.id);el.innerHTML='<option value="">'+g.label+'</option>'+g.values.map(x=>`<option>${esc(x)}</option>`).join('');const cell=el.closest('.filtercell');const useful=g.values.length>1;if(cell)cell.hidden=!useful;if(useful)visible++});
+ const panel=document.querySelector('.filters-panel');if(panel)panel.hidden=visible===0;const bar=document.querySelector('.filterbar');if(bar)bar.style.setProperty('--visible-filters',String(Math.max(1,visible)));
+}
 function render(){
  $('dates').innerHTML=days.map((d,i)=>`<button class="date ${i===selected?'active':''}" data-day="${i}">${esc(d[0])}<small>${esc(d[1])}</small></button>`).join('');
  document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>{selected=+b.dataset.day;render()});
  $('daytitle').textContent=days[selected]?.[2]||'Show Day';
  const iso=days[selected]?.[3];
  let rows=entries.filter(r=>(!iso||r.date===iso)&&(!$('horse').value||r.horse===$('horse').value)&&(!$('rider').value||r.rider===$('rider').value)&&(!$('ring').value||r.arena===$('ring').value));
- $('summary').textContent=rows.length+' rides · '+new Set(rows.map(r=>r.horse)).size+' horses';
- $('rides').innerHTML=rows.length?rows.map(r=>`<article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">${esc(r.time)}</div><div class="pill warm"><button type="button" class="warm-trigger" data-id="${esc(r.id)}" aria-label="Edit warm-up time for ${esc(r.horse)}"><b>${shift(r.time,-r.warm)}</b><span>Warm up</span></button></div></div><div class="info"><div class="horse">${esc(r.horse)}</div><div class="classname">${esc(r.class)}</div><div class="rider">${esc(r.rider||'')}</div><div class="arena">${esc(r.arena||'')}</div><div class="draw">${r.drawnOrder?'Draw '+esc(r.drawnOrder)+(r.drawTotal?' of '+esc(r.drawTotal):''):'Draw order not published'}</div><div class="class-start-info">Class starts <strong>${esc(r.classStart||'Not published')}</strong></div>${r.url?`<a class="details" href="${esc(r.url)}" target="_blank" rel="noopener noreferrer">Class details ↗</a>`:'<span class="details">Class details unavailable</span>'}<button class="notes" data-id="${esc(r.id)}" aria-label="Round notes for ${esc(r.horse)}">▤<span class="count">${r.notes.length}</span></button></div></article>`).join(''):'<p class="empty">No rides match these filters for this day.</p>';
+ const horseCount=new Set(rows.map(r=>r.horse)).size;$('summary').textContent=rows.length+' '+(rows.length===1?'ride':'rides')+' · '+horseCount+' '+(horseCount===1?'horse':'horses');
+ $('rides').innerHTML=rows.length?rows.map(r=>`<article class="ride"><div class="time"><div class="roundlabel">ROUND</div><div class="roundtime">${esc(r.time)}</div><div class="pill warm"><button type="button" class="warm-trigger" data-id="${esc(r.id)}" aria-label="Edit warm-up time for ${esc(r.horse)}"><b>${shift(r.time,-r.warm)}</b><span>Warm up</span></button></div></div><div class="info"><div class="horse">${esc(r.horse)}</div><div class="classname">${esc(r.class)}</div><div class="rider">${esc(r.rider||'')}</div><div class="arena">${esc(r.arena||'')}</div><div class="draw">${r.drawnOrder?'Draw '+esc(r.drawnOrder)+(r.drawTotal?' of '+esc(r.drawTotal):''):'Draw order not published'}</div><div class="class-start-info">Class starts <strong>${esc(r.classStart||'Not published')}</strong></div>${r.url?`<a class="details" href="${esc(r.url)}" target="_blank" rel="noopener noreferrer">Class details ↗</a>`:'<span class="details">Class details unavailable</span>'}<button class="notes" data-id="${esc(r.id)}" aria-label="Round notes for ${esc(r.horse)}">▤${r.notes.length?`<span class="count">${r.notes.length}</span>`:''}</button></div></article>`).join(''):'<p class="empty">No rides match these filters for this day.</p>';
  document.querySelectorAll('.warm-trigger').forEach(b=>b.onclick=()=>openWarm(b.dataset.id));document.querySelectorAll('.notes').forEach(b=>b.onclick=()=>openNotes(b.dataset.id));
 }
 ['horse','rider','ring'].forEach(id=>$(id).addEventListener('change',render));
