@@ -1201,7 +1201,7 @@ function setEntriesSubmitted(checked){
   }
 }
 function confirmEntryChange(s){if(!s.entriesSubmitted)return; if(!confirm('Entries were marked as submitted. Have you also updated the entries with the show organiser? OK keeps the submitted tick; Cancel clears it until the changes are entered.'))s.entriesSubmitted=false;}
-function addClassEntry(e){e.preventDefault();const s=data.shows.find(x=>x.id===selected);if(!s)return;const f=e.target;const horse=f.elements.entryHorse.value;const choice=f.elements.entryClass.value;const c=(choice==='Other'?f.elements.entryOther.value:choice).trim();if(!horse||!c)return;if((s.plannedClasses[horse]||[]).includes(c)){alert('This horse is already listed in that class.');return}confirmEntryChange(s);(s.plannedClasses[horse]||(s.plannedClasses[horse]=[])).push(c);if(!s.horses.includes(horse))s.horses.push(horse);save();render()}
+function addClassEntry(e){e.preventDefault();const s=data.shows.find(x=>x.id===selected);if(!s)return;const f=e.target;const horse=f.elements.entryHorse.value;const choice=f.elements.entryClass.value;const c=(choice==='Other'?f.elements.entryOther.value:choice).trim();if(!horse||!c)return;if((s.plannedClasses[horse]||[]).includes(c)){alert('This horse is already listed in that class.');return}confirmEntryChange(s);(s.plannedClasses[horse]||(s.plannedClasses[horse]=[])).push(c);if(!s.horses.includes(horse))s.horses.push(horse);const horseRecord=data.horses.find(x=>registeredName(x)===horse);const detail=`${horseRecord?horseName(horseRecord):horse} · ${c}`;window.__svSuppressNextToast=true;save();render();setTimeout(()=>showEntrySavedChoice({detail}),40)}
 function removeClassEntry(horse,c){const s=data.shows.find(x=>x.id===selected);if(!s||!s.plannedClasses?.[horse]?.includes(c))return;confirmEntryChange(s);s.plannedClasses[horse]=s.plannedClasses[horse].filter(x=>x!==c);if(!s.plannedClasses[horse].length){delete s.plannedClasses[horse];s.horses=s.horses.filter(x=>x!==horse)}save();render()}
 const SV_CLASS_CHOICES=['British Novice','Discovery','Newcomers','Foxhunter','130cm'];
 function horsePlan(h,show){const n=registeredName(h),selected=!!show?.horses?.includes(n),saved=show?.plannedClasses?.[n]||[];const other=saved.filter(c=>!SV_CLASS_CHOICES.includes(c)).join(', ');return `<div class="sv-horse-plan"><label class="checkrow"><input type="checkbox" name="horses" value="${esc(n)}" ${selected?'checked':''} onchange="this.closest('.sv-horse-plan').querySelector('.sv-class-fields').hidden=!this.checked"><span>${esc(horseName(h))}</span></label><div class="sv-class-fields" ${selected?'':'hidden'}><p class="hint">Which classes are you planning for this horse? Select all that apply.</p><div class="sv-class-options">${SV_CLASS_CHOICES.map(c=>`<label><input type="checkbox" name="plannedClass" value="${esc(c)}" ${saved.includes(c)?'checked':''}>${esc(c)}</label>`).join('')}</div><label class="field" style="margin-top:12px">Other class(es) (optional)<input class="sv-other-class" name="otherClass" maxlength="180" placeholder="e.g. 1.20m Open" value="${esc(other)}"></label></div></div>`}
@@ -1233,6 +1233,23 @@ function showSavedChoice(show){
  const existing=document.getElementById('sv-save-choice');if(existing)existing.remove();
  const wrap=document.createElement('div');wrap.id='sv-save-choice';wrap.className='sv-save-choice';
  wrap.innerHTML=`<div class="sv-save-choice-card" role="dialog" aria-modal="true" aria-labelledby="sv-save-choice-title"><div class="sv-save-tick">✓</div><h2 id="sv-save-choice-title">Show saved</h2><p>${esc(show.name)}</p><button type="button" class="goldbtn" onclick="document.getElementById('sv-save-choice')?.remove();go('show')">Plan entries</button><button type="button" class="sv-save-home" onclick="document.getElementById('sv-save-choice')?.remove();go('home')">Home</button></div>`;
+ document.body.appendChild(wrap);
+}
+function openEntryEditor(){
+ const editor=document.querySelector('.sv-entry-editor');
+ if(!editor)return;
+ editor.open=true;
+ requestAnimationFrame(()=>{
+  editor.scrollIntoView({behavior:'smooth',block:'start'});
+  const first=editor.querySelector('select,input,button');
+  if(first)first.focus({preventScroll:true});
+ });
+}
+function showEntrySavedChoice(entry){
+ const existing=document.getElementById('sv-save-choice');if(existing)existing.remove();
+ const wrap=document.createElement('div');wrap.id='sv-save-choice';wrap.className='sv-save-choice';
+ const detail = entry?.detail || '';
+ wrap.innerHTML=`<div class="sv-save-choice-card" role="dialog" aria-modal="true" aria-labelledby="sv-save-choice-title"><div class="sv-save-tick">✓</div><h2 id="sv-save-choice-title">Entry saved</h2><p>${esc(detail)}</p><button type="button" class="goldbtn" onclick="document.getElementById('sv-save-choice')?.remove();openEntryEditor()">Plan another entry</button><button type="button" class="sv-save-home" onclick="document.getElementById('sv-save-choice')?.remove()">Done</button></div>`;
  document.body.appendChild(wrap);
 }
 function addShow(e){e.preventDefault();const f=e.target.elements;if(f.end.value<f.start.value){alert('End date must be on or after start date.');return}const s={id:Date.now(),name:f.venue.value.trim(),start:f.start.value,end:f.end.value,horses:[],riders:[],plannedClasses:{},entriesSubmitted:false,venue:f.venue.value.trim(),entrySystem:'',showLink:'',autoPlanner:false,status:'draft',checklist:[],prepChecklist:SV_PREP_DEFAULTS.map(text=>({text,done:false})),sharedNotes:''};data.shows.push(s);save();selected=s.id;activeTool=null;teamPending.then(()=>{if(!teamError)showSavedChoice(s)})}
@@ -1287,6 +1304,11 @@ if ('serviceWorker' in navigator) { window.addEventListener('load', () => naviga
   }
 
   function showSaved(){
+    if (window.__svSuppressNextToast){
+      window.__svSuppressNextToast = false;
+      userAction = false;
+      return;
+    }
     if (!ready || !userAction) return;
     const el = ensureToast();
     el.classList.add('show');
@@ -1321,9 +1343,7 @@ if ('serviceWorker' in navigator) { window.addEventListener('load', () => naviga
     if (
       t.includes('save show') ||
       t.includes('save changes') ||
-      t.includes('add to plan') ||
-      t.includes('plan an entry') ||
-      t.includes('plan another entry') ||
+      false /* entry saves use the matching modal instead */ ||
       false /* entries submitted opens planner setup instead */
     ){
       setTimeout(showSaved, 250);
