@@ -292,7 +292,7 @@ form .goldbtn{
 /* A small, recognisable return link—not a competing call-to-action. */
 #app:is(.sv-view-team,.sv-view-horse,.sv-view-rider)>.back{
   display:inline-flex!important;align-items:center!important;gap:6px!important;
-  width:auto!important;min-height:0!important;margin:0 0 20px!important;
+  width:auto!important;min-height:0!important;margin:0 0 14px!important;
   padding:5px 0!important;background:transparent!important;border:0!important;
   border-radius:0!important;box-shadow:none!important;
   color:#876b3b!important;font:600 14px/1.35 Arial,sans-serif!important;
@@ -1072,7 +1072,7 @@ form .goldbtn{
 <style id="sv-flow-polish-20260929">
 /* Final flow polish: make every logged-in branch feel like the same product as Home. */
 #app:not(.sv-view-home){max-width:760px;margin:0 auto;padding-top:24px}
-#app:not(.sv-view-home) .back{display:inline-flex;align-items:center;min-height:34px;margin:0 0 19px!important;color:#9a7a43;font-size:14px;font-weight:700;text-decoration:none}
+#app:not(.sv-view-home) .back{display:inline-flex;align-items:center;min-height:34px;margin:0 0 15px!important;color:#9a7a43;font-size:14px;font-weight:700;text-decoration:none}
 #app:not(.sv-view-home) .sv-branch-intro{margin:0 0 20px;padding:0 0 18px;border-bottom:1px solid #eadfcf}
 #app:not(.sv-view-home) .sv-branch-intro h1{margin:5px 0 7px;font:400 clamp(36px,9vw,46px)/1.08 Georgia,serif;letter-spacing:-.6px;color:#0e2838}
 #app:not(.sv-view-home) .sv-branch-intro .intro{margin:0;max-width:34rem;color:#6c7783;font-size:15px}
@@ -2213,14 +2213,14 @@ html body .site-header .header-actions .notebook-nav{
 #app.sv-view-home .sv-home-plan-hero{
   min-height:0!important;
   height:auto!important;
-  padding:30px 34px 28px!important;
+  padding:24px 30px 22px!important;
   margin:0 0 22px!important;
   border-radius:20px!important;
 }
 #app.sv-view-home .sv-home-plan-content{max-width:68%!important;}
 #app.sv-view-home .sv-home-plan-content .eyebrow{margin-bottom:14px!important;}
 #app.sv-view-home .sv-home-plan-content h1{
-  font-size:clamp(43px,12vw,58px)!important;
+  font-size:clamp(39px,10.5vw,52px)!important;
   line-height:.94!important;
   margin:0 0 20px!important;
 }
@@ -2234,7 +2234,8 @@ html body .site-header .header-actions .notebook-nav{
   min-height:48px!important;
   padding:12px 18px!important;
 }
-#app.sv-view-home .sv-home-setup-title{margin:0 4px 12px!important;}
+#app.sv-view-home .sv-home-setup-title{margin:24px 4px 12px!important;}
+#app.sv-view-home .sv-home-up-next-row{margin-top:0!important;}
 #app.sv-view-home .sv-home-setup-grid{gap:10px!important;margin-bottom:20px!important;}
 #app.sv-view-home .sv-home-setup-card{
   min-height:132px!important;
@@ -2260,9 +2261,9 @@ html body .site-header .header-actions .notebook-nav{
 #app.sv-view-home .sv-home-next-copy h2{font-size:34px!important;}
 #app.sv-view-home .sv-home-next-card .goldbtn{min-height:46px!important;}
 @media(max-width:430px){
-  #app.sv-view-home .sv-home-plan-hero{padding:27px 28px 25px!important;}
+  #app.sv-view-home .sv-home-plan-hero{padding:22px 26px 20px!important;}
   #app.sv-view-home .sv-home-plan-content{max-width:72%!important;}
-  #app.sv-view-home .sv-home-plan-content h1{font-size:46px!important;}
+  #app.sv-view-home .sv-home-plan-content h1{font-size:42px!important;}
   #app.sv-view-home .sv-home-setup-card{min-height:124px!important;padding:16px 14px 14px!important;}
   #app.sv-view-home .sv-home-setup-card strong{font-size:26px!important;}
 }
@@ -2345,7 +2346,7 @@ function openPlannerSetup(id){openShow(id);setTimeout(()=>{const d=document.quer
 }
 
 async function checkPlannerNow(btn){const s=data.shows.find(x=>x.id===selected);if(!s)return;const status=document.getElementById('sv-planner-status');btn.disabled=true;if(status)status.textContent=' Checking published start lists…';try{const r=await fetch(PLANNER_API,{method:'POST',headers:{'Content-Type':'application/json','x-team-token':TEAM_TOKEN},body:JSON.stringify({show_id:s.id}),cache:'no-store'});const j=await r.json();if(!r.ok)throw new Error(j.error||'Could not check start lists');const refreshed=await teamApi('GET');data=refreshed.state;teamRevision=refreshed.revision;render();}catch(err){btn.disabled=false;if(status)status.textContent=' '+(err?.message||'Could not check right now.');}}
-function openShow(id){activeTool=null;selected=Number(id);go('show')}function render(){app.className='sv-view-'+view;svUpdateNotebookBadge();document.querySelector('.site-header')?.classList.toggle('sv-header-home',view==='home');const homeNav=document.querySelector('.home-nav');if(homeNav)homeNav.hidden=(view==='home');if(view==='confirmed'){app.innerHTML=`<div class="sv-saved-overlay" role="dialog" aria-modal="true" aria-labelledby="sv-saved-title"><div class="sv-saved-dialog"><div class="sv-eyebrow">YOUR SHOWVIVA</div><h1 id="sv-saved-title">Show saved</h1><p>Your show has been added to your ShowViva calendar.</p><button class="goldbtn" onclick="go('home')">Home</button></div></div>`;return}if(view==='home'){const shows=ordered().filter(s=>!isPast(s)),next=shows[0];app.innerHTML=`<section class="sv-home-plan-hero" aria-label="Get My Show Plan"><div class="sv-home-plan-overlay"></div><div class="sv-home-plan-content"><div class="eyebrow">YOUR SHOW PLAN</div><h1>Get My<br>Show Plan</h1><p>Add your show. Once you’ve entered, we’ll create your personalised Show Plan.</p><button class="goldbtn" onclick="go('add')">Get started →</button></div></section><div class="sv-home-setup-title"><span>YOUR SHOWVIVA</span></div><div class="sv-home-setup-grid"><button class="sv-home-setup-card" onclick="go('team')"><span class="sv-home-setup-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="16.5" cy="9.5" r="2.3"/><path d="M3.5 19c.7-3.1 2.8-5 5.5-5s4.8 1.9 5.5 5"/><path d="M14.5 15c2.5.2 4.3 1.5 5 4"/></svg></span><strong>My Team</strong><small>Add your horses &amp; riders</small><span class="sv-home-setup-arrow">→</span></button><button class="sv-home-setup-card" onclick="mode='calendar';go('plan')"><span class="sv-home-setup-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></span><strong>Show Calendar</strong><small>Save &amp; manage your shows</small><span class="sv-home-setup-arrow">→</span></button></div>${next?`<div class="sv-home-section-row"><span>UP NEXT</span><button class="link" onclick="mode='list';go('plan')">View all shows →</button></div><section class="sv-home-next-card" aria-label="Up next"><div class="sv-home-next-copy"><h2>${esc(next.name)}</h2><p>${dates(next)}</p>${next.entriesSubmitted?'<small>Entries submitted</small>':''}</div><button class="goldbtn" onclick="openShow(${next.id})">Open my show →</button></section>`:''}<a class="sv-home-copilot-row" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer"><span>✦</span><div><strong>Ask your Show Co-Pilot</strong><small>Questions, planning &amp; show-day help</small></div><b>→</b></a>`}
+function openShow(id){activeTool=null;selected=Number(id);go('show')}function render(){app.className='sv-view-'+view;svUpdateNotebookBadge();document.querySelector('.site-header')?.classList.toggle('sv-header-home',view==='home');const homeNav=document.querySelector('.home-nav');if(homeNav)homeNav.hidden=(view==='home');if(view==='confirmed'){app.innerHTML=`<div class="sv-saved-overlay" role="dialog" aria-modal="true" aria-labelledby="sv-saved-title"><div class="sv-saved-dialog"><div class="sv-eyebrow">YOUR SHOWVIVA</div><h1 id="sv-saved-title">Show saved</h1><p>Your show has been added to your ShowViva calendar.</p><button class="goldbtn" onclick="go('home')">Home</button></div></div>`;return}if(view==='home'){const shows=ordered().filter(s=>!isPast(s)),next=shows[0];app.innerHTML=`<section class="sv-home-plan-hero" aria-label="Get My Show Plan"><div class="sv-home-plan-overlay"></div><div class="sv-home-plan-content"><div class="eyebrow">YOUR SHOW PLAN</div><h1>Get My<br>Show Plan</h1><p>Add your show. Once you’ve entered, we’ll create your personalised Show Plan.</p><button class="goldbtn" onclick="go('add')">Get started →</button></div></section>${next?`<div class="sv-home-section-row sv-home-up-next-row"><span>UP NEXT</span><button class="link" onclick="mode='list';go('plan')">View all shows →</button></div><section class="sv-home-next-card" aria-label="Up next"><div class="sv-home-next-copy"><h2>${esc(next.name)}</h2><p>${dates(next)}</p>${next.entriesSubmitted?'<small>Entered ✓</small>':''}</div><button class="goldbtn" onclick="openShow(${next.id})">Open my show →</button></section>`:''}<div class="sv-home-setup-title"><span>YOUR SHOWVIVA</span></div><div class="sv-home-setup-grid"><button class="sv-home-setup-card" onclick="go('team')"><span class="sv-home-setup-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="16.5" cy="9.5" r="2.3"/><path d="M3.5 19c.7-3.1 2.8-5 5.5-5s4.8 1.9 5.5 5"/><path d="M14.5 15c2.5.2 4.3 1.5 5 4"/></svg></span><strong>My Team</strong><small>Add your horses &amp; riders</small><span class="sv-home-setup-arrow">→</span></button><button class="sv-home-setup-card" onclick="mode='calendar';go('plan')"><span class="sv-home-setup-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></span><strong>Show Calendar</strong><small>Save &amp; manage your shows</small><span class="sv-home-setup-arrow">→</span></button></div>`}
 else if(view==='notebook'){
 svMarkNotesSeen();
 const notes=capitolNotes().slice().sort((a,b)=>(b.createdAt||'').localeCompare(a.createdAt||''));
