@@ -1819,9 +1819,98 @@ html body .site-header.sv-header-home .header-actions :is(.calendar-nav,.noteboo
 </style>
 
 
-<style id="sv-final-home-border-lock-20260929">
+<style id="sv-final-fix-20260929">
+:root{
+  --sv-navy:#10283a;
+  --sv-gold-primary:#dfb866;
+  --sv-gold-accent:#96743d;
+  --sv-gold-border:#dcc79c;
+}
+
+/* Hard-lock the SAME navy on Home, Calendar, Notes and every other internal view. */
+html body header,
+html body .site-header,
+html body .site-header.sv-header-home,
+html body:has(#app.sv-view-plan) .site-header,
+html body:has(#app.sv-view-notebook) .site-header{
+  background:#10283a!important;
+  background-color:#10283a!important;
+  background-image:none!important;
+}
+html body .site-header .header-top,
+html body .site-header .brand-lockup,
+html body .site-header .header-actions{
+  background:transparent!important;
+}
+html body .site-header .header-actions .calendar-nav,
+html body .site-header .header-actions .notebook-nav,
+html body .site-header.sv-header-home .header-actions .calendar-nav,
+html body .site-header.sv-header-home .header-actions .notebook-nav{
+  background:#10283a!important;
+  background-color:#10283a!important;
+  background-image:none!important;
+  border:1.5px solid #dcc79c!important;
+  color:#e6bf78!important;
+  box-shadow:none!important;
+}
+
+/* The 3 primary Home actions must never overflow on a phone. */
+#app.sv-view-home .sv-home-primary-actions{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:8px!important;
+}
 #app.sv-view-home .sv-home-action{
-  border:2px solid var(--sv-gold-primary)!important;
+  min-width:0!important;
+  overflow:hidden!important;
+  padding:13px 10px 12px!important;
+}
+#app.sv-view-home .sv-home-action strong{
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  white-space:normal!important;
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+  hyphens:none!important;
+  font-size:clamp(15.5px,4.1vw,18px)!important;
+  line-height:1.08!important;
+}
+#app.sv-view-home .sv-home-action small{
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  white-space:normal!important;
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+  font-size:clamp(11.5px,3vw,13px)!important;
+  line-height:1.25!important;
+}
+#app.sv-view-home .sv-home-action-icon,
+#app.sv-view-home .sv-home-action-icon svg{
+  width:23px!important;
+  height:23px!important;
+}
+
+/* Give wrapped labels enough room while keeping the row premium and even. */
+@media(max-width:430px){
+  #app.sv-view-home .sv-home-action{
+    min-height:112px!important;
+  }
+  #app.sv-view-home .sv-home-action strong{
+    font-size:16px!important;
+  }
+  #app.sv-view-home .sv-home-action small{
+    font-size:12px!important;
+  }
+}
+@media(max-width:365px){
+  #app.sv-view-home .sv-home-primary-actions{gap:6px!important}
+  #app.sv-view-home .sv-home-action{
+    padding-left:8px!important;
+    padding-right:8px!important;
+  }
+  #app.sv-view-home .sv-home-action strong{font-size:15px!important}
+  #app.sv-view-home .sv-home-action small{font-size:11px!important}
 }
 </style>
 
