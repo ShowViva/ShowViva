@@ -1688,6 +1688,143 @@ html body .site-header .brand-wordmark span{color:#e7b856!important}
 }
 </style>
 
+
+<style id="sv-wow-home-final-20260929">
+:root{
+  --sv-navy:#10283a;
+  --sv-gold-primary:#dfb866;
+  --sv-gold-accent:#96743d;
+  --sv-gold-border:#dcc79c;
+  --sv-cream:#fbf8f1;
+  --sv-surface:#fffdf9;
+  --sv-muted:#6f7a88;
+}
+
+/* Exact same navy on header and header action buttons. */
+html body .site-header,
+html body .site-header.sv-header-home{
+  background:var(--sv-navy)!important;
+  background-color:var(--sv-navy)!important;
+}
+html body .site-header .header-actions :is(.calendar-nav,.notebook-nav),
+html body .site-header.sv-header-home .header-actions :is(.calendar-nav,.notebook-nav){
+  background:var(--sv-navy)!important;
+  background-color:var(--sv-navy)!important;
+  border:1.5px solid var(--sv-gold-border)!important;
+  color:#e6bf78!important;
+  box-shadow:none!important;
+}
+
+/* Homepage hero: still premium, but shallower. */
+#app.sv-view-home .sv-planner-hero{
+  padding:18px 18px 17px!important;
+  margin:14px 0 16px!important;
+  border-radius:18px!important;
+}
+#app.sv-view-home .sv-planner-hero h2{
+  margin:6px 0 2px!important;
+  font-size:clamp(28px,7.4vw,36px)!important;
+  line-height:1.05!important;
+}
+#app.sv-view-home .sv-planner-hero .sv-planner-show{
+  margin:4px 0 0!important;
+  font-size:14px!important;
+}
+#app.sv-view-home .sv-planner-hero .goldbtn{
+  min-height:49px!important;
+  margin-top:14px!important;
+  border-radius:12px!important;
+  font-size:16px!important;
+}
+
+/* Core action tiles: bigger, clearer, more app-like. */
+#app.sv-view-home .sv-home-primary-actions{
+  gap:10px!important;
+  margin:13px 0 10px!important;
+}
+#app.sv-view-home .sv-home-action{
+  min-height:106px!important;
+  padding:14px 12px 13px!important;
+  border-radius:16px!important;
+  background:var(--sv-surface)!important;
+  border:1px solid var(--sv-gold-border)!important;
+}
+#app.sv-view-home .sv-home-action-icon{
+  width:25px!important;
+  height:25px!important;
+  margin-bottom:8px!important;
+  color:var(--sv-gold-accent)!important;
+}
+#app.sv-view-home .sv-home-action-icon svg{
+  width:25px!important;
+  height:25px!important;
+  stroke-width:1.65!important;
+}
+#app.sv-view-home .sv-home-action strong{
+  font:400 clamp(18px,4.7vw,21px)/1.03 Georgia,'Times New Roman',serif!important;
+  letter-spacing:-.02em!important;
+  white-space:nowrap!important;
+}
+#app.sv-view-home .sv-home-action small{
+  margin-top:6px!important;
+  color:var(--sv-muted)!important;
+  font:500 clamp(12px,3vw,13.5px)/1.25 Arial,Helvetica,sans-serif!important;
+}
+
+/* Keep supporting navigation clean and secondary. */
+#app.sv-view-home .sv-home-assist{
+  margin:0 0 16px!important;
+}
+#app.sv-view-home .sv-home-assist .sv-copilot-link,
+#app.sv-view-home .sv-home-assist .sv-bs-calendar-link{
+  min-height:52px!important;
+}
+#app.sv-view-home .sectionhead{
+  margin-top:18px!important;
+}
+
+/* Slightly stronger polish on My Shows cards. */
+#app.sv-view-home .item{
+  border-radius:14px!important;
+  border-color:var(--sv-gold-border)!important;
+  background:var(--sv-surface)!important;
+  padding:15px 16px!important;
+}
+
+/* Mobile tuning: preserve legibility rather than shrinking everything. */
+@media(max-width:390px){
+  #app.sv-view-home .sv-planner-hero{
+    padding:16px 15px 15px!important;
+    margin-bottom:14px!important;
+  }
+  #app.sv-view-home .sv-home-primary-actions{
+    gap:8px!important;
+  }
+  #app.sv-view-home .sv-home-action{
+    min-height:101px!important;
+    padding:13px 9px 12px!important;
+  }
+  #app.sv-view-home .sv-home-action strong{
+    font-size:17px!important;
+  }
+  #app.sv-view-home .sv-home-action small{
+    font-size:11.5px!important;
+  }
+  #app.sv-view-home .sv-home-action-icon,
+  #app.sv-view-home .sv-home-action-icon svg{
+    width:23px!important;
+    height:23px!important;
+  }
+}
+</style>
+
+
+<style id="sv-final-home-border-lock-20260929">
+#app.sv-view-home .sv-home-action{
+  border:2px solid var(--sv-gold-primary)!important;
+}
+</style>
+
 </head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions" aria-label="Account"><button type="button" class="calendar-nav" aria-label="Open calendar" title="Calendar" onclick="mode='calendar';go('plan')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></button><button type="button" class="notebook-nav" aria-label="Open shared notebook" title="Shared notebook" onclick="go('notebook')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v18M10 8h6M10 12h6M10 16h4"/></svg><span id="sv-notebook-badge" class="sv-notebook-badge" aria-hidden="true"></span></button></nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><script>function signOut(){alert('Sign out will be connected when this prototype is integrated with your live account.');}
 const KEY='showviva-demo-v1';
 const initial={shows:[],horses:[],riders:[],plannerCreations:[],lastSubmittedShowId:null,teamNotes:'',teamNotebookNotes:[],teamMembers:[]};
