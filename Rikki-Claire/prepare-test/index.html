@@ -2491,7 +2491,109 @@ main{max-width:680px!important;padding:10px 18px 92px!important}
 .sv-bottom-nav{position:fixed;z-index:1000;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(4,1fr);height:74px;padding:7px max(8px,env(safe-area-inset-right)) calc(6px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));border-top:1px solid #e8e3db;background:rgba(251,248,241,.96);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}.sv-bottom-nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:0;background:transparent;color:#697582;font:600 10px -apple-system,BlinkMacSystemFont,"SF Pro Text",Arial,sans-serif}.sv-bottom-nav .sv-nav-icon{font-size:23px;line-height:1}.sv-bottom-nav button.active{color:#9d7938}.sv-bottom-nav button.active:after{content:"";width:28px;height:2px;border-radius:3px;background:#b78f45;margin-top:2px}
 body:has(#app.sv-view-show) .sv-bottom-nav,body:has(#app.sv-view-plannerRequest) .sv-bottom-nav{display:none}body:has(#app.sv-view-show),body:has(#app.sv-view-plannerRequest){padding-bottom:0}
 @media(max-width:430px){.site-header{padding:18px 16px 10px!important}.site-header .brand-wordmark{font-size:35px!important}.site-header .header-actions{gap:9px!important}.site-header .header-actions>a:is(.calendar-nav,.notebook-nav){width:50px!important;min-width:50px!important;flex-basis:50px!important}.site-header .header-actions>a:is(.calendar-nav,.notebook-nav)>svg{width:42px!important;height:42px!important;padding:10px!important}.sv-header-icon-label{font-size:10px}main{padding-left:14px!important;padding-right:14px!important}#app.sv-view-home .sv-home-plan-hero{padding:22px 20px 21px!important;border-radius:22px!important}#app.sv-view-home .sv-home-plan-content h1{font-size:35px!important}#app.sv-view-home .sv-home-plan-content p{font-size:14px!important}#app.sv-view-home .sv-home-show-row{grid-template-columns:48px minmax(0,1fr) 14px!important;gap:9px!important;padding:15px 13px!important}.sv-home-status{grid-column:2/3;justify-self:start;margin-top:-2px}.sv-home-show-arrow{grid-column:3;grid-row:1/3}.sv-home-date{grid-row:1/3}.sv-home-show-main{grid-column:2}.sv-home-smart-panel{margin-left:12px!important;margin-right:12px!important}.sv-home-card-action{width:calc(100% - 24px)!important;margin-left:12px!important;margin-right:12px!important}}
-</style></head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions" aria-label="Account"><a href="https://www.britishshowjumping.co.uk/show-calendar.cfm" class="calendar-nav" aria-label="Find a show" title="Find a show" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/><path d="M10.5 7.8v5.4M7.8 10.5h5.4"/></svg><span class="sv-header-icon-label">Find show</span></a><a href="#" class="notebook-nav" aria-label="Open shared notebook" title="Shared notebook" onclick="go('notebook');return false"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v18M10 8h6M10 12h6M10 16h4"/></svg><span class="sv-header-icon-label">Notes</span><span id="sv-notebook-badge" class="sv-notebook-badge" aria-hidden="true"></span></a><a class="copilot-nav" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Show Co-Pilot" title="Show Co-Pilot"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"/><path d="M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2z"/></svg></a></nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><nav class="sv-bottom-nav" aria-label="Primary"><button onclick="go('home')" data-view="home"><span class="sv-nav-icon">⌂</span><span>Home</span></button><button onclick="mode='calendar';go('plan')" data-view="plan"><span class="sv-nav-icon">□</span><span>Calendar</span></button><button onclick="go('team')" data-view="team"><span class="sv-nav-icon">♧</span><span>Team</span></button><button onclick="go('notebook')" data-view="notebook"><span class="sv-nav-icon">▤</span><span>Notes</span></button></nav><script>function signOut(){alert('Sign out will be connected when this prototype is integrated with your live account.');}
+</style>
+<style id="sv-mobile-polish-fix-20260929">
+/* Final mobile polish: keep the native-app proportions from the approved mockup. */
+html body .site-header .header-actions>a.copilot-nav{display:none!important}
+#app.sv-view-home .sv-home-plan-content{width:100%!important;max-width:100%!important;padding:0!important}
+#app.sv-view-home .sv-home-plan-content h1{max-width:none!important}
+@media(max-width:430px){
+  .site-header{padding:16px 15px 11px!important;min-height:72px!important}
+  .site-header .header-top{align-items:center!important}
+  .site-header .brand-wordmark{font-size:31px!important;letter-spacing:-1.3px!important}
+  .site-header .header-actions{gap:5px!important}
+  .site-header .header-actions>a:is(.calendar-nav,.notebook-nav){width:44px!important;min-width:44px!important;flex-basis:44px!important}
+  .site-header .header-actions>a:is(.calendar-nav,.notebook-nav)>svg{width:38px!important;height:38px!important;padding:9px!important}
+  .sv-header-icon-label{font-size:9px!important;line-height:1!important}
+  main{padding:6px 16px 82px!important}
+  #app.sv-view-home .sv-home-plan-hero{margin:4px 0 20px!important;padding:20px 20px 19px!important;border-radius:20px!important}
+  #app.sv-view-home .sv-home-plan-content{width:100%!important;max-width:100%!important;padding:0!important}
+  #app.sv-view-home .sv-home-plan-content .eyebrow{font-size:10px!important;letter-spacing:2.5px!important;margin-bottom:8px!important}
+  #app.sv-view-home .sv-home-plan-content h1{font-size:31px!important;line-height:1.02!important;letter-spacing:-1px!important;margin-bottom:11px!important;max-width:none!important}
+  #app.sv-view-home .sv-home-plan-content p{font-size:13px!important;line-height:1.42!important;margin-bottom:15px!important;max-width:330px!important}
+  #app.sv-view-home .sv-home-plan-content .goldbtn{width:230px!important;min-height:46px!important;padding:10px 15px!important;border-radius:14px!important;font-size:15px!important}
+  #app.sv-view-home .sv-home-upcoming-heading{margin:0 2px 10px!important}
+  #app.sv-view-home .sv-home-upcoming-heading h2{font-size:29px!important;line-height:1!important}
+  #app.sv-view-home .sv-home-calendar-link{font-size:12px!important;gap:6px!important}
+  #app.sv-view-home .sv-home-show-row{grid-template-columns:46px minmax(0,1fr) 14px!important;padding:14px 12px!important;gap:8px!important}
+  #app.sv-view-home .sv-home-date strong{font-size:28px!important}
+  #app.sv-view-home .sv-home-show-main>strong{font-size:25px!important}
+  #app.sv-view-home .sv-home-show-main>small{font-size:12px!important}
+  #app.sv-view-home .sv-home-status{font-size:10px!important;padding:6px 9px!important}
+  #app.sv-view-home .sv-home-smart-panel{padding:13px!important;margin:0 11px 12px!important}
+  #app.sv-view-home .sv-home-smart-panel strong{font-size:13px!important}
+  #app.sv-view-home .sv-home-smart-panel small{font-size:11.5px!important}
+  #app.sv-view-home .sv-home-team-row{margin-top:14px!important;padding:14px 15px!important;min-height:76px!important}
+  .sv-bottom-nav{height:66px!important;padding-top:6px!important;padding-bottom:calc(5px + env(safe-area-inset-bottom))!important}
+  .sv-bottom-nav button{font-size:10px!important;gap:2px!important}
+  .sv-bottom-nav .sv-nav-icon{display:grid!important;place-items:center!important;width:24px!important;height:24px!important;font-size:0!important}
+  .sv-bottom-nav .sv-nav-icon svg{width:22px!important;height:22px!important;fill:none!important;stroke:currentColor!important;stroke-width:1.8!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+}
+</style>
+
+<style id="sv-bottom-nav-premium-final">
+/* Premium app navigation: persistent on main app screens, focused planner remains distraction-free. */
+.sv-bottom-nav{
+  position:fixed!important;left:0!important;right:0!important;bottom:0!important;z-index:1200!important;
+  display:grid!important;grid-template-columns:repeat(4,1fr)!important;
+  min-height:72px!important;height:auto!important;
+  padding:7px max(10px,env(safe-area-inset-right)) calc(7px + env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left))!important;
+  background:rgba(251,248,241,.97)!important;
+  border-top:1px solid rgba(25,46,71,.10)!important;
+  box-shadow:0 -8px 28px rgba(25,46,71,.055)!important;
+  backdrop-filter:blur(20px) saturate(1.15)!important;-webkit-backdrop-filter:blur(20px) saturate(1.15)!important;
+}
+.sv-bottom-nav button{
+  position:relative!important;min-height:54px!important;padding:4px 2px 2px!important;
+  display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:4px!important;
+  border:0!important;background:transparent!important;color:#707b88!important;
+  font:600 11px/1.1 -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif!important;
+  letter-spacing:0!important;-webkit-tap-highlight-color:transparent!important;
+}
+.sv-bottom-nav .sv-nav-icon{display:grid!important;place-items:center!important;width:27px!important;height:27px!important;font-size:0!important}
+.sv-bottom-nav .sv-nav-icon svg{width:24px!important;height:24px!important;fill:none!important;stroke:currentColor!important;stroke-width:1.75!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+.sv-bottom-nav button.active{color:#a58142!important}
+.sv-bottom-nav button.active:after{content:""!important;position:absolute!important;bottom:-1px!important;width:30px!important;height:2px!important;border-radius:3px!important;background:#b9924d!important;margin:0!important}
+.sv-bottom-nav button:active{transform:scale(.97)}
+/* Notes now lives in the primary bottom navigation; keep the header quieter and less repetitive. */
+.site-header .notebook-nav,.site-header .copilot-nav{display:none!important}
+.site-header .header-actions{margin-left:auto!important}
+.site-header .calendar-nav{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:2px!important;min-width:58px!important}
+.site-header .calendar-nav .sv-header-icon-label{display:block!important;font:600 10px/1 -apple-system,BlinkMacSystemFont,"SF Pro Text",Arial,sans-serif!important}
+/* Keep main content clear of the fixed tab bar. */
+body{padding-bottom:calc(78px + env(safe-area-inset-bottom))!important}
+body:has(#app.sv-view-show),body:has(#app.sv-view-plannerRequest){padding-bottom:0!important}
+body:has(#app.sv-view-show) .sv-bottom-nav,body:has(#app.sv-view-plannerRequest) .sv-bottom-nav{display:none!important}
+@media(max-width:420px){
+  .sv-bottom-nav{min-height:68px!important;padding-top:6px!important}
+  .sv-bottom-nav button{font-size:10.5px!important;gap:3px!important}
+  .sv-bottom-nav .sv-nav-icon svg{width:23px!important;height:23px!important}
+}
+</style>
+
+<style id="sv-brand-legibility-nav-polish-20260929">
+/* Final app-shell polish: keep the ShowViva identity unmistakable and the tab bar refined. */
+.site-header{position:relative!important;z-index:10!important;overflow:visible!important;padding:18px 18px 12px!important}
+.site-header .header-top{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:16px!important;min-height:58px!important}
+.site-header .brand-lockup{display:block!important;flex:1 1 auto!important;min-width:0!important;overflow:visible!important}
+.site-header .brand-wordmark{display:block!important;margin:0!important;padding:2px 0 3px!important;font:400 clamp(34px,9vw,43px)/1.06 Georgia,'Times New Roman',serif!important;letter-spacing:-1.8px!important;color:#102b3d!important;white-space:nowrap!important;text-rendering:optimizeLegibility!important;-webkit-font-smoothing:antialiased!important}
+.site-header .brand-wordmark span{color:#b4873c!important}
+.site-header .header-actions{flex:0 0 auto!important;gap:0!important}
+.site-header .calendar-nav{min-width:54px!important;width:54px!important;color:#102b3d!important}
+.site-header .calendar-nav>svg{width:42px!important;height:42px!important;padding:10px!important;border:1px solid rgba(16,43,61,.06)!important;background:rgba(255,255,255,.88)!important;box-shadow:0 5px 18px rgba(16,43,61,.07)!important}
+.site-header .calendar-nav .sv-header-icon-label{font-size:10px!important;color:#465768!important;margin-top:1px!important}
+.sv-bottom-nav{background:rgba(252,249,243,.97)!important;border-top:1px solid rgba(16,43,61,.085)!important;box-shadow:0 -10px 34px rgba(16,43,61,.055)!important}
+.sv-bottom-nav button{color:#73808d!important;font-weight:600!important;gap:3px!important}
+.sv-bottom-nav .sv-nav-icon{width:38px!important;height:32px!important;border-radius:12px!important;transition:background .18s ease,color .18s ease,transform .18s ease!important}
+.sv-bottom-nav .sv-nav-icon svg{width:23px!important;height:23px!important;stroke-width:1.65!important}
+.sv-bottom-nav button.active{color:#9a7638!important}
+.sv-bottom-nav button.active .sv-nav-icon{background:rgba(201,164,95,.13)!important;color:#a17b3d!important}
+.sv-bottom-nav button.active .sv-nav-icon svg{stroke-width:1.85!important}
+.sv-bottom-nav button.active:after{width:22px!important;height:2px!important;background:#b58a43!important;bottom:-2px!important}
+.sv-bottom-nav button:focus-visible{outline:0!important}.sv-bottom-nav button:focus-visible .sv-nav-icon{box-shadow:0 0 0 2px rgba(181,138,67,.28)!important}
+@media(max-width:380px){.site-header{padding-left:15px!important;padding-right:15px!important}.site-header .brand-wordmark{font-size:32px!important;letter-spacing:-1.4px!important}.site-header .calendar-nav{min-width:50px!important;width:50px!important}.sv-bottom-nav .sv-nav-icon{width:36px!important;height:30px!important}.sv-bottom-nav .sv-nav-icon svg{width:22px!important;height:22px!important}}
+</style>
+</head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions" aria-label="Account"><a href="https://www.britishshowjumping.co.uk/show-calendar.cfm" class="calendar-nav" aria-label="Find a show" title="Find a show" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/><path d="M10.5 7.8v5.4M7.8 10.5h5.4"/></svg><span class="sv-header-icon-label">Find show</span></a><a href="#" class="notebook-nav" aria-label="Open shared notebook" title="Shared notebook" onclick="go('notebook');return false"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v18M10 8h6M10 12h6M10 16h4"/></svg><span class="sv-header-icon-label">Notes</span><span id="sv-notebook-badge" class="sv-notebook-badge" aria-hidden="true"></span></a><a class="copilot-nav" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Show Co-Pilot" title="Show Co-Pilot"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"/><path d="M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2z"/></svg></a></nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><nav class="sv-bottom-nav" aria-label="Primary"><button onclick="go('home')" data-view="home"><span class="sv-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.25 10.25 12 3.75l7.75 6.5v8.5a1.5 1.5 0 0 1-1.5 1.5H5.75a1.5 1.5 0 0 1-1.5-1.5z"/><path d="M9.25 20.25v-5.5h5.5v5.5"/></svg></span><span>Home</span></button><button onclick="mode='calendar';go('plan')" data-view="plan"><span class="sv-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.75" y="5.25" width="16.5" height="15" rx="2.25"/><path d="M7.5 3.75v3M16.5 3.75v3M3.75 9.25h16.5"/></svg></span><span>Calendar</span></button><button onclick="go('team')" data-view="team"><span class="sv-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.5" cy="8" r="2.75"/><circle cx="16.3" cy="9.2" r="2.1"/><path d="M3.5 19.25c.65-3.15 2.55-4.85 5-4.85s4.35 1.7 5 4.85"/><path d="M14.2 15.2c2.75.1 4.55 1.45 5.25 4.05"/></svg></span><span>Team</span></button><button onclick="go('notebook')" data-view="notebook"><span class="sv-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="3.5" width="15" height="17" rx="2"/><path d="M8 3.5v17M11 8h5.5M11 12h5.5M11 16h4"/></svg></span><span>Notes</span></button></nav><script>function signOut(){alert('Sign out will be connected when this prototype is integrated with your live account.');}
 const KEY='showviva-demo-v1';
 const initial={shows:[],horses:[],riders:[],plannerCreations:[],lastSubmittedShowId:null,teamNotes:'',teamNotebookNotes:[],teamMembers:[]};
 let data=structuredClone(initial),editingHorse=null,editingRider=null,activeTool=null;
