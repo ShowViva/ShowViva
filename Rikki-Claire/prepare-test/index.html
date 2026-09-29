@@ -2499,7 +2499,90 @@ html body .site-header .header-actions{gap:0!important;}
 #app.sv-view-home .sv-home-show-cta-ready{background:linear-gradient(110deg,#e7c88c,#c7a45e);border-color:#c7a45e;color:#10283a;}
 #app.sv-view-home .sv-home-show-arrow{color:#a48650;font-size:20px;flex:0 0 auto;}
 </style>
-</head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions" aria-label="Account"><a class="copilot-nav" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Show Co-Pilot" title="Show Co-Pilot"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"/><path d="M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2z"/></svg></a></nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><script>function signOut(){alert('Sign out will be connected when this prototype is integrated with your live account.');}
+
+<style id="sv-premium-app-dashboard-20260929">
+:root{--sv-navy:#0d2638;--sv-navy-2:#132f43;--sv-cream:#f7f3ea;--sv-card:#fffdf8;--sv-gold:#c7a45e;--sv-gold-soft:#e4c983;--sv-line:#dfd2bc;--sv-muted:#74808b}
+html body .site-header.sv-header-home .header-message{display:none!important}
+html body .site-header.sv-header-home{padding-bottom:0!important;border-bottom:1px solid rgba(199,164,94,.55)!important}
+html body .site-header.sv-header-home .header-top{min-height:76px!important;padding-top:13px!important;padding-bottom:13px!important}
+html body .site-header .sv-app-header-actions{display:flex!important;gap:8px!important;align-items:center!important}
+html body .site-header .sv-app-header-actions>a,
+html body .site-header .sv-app-header-actions>button{
+ -webkit-appearance:none;appearance:none;width:42px!important;min-width:42px!important;height:42px!important;flex:0 0 42px!important;
+ border:1px solid rgba(225,189,115,.7)!important;border-radius:13px!important;background:rgba(255,255,255,.025)!important;
+ color:#e1bd73!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;padding:0!important;position:relative!important;
+}
+html body .site-header .sv-app-header-actions svg{width:21px!important;height:21px!important;fill:none!important;stroke:currentColor!important;stroke-width:1.8!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+.sv-notebook-badge{position:absolute;right:-4px;top:-5px;min-width:17px;height:17px;padding:0 4px;border-radius:999px;background:#e1bd73;color:#0d2638;font:700 10px/17px Arial,sans-serif;text-align:center;display:none}
+.sv-notebook-badge.show{display:block}
+#app.sv-view-home{padding-top:18px!important}
+#app.sv-view-home .sv-app-primary-action{
+ display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:16px;margin:0 0 24px;padding:20px 18px 18px;
+ border:1px solid rgba(199,164,94,.85);border-radius:20px;background:linear-gradient(145deg,var(--sv-navy),#102d41 62%,#173b51);color:#fffaf0;box-shadow:0 8px 22px rgba(13,38,56,.08);
+}
+#app.sv-view-home .sv-app-kicker{margin:0 0 7px;color:#d7b56f;font:700 10.5px/1.2 Arial,sans-serif;letter-spacing:.25em}
+#app.sv-view-home .sv-app-primary-action h1{margin:0;color:#fffaf0;font:400 clamp(29px,7vw,36px)/.98 Georgia,'Times New Roman',serif;letter-spacing:-.025em}
+#app.sv-view-home .sv-app-primary-action p{max-width:390px;margin:10px 0 0;color:#d9dee1;font:400 13px/1.45 Arial,sans-serif}
+#app.sv-view-home .sv-app-primary-button{min-height:46px;padding:0 16px;border:0;border-radius:13px;background:linear-gradient(110deg,#e7c88c,#c7a45e);color:#10283a;font:700 13px/1 Arial,sans-serif;white-space:nowrap;box-shadow:none}
+#app.sv-view-home .sv-app-primary-button span{margin-left:7px;font-size:16px}
+#app.sv-view-home .sv-app-section-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 2px 11px}
+#app.sv-view-home .sv-app-section-heading>div{min-width:0}
+#app.sv-view-home .sv-app-section-heading span{display:block;color:#95743c;font:700 10.5px/1.2 Arial,sans-serif;letter-spacing:.24em}
+#app.sv-view-home .sv-app-section-heading small{display:block;margin-top:4px;color:#858b91;font:400 11.5px/1.3 Arial,sans-serif;letter-spacing:0}
+#app.sv-view-home .sv-app-calendar-button{display:flex;align-items:center;justify-content:center;width:40px;height:40px;flex:0 0 40px;padding:0;border:1px solid #d7b56f;border-radius:12px;background:var(--sv-navy);color:#e1bd73}
+#app.sv-view-home .sv-app-calendar-button svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#app.sv-view-home .sv-app-upcoming-list{display:grid;gap:10px;margin:0 0 18px}
+#app.sv-view-home .sv-app-show-card{overflow:hidden;border:1px solid var(--sv-line);border-radius:17px;background:var(--sv-card);box-shadow:0 3px 12px rgba(13,38,56,.035)}
+#app.sv-view-home .sv-app-show-card.ready{border-color:#cfad66;background:#fffaf0}
+#app.sv-view-home .sv-app-show-card.checking{border-color:#d6c18f}
+#app.sv-view-home .sv-app-show-body{-webkit-appearance:none;appearance:none;width:100%;display:flex;align-items:center;gap:12px;padding:15px 15px 11px;border:0;background:transparent;text-align:left;color:var(--sv-navy)}
+#app.sv-view-home .sv-app-show-copy{min-width:0;flex:1}
+#app.sv-view-home .sv-app-show-topline{display:flex;align-items:center;gap:9px;min-width:0}
+#app.sv-view-home .sv-app-show-topline strong{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--sv-navy);font:400 21px/1.05 Georgia,'Times New Roman',serif}
+#app.sv-view-home .sv-status-chip{flex:0 0 auto;padding:5px 7px;border-radius:999px;background:#f1ece2;color:#735b31;font:700 9.5px/1 Arial,sans-serif;letter-spacing:.01em;white-space:nowrap}
+#app.sv-view-home .sv-status-chip.checking{background:#f2e5bf;color:#745a24}
+#app.sv-view-home .sv-status-chip.ready{background:#ddc57f;color:#173043}
+#app.sv-view-home .sv-status-chip.entered{background:#e9efe9;color:#47604b}
+#app.sv-view-home .sv-app-show-date{display:block;margin-top:5px;color:#78818a;font:500 12px/1.2 Arial,sans-serif}
+#app.sv-view-home .sv-app-show-copy p{margin:6px 0 0;color:#65717b;font:400 11.5px/1.3 Arial,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#app.sv-view-home .sv-app-show-chevron{flex:0 0 auto;color:#aa874c;font:400 26px/1 Georgia,serif}
+#app.sv-view-home .sv-app-show-action{display:flex;align-items:center;justify-content:space-between;width:calc(100% - 28px);min-height:39px;margin:0 14px 13px;padding:0 11px;border:1px solid #ddcfb8;border-radius:11px;background:#fffdfa;color:#735a30;font:700 12px/1 Arial,sans-serif;text-decoration:none;box-sizing:border-box}
+#app.sv-view-home .sv-app-show-action.is-ready{border-color:#c8a35a;background:linear-gradient(110deg,#e9cd92,#cfad68);color:#10283a}
+#app.sv-view-home .sv-app-show-action span{font-size:15px}
+#app.sv-view-home .sv-app-empty{padding:18px;border:1px solid var(--sv-line);border-radius:17px;background:var(--sv-card)}
+#app.sv-view-home .sv-app-empty strong{display:block;color:var(--sv-navy);font:400 20px/1.1 Georgia,'Times New Roman',serif}
+#app.sv-view-home .sv-app-empty small{display:block;margin:5px 0 11px;color:var(--sv-muted);font:400 12px/1.35 Arial,sans-serif}
+#app.sv-view-home .sv-app-empty button{border:0;background:transparent;padding:0;color:#8c6b32;font:700 12px/1 Arial,sans-serif}
+#app.sv-view-home .sv-app-utilities{padding-top:1px}
+#app.sv-view-home .sv-app-utility{width:100%;display:grid;grid-template-columns:30px minmax(0,1fr) auto;align-items:center;gap:11px;padding:13px 14px;border:1px solid #d9cdb9;border-radius:15px;background:rgba(255,253,248,.65);color:var(--sv-navy);text-align:left}
+#app.sv-view-home .sv-app-utility-icon{display:flex;width:26px;height:26px;color:#a68043}
+#app.sv-view-home .sv-app-utility-icon svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+#app.sv-view-home .sv-app-utility strong{display:block;font:700 13px/1.15 Arial,sans-serif;color:var(--sv-navy)}
+#app.sv-view-home .sv-app-utility small{display:block;margin-top:3px;font:400 11.5px/1.2 Arial,sans-serif;color:#7a828a}
+#app.sv-view-home .sv-app-utility b{font:400 18px/1 Arial,sans-serif;color:#a8864e}
+@media(max-width:430px){
+ #app.sv-view-home{padding-left:17px!important;padding-right:17px!important}
+ #app.sv-view-home .sv-app-primary-action{grid-template-columns:1fr auto;gap:11px;padding:18px 15px 16px;margin-bottom:21px}
+ #app.sv-view-home .sv-app-primary-action p{font-size:12px;max-width:260px}
+ #app.sv-view-home .sv-app-primary-button{padding:0 14px}
+ #app.sv-view-home .sv-app-show-topline{align-items:flex-start;flex-wrap:wrap;gap:7px}
+ #app.sv-view-home .sv-app-show-topline strong{flex:1 1 180px;font-size:20px}
+ #app.sv-view-home .sv-status-chip{font-size:9px}
+}
+@media(max-width:360px){
+ #app.sv-view-home .sv-app-primary-action{grid-template-columns:1fr}
+ #app.sv-view-home .sv-app-primary-button{width:100%}
+}
+</style>
+</head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions sv-app-header-actions" aria-label="ShowViva tools">
+<a class="find-show-nav" href="https://www.britishshowjumping.co.uk/show-calendar.cfm" target="_blank" rel="noopener noreferrer" aria-label="Find a show" title="Find a show">
+<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.2 4.2"/><path d="M8.5 11h5M11 8.5v5"/></svg>
+</a>
+<button type="button" class="notebook-nav" onclick="go('notebook')" aria-label="Open shared notes" title="Notes">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.5h11a3 3 0 0 1 3 3V20H8a3 3 0 0 1-3-3z"/><path d="M8 4.5V20M11 9h5M11 13h5"/></svg>
+<span id="sv-notebook-badge" class="sv-notebook-badge" aria-hidden="true">0</span>
+</button>
+</nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><script>function signOut(){alert('Sign out will be connected when this prototype is integrated with your live account.');}
 const KEY='showviva-demo-v1';
 const initial={shows:[],horses:[],riders:[],plannerCreations:[],lastSubmittedShowId:null,teamNotes:'',teamNotebookNotes:[],teamMembers:[]};
 let data=structuredClone(initial),editingHorse=null,editingRider=null,activeTool=null;
@@ -2555,16 +2638,23 @@ function svShowStartsWithin24(s){if(!s?.start)return false;const start=new Date(
 async function svTriggerPlannerCheck(s){if(!s||!svShowStartsWithin24(s))return;const now=new Date().toISOString();const prev=s.showDayPlanner||{};s.showDayPlanner={...prev,status:'checking',requestedAt:prev.requestedAt||now,updatedAt:now,entries:Array.isArray(prev.entries)?prev.entries:[],message:'Checking now for the published start list…'};save();render();if(s.entrySystem!=='equipe')return;try{const r=await fetch(PLANNER_API,{method:'POST',headers:{'Content-Type':'application/json','x-team-token':TEAM_TOKEN},body:JSON.stringify({show_id:s.id}),cache:'no-store'});const j=await r.json();if(!r.ok)throw new Error(j.error||'Could not check start lists');const refreshed=await teamApi('GET');data=refreshed.state;teamRevision=refreshed.revision;render();}catch(err){const current=data.shows.find(x=>x.id===s.id);if(current){const p=current.showDayPlanner||{};current.showDayPlanner={...p,status:'requested',updatedAt:new Date().toISOString(),message:'Immediate check queued. ShowViva will keep checking automatically.'};save();render();}}}
 
 function plannerHomeState(s){if(!s)return null;const st=s.showDayPlanner?.status;if(st==='ready')return{title:'Your show plan is ready',copy:'',cta:'Open my plan',ready:true};if(!s.entriesSubmitted)return{title:'Planner not set up',copy:'Confirm your entries first so ShowViva knows which horses to find.',cta:'Confirm entries',needsEntries:true};if(st==='checking')return{title:'Checking for start list…',copy:'ShowViva is looking now.',cta:'View show'};if(st==='building'||st==='creating')return{title:'Creating planner…',copy:'',cta:'View show'};if(st==='requested'||st==='waiting'||st==='not_published')return{title:'Show Plan requested ✓',copy:'ShowViva is waiting for the published start list.',cta:'View show'};if(s.entrySystem&&s.showLink)return{title:'Show Plan requested ✓',copy:'ShowViva is waiting for the published start list.',cta:'View show'};if(s.entrySystem)return{title:'Add show link',copy:'',cta:'Finish setup'};return{title:'Planner not set up',copy:'',cta:'Get My Show Plan'};}
-function homeShowRow(s){const st=s.showDayPlanner?.status;const ready=st==='ready';const requested=!ready&&s.entriesSubmitted&&s.entrySystem&&s.showLink;const checking=!ready&&st==='checking';const building=!ready&&(st==='building'||st==='creating');const status=ready?'Show Plan ready ✓':checking?'Checking for published start list…':building?'Creating Show Plan…':requested?'Show Plan requested ✓ · Waiting for published start list':s.entriesSubmitted?'Entries submitted ✓':'Show added';const action=ready?`<a class="sv-home-show-cta sv-home-show-cta-ready" href="planner.html?show=${encodeURIComponent(s.id)}#team=${encodeURIComponent(TEAM_TOKEN)}">Open Show Plan →</a>`:`<button type="button" class="sv-home-show-cta" onclick="openShow(${s.id})">Open show →</button>`;return `<article class="sv-home-show-card${ready?' is-ready':''}${requested?' is-requested':''}"><button type="button" class="sv-home-show-mainbtn" onclick="openShow(${s.id})"><span><strong>${esc(s.name)}</strong><small>${dates(s)}</small><em class="sv-home-plan-status">${status}</em></span><span class="sv-home-show-arrow">→</span></button>${action}</article>`;}
-function openPlannerSetup(id){openShow(id);setTimeout(()=>{const d=document.querySelector('.sv-manage-show');if(d){d.hidden=false;d.open=true;d.scrollIntoView({behavior:'smooth',block:'start'});const system=d.querySelector('select[name="entrySystem"]');if(system)system.focus({preventScroll:true});}},60)};function editShowFromHome(id){openShow(id);setTimeout(()=>{const d=document.querySelector('.sv-manage-show');if(d){d.hidden=false;d.open=true;d.scrollIntoView({behavior:'smooth',block:'start'});}},60)}function deleteShowFromHome(id){selected=Number(id);deleteShow()}const showItem=s=>`<button class="item" onclick="openShow(${s.id})"><span><strong>${esc(s.name)}</strong><small>${dates(s)} · ${statusLabel(s)}</small></span><span class="arrow">›</span></button>`;const back=()=>`<button class="back sv-consistent-home" onclick="go('home')">← Home</button>`;function go(v){view=v;if(v==='notebook')svMarkNotesSeen();render();scrollTo(0,0)}function openShowChecklist(){
- const section=document.getElementById('sv-show-prep');
- if(!section)return;
- section.hidden=!section.hidden;
- svChecklistOpen.prep=!section.hidden;
+function homeShowRow(s){
+ const st=s.showDayPlanner?.status;
+ const ready=st==='ready';
+ const checking=!ready&&st==='checking';
+ const requested=!ready&&s.entriesSubmitted&&s.entrySystem&&s.showLink;
+ const building=!ready&&(st==='building'||st==='creating');
+ const status=ready?'Show Plan ready':checking?'Checking start list':building?'Building Show Plan':requested?'Plan requested':s.entriesSubmitted?'Entries submitted':'Show added';
+ const statusClass=ready?'ready':checking?'checking':requested?'requested':s.entriesSubmitted?'entered':'added';
+ const classRows=[];
+ Object.entries(s.plannedClasses||{}).forEach(([horse,classes])=>(classes||[]).forEach(cls=>classRows.push(`${horse} · ${cls}`)));
+ const detail=classRows.length?classRows.slice(0,2).join('  •  '):((s.horses||[]).slice(0,2).join('  •  ')||'Show details');
+ const action=ready?`<a class="sv-app-show-action is-ready" href="planner.html?show=${encodeURIComponent(s.id)}#team=${encodeURIComponent(TEAM_TOKEN)}">Open Show Plan <span>→</span></a>`:`<button type="button" class="sv-app-show-action" onclick="openShow(${s.id})">Open show <span>→</span></button>`;
+ return `<article class="sv-app-show-card ${statusClass}"><button type="button" class="sv-app-show-body" onclick="openShow(${s.id})"><div class="sv-app-show-copy"><div class="sv-app-show-topline"><strong>${esc(s.name)}</strong><span class="sv-status-chip ${statusClass}">${status}</span></div><small class="sv-app-show-date">${dates(s)}</small><p>${esc(detail)}</p></div><span class="sv-app-show-chevron">›</span></button>${action}</article>`;
 }
 
 async function checkPlannerNow(btn){const s=data.shows.find(x=>x.id===selected);if(!s)return;const status=document.getElementById('sv-planner-status');btn.disabled=true;if(status)status.textContent=' Checking published start lists…';try{const r=await fetch(PLANNER_API,{method:'POST',headers:{'Content-Type':'application/json','x-team-token':TEAM_TOKEN},body:JSON.stringify({show_id:s.id}),cache:'no-store'});const j=await r.json();if(!r.ok)throw new Error(j.error||'Could not check start lists');const refreshed=await teamApi('GET');data=refreshed.state;teamRevision=refreshed.revision;render();}catch(err){btn.disabled=false;if(status)status.textContent=' '+(err?.message||'Could not check right now.');}}
-function openShow(id){activeTool=null;selected=Number(id);go('show')}function render(){app.className='sv-view-'+view;svUpdateNotebookBadge();document.querySelector('.site-header')?.classList.toggle('sv-header-home',view==='home');const homeNav=document.querySelector('.home-nav');if(homeNav)homeNav.hidden=(view==='home');if(view==='confirmed'){app.innerHTML=`<div class="sv-saved-overlay" role="dialog" aria-modal="true" aria-labelledby="sv-saved-title"><div class="sv-saved-dialog"><div class="sv-eyebrow">YOUR SHOWVIVA</div><h1 id="sv-saved-title">Show saved</h1><p>Your show has been added to your ShowViva calendar.</p><button class="goldbtn" onclick="go('home')">Home</button></div></div>`;return}if(view==='home'){const shows=ordered().filter(s=>!isPast(s)).slice(0,5);app.innerHTML=`<section class="sv-home-plan-hero" aria-label="Get Show Ready"><div class="sv-home-plan-overlay"></div><div class="sv-home-plan-content"><div class="eyebrow">YOUR NEXT SHOW</div><h1>Get Show<br>Ready</h1><p>Add your show, confirm your entries and we’ll build your personalised Show Plan.</p><button class="goldbtn" onclick="go('add')">Get show ready →</button></div></section><div class="sv-home-section-row sv-home-upcoming-heading"><span>UPCOMING SHOWS</span><button class="sv-home-calendar-link" onclick="mode='calendar';go('plan')" aria-label="Open show calendar" title="Show Calendar"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></button></div><div class="sv-home-upcoming-list">${shows.length?shows.map(homeShowRow).join(''):'<div class="sv-home-empty-shows"><strong>No upcoming shows yet</strong><small>Add your first show when you’re ready.</small></div>'}</div><button class="sv-home-team-row" onclick="go('team')"><span class="sv-home-team-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="16.5" cy="9.5" r="2.3"/><path d="M3.5 19c.7-3.1 2.8-5 5.5-5s4.8 1.9 5.5 5"/><path d="M14.5 15c2.5.2 4.3 1.5 5 4"/></svg></span><span><strong>My Team</strong><small>Horses &amp; riders</small></span><span class="sv-home-show-arrow">→</span></button>`}
+function openShow(id){activeTool=null;selected=Number(id);go('show')}function render(){app.className='sv-view-'+view;svUpdateNotebookBadge();document.querySelector('.site-header')?.classList.toggle('sv-header-home',view==='home');const homeNav=document.querySelector('.home-nav');if(homeNav)homeNav.hidden=(view==='home');if(view==='confirmed'){app.innerHTML=`<div class="sv-saved-overlay" role="dialog" aria-modal="true" aria-labelledby="sv-saved-title"><div class="sv-saved-dialog"><div class="sv-eyebrow">YOUR SHOWVIVA</div><h1 id="sv-saved-title">Show saved</h1><p>Your show has been added to your ShowViva calendar.</p><button class="goldbtn" onclick="go('home')">Home</button></div></div>`;return}if(view==='home'){const shows=ordered().filter(s=>!isPast(s)).slice(0,5);app.innerHTML=`<section class="sv-app-primary-action"><div class="sv-app-primary-copy"><div class="sv-app-kicker">SHOW DAY</div><h1>Get show ready</h1><p>Add your show, confirm your entries and let ShowViva build your personalised plan.</p></div><button type="button" class="sv-app-primary-button" onclick="go('add')">Start <span>→</span></button></section><div class="sv-app-section-heading"><div><span>UPCOMING SHOWS</span><small>Your next shows, plans and live status</small></div><button class="sv-app-calendar-button" onclick="mode='calendar';go('plan')" aria-label="Open show calendar" title="Show Calendar"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></button></div><div class="sv-app-upcoming-list">${shows.length?shows.map(homeShowRow).join(''):'<div class="sv-app-empty"><strong>No upcoming shows yet</strong><small>Add your first show when you’re ready.</small><button type="button" onclick="go(\'add\')">Add a show →</button></div>'}</div><div class="sv-app-utilities"><button type="button" class="sv-app-utility" onclick="go('team')"><span class="sv-app-utility-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="16.5" cy="9.5" r="2.3"/><path d="M3.5 19c.7-3.1 2.8-5 5.5-5s4.8 1.9 5.5 5"/><path d="M14.5 15c2.5.2 4.3 1.5 5 4"/></svg></span><span><strong>My Team</strong><small>Horses & riders</small></span><b>→</b></button></div>`}
 else if(view==='notebook'){
 svMarkNotesSeen();
 const notes=capitolNotes().slice().sort((a,b)=>(b.createdAt||'').localeCompare(a.createdAt||''));
