@@ -1242,6 +1242,49 @@ body{background:var(--sv-cream)!important;color:var(--sv-navy)!important}
 }
 </style>
 
+
+<style id="sv-final-consistency-fix-20260929">
+:root{--sv-navy:#10283a;--sv-gold:#d9b56a;--sv-gold-dark:#92723d;--sv-cream:#fbf8f1;--sv-surface:#fffdf9;--sv-line:#e7dcc8;--sv-muted:#6e7885}
+/* Quiet back navigation everywhere outside Home. */
+#app:not(.sv-view-home) .back,
+#app:not(.sv-view-home) .sv-consistent-home{
+  display:inline-flex!important;align-items:center!important;gap:4px!important;
+  width:auto!important;min-width:0!important;min-height:30px!important;
+  margin:0 0 14px!important;padding:2px 0!important;
+  border:0!important;border-radius:0!important;background:transparent!important;
+  color:var(--sv-gold-dark)!important;box-shadow:none!important;
+  font:700 14px/1.3 Arial,Helvetica,sans-serif!important;
+}
+/* My Shows was still inheriting an older large-button style. */
+#app.sv-view-plan>.back,#app.sv-view-plan .back{
+  width:auto!important;min-width:0!important;min-height:30px!important;
+  padding:2px 0!important;background:transparent!important;border:0!important;
+  border-radius:0!important;box-shadow:none!important;color:var(--sv-gold-dark)!important;
+}
+/* Show page: primary content first, supporting tools quieter. */
+#app.sv-view-show .sv-show-section{background:var(--sv-surface)!important;border:1px solid var(--sv-line)!important;border-radius:18px!important;box-shadow:none!important}
+#app.sv-view-show .sv-simple-fold{background:var(--sv-surface)!important;border:1px solid var(--sv-line)!important;border-radius:18px!important;box-shadow:none!important;margin:0 0 13px!important}
+#app.sv-view-show .sv-simple-fold>summary{min-height:64px!important;padding:0 18px!important;color:var(--sv-navy)!important}
+#app.sv-view-show .sv-simple-fold>summary h2,#app.sv-view-show .sv-simple-fold>summary strong{color:var(--sv-navy)!important}
+#app.sv-view-show .sv-show-secondary-link{min-height:58px!important;padding:0 18px!important;margin:0 0 13px!important;background:var(--sv-surface)!important;border:1px solid var(--sv-line)!important;border-radius:18px!important;color:var(--sv-navy)!important;font-size:15px!important}
+/* Planner card bug: enforce readable heading and calm surface. */
+#app.sv-view-show .sv-planner-card,#app.sv-view-show .sv-show-planner,#app.sv-view-show .sv-planner-panel{
+  background:var(--sv-surface)!important;border:1px solid var(--sv-line)!important;border-radius:18px!important;color:var(--sv-navy)!important;box-shadow:none!important
+}
+#app.sv-view-show .sv-planner-card h2,#app.sv-view-show .sv-show-planner h2,#app.sv-view-show .sv-planner-panel h2,
+#app.sv-view-show .sv-planner-card h3,#app.sv-view-show .sv-show-planner h3,#app.sv-view-show .sv-planner-panel h3{
+  color:var(--sv-navy)!important;text-shadow:none!important;opacity:1!important
+}
+#app.sv-view-show .sv-planner-card p,#app.sv-view-show .sv-show-planner p,#app.sv-view-show .sv-planner-panel p{color:var(--sv-muted)!important}
+/* Catch legacy planner heading classes used in this build. */
+#app.sv-view-show .sv-planner-title,#app.sv-view-show .sv-create-planner-action h2,#app.sv-view-show .sv-create-planner-action h3{color:var(--sv-navy)!important;opacity:1!important}
+/* Secondary cards visually recede from Entries. */
+#app.sv-view-show .sv-simple-fold>summary{font-size:16px!important}
+#app.sv-view-show .sv-simple-fold>summary .sv-checklist-foot{font-size:13px!important;color:var(--sv-gold-dark)!important}
+/* Ensure primary actions are consistent gold. */
+#app .goldbtn{background:linear-gradient(115deg,#f0ca80,#d9ad60)!important;color:var(--sv-navy)!important;border:0!important;box-shadow:none!important}
+</style>
+
 </head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions" aria-label="Account"><button type="button" class="calendar-nav" aria-label="Open calendar" title="Calendar" onclick="mode='calendar';go('plan')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></button><button type="button" class="notebook-nav" aria-label="Open shared notebook" title="Shared notebook" onclick="go('notebook')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v18M10 8h6M10 12h6M10 16h4"/></svg><span id="sv-notebook-badge" class="sv-notebook-badge" aria-hidden="true"></span></button></nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><script>function signOut(){alert('Sign out will be connected when this prototype is integrated with your live account.');}
 const KEY='showviva-demo-v1';
 const initial={shows:[],horses:[],riders:[],plannerCreations:[],lastSubmittedShowId:null,teamNotes:'',teamNotebookNotes:[],teamMembers:[]};
