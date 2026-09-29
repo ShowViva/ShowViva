@@ -1034,6 +1034,40 @@ form .goldbtn{
 .sv-toast{position:fixed;left:50%;bottom:26px;z-index:10000;transform:translate(-50%,18px);opacity:0;padding:11px 16px;border-radius:999px;background:#10283a;color:#fff;font:700 13px Arial,sans-serif;box-shadow:0 8px 24px rgba(16,40,58,.18);transition:.2s ease;pointer-events:none}.sv-toast.show{opacity:1;transform:translate(-50%,0)}
 @media(max-width:390px){#app.sv-view-home .sv-home-primary-actions{gap:8px}#app.sv-view-home .sv-home-action{min-height:84px;padding:10px 8px}#app.sv-view-home .sv-home-action-icon,#app.sv-view-home .sv-home-action-icon svg{width:20px;height:20px}#app.sv-view-home .sv-home-action strong{font-size:15px}#app.sv-view-home .sv-home-action small{font-size:9.8px}}
 </style>
+
+<style id="sv-dashboard-final-polish-20260929">
+/* Logged-in dashboard: compact app header, not marketing hero. */
+.site-header.sv-header-home{
+  padding:17px 22px 15px!important;
+  min-height:76px!important;
+}
+.site-header.sv-header-home .header-message{display:none!important}
+.site-header.sv-header-home .brand-tagline{display:none!important}
+.site-header.sv-header-home .header-top{min-height:44px!important;align-items:center!important}
+.site-header.sv-header-home .brand-wordmark{font-size:clamp(29px,7vw,37px)!important;line-height:1!important}
+.site-header.sv-header-home .header-actions{gap:8px!important}
+.site-header.sv-header-home .header-actions :is(.calendar-nav,.notebook-nav){
+  width:44px!important;min-width:44px!important;height:44px!important;flex-basis:44px!important;
+  border-radius:11px!important;
+}
+#app.sv-view-home{padding-top:18px!important}
+#app.sv-view-home .sv-home-primary-actions{margin:16px 0 8px!important;gap:10px!important}
+#app.sv-view-home .sv-home-action{min-height:86px!important;padding:10px 10px!important}
+#app.sv-view-home .sv-home-action-icon{width:20px!important;height:20px!important;margin-bottom:6px!important}
+#app.sv-view-home .sv-home-action-icon svg{width:20px!important;height:20px!important}
+#app.sv-view-home .sv-home-action strong{font-size:clamp(15px,3.95vw,18px)!important;line-height:1.05!important}
+#app.sv-view-home .sv-home-action small{margin-top:4px!important;font-size:10px!important}
+#app.sv-view-home .sv-home-assist{margin:0 0 20px!important}
+@media(max-width:390px){
+  .site-header.sv-header-home{padding:15px 16px 13px!important;min-height:70px!important}
+  .site-header.sv-header-home .brand-wordmark{font-size:29px!important}
+  .site-header.sv-header-home .header-actions :is(.calendar-nav,.notebook-nav){width:40px!important;min-width:40px!important;height:40px!important;flex-basis:40px!important}
+  #app.sv-view-home .sv-home-primary-actions{gap:8px!important;margin-top:14px!important}
+  #app.sv-view-home .sv-home-action{min-height:82px!important;padding:9px 8px!important}
+  #app.sv-view-home .sv-home-action strong{font-size:14.5px!important}
+  #app.sv-view-home .sv-home-action small{font-size:9.5px!important}
+}
+</style>
 </head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions" aria-label="Account"><button type="button" class="calendar-nav" aria-label="Open calendar" title="Calendar" onclick="mode='calendar';go('plan')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></button><button type="button" class="notebook-nav" aria-label="Open shared notebook" title="Shared notebook" onclick="go('notebook')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v18M10 8h6M10 12h6M10 16h4"/></svg><span id="sv-notebook-badge" class="sv-notebook-badge" aria-hidden="true"></span></button></nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><script>function signOut(){alert('Sign out will be connected when this prototype is integrated with your live account.');}
 const KEY='showviva-demo-v1';
 const initial={shows:[],horses:[],riders:[],plannerCreations:[],lastSubmittedShowId:null,teamNotes:'',teamNotebookNotes:[],teamMembers:[]};
