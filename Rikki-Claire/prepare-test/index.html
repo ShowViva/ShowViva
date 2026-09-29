@@ -2384,6 +2384,38 @@ html body .site-header .header-actions>a:is(.calendar-nav,.notebook-nav,.copilot
  #app.sv-view-home .sv-home-plan-hero{min-height:290px!important;}
 }
 </style>
+
+<style id="sv-home-bottom-cards-match-20260929">
+/* Make the lower navigation cards feel native to the same ShowViva app. */
+#app.sv-view-home .sv-home-setup-grid{gap:10px!important;}
+#app.sv-view-home .sv-home-setup-card{
+  min-height:112px!important;
+  padding:15px 14px 14px!important;
+  border:1.5px solid #d7b56f!important;
+  border-radius:17px!important;
+  background:#10283a!important;
+  color:#fffaf0!important;
+  box-shadow:none!important;
+}
+#app.sv-view-home .sv-home-setup-icon{width:25px!important;height:25px!important;color:#e1bd73!important;}
+#app.sv-view-home .sv-home-setup-arrow{right:14px!important;top:14px!important;color:#e1bd73!important;font-size:21px!important;}
+#app.sv-view-home .sv-home-setup-card strong{
+  margin:11px 24px 3px 0!important;
+  color:#fffaf0!important;
+  font-size:clamp(21px,5.6vw,26px)!important;
+  line-height:1.02!important;
+}
+#app.sv-view-home .sv-home-setup-card small{
+  margin:0 12px 0 0!important;
+  color:#d8d4ca!important;
+  font-size:12px!important;
+  line-height:1.25!important;
+}
+@media(max-width:430px){
+ #app.sv-view-home .sv-home-setup-card{min-height:108px!important;padding:14px 13px 13px!important;}
+ #app.sv-view-home .sv-home-setup-card strong{font-size:22px!important;}
+}
+</style>
 </head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions" aria-label="Account"><a href="#" class="calendar-nav" aria-label="Open calendar" title="Calendar" onclick="mode='calendar';go('plan');return false"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></a><a href="#" class="notebook-nav" aria-label="Open shared notebook" title="Shared notebook" onclick="go('notebook');return false"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v18M10 8h6M10 12h6M10 16h4"/></svg><span id="sv-notebook-badge" class="sv-notebook-badge" aria-hidden="true"></span></a><a class="copilot-nav" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Show Co-Pilot" title="Show Co-Pilot"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"/><path d="M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2z"/></svg></a></nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><script>function signOut(){alert('Sign out will be connected when this prototype is integrated with your live account.');}
 const KEY='showviva-demo-v1';
 const initial={shows:[],horses:[],riders:[],plannerCreations:[],lastSubmittedShowId:null,teamNotes:'',teamNotebookNotes:[],teamMembers:[]};
