@@ -1463,6 +1463,231 @@ body{background:var(--sv-cream)!important;color:var(--sv-navy)!important}
 }
 </style>
 
+
+<style id="sv-unified-final-20260929">
+:root{
+  --sv-navy:#10283a;
+  --sv-gold-primary:#dfb866;
+  --sv-gold-accent:#96743d;
+  --sv-gold-border:#dcc79c;
+  --sv-cream:#fbf8f1;
+  --sv-surface:#fffdf9;
+  --sv-muted:#6f7a88;
+  --sv-line:#e7dfd2;
+}
+
+/* Force the exact same navy header on every route, including Calendar and Notes. */
+html body .site-header,
+html body .site-header.sv-header-home{
+  background:var(--sv-navy)!important;
+  background-color:var(--sv-navy)!important;
+  color:#fff!important;
+  border-bottom-color:rgba(223,184,102,.45)!important;
+}
+html body .site-header .header-top,
+html body .site-header.sv-header-home .header-top{
+  background:transparent!important;
+}
+html body .site-header .header-actions :is(.calendar-nav,.notebook-nav),
+html body .site-header.sv-header-home .header-actions :is(.calendar-nav,.notebook-nav){
+  border-color:var(--sv-gold-border)!important;
+  color:#e6bf78!important;
+  background:rgba(255,255,255,.035)!important;
+  box-shadow:none!important;
+}
+html body .site-header .brand-wordmark span{color:#e7b856!important}
+
+/* Remove legacy large back buttons everywhere. */
+#app:not(.sv-view-home) > .back,
+#app:not(.sv-view-home) > button.back,
+#app:not(.sv-view-home) .back.sv-consistent-home,
+#app.sv-view-plan > .back,
+#app.sv-view-notebook > .back,
+#app.sv-view-team > .back{
+  display:inline-flex!important;
+  width:auto!important;
+  min-width:0!important;
+  min-height:30px!important;
+  margin:0 0 16px!important;
+  padding:2px 0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  background-image:none!important;
+  box-shadow:none!important;
+  color:var(--sv-gold-accent)!important;
+  font:700 14px/1.3 Arial,Helvetica,sans-serif!important;
+}
+
+/* SHOW PAGE — use the same flatter card language as Home. */
+#app.sv-view-show .show-top{
+  margin-bottom:18px!important;
+  padding-bottom:17px!important;
+}
+
+/* Entries becomes a section, not one giant card. */
+#app.sv-view-show .sv-entries-simple,
+#app.sv-view-show .sv-entries-overview{
+  padding:0!important;
+  margin:0 0 12px!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+#app.sv-view-show .sv-entries-simple .sv-section-title-row,
+#app.sv-view-show .sv-entries-overview .sv-section-title-row{
+  margin:0 0 10px!important;
+  padding:0 2px!important;
+}
+#app.sv-view-show .sv-entries-simple .sv-section-title-row h2,
+#app.sv-view-show .sv-entries-overview .sv-section-title-row h2{
+  font:400 clamp(27px,7vw,34px)/1.08 Georgia,'Times New Roman',serif!important;
+  color:var(--sv-navy)!important;
+}
+
+/* Each entry is its own compact Home-style row card. */
+#app.sv-view-show .sv-simple-entry{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:12px!important;
+  min-height:68px!important;
+  margin:0 0 8px!important;
+  padding:13px 15px!important;
+  border:1px solid var(--sv-gold-border)!important;
+  border-radius:14px!important;
+  background:var(--sv-surface)!important;
+}
+#app.sv-view-show .sv-simple-entry:first-of-type{
+  border-top:1px solid var(--sv-gold-border)!important;
+}
+#app.sv-view-show .sv-simple-entry strong{
+  color:var(--sv-navy)!important;
+  font:700 15px/1.25 Arial,Helvetica,sans-serif!important;
+}
+#app.sv-view-show .sv-simple-entry small{
+  margin-top:3px!important;
+  color:var(--sv-muted)!important;
+  font:400 13px/1.3 Arial,Helvetica,sans-serif!important;
+}
+
+/* Add another entry is a lightweight action row, not another card. */
+#app.sv-view-show .sv-entry-editor{
+  margin:2px 0 8px!important;
+  border:0!important;
+  background:transparent!important;
+}
+#app.sv-view-show .sv-entry-editor > summary{
+  min-height:46px!important;
+  padding:0 3px!important;
+  color:var(--sv-gold-accent)!important;
+  font:700 14px/1.3 Arial,Helvetica,sans-serif!important;
+}
+
+/* Submitted state is a compact status/control. */
+#app.sv-view-show .sv-entry-confirm{
+  min-height:50px!important;
+  margin:4px 0 12px!important;
+  padding:0 14px!important;
+  border:1px solid var(--sv-line)!important;
+  border-radius:13px!important;
+  background:#f7f3eb!important;
+}
+#app.sv-view-show .sv-entry-confirm span{
+  font-size:15px!important;
+  font-weight:700!important;
+}
+
+/* Planner becomes a compact, premium highlighted panel. */
+#app.sv-view-show .sv-planner-simple,
+#app.sv-view-show .sv-planner-saved{
+  margin:0 0 10px!important;
+  padding:15px 16px!important;
+  border:1px solid var(--sv-gold-border)!important;
+  border-radius:15px!important;
+  background:#fffaf0!important;
+  box-shadow:none!important;
+}
+#app.sv-view-show .sv-planner-simple h2,
+#app.sv-view-show .sv-planner-saved h2{
+  margin:0 0 3px!important;
+  color:var(--sv-navy)!important;
+  opacity:1!important;
+  font:400 23px/1.15 Georgia,'Times New Roman',serif!important;
+}
+#app.sv-view-show .sv-planner-simple .sv-support,
+#app.sv-view-show .sv-planner-saved .sv-support{
+  margin:0 0 11px!important;
+  color:var(--sv-muted)!important;
+  font-size:13.5px!important;
+}
+#app.sv-view-show .sv-primary-planner{
+  min-height:44px!important;
+  margin:0!important;
+  border-radius:11px!important;
+  background:var(--sv-gold-primary)!important;
+  background-image:none!important;
+  color:var(--sv-navy)!important;
+  font-size:14.5px!important;
+}
+
+/* Supporting utilities should read like rows, not major cards. */
+#app.sv-view-show #sv-show-prep,
+#app.sv-view-show .sv-show-secondary-link{
+  margin:0 0 8px!important;
+  border:1px solid var(--sv-line)!important;
+  border-radius:13px!important;
+  background:var(--sv-surface)!important;
+  box-shadow:none!important;
+}
+#app.sv-view-show #sv-show-prep > summary{
+  min-height:51px!important;
+  padding:0 14px!important;
+}
+#app.sv-view-show #sv-show-prep .sv-checklist-title{
+  font:700 14.5px/1.25 Arial,Helvetica,sans-serif!important;
+}
+#app.sv-view-show .sv-show-secondary-link{
+  min-height:50px!important;
+  padding:0 14px!important;
+  font:700 14.5px/1.25 Arial,Helvetica,sans-serif!important;
+}
+
+/* Calendar and Notes: same visual system as the rest of the product. */
+#app.sv-view-plan .calendar,
+#app.sv-view-notebook .sv-notebook-card,
+#app.sv-view-notebook .sv-notebook-archive{
+  border-color:var(--sv-gold-border)!important;
+  background:var(--sv-surface)!important;
+  box-shadow:none!important;
+}
+#app.sv-view-notebook .sv-notebook-card{
+  border-radius:16px!important;
+}
+#app.sv-view-notebook .sv-notebook-card h2{
+  color:var(--sv-navy)!important;
+  font-size:24px!important;
+}
+
+/* Single gold system for buttons. */
+#app .goldbtn,
+#app.sv-view-plan .toolbar .smallbtn,
+#app.sv-view-notebook form button[type="submit"]{
+  background:var(--sv-gold-primary)!important;
+  background-image:none!important;
+  color:var(--sv-navy)!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+
+@media(max-width:390px){
+  #app.sv-view-show .sv-simple-entry{min-height:64px!important;padding:12px 13px!important}
+  #app.sv-view-show .sv-planner-simple,
+  #app.sv-view-show .sv-planner-saved{padding:14px!important}
+}
+</style>
+
 </head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions" aria-label="Account"><button type="button" class="calendar-nav" aria-label="Open calendar" title="Calendar" onclick="mode='calendar';go('plan')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></button><button type="button" class="notebook-nav" aria-label="Open shared notebook" title="Shared notebook" onclick="go('notebook')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v18M10 8h6M10 12h6M10 16h4"/></svg><span id="sv-notebook-badge" class="sv-notebook-badge" aria-hidden="true"></span></button></nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><script>function signOut(){alert('Sign out will be connected when this prototype is integrated with your live account.');}
 const KEY='showviva-demo-v1';
 const initial={shows:[],horses:[],riders:[],plannerCreations:[],lastSubmittedShowId:null,teamNotes:'',teamNotebookNotes:[],teamMembers:[]};
