@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ShowViva Home Preview</title>
+<style>
+:root{
+  --navy:#0d2a3d;
+  --navy2:#14354a;
+  --gold:#caa04e;
+  --gold2:#e8c878;
+  --cream:#fbf7ef;
+  --card:#fffdf8;
+  --muted:#76808a;
+  --line:#e8e0d4;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--navy);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+.app{max-width:430px;margin:0 auto;min-height:100vh;padding:18px 18px 96px}
+.top{display:flex;justify-content:space-between;align-items:center;margin:4px 4px 20px}
+.logo{font-family:Georgia,serif;font-size:34px;letter-spacing:-1.6px}.logo span{color:var(--gold)}
+.add{border:0;background:none;color:var(--navy);text-align:center;font-size:12px}
+.add .plus{display:grid;place-items:center;width:46px;height:46px;margin:0 auto 4px;border-radius:50%;background:linear-gradient(135deg,var(--gold2),var(--gold));font-size:30px;font-weight:300}
+.hero{background:linear-gradient(145deg,var(--navy),var(--navy2));color:white;border:1px solid var(--gold);border-radius:24px;padding:24px 22px 20px;box-shadow:0 12px 28px rgba(13,42,61,.10)}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.24em;color:var(--gold2);text-transform:uppercase}
+.hero h1{font-family:Georgia,serif;font-weight:400;font-size:38px;line-height:1.02;margin:12px 0 4px}
+.hero .date{font-size:20px;margin-bottom:18px;color:#f2eee7}
+.status{display:flex;align-items:center;gap:10px;border-top:1px solid rgba(255,255,255,.24);padding-top:16px;margin-top:6px;font-size:15px}
+.tick{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold2),var(--gold));color:var(--navy);font-weight:900}
+.primary{display:block;width:100%;border:0;border-radius:16px;margin-top:18px;padding:15px;background:linear-gradient(135deg,var(--gold2),var(--gold));color:var(--navy);font-weight:800;font-size:17px}
+.section{margin-top:26px}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin:0 4px 10px}
+.section h2{font-family:Georgia,serif;font-size:29px;font-weight:400;margin:0}
+.link{border:0;background:none;color:#9a7837;font-weight:700;font-size:14px}
+.attention,.showrow{background:var(--card);border:1px solid var(--line);border-radius:18px}
+.attention{padding:4px 0}
+.action{display:flex;align-items:center;gap:14px;padding:16px 16px}
+.icon{width:42px;height:42px;border-radius:50%;background:#f5efe5;display:grid;place-items:center;font-size:20px;color:#9a7837;flex:none}
+.action strong{font-size:16px}
+.action small{display:block;color:var(--muted);margin-top:3px}
+.chev{margin-left:auto;color:#9aa2aa;font-size:28px}
+.shows{display:grid;gap:10px}
+.showrow{display:flex;align-items:center;padding:14px 14px}
+.datebox{width:58px;border-right:1px solid var(--line);margin-right:14px}
+.datebox b{display:block;font-size:17px}.datebox small{color:var(--muted);font-size:11px}
+.showname{font-weight:750;flex:1}
+.pill{font-size:12px;border-radius:999px;padding:7px 10px;margin-right:8px;background:#eef3f7;color:#38546b}
+.pill.entered{background:#edf4ec;color:#356145}
+.nav{position:fixed;left:0;right:0;bottom:0;background:rgba(251,247,239,.97);border-top:1px solid var(--line);padding:9px max(12px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));display:flex;justify-content:center}
+.nav-inner{width:min(430px,100%);display:grid;grid-template-columns:repeat(4,1fr)}
+.nav button{border:0;background:none;color:#66727d;font-size:11px;padding:3px}.nav .active{color:var(--gold);font-weight:800}
+.nav .ico{display:block;font-size:22px;line-height:1.2;margin-bottom:2px}
+.testbar{margin:16px 4px 0;background:#f3ede2;border-radius:14px;padding:10px}
+.testbar label{font-size:12px;color:var(--muted)}
+.testbar select{width:100%;margin-top:6px;padding:9px;border:1px solid var(--line);border-radius:10px;background:white;color:var(--navy)}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <div class="logo">Show<span>Viva</span></div>
+    <button class="add"><span class="plus">+</span>Add show</button>
+  </div>
+
+  <section class="hero">
+    <div class="eyebrow">Up next</div>
+    <h1 id="heroTitle">Wales & West</h1>
+    <div class="date" id="heroDate">16–18 October</div>
+    <div class="status"><span class="tick">✓</span><span>Show Day plan ready</span></div>
+    <button class="primary" id="heroButton">Open Show Day →</button>
+  </section>
+
+  
+
+  <section class="section">
+    <div class="section-head"><h2>My Shows</h2><button class="link">View all →</button></div>
+    <div class="shows">
+      <div class="showrow"><div class="datebox"><b>11–12</b><small>NOV</small></div><div class="showname">Suffolk Equestrian</div><span class="pill entered">Entered</span><span class="chev">›</span></div>
+      <div class="showrow"><div class="datebox"><b>25–30</b><small>NOV</small></div><div class="showname">Arena UK</div><span class="pill">Planning</span><span class="chev">›</span></div>
+    </div>
+  </section>
+
+  
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <button class="active"><span class="ico">⌂</span>Home</button>
+    <button><span class="ico">▣</span>Show Calendar</button>
+    <button><span class="ico">☷</span>Show Day</button>
+    <button><span class="ico">♙</span>Team</button>
+  </div>
+</nav>
+
+<script></script>
+</body>
+</html>
