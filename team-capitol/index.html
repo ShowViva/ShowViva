@@ -2487,7 +2487,214 @@ html body .site-header:not(.sv-header-home) .header-message{display:none!importa
   #app:not(.sv-view-home){padding:16px 17px 108px!important}
   #app:not(.sv-view-home) h1{font-size:43px!important}
 }
-</style></head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions" aria-label="Account"><button type="button" class="calendar-nav" aria-label="Open calendar" title="Calendar" onclick="mode='calendar';go('plan')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></button><button type="button" class="notebook-nav" aria-label="Open shared notebook" title="Shared notebook" onclick="go('notebook')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v18M10 8h6M10 12h6M10 16h4"/></svg><span id="sv-notebook-badge" class="sv-notebook-badge" aria-hidden="true"></span></button><a class="copilot-nav" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" aria-label="Ask your Show Co-Pilot" title="Show Co-Pilot"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.5 4.2L18 9l-4.5 1.8L12 15l-1.5-4.2L6 9l4.5-1.8L12 3z"/><path d="M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2z"/></svg></a></nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><nav class="sv-bottom-nav" aria-label="Primary navigation"><div class="sv-bottom-nav-inner">
+</style>
+<style id="sv-final-consistency-pass-20260930">
+/* ---- Final app consistency pass ---- */
+:root{
+  --sv-final-navy:#103246;
+  --sv-final-gold:#cfa64f;
+  --sv-final-cream:#fbf8f1;
+  --sv-final-card:#fffdf9;
+  --sv-final-line:#e7dece;
+  --sv-final-muted:#75808b;
+}
+
+/* Taller, more legible iPhone bottom navigation */
+.sv-bottom-nav{
+  padding:10px max(10px,env(safe-area-inset-right))
+          calc(11px + env(safe-area-inset-bottom))
+          max(10px,env(safe-area-inset-left))!important;
+  min-height:82px!important;
+}
+.sv-bottom-nav-inner{min-height:60px!important}
+.sv-bottom-nav button{
+  min-height:58px!important;
+  gap:5px!important;
+  padding:6px 3px!important;
+  font-size:12.5px!important;
+  line-height:1.05!important;
+  letter-spacing:-.1px!important;
+}
+.sv-bottom-nav svg{
+  width:27px!important;
+  height:27px!important;
+  stroke-width:1.75!important;
+}
+
+/* Give content enough room above the taller tab bar */
+#app{padding-bottom:130px!important}
+#app.sv-view-home{padding-bottom:130px!important}
+
+/* Internal pages should feel like the Home screen, not the old website */
+html body .site-header:not(.sv-header-home){
+  display:block!important;
+  position:relative!important;
+  margin:0!important;
+  padding:calc(16px + env(safe-area-inset-top)) 18px 12px!important;
+  background:var(--sv-final-cream)!important;
+  border-bottom:1px solid var(--sv-final-line)!important;
+  box-shadow:none!important;
+}
+html body .site-header:not(.sv-header-home) .header-top{
+  min-height:48px!important;
+  display:flex!important;
+  align-items:center!important;
+  padding:0!important;
+}
+html body .site-header:not(.sv-header-home) .brand-wordmark{
+  font:400 34px/1 Georgia,"Times New Roman",serif!important;
+  letter-spacing:-1.5px!important;
+  color:var(--sv-final-navy)!important;
+}
+html body .site-header:not(.sv-header-home) .brand-wordmark span{
+  color:var(--sv-final-gold)!important;
+}
+html body .site-header:not(.sv-header-home) .brand-tagline,
+html body .site-header:not(.sv-header-home) .header-message,
+html body .site-header:not(.sv-header-home) .header-actions{
+  display:none!important;
+}
+
+/* Global internal-page spacing and typography */
+#app:not(.sv-view-home){
+  max-width:680px!important;
+  margin:0 auto!important;
+  padding:18px 18px 130px!important;
+  background:var(--sv-final-cream)!important;
+}
+#app:not(.sv-view-home) h1{
+  margin:12px 0 7px!important;
+  color:var(--sv-final-navy)!important;
+  font:400 clamp(39px,10vw,50px)/1.03 Georgia,"Times New Roman",serif!important;
+  letter-spacing:-1.2px!important;
+}
+#app:not(.sv-view-home) h2{
+  color:var(--sv-final-navy)!important;
+}
+#app:not(.sv-view-home) .intro{
+  color:var(--sv-final-muted)!important;
+  font-size:16.5px!important;
+  line-height:1.45!important;
+}
+#app:not(.sv-view-home) .sv-branch-intro{
+  margin:10px 0 20px!important;
+  padding:0 0 18px!important;
+  border-bottom:1px solid var(--sv-final-line)!important;
+}
+
+/* Quiet back navigation — no giant gold blocks */
+#app:not(.sv-view-home) :is(button.back,.sv-consistent-home,.sv-notebook-home){
+  display:inline-flex!important;
+  width:auto!important;
+  min-height:auto!important;
+  margin:2px 0 12px!important;
+  padding:7px 0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  color:#987637!important;
+  font:700 15px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif!important;
+}
+
+/* Consistent cards */
+#app:not(.sv-view-home) :is(
+  .sv-show-section,.sv-notebook-card,.sv-roster-section,.sv-edit-show-section,
+  .sv-secondary-fold,.calendar,.item,.sv-save-choice-card,.sv-entered-callout
+){
+  background:var(--sv-final-card)!important;
+  border:1px solid var(--sv-final-line)!important;
+  border-radius:18px!important;
+  box-shadow:none!important;
+}
+
+/* Consistent primary CTA */
+#app:not(.sv-view-home) .goldbtn{
+  min-height:52px!important;
+  border:0!important;
+  border-radius:15px!important;
+  background:linear-gradient(115deg,#edce83,#cfaa59)!important;
+  color:var(--sv-final-navy)!important;
+  box-shadow:none!important;
+  font-weight:800!important;
+}
+
+/* Forms feel native and calmer */
+#app:not(.sv-view-home) :is(input,select,textarea){
+  border:1px solid #ddd6ca!important;
+  border-radius:14px!important;
+  background:#fff!important;
+  color:var(--sv-final-navy)!important;
+  box-shadow:none!important;
+}
+#app:not(.sv-view-home) :is(input,select){min-height:50px!important}
+
+/* Calendar */
+#app.sv-view-plan>.goldbtn{
+  width:100%!important;
+  margin:0 0 14px!important;
+}
+#app.sv-view-plan .sv-calendar-find-show{
+  border-radius:16px!important;
+  padding:15px 16px!important;
+}
+#app.sv-view-plan .calendar{
+  padding:16px!important;
+}
+#app.sv-view-plan .day{
+  min-height:56px!important;
+  border-radius:12px!important;
+  background:#f4efe6!important;
+}
+#app.sv-view-plan .day.has{
+  background:#f2e6c9!important;
+  border:1px solid #ddb65c!important;
+}
+
+/* Show details */
+#app.sv-view-show .sv-show-section{
+  margin-top:14px!important;
+  padding:17px!important;
+}
+#app.sv-view-show .sv-entry-confirm{
+  border-radius:15px!important;
+  background:#f7f2e9!important;
+}
+#app.sv-view-show .sv-planner-simple{
+  border-color:#ddc58f!important;
+}
+
+/* Team + notes */
+#app.sv-view-notebook .sv-capitol-notes,
+#app.sv-view-team .sv-roster-section{
+  padding:18px!important;
+}
+#app.sv-view-notebook .sv-capitol-add{
+  width:100%!important;
+  min-height:52px!important;
+}
+#app.sv-view-notebook .sv-note-item{
+  background:#fff!important;
+  border-color:var(--sv-final-line)!important;
+  border-radius:14px!important;
+}
+
+/* Prevent older decorative header/UI rules from reappearing */
+#app:not(.sv-view-home) .tiles.home-actions,
+#app:not(.sv-view-home) .sv-home-copilot-card,
+#app:not(.sv-view-home) .sv-bs-calendar-link{
+  display:none!important;
+}
+
+@media(max-width:430px){
+  .sv-bottom-nav{min-height:86px!important}
+  .sv-bottom-nav button{font-size:12px!important}
+  .sv-bottom-nav svg{width:26px!important;height:26px!important}
+  #app:not(.sv-view-home){padding-left:17px!important;padding-right:17px!important}
+}
+</style>
+
+</head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions" aria-label="Account"><button type="button" class="calendar-nav" aria-label="Open calendar" title="Calendar" onclick="mode='calendar';go('plan')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></button><button type="button" class="notebook-nav" aria-label="Open shared notebook" title="Shared notebook" onclick="go('notebook')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v18M10 8h6M10 12h6M10 16h4"/></svg><span id="sv-notebook-badge" class="sv-notebook-badge" aria-hidden="true"></span></button><a class="copilot-nav" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" aria-label="Ask your Show Co-Pilot" title="Show Co-Pilot"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.5 4.2L18 9l-4.5 1.8L12 15l-1.5-4.2L6 9l4.5-1.8L12 3z"/><path d="M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2z"/></svg></a></nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><nav class="sv-bottom-nav" aria-label="Primary navigation"><div class="sv-bottom-nav-inner">
 <button type="button" data-sv-nav="home" onclick="go('home')" aria-label="Home"><svg viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5v8.25A1.25 1.25 0 0 1 18.75 20H5.25A1.25 1.25 0 0 1 4 18.75z"/><path d="M9.5 20v-5.5h5V20"/></svg><span>Home</span></button>
 <button type="button" data-sv-nav="plan" onclick="mode='calendar';go('plan')" aria-label="Show Calendar"><svg viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="15" rx="2"/><path d="M7.5 3.5v4M16.5 3.5v4M3.5 9.5h17"/></svg><span>Show Calendar</span></button>
 <button type="button" data-sv-nav="showday" onclick="openLatestShowDay()" aria-label="Show Day"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><span>Show Day</span></button>
