@@ -3107,6 +3107,32 @@ html body>header.site-header .header-actions{display:none!important;}
 @media(max-width:390px){
  html body>header.site-header{padding-left:16px!important;padding-right:16px!important}.sv-home-hero{padding:22px 19px 20px}.sv-home-hero h1{font-size:38px!important}.sv-home-show-row{grid-template-columns:62px minmax(0,1fr) auto 13px;gap:9px;padding:13px 11px}.sv-home-status{padding:7px 9px;font-size:11px}.sv-home-show-name{font-size:15px}.sv-home-date-badge strong{font-size:14px}.sv-home-section-head h2{font-size:29px!important}
 }
+</style><style id="sv-final-approved-home-20260930">
+/* Final approved Home: compact header, focused hero, no duplicate journey actions. */
+html body>header.site-header{padding:16px 18px 12px!important;}
+html body>header.site-header .brand-wordmark{font-size:38px!important;line-height:1!important;letter-spacing:-1.7px!important;}
+html body>header.site-header .sv-header-add{font-size:11px!important;gap:3px!important;}
+html body>header.site-header .sv-header-add-icon{width:44px!important;height:44px!important;font-size:30px!important;}
+#app.sv-view-home{padding-top:8px!important;padding-bottom:118px!important;}
+#app.sv-view-home .sv-home-hero{padding:22px 22px 19px!important;margin:3px 0 24px!important;border-radius:22px!important;}
+#app.sv-view-home .sv-home-hero h1{font-size:clamp(35px,9.4vw,46px)!important;margin-bottom:7px!important;max-width:82%!important;}
+#app.sv-view-home .sv-home-hero-date{font-size:19px!important;}
+#app.sv-view-home .sv-home-hero-rule{margin:18px 0 14px!important;}
+#app.sv-view-home .sv-home-primary{width:calc(100% - 12px)!important;min-height:46px!important;margin-top:17px!important;padding:11px 17px!important;border-radius:14px!important;font-size:16px!important;}
+#app.sv-view-home .sv-home-requested{margin-top:16px!important;padding:12px 14px!important;}
+#app.sv-view-home .sv-home-myshows{margin-top:0!important;}
+#app.sv-view-home .sv-home-section-head{margin-bottom:10px!important;}
+#app.sv-view-home .sv-home-section-head h2{font-size:30px!important;}
+#app.sv-view-home .sv-home-show-row{padding:13px 13px!important;border-radius:18px!important;}
+#app.sv-view-home .sv-home-empty-primary{width:100%!important;margin-left:0!important;margin-right:0!important;}
+@media(max-width:390px){
+ html body>header.site-header{padding-left:16px!important;padding-right:16px!important;}
+ html body>header.site-header .brand-wordmark{font-size:35px!important;}
+ html body>header.site-header .sv-header-add-icon{width:42px!important;height:42px!important;font-size:28px!important;}
+ #app.sv-view-home .sv-home-hero{padding:20px 18px 18px!important;}
+ #app.sv-view-home .sv-home-hero h1{font-size:37px!important;max-width:86%!important;}
+ #app.sv-view-home .sv-home-show-row{grid-template-columns:62px minmax(0,1fr) auto 13px!important;}
+}
 </style></head><body><header class="site-header" style="background:#fbf8f1!important;background-color:#fbf8f1!important;background-image:none!important;color:#10283a!important;border-bottom:1px solid #e7dfd2!important;box-shadow:none!important"><div class="header-top sv-app-header"><div class="brand-lockup"><div class="brand-wordmark" style="color:#10283a!important;text-shadow:none!important">Show<span style="color:#c39a4d!important">Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><button type="button" class="sv-header-add" onclick="go('add')" aria-label="Add show"><span class="sv-header-add-icon" aria-hidden="true">+</span><span>Add show</span></button></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="sv-home-title-row"><div class="sv-home-title-copy"><h1>Your shows</h1><p>Everything you need for your next show.</p></div><button class="sv-add-show-pill" onclick="go('add')">+ Add</button></div><section class="next sv-next-premium"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open show →</button></section><div class="sv-home-section-row sv-clean-row"><h2>My Shows</h2><button class="sv-home-viewall" onclick="mode='list';go('plan')">View all →</button></div><div class="sv-home-simple-list"><button class="sv-home-simple-item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="sv-home-simple-item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></div></main><nav class="sv-bottom-nav" aria-label="Primary"><button onclick="go('home')" data-view="home"><span class="sv-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.25 10.25 12 3.75l7.75 6.5v8.5a1.5 1.5 0 0 1-1.5 1.5H5.75a1.5 1.5 0 0 1-1.5-1.5z"/><path d="M9.25 20.25v-5.5h5.5v5.5"/></svg></span><span>Home</span></button><button onclick="mode='calendar';go('plan')" data-view="plan"><span class="sv-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.75" y="5.25" width="16.5" height="15" rx="2.25"/><path d="M7.5 3.75v3M16.5 3.75v3M3.75 9.25h16.5"/></svg></span><span>Show Calendar</span></button><button onclick="openLatestShowDay()" data-view="showday"><span class="sv-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.5h14v15H5z"/><path d="M8 8h8M8 12h8M8 16h5"/><path d="M16.5 14.5l1.25 1.25L20.5 13"/></svg></span><span>Show Day</span></button><button onclick="go('team')" data-view="team"><span class="sv-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.5" cy="8" r="2.75"/><circle cx="16.3" cy="9.2" r="2.1"/><path d="M3.5 19.25c.65-3.15 2.55-4.85 5-4.85s4.35 1.7 5 4.85"/><path d="M14.2 15.2c2.75.1 4.55 1.45 5.25 4.05"/></svg></span><span>Team</span></button></nav><script>function signOut(){alert('Sign out will be connected when this prototype is integrated with your live account.');}
 const KEY='showviva-demo-v1';
 const initial={shows:[],horses:[],riders:[],plannerCreations:[],lastSubmittedShowId:null,teamNotes:'',teamNotebookNotes:[],teamMembers:[]};
@@ -3268,20 +3294,22 @@ function svHomePrimaryAction(id,key){
   if(key==='planning'||key==='added') setTimeout(openEntryEditor,80);
   if(key==='entered') setTimeout(()=>openPlannerSetup(),80);
 }
-function svHomeAttention(s,state){
-  if(!s||!state)return '';
-  if(state.key==='planning'||state.key==='added') return `<section class="sv-home-attention"><div class="sv-home-section-head"><h2>Need attention</h2></div><button class="sv-attention-row" onclick="svHomePrimaryAction(${s.id},'${state.key}')"><span class="sv-attention-icon" aria-hidden="true">≡</span><span><strong>Plan your entries</strong><small>${esc(s.name)}</small></span><span class="arrow">›</span></button></section>`;
-  if(state.key==='entered') return `<section class="sv-home-attention"><div class="sv-home-section-head"><h2>Need attention</h2></div><button class="sv-attention-row" onclick="svHomePrimaryAction(${s.id},'entered')"><span class="sv-attention-icon" aria-hidden="true">↗</span><span><strong>Add show link for planner</strong><small>${esc(s.name)}</small></span><span class="arrow">›</span></button></section>`;
-  return '';
-}
+function svHomeAttention(s,state){ return ''; }
 function svRenderHome(){
   const upcoming=ordered().filter(s=>!isPast(s));
   const nextShow=upcoming[0]||null;
   const state=svHomeJourneyState(nextShow);
   const others=upcoming.slice(1,4);
-  const hero=nextShow?`<section class="sv-home-hero sv-state-${state.key}"><div class="sv-home-watermark" aria-hidden="true">SV</div><div class="eyebrow">Up next</div><h1>${esc(nextShow.name)}</h1><p class="sv-home-hero-date">${esc(svHomeDateRange(nextShow))}</p><div class="sv-home-hero-rule"></div><div class="sv-home-hero-status"><span class="sv-status-check ${state.key==='requested'?'sv-status-clock':''}" aria-hidden="true">${state.key==='requested'?'◷':'✓'}</span><span>${esc(state.status)}</span></div>${state.key==='requested'?`<div class="sv-home-requested"><strong>We’re on it.</strong><span>We’ll build your Show Day plan when the start list is available.</span></div>`:state.cta?`<button class="sv-home-primary" onclick="svHomePrimaryAction(${nextShow.id},'${state.key}')">${esc(state.cta)} <span aria-hidden="true">→</span></button>`:''}</section>`:`<section class="sv-home-empty-hero"><div class="eyebrow">Your ShowViva</div><h1>No upcoming show</h1><p>Add your next show to start planning.</p></section>`;
+  let hero='';
+  if(nextShow){
+    const requested = state.key==='requested';
+    const icon = requested?'◷':'✓';
+    hero=`<section class="sv-home-hero sv-state-${state.key}"><div class="sv-home-watermark" aria-hidden="true">SV</div><div class="eyebrow">Up next</div><h1>${esc(nextShow.name)}</h1><p class="sv-home-hero-date">${esc(svHomeDateRange(nextShow))}</p><div class="sv-home-hero-rule"></div><div class="sv-home-hero-status"><span class="sv-status-check ${requested?'sv-status-clock':''}" aria-hidden="true">${icon}</span><span>${esc(state.status)}</span></div>${requested?`<div class="sv-home-requested"><strong>Planner requested</strong><span>We’ll prepare your Show Day plan when the start list is available.</span></div>`:state.cta?`<button class="sv-home-primary" onclick="svHomePrimaryAction(${nextShow.id},'${state.key}')">${esc(state.cta)} <span aria-hidden="true">→</span></button>`:''}</section>`;
+  } else {
+    hero=`<section class="sv-home-empty-hero"><div class="eyebrow">Your ShowViva</div><h1>No upcoming show</h1><p>Add your next show to start planning.</p><button class="sv-home-primary sv-home-empty-primary" onclick="go('add')">Add show <span aria-hidden="true">→</span></button></section>`;
+  }
   const list=others.length?others.map(s=>{const badge=svHomeDateBadge(s),meta=svHomeStatusMeta(s);return `<button class="sv-home-show-row" onclick="openShow(${s.id})"><span class="sv-home-date-badge"><strong>${esc(badge.day)}</strong><small>${esc(badge.month)}</small></span><span class="sv-home-show-name">${esc(s.name)}</span><span class="sv-home-status sv-${meta.kind}">${esc(meta.label)}</span><span class="arrow">›</span></button>`}).join(''):`<div class="sv-home-empty-list">Your other upcoming shows will appear here.</div>`;
-  app.innerHTML=`${hero}${svHomeAttention(nextShow,state)}<section class="sv-home-myshows"><div class="sv-home-section-head"><h2>My Shows</h2><button type="button" onclick="mode='list';go('plan')">View all →</button></div><div class="sv-home-show-list">${list}</div></section>`;
+  app.innerHTML=`${hero}<section class="sv-home-myshows"><div class="sv-home-section-head"><h2>My Shows</h2><button type="button" onclick="mode='list';go('plan')">View all →</button></div><div class="sv-home-show-list">${list}</div></section>`;
 }
 function openShow(id){activeTool=null;selected=Number(id);go('show')}function render(){app.className='sv-view-'+view;const navView=({plan:'plan',show:'plan',editShow:'plan',add:'plan',team:'team',horse:'team',rider:'team',member:'team',notebook:'team',home:'home'}[view]||view);document.querySelectorAll('.sv-bottom-nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===navView));svUpdateNotebookBadge();document.querySelector('.site-header')?.classList.toggle('sv-header-home',view==='home');const homeNav=document.querySelector('.home-nav');if(homeNav)homeNav.hidden=(view==='home');if(view==='confirmed'){app.innerHTML=`<div class="sv-saved-overlay" role="dialog" aria-modal="true" aria-labelledby="sv-saved-title"><div class="sv-saved-dialog"><div class="sv-eyebrow">YOUR SHOWVIVA</div><h1 id="sv-saved-title">Show saved</h1><p>Your show has been added to your ShowViva calendar.</p><button class="goldbtn" onclick="go('home')">Home</button></div></div>`;return}if(view==='home'){svRenderHome();}
 else if(view==='notebook'){
