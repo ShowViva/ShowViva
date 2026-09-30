@@ -2898,6 +2898,46 @@ html body .site-header.sv-header-home .header-actions>a.calendar-nav .sv-header-
   html body .site-header .brand-wordmark{font-size:clamp(29px,9vw,34px)!important}
 }
 </style>
+
+<style id="sv-final-premium-system-20260929">
+:root{--sv-canvas:#fbf8f1;--sv-surface:#fffdf9;--sv-line:#e6dfd3;--sv-navy:#10283a;--sv-gold:#c39a4d;--sv-muted:#74808d}
+/* FINAL HEADER OVERRIDE — cream everywhere */
+body .site-header, body .site-header.sv-header-home, body header.site-header, body header.site-header[class]{
+  background:var(--sv-canvas)!important;background-color:var(--sv-canvas)!important;background-image:none!important;
+  color:var(--sv-navy)!important;border-bottom:1px solid var(--sv-line)!important;box-shadow:none!important;
+}
+body .site-header .header-top{background:transparent!important}
+body .site-header .brand-wordmark{color:var(--sv-navy)!important;opacity:1!important;text-shadow:none!important}
+body .site-header .brand-wordmark span{color:var(--sv-gold)!important;opacity:1!important}
+body .site-header .brand-tagline,body .site-header .header-message{display:none!important}
+body .site-header .header-actions a.calendar-nav{background:var(--sv-surface)!important;color:var(--sv-navy)!important;border:1px solid #dcc79c!important;box-shadow:none!important}
+body .site-header .header-actions a.calendar-nav svg{stroke:var(--sv-navy)!important;background:transparent!important;box-shadow:none!important}
+body .site-header .header-actions a.calendar-nav .sv-header-icon-label{display:none!important}
+body .site-header .notebook-nav,body .site-header .copilot-nav{display:none!important}
+
+/* One visual surface for genuine containers only */
+#app :is(.item,.calendar,.sv-home-show-card,.sv-home-team-row,.sv-roster-fold,.sv-note-item,.show-journey,.sv-planner-simple,.sv-manage-show,.sv-secondary-fold,.sv-simple-form,.sv-member-details,.sv-entry-card,.sv-entries-overview,.sv-planner-setup-fold,.sv-edit-show-page,.tool-panel,.sv-show-shortcut){
+  background:var(--sv-surface)!important;background-color:var(--sv-surface)!important;border-color:var(--sv-line)!important;box-shadow:none!important;
+}
+/* Notes: form belongs on canvas, not inside a decorative card */
+#app.sv-view-notebook .sv-notebook-card,#app.sv-view-notebook .sv-capitol-notes{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:0!important;margin:0!important}
+#app.sv-view-notebook #sv-note-form{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;margin:0 0 26px!important}
+#app.sv-view-notebook .sv-capitol-feed{border-top:1px solid var(--sv-line)!important;padding-top:18px!important}
+#app.sv-view-notebook .sv-note-item{margin:0 0 10px!important;border-radius:16px!important}
+/* Team: section is the box; inner people/horse rows are simple separators */
+#app.sv-view-team .sv-roster-fold{border-radius:18px!important;margin-bottom:12px!important}
+#app.sv-view-team .sv-roster-card,#app.sv-view-team .sv-team-member-row{background:transparent!important;border:0!important;border-bottom:1px solid var(--sv-line)!important;border-radius:0!important;box-shadow:none!important;margin:0!important;padding:14px 2px!important}
+#app.sv-view-team .sv-roster-card:last-child,#app.sv-view-team .sv-team-member-row:last-child{border-bottom:0!important}
+/* Calendar: calendar is the functional box; finder and empty states are not cards */
+#app.sv-view-plan .sv-calendar-find-show{background:transparent!important;border:0!important;border-bottom:1px solid var(--sv-line)!important;border-radius:0!important;box-shadow:none!important;padding:14px 2px!important;margin:8px 0 18px!important}
+#app.sv-view-plan .empty,#app.sv-view-plan .sv-past-empty{background:transparent!important;border:0!important;box-shadow:none!important;padding:6px 0!important}
+/* Navigation should read as navigation, not CTA */
+#app .back,#app .sv-consistent-home{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:6px 0!important;color:#876d40!important}
+/* Forms: avoid nested tinted containers */
+#app :is(input,select,textarea){background:#fff!important;box-shadow:none!important}
+#app .notice,#app .pill{background:#f8f4ec!important}
+/* Keep navy only for intentional product hero / live-plan emphasis, never app chrome. */
+</style>
 </head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions" aria-label="Account"><a href="https://www.britishshowjumping.co.uk/show-calendar.cfm" class="calendar-nav" aria-label="Find a show" title="Find a show" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/><path d="M10.5 7.8v5.4M7.8 10.5h5.4"/></svg><span class="sv-header-icon-label">Find show</span></a></nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><nav class="sv-bottom-nav" aria-label="Primary"><button onclick="go('home')" data-view="home"><span class="sv-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.25 10.25 12 3.75l7.75 6.5v8.5a1.5 1.5 0 0 1-1.5 1.5H5.75a1.5 1.5 0 0 1-1.5-1.5z"/><path d="M9.25 20.25v-5.5h5.5v5.5"/></svg></span><span>Home</span></button><button onclick="mode='calendar';go('plan')" data-view="plan"><span class="sv-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.75" y="5.25" width="16.5" height="15" rx="2.25"/><path d="M7.5 3.75v3M16.5 3.75v3M3.75 9.25h16.5"/></svg></span><span>Calendar</span></button><button onclick="go('team')" data-view="team"><span class="sv-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.5" cy="8" r="2.75"/><circle cx="16.3" cy="9.2" r="2.1"/><path d="M3.5 19.25c.65-3.15 2.55-4.85 5-4.85s4.35 1.7 5 4.85"/><path d="M14.2 15.2c2.75.1 4.55 1.45 5.25 4.05"/></svg></span><span>Team</span></button><button onclick="go('notebook')" data-view="notebook"><span class="sv-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="3.5" width="15" height="17" rx="2"/><path d="M8 3.5v17M11 8h5.5M11 12h5.5M11 16h4"/></svg></span><span>Notes</span></button></nav><script>function signOut(){alert('Sign out will be connected when this prototype is integrated with your live account.');}
 const KEY='showviva-demo-v1';
 const initial={shows:[],horses:[],riders:[],plannerCreations:[],lastSubmittedShowId:null,teamNotes:'',teamNotebookNotes:[],teamMembers:[]};
