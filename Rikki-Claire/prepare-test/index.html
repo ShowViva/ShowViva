@@ -3035,18 +3035,33 @@ function svConnectionBanner(message){
  document.body.appendChild(b);
 }
 const startTeam=async()=>{
- app.innerHTML='<div class="empty sv-connecting"><div class="sv-spinner" aria-hidden="true"></div><strong>Opening your team…</strong><small>This should only take a few seconds.</small></div>';
  if(!TEAM_TOKEN){app.innerHTML='<div class="empty"><h2>Private team link required</h2><p>Open the complete private link supplied to your team. This page cannot be accessed without it.</p></div>';return;}
+
+ // Never block the app shell on the network. Show cached data immediately when available,
+ // otherwise render the app and refresh the shared team state in the background.
+ const cached=svReadCachedTeam();
+ if(cached){
+   try{data=cached.state;teamRevision=cached.revision||0;svNormaliseTeam();teamReady=true;teamError=false;}catch(e){}
+ }
+ render();
+ svConnectionBanner(cached?'Refreshing your latest team data…':'Connecting to your shared team…');
+
  try{
-  const response=await teamApi('GET');
-  data=response.state;teamRevision=response.revision;svNormaliseTeam();teamReady=true;teamError=false;svCacheTeam();render();
+  const response=await Promise.race([
+    teamApi('GET'),
+    new Promise((_,reject)=>setTimeout(()=>reject(Object.assign(new Error('Connection timed out'),{status:408})),7000))
+  ]);
+  data=response.state;teamRevision=response.revision;svNormaliseTeam();teamReady=true;teamError=false;svCacheTeam();
+  document.getElementById('sv-connection-banner')?.remove();
+  render();
  }catch(e){
-  const cached=svReadCachedTeam();
+  teamError=true;
   if(cached){
-    data=cached.state;teamRevision=cached.revision||0;svNormaliseTeam();teamReady=true;teamError=true;render();
+    teamReady=true;
     svConnectionBanner('Showing your last saved team data. Live sync is temporarily unavailable.');
   }else{
-    app.innerHTML='<div class="empty sv-load-error"><h2>ShowViva could not connect</h2><p>The team service did not respond in time. Your link is still intact.</p><button class="goldbtn" type="button" onclick="location.reload()">Try again</button></div>';
+    teamReady=false;
+    svConnectionBanner('Could not reach the shared team service. You can still open the app; tap Retry to reconnect.');
   }
  }
 };
