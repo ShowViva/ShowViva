@@ -3035,33 +3035,18 @@ function svConnectionBanner(message){
  document.body.appendChild(b);
 }
 const startTeam=async()=>{
+ app.innerHTML='<div class="empty sv-connecting"><div class="sv-spinner" aria-hidden="true"></div><strong>Opening your team…</strong><small>This should only take a few seconds.</small></div>';
  if(!TEAM_TOKEN){app.innerHTML='<div class="empty"><h2>Private team link required</h2><p>Open the complete private link supplied to your team. This page cannot be accessed without it.</p></div>';return;}
-
- // Never block the app shell on the network. Show cached data immediately when available,
- // otherwise render the app and refresh the shared team state in the background.
- const cached=svReadCachedTeam();
- if(cached){
-   try{data=cached.state;teamRevision=cached.revision||0;svNormaliseTeam();teamReady=true;teamError=false;}catch(e){}
- }
- render();
- svConnectionBanner(cached?'Refreshing your latest team data…':'Connecting to your shared team…');
-
  try{
-  const response=await Promise.race([
-    teamApi('GET'),
-    new Promise((_,reject)=>setTimeout(()=>reject(Object.assign(new Error('Connection timed out'),{status:408})),7000))
-  ]);
-  data=response.state;teamRevision=response.revision;svNormaliseTeam();teamReady=true;teamError=false;svCacheTeam();
-  document.getElementById('sv-connection-banner')?.remove();
-  render();
+  const response=await teamApi('GET');
+  data=response.state;teamRevision=response.revision;svNormaliseTeam();teamReady=true;teamError=false;svCacheTeam();render();
  }catch(e){
-  teamError=true;
+  const cached=svReadCachedTeam();
   if(cached){
-    teamReady=true;
+    data=cached.state;teamRevision=cached.revision||0;svNormaliseTeam();teamReady=true;teamError=true;render();
     svConnectionBanner('Showing your last saved team data. Live sync is temporarily unavailable.');
   }else{
-    teamReady=false;
-    svConnectionBanner('Could not reach the shared team service. You can still open the app; tap Retry to reconnect.');
+    app.innerHTML='<div class="empty sv-load-error"><h2>ShowViva could not connect</h2><p>The team service did not respond in time. Your link is still intact.</p><button class="goldbtn" type="button" onclick="location.reload()">Try again</button></div>';
   }
  }
 };
@@ -3537,6 +3522,38 @@ html body > header.site-header .notebook-nav,html body > header.site-header .cop
   window.addEventListener('load',enforce);
   const mo=new MutationObserver(enforce);
   document.addEventListener('DOMContentLoaded',()=>{const h=document.querySelector('header.site-header');if(h)mo.observe(h,{attributes:true,attributeFilter:['class','style']});});
+})();
+</script>
+
+<style id="sv-ios-native-pass-20260930">
+:root{--ios-bg:#f7f5ef;--ios-card:#fffefa;--ios-separator:rgba(60,60,67,.14);--ios-label:#10283a;--ios-secondary:#6d7782;--ios-gold:#b78e46}
+html{background:var(--ios-bg);-webkit-text-size-adjust:100%}body{background:var(--ios-bg)!important;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display",Arial,sans-serif!important;-webkit-font-smoothing:antialiased;padding-bottom:calc(78px + env(safe-area-inset-bottom))!important;overscroll-behavior-y:none}
+body,button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}button,a{touch-action:manipulation}button:active,a:active,.item:active,.sv-home-show-row:active,.sv-home-team-row:active{opacity:.72;transform:scale(.992)}
+html body>header.site-header{position:sticky!important;top:0!important;z-index:950!important;padding-top:calc(10px + env(safe-area-inset-top))!important;background:rgba(247,245,239,.88)!important;-webkit-backdrop-filter:saturate(180%) blur(20px)!important;backdrop-filter:saturate(180%) blur(20px)!important;border-bottom:.5px solid var(--ios-separator)!important}
+html body>header.site-header .brand-wordmark{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Arial,sans-serif!important;font-weight:750!important;letter-spacing:-1.5px!important}
+main{max-width:620px!important;padding-bottom:30px!important}
+h1,h2,h3,#app .sv-branch-intro h1,#app.sv-view-show .show-top h1{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Arial,sans-serif!important;font-weight:760!important;letter-spacing:-1.15px!important}
+#app .eyebrow{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Arial,sans-serif!important;font-weight:700!important;letter-spacing:.8px!important}
+#app :is(.item,.calendar,.sv-home-show-card,.sv-home-team-row,.sv-roster-fold,.sv-note-item,.show-journey,.sv-planner-simple,.sv-manage-show,.sv-secondary-fold,.sv-simple-form,.sv-entry-card,.sv-entries-overview,.sv-planner-setup-fold,.sv-edit-show-page,.tool-panel){border:.5px solid var(--ios-separator)!important;border-radius:18px!important;background:var(--ios-card)!important;box-shadow:0 1px 0 rgba(0,0,0,.02)!important}
+#app :is(input,select,textarea){min-height:48px!important;border:.5px solid var(--ios-separator)!important;border-radius:12px!important;background:#fff!important;padding:12px 13px!important;font-size:16px!important;color:var(--ios-label)!important}
+#app textarea{min-height:104px!important}
+#app :is(input,select,textarea):focus{outline:none!important;border-color:rgba(183,142,70,.7)!important;box-shadow:0 0 0 3px rgba(183,142,70,.12)!important}
+#app .goldbtn{min-height:52px!important;border-radius:14px!important;background:var(--ios-gold)!important;color:#10283a!important;font-size:16px!important;font-weight:750!important;box-shadow:none!important}
+#app .smallbtn{min-height:44px!important;border-radius:12px!important;font-weight:650!important}
+#app .back,#app .sv-consistent-home{font-size:16px!important;font-weight:600!important;color:#9b783d!important;min-height:40px!important;margin-bottom:14px!important}
+#app .back:before,#app .sv-consistent-home:before{content:"‹";font-size:28px;line-height:0;vertical-align:-2px;margin-right:4px}
+.sv-bottom-nav{height:calc(58px + env(safe-area-inset-bottom))!important;padding:5px 10px calc(5px + env(safe-area-inset-bottom))!important;background:rgba(250,248,243,.92)!important;border-top:.5px solid var(--ios-separator)!important;-webkit-backdrop-filter:saturate(180%) blur(22px)!important;backdrop-filter:saturate(180%) blur(22px)!important}
+.sv-bottom-nav button{font-size:10px!important;font-weight:600!important;gap:1px!important;min-height:48px}.sv-bottom-nav .sv-nav-icon{font-size:22px!important}.sv-bottom-nav button.active{color:var(--ios-gold)!important}.sv-bottom-nav button.active:after{display:none!important}
+#app.sv-view-home .sv-home-plan-hero{border-radius:24px!important;box-shadow:0 8px 24px rgba(16,40,58,.10)!important}
+#app.sv-view-home .sv-home-show-card,#app.sv-view-home .sv-home-team-row{border-radius:20px!important}
+#app .toggle{padding:2px!important;border:0!important;border-radius:10px!important;background:#e9e7e2!important}.toggle button{border-radius:8px!important;padding:8px 12px!important}.toggle .active{background:#fff!important;color:var(--ios-label)!important;box-shadow:0 1px 3px rgba(0,0,0,.12)!important}
+@media(max-width:430px){main{padding-left:16px!important;padding-right:16px!important}#app .sv-branch-intro h1,#app.sv-view-show .show-top h1{font-size:34px!important}html body>header.site-header .brand-wordmark{font-size:31px!important}}
+@media(display-mode:standalone){html body>header.site-header{padding-top:calc(7px + env(safe-area-inset-top))!important}body{user-select:none;-webkit-user-select:none}input,textarea{user-select:text;-webkit-user-select:text}}
+</style>
+<script id="sv-ios-app-behaviour-20260930">
+(function(){
+ document.documentElement.classList.add('sv-ios-app');
+ document.addEventListener('click',function(e){var b=e.target.closest('button,a,.item,.sv-home-show-row,.sv-home-team-row');if(!b)return;b.classList.add('sv-ios-tap');setTimeout(function(){b.classList.remove('sv-ios-tap')},120)},true);
 })();
 </script>
 </body></html>
