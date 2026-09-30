@@ -3036,7 +3036,115 @@ body:has(#app:not(.sv-view-home)) .site-header .header-message{display:none!impo
 }
 </style>
 
-</head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions" aria-label="Account"><button type="button" class="calendar-nav" aria-label="Open calendar" title="Calendar" onclick="mode='calendar';go('plan')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></button><button type="button" class="notebook-nav" aria-label="Open shared notebook" title="Shared notebook" onclick="go('notebook')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v18M10 8h6M10 12h6M10 16h4"/></svg><span id="sv-notebook-badge" class="sv-notebook-badge" aria-hidden="true"></span></button><a class="copilot-nav" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" aria-label="Ask your Show Co-Pilot" title="Show Co-Pilot"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.5 4.2L18 9l-4.5 1.8L12 15l-1.5-4.2L6 9l4.5-1.8L12 3z"/><path d="M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2z"/></svg></a></nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><nav class="sv-bottom-nav" aria-label="Primary navigation"><div class="sv-bottom-nav-inner">
+
+<style id="sv-deterministic-internal-shell-20260930">
+/* Hide the legacy website header completely. Home has its own header already. */
+.site-header{display:none!important}
+
+/* Dedicated app bar for every internal screen */
+.sv-internal-bar[hidden]{display:none!important}
+.sv-internal-bar{
+  position:sticky;
+  top:0;
+  z-index:40;
+  display:flex;
+  align-items:flex-end;
+  min-height:calc(64px + env(safe-area-inset-top));
+  padding:calc(12px + env(safe-area-inset-top)) 18px 12px;
+  background:rgba(251,248,241,.98);
+  border-bottom:1px solid #e7dfd2;
+  -webkit-backdrop-filter:blur(14px);
+  backdrop-filter:blur(14px);
+}
+.sv-internal-logo{
+  color:#123247;
+  font:400 34px/1 Georgia,"Times New Roman",serif;
+  letter-spacing:-1.6px;
+}
+.sv-internal-logo span{color:#cda34c}
+
+/* Redundant Home buttons disappear: bottom nav already provides Home. */
+#app button.back[onclick="go('home')"],
+#app button.back.sv-consistent-home[onclick="go('home')"],
+#app .sv-notebook-home,
+#app button[onclick="returnNotebookHome(this)"]{
+  display:none!important;
+}
+
+/* Keep useful contextual back links, e.g. Barleylands -> My Shows */
+#app button.back:not([onclick="go('home')"]){
+  display:inline-flex!important;
+  align-items:center!important;
+  width:auto!important;
+  min-height:auto!important;
+  margin:0 0 15px!important;
+  padding:7px 0!important;
+  border:0!important;
+  background:transparent!important;
+  color:#98763a!important;
+  font:700 15px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif!important;
+}
+
+/* Safe iPhone layout under the status area and above the taller tab bar */
+#app:not(.sv-view-home){
+  padding-top:18px!important;
+  padding-bottom:142px!important;
+}
+#app.sv-view-add .sv-branch-intro,
+#app.sv-view-plan .sv-branch-intro,
+#app.sv-view-team .sv-branch-intro,
+#app.sv-view-notebook .sv-branch-intro{
+  margin-top:0!important;
+}
+
+/* Make add-show form less oversized */
+#app.sv-view-add form{
+  padding:17px!important;
+}
+#app.sv-view-add form>.field{
+  margin-bottom:15px!important;
+}
+#app.sv-view-add .sv-entered-choice{
+  margin-top:6px!important;
+}
+#app.sv-view-add .sv-entered-choice h2,
+#app.sv-view-add .sv-entered-choice strong{
+  font-size:inherit!important;
+}
+
+/* Slightly more legible bottom navigation */
+.sv-bottom-nav{
+  min-height:92px!important;
+  padding-top:11px!important;
+  padding-bottom:calc(13px + env(safe-area-inset-bottom))!important;
+}
+.sv-bottom-nav-inner{min-height:66px!important}
+.sv-bottom-nav button{
+  min-height:64px!important;
+  font-size:13px!important;
+}
+.sv-bottom-nav svg{
+  width:29px!important;
+  height:29px!important;
+}
+
+/* Calendar + team spacing after removal of Home button */
+#app.sv-view-plan,
+#app.sv-view-team,
+#app.sv-view-notebook{
+  padding-top:20px!important;
+}
+
+/* Stop title/status-bar collision in standalone iOS */
+@supports(padding:max(0px)){
+  .sv-internal-bar{
+    padding-left:max(18px,env(safe-area-inset-left));
+    padding-right:max(18px,env(safe-area-inset-right));
+  }
+}
+</style>
+
+</head><body><header class="site-header"><div class="header-top"><div class="brand-lockup"><div class="brand-wordmark">Show<span>Viva</span></div><div class="brand-tagline">EQUESTRIAN SHOWS, SIMPLIFIED</div></div><nav class="header-actions" aria-label="Account"><button type="button" class="calendar-nav" aria-label="Open calendar" title="Calendar" onclick="mode='calendar';go('plan')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg></button><button type="button" class="notebook-nav" aria-label="Open shared notebook" title="Shared notebook" onclick="go('notebook')"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M7 3v18M10 8h6M10 12h6M10 16h4"/></svg><span id="sv-notebook-badge" class="sv-notebook-badge" aria-hidden="true"></span></button><a class="copilot-nav" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" aria-label="Ask your Show Co-Pilot" title="Show Co-Pilot"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.5 4.2L18 9l-4.5 1.8L12 15l-1.5-4.2L6 9l4.5-1.8L12 3z"/><path d="M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2z"/></svg></a></nav></div><div class="header-message"><h1>Shows made <em>simple.</em></h1><p>Plan. Prepare. Compete.</p></div></header><div id="sv-internal-bar" class="sv-internal-bar" hidden><div class="sv-internal-logo">Show<span>Viva</span></div></div><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><nav class="sv-bottom-nav" aria-label="Primary navigation"><div class="sv-bottom-nav-inner">
 <button type="button" data-sv-nav="home" onclick="go('home')" aria-label="Home"><svg viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5v8.25A1.25 1.25 0 0 1 18.75 20H5.25A1.25 1.25 0 0 1 4 18.75z"/><path d="M9.5 20v-5.5h5V20"/></svg><span>Home</span></button>
 <button type="button" data-sv-nav="plan" onclick="mode='calendar';go('plan')" aria-label="Show Calendar"><svg viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="15" rx="2"/><path d="M7.5 3.5v4M16.5 3.5v4M3.5 9.5h17"/></svg><span>Show Calendar</span></button>
 <button type="button" data-sv-nav="showday" onclick="openLatestShowDay()" aria-label="Show Day"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><span>Show Day</span></button>
@@ -3113,7 +3221,11 @@ function svHomeShowPill(s){if(s.showDayPlanner?.status==='ready')return ['Show D
 function svHomeDateBits(s){const d=dates(s);const m=d.match(/^(\\d{1,2}(?:[–-]\\d{1,2})?)\\s+([A-Za-z]+)/);return m?[m[1],m[2].slice(0,3).toUpperCase()]:[d,''];}
 function openLatestShowDay(){const upcoming=ordered().filter(s=>!isPast(s));const s=upcoming.find(x=>x.showDayPlanner?.status==='ready')||upcoming[0];if(!s){go('add');return}if(s.showDayPlanner?.status==='ready'){location.href=`planner.html?show=${encodeURIComponent(s.id)}#team=${encodeURIComponent(TEAM_TOKEN)}`;return}openShow(s.id)}
 function svHomePrimary(s,state){if(state.kind==='ready'){location.href=`planner.html?show=${encodeURIComponent(s.id)}#team=${encodeURIComponent(TEAM_TOKEN)}`;return}openShow(s.id)}
-function openShow(id){activeTool=null;selected=Number(id);go('show')}function render(){app.className='sv-view-'+view;svUpdateNotebookBadge();const svNav=({home:'home',plan:'plan',show:'plan',editShow:'plan',add:'plan',notebook:'team',team:'team',horse:'team',rider:'team',member:'team'}[view]||'');document.querySelectorAll('.sv-bottom-nav button').forEach(b=>b.classList.toggle('active',b.dataset.svNav===svNav));document.querySelector('.site-header')?.classList.toggle('sv-header-home',view==='home');const homeNav=document.querySelector('.home-nav');if(homeNav)homeNav.hidden=(view==='home');if(view==='confirmed'){app.innerHTML=`<div class="sv-saved-overlay" role="dialog" aria-modal="true" aria-labelledby="sv-saved-title"><div class="sv-saved-dialog"><div class="sv-eyebrow">YOUR SHOWVIVA</div><h1 id="sv-saved-title">Show saved</h1><p>Your show has been added to your ShowViva calendar.</p><button class="goldbtn" onclick="go('home')">Home</button></div></div>`;return}if(view==='home'){const shows=ordered().filter(s=>!isPast(s)),next=shows[0],state=svHomeState(next),others=shows.filter(s=>s.id!==next?.id).slice(0,5);app.innerHTML=`<div class="sv-app-home-top"><div class="sv-app-home-logo">Show<span>Viva</span></div><button type="button" class="sv-app-home-add" onclick="go('add')"><b>+</b><span>Add show</span></button></div>${next?`<section class="sv-app-home-hero" aria-label="Up next"><div class="eyebrow">UP NEXT</div><h1>${esc(next.name)}</h1><p class="sv-app-home-date">${esc(dates(next))}</p><div class="sv-app-home-status"><i>${state.kind==='planning'?'•':'✓'}</i><span>${esc(state.status)}</span></div>${state.kind==='requested'?`<div class="sv-app-home-requested-sub">Waiting for start list</div>`:`<button type="button" class="sv-app-home-cta" onclick="svHomePrimary(data.shows.find(x=>x.id===${next.id}),svHomeState(data.shows.find(x=>x.id===${next.id})))">${esc(state.button)}</button>`}</section>`:`<section class="sv-app-home-empty"><h1>No upcoming show</h1><p>Add your next show when you’re ready.</p><button class="sv-app-home-cta" onclick="go('add')">Add show →</button></section>`}<section class="sv-app-home-section"><div class="sv-app-home-section-head"><h2>My Shows</h2><button type="button" class="sv-app-home-viewall" onclick="mode='list';go('plan')">View all →</button></div><div class="sv-app-home-shows">${others.map(s=>{const parts=svHomeDateBits(s),pill=svHomeShowPill(s);return `<button type="button" class="sv-app-home-show" onclick="openShow(${s.id})"><span class="date"><strong>${esc(parts[0])}</strong><small>${esc(parts[1])}</small></span><span class="name">${esc(s.name)}</span><span class="pill ${pill[1]}">${esc(pill[0])}</span><span class="arrow">›</span></button>`}).join('')||'<p class="sv-app-home-none">No other upcoming shows.</p>'}</div></section>`}
+function openShow(id){activeTool=null;selected=Number(id);go('show')}function render(){
+app.className='sv-view-'+view;
+const legacyHeader=document.querySelector('.site-header');if(legacyHeader)legacyHeader.hidden=true;
+const internalBar=document.getElementById('sv-internal-bar');if(internalBar)internalBar.hidden=(view==='home');
+svUpdateNotebookBadge();const svNav=({home:'home',plan:'plan',show:'plan',editShow:'plan',add:'plan',notebook:'team',team:'team',horse:'team',rider:'team',member:'team'}[view]||'');document.querySelectorAll('.sv-bottom-nav button').forEach(b=>b.classList.toggle('active',b.dataset.svNav===svNav));document.querySelector('.site-header')?.classList.toggle('sv-header-home',view==='home');const homeNav=document.querySelector('.home-nav');if(homeNav)homeNav.hidden=(view==='home');if(view==='confirmed'){app.innerHTML=`<div class="sv-saved-overlay" role="dialog" aria-modal="true" aria-labelledby="sv-saved-title"><div class="sv-saved-dialog"><div class="sv-eyebrow">YOUR SHOWVIVA</div><h1 id="sv-saved-title">Show saved</h1><p>Your show has been added to your ShowViva calendar.</p><button class="goldbtn" onclick="go('home')">Home</button></div></div>`;return}if(view==='home'){const shows=ordered().filter(s=>!isPast(s)),next=shows[0],state=svHomeState(next),others=shows.filter(s=>s.id!==next?.id).slice(0,5);app.innerHTML=`<div class="sv-app-home-top"><div class="sv-app-home-logo">Show<span>Viva</span></div><button type="button" class="sv-app-home-add" onclick="go('add')"><b>+</b><span>Add show</span></button></div>${next?`<section class="sv-app-home-hero" aria-label="Up next"><div class="eyebrow">UP NEXT</div><h1>${esc(next.name)}</h1><p class="sv-app-home-date">${esc(dates(next))}</p><div class="sv-app-home-status"><i>${state.kind==='planning'?'•':'✓'}</i><span>${esc(state.status)}</span></div>${state.kind==='requested'?`<div class="sv-app-home-requested-sub">Waiting for start list</div>`:`<button type="button" class="sv-app-home-cta" onclick="svHomePrimary(data.shows.find(x=>x.id===${next.id}),svHomeState(data.shows.find(x=>x.id===${next.id})))">${esc(state.button)}</button>`}</section>`:`<section class="sv-app-home-empty"><h1>No upcoming show</h1><p>Add your next show when you’re ready.</p><button class="sv-app-home-cta" onclick="go('add')">Add show →</button></section>`}<section class="sv-app-home-section"><div class="sv-app-home-section-head"><h2>My Shows</h2><button type="button" class="sv-app-home-viewall" onclick="mode='list';go('plan')">View all →</button></div><div class="sv-app-home-shows">${others.map(s=>{const parts=svHomeDateBits(s),pill=svHomeShowPill(s);return `<button type="button" class="sv-app-home-show" onclick="openShow(${s.id})"><span class="date"><strong>${esc(parts[0])}</strong><small>${esc(parts[1])}</small></span><span class="name">${esc(s.name)}</span><span class="pill ${pill[1]}">${esc(pill[0])}</span><span class="arrow">›</span></button>`}).join('')||'<p class="sv-app-home-none">No other upcoming shows.</p>'}</div></section>`}
 else if(view==='notebook'){
 svMarkNotesSeen();
 const notes=capitolNotes().slice().sort((a,b)=>(b.createdAt||'').localeCompare(a.createdAt||''));
