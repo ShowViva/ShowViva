@@ -3694,7 +3694,14 @@ startTeam();
 })();
 </script>
 <script>
-if ('serviceWorker' in navigator) { window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js').catch(()=>{})); }
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', async () => {
+    try {
+      const reg = await navigator.serviceWorker.register('./service-worker.js?v=20260930-2230', { updateViaCache: 'none' });
+      await reg.update();
+    } catch(e) {}
+  });
+}
 </script>
 
 <style>
