@@ -1365,7 +1365,7 @@ function renderChecklist(){
   const name=show&&show.name?show.name:'Show';
   app.className='sv-view-checklist';
   app.innerHTML=`
-    ${typeof svBack==='function'?svBack('Show Day',"go('showday')"):'<button class="back" onclick="go(\\'showday\\')">← Show Day</button>'}
+    ${typeof svBack==='function'?svBack('Show Day',"go('showday')"):`<button class="back" onclick="go('showday')">← Show Day</button>`}
     <div class="sv-final-eyebrow">SHOW CHECKLIST</div>
     <h1>${name}</h1>
     <p class="intro">Everything to get ready for show day.</p>
@@ -1779,4 +1779,43 @@ window.openShow=function(id){svShowSource='plan';activeTool=null;selected=Number
 setTimeout(()=>{if(teamReady)render()},0);
 })();
 
-</script></body></html>
+</script>
+<style id="sv-ios-reference-pass-20261001">
+:root{--sv-navy:#0d2d42;--sv-gold:#d6a43b;--sv-cream:#fbf8f1;--sv-card:#fffdf9;--sv-line:#e8dfd0;--sv-muted:#7d8994}
+html,body{background:var(--sv-cream)!important} body{padding-bottom:82px!important;color:var(--sv-navy)!important}
+.site-header{background:rgba(251,248,241,.94)!important;color:var(--sv-navy)!important;border-bottom:1px solid var(--sv-line)!important;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);padding-top:max(12px,env(safe-area-inset-top))!important}
+.site-header .brand{font-family:Georgia,serif!important;font-size:27px!important;letter-spacing:-1px!important}.site-header .brand .crest{display:none!important}
+#app{max-width:520px!important;margin:0 auto!important;padding:22px 18px 34px!important}
+#app h1{font-family:Georgia,serif!important;font-size:42px!important;line-height:1.02!important;letter-spacing:-1.5px!important;margin:6px 0 7px!important;font-weight:500!important}
+#app h2{font-family:Georgia,serif!important;font-weight:500!important}.intro{color:var(--sv-muted)!important;line-height:1.35!important}
+.sv-final-eyebrow{font-size:12px!important;letter-spacing:3px!important;color:#9b7226!important;font-weight:800!important}
+.sv-final-card,.sv-final-show-item,.sv-final-step-card,.sv-final-form,.sv-final-team details,.sv-final-checklist-link,.sv-final-ai-link,.sv-final-notes-link{background:var(--sv-card)!important;border:1px solid var(--sv-line)!important;box-shadow:0 4px 16px rgba(13,45,66,.035)!important;border-radius:18px!important}
+.sv-final-primary{background:linear-gradient(100deg,#f0ca68,#dba83e)!important;color:var(--sv-navy)!important;border:0!important;border-radius:14px!important;min-height:52px!important;font-weight:800!important}
+.sv-final-secondary,.sv-final-back{color:#9b7226!important;font-weight:700!important}.sv-final-back{background:none!important;border:0!important;padding:6px 0 12px!important}
+.sv-final-bottomnav{position:fixed!important;left:0!important;right:0!important;bottom:0!important;height:calc(68px + env(safe-area-inset-bottom))!important;padding:7px 18px env(safe-area-inset-bottom)!important;background:rgba(251,248,241,.94)!important;border-top:1px solid var(--sv-line)!important;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:9999!important}
+.sv-final-bottomnav button{min-height:54px!important}.sv-final-bottomnav svg{width:22px!important;height:22px!important;stroke:#71808b!important;fill:none!important;stroke-width:1.8!important}.sv-final-bottomnav button.active,.sv-final-bottomnav button.active span{color:#c9952f!important}.sv-final-bottomnav button.active svg{stroke:#c9952f!important}
+.sv-final-hero{background:var(--sv-navy)!important;border:1px solid #d5a33d!important;border-radius:22px!important;color:white!important;padding:22px!important;box-shadow:none!important}.sv-final-hero .sv-final-eyebrow{color:#e6b54c!important}.sv-home-show-name{font-family:Georgia,serif!important;font-size:36px!important;color:white!important}.sv-final-hero .date,.sv-home-meta{color:#f6f1e8!important}.sv-home-status-row{border-top:1px solid rgba(255,255,255,.12)!important;padding-top:14px!important}.sv-home-status-row small{color:#d8dee2!important}
+.sv-final-show-item{padding:14px 15px!important;margin:9px 0!important;min-height:76px!important}.sv-final-show-item strong{font-family:Georgia,serif!important;font-size:22px!important;font-weight:500!important}.sv-final-show-item .status{font-size:11px!important}
+.sv-final-tabs{border-bottom:1px solid var(--sv-line)!important}.sv-final-tabs button{background:none!important;border:0!important;border-bottom:2px solid transparent!important}.sv-final-tabs button.active{border-color:#d3a03b!important;color:var(--sv-navy)!important}
+.sv-final-row{min-height:76px!important}.sv-final-row-main strong{font-size:16px!important}.sv-final-done{background:#edf5ee!important;color:#62907a!important}.sv-final-todo{border:2px solid #e6dfd1!important}
+.sv-plan-status{background:#fffaf0!important;border:1px solid #eadfc8!important;border-radius:18px!important;color:var(--sv-navy)!important}.sv-plan-status strong{font-size:17px!important}
+.sv-showday-show{background:var(--sv-card)!important;border:1px solid var(--sv-line)!important;border-radius:18px!important;color:var(--sv-navy)!important;box-shadow:0 4px 16px rgba(13,45,66,.035)!important}.sv-showday-show .sv-final-eyebrow{color:#9b7226!important}.sv-showday-show strong{font-family:Georgia,serif!important;font-weight:500!important;font-size:31px!important}.sv-showday-show small,.sv-showday-show .meta{color:var(--sv-muted)!important}.sv-showday-show .open{color:#a57828!important}
+.sv-final-team details{overflow:hidden!important;margin:10px 0!important}.sv-final-team summary{padding:17px 16px!important}.sv-final-team summary h2{font-size:25px!important;margin:0 0 3px!important}.sv-final-team summary p{color:var(--sv-muted)!important}.sv-final-count{background:#f3f0e9!important;color:#71808b!important}
+.sv-final-form{padding:18px!important}.field{font-size:14px!important}.field input,.field select,.field textarea{border:1px solid #ddd5c8!important;background:#fff!important;border-radius:13px!important;min-height:50px!important;color:var(--sv-navy)!important}
+@media(max-width:390px){#app h1{font-size:38px!important}.sv-home-show-name{font-size:32px!important}}
+</style>
+<script id="sv-ios-reference-behaviour-20261001">
+(function(){
+ const prior=render;
+ render=function(){prior();
+   // Use the approved ShowViva wording and make every action route to a real screen.
+   document.querySelectorAll('.sv-final-ai-link strong').forEach(el=>el.textContent='Ask ShowViva');
+   document.querySelectorAll('.sv-final-ai-link small').forEach(el=>el.textContent='Need help with travel, timings or show-day logistics? Just ask.');
+   document.querySelectorAll('.sv-final-checklist-link').forEach(btn=>{btn.onclick=function(){const shows=ordered().filter(s=>!isPast(s));if(!shows[0])return;selected=Number(shows[0].id);go('checklist')}});
+   svEnsureNav();
+ };
+ if(typeof teamReady==='undefined'||teamReady) render();
+})();
+</script>
+
+</body></html>
