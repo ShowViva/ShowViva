@@ -3766,6 +3766,32 @@ html body .sv-bottom-nav{position:fixed!important;left:0!important;right:0!impor
 .sv-showday-ai{display:none!important}
 @media(max-width:600px){.sv-plan-tools{grid-template-columns:1fr 1fr}.sv-plan-tool-find{grid-column:1/-1}.sv-plan-tool strong{font-size:1.15rem}.sv-plan-tool small{font-size:.8rem}.sv-plan-upcoming>h2{font-size:1.8rem}}
 </style>
+
+<script id="sv-build-cache-reset-20261001-1005">
+(function () {
+  const build = '20261001-1005';
+  const key = 'showviva-ui-build';
+  if (sessionStorage.getItem(key) === build) return;
+  sessionStorage.setItem(key, build);
+
+  window.addEventListener('load', async () => {
+    try {
+      if ('serviceWorker' in navigator) {
+        const regs = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(regs.map(r => r.unregister()));
+      }
+      if ('caches' in window) {
+        const keys = await caches.keys();
+        await Promise.all(keys.map(k => caches.delete(k)));
+      }
+      const url = new URL(window.location.href);
+      url.searchParams.set('svbuild', build);
+      window.location.replace(url.toString());
+    } catch (e) {}
+  }, { once: true });
+})();
+</script>
+
 </head><body><div id="sv-internal-bar" class="sv-internal-bar" hidden><div class="sv-internal-logo">Show<span>Viva</span></div></div><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><nav class="sv-bottom-nav" aria-label="Primary navigation"><div class="sv-bottom-nav-inner">
 <button type="button" data-sv-nav="home" onclick="go('home')" aria-label="Home"><svg viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5v8.25A1.25 1.25 0 0 1 18.75 20H5.25A1.25 1.25 0 0 1 4 18.75z"/><path d="M9.5 20v-5.5h5V20"/></svg><span>Home</span></button>
 <button type="button" data-sv-nav="plan" onclick="mode='calendar';go('plan')" aria-label="My Shows"><svg viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="15" rx="2"/><path d="M7.5 3.5v4M16.5 3.5v4M3.5 9.5h17"/></svg><span>My Shows</span></button>
@@ -4295,7 +4321,7 @@ startTeam();
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
-      const reg = await navigator.serviceWorker.register('./service-worker.js?v=20260930-2230', { updateViaCache: 'none' });
+      const reg = await navigator.serviceWorker.register('./service-worker.js?v=20261001-1005', { updateViaCache: 'none' });
       await reg.update();
     } catch(e) {}
   });
