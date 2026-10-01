@@ -3305,6 +3305,332 @@ body:has(#app:not(.sv-view-home)) .site-header .header-message{display:none!impo
 }
 </style>
 
+
+<style id="sv-ios-myshows-clarity-20260930">
+/* My Shows — iOS-style hierarchy */
+#app.sv-view-plan{
+  padding-top:18px!important;
+}
+#app.sv-view-plan .sv-ios-page-intro{
+  margin-bottom:22px!important;
+}
+#app.sv-view-plan .sv-ios-page-intro h1{
+  margin-bottom:6px!important;
+}
+#app.sv-view-plan .sv-ios-section{
+  margin:0 0 22px!important;
+}
+#app.sv-view-plan .sv-ios-section-label{
+  margin:0 0 8px 4px!important;
+  color:#98763a!important;
+  font:800 11px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif!important;
+  letter-spacing:.18em!important;
+}
+#app.sv-view-plan .sv-ios-next-show{
+  width:100%!important;
+  min-height:112px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:14px!important;
+  padding:17px 18px!important;
+  text-align:left!important;
+  border:1px solid #e2dbd0!important;
+  border-radius:18px!important;
+  background:#fffdf9!important;
+  box-shadow:none!important;
+}
+#app.sv-view-plan .sv-ios-next-copy{
+  min-width:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+#app.sv-view-plan .sv-ios-next-copy strong{
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  white-space:nowrap!important;
+  color:#123247!important;
+  font:400 31px/1.05 Georgia,"Times New Roman",serif!important;
+  letter-spacing:-.4px!important;
+}
+#app.sv-view-plan .sv-ios-next-copy small{
+  margin-top:5px!important;
+  color:#667381!important;
+  font:500 15px/1.25 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif!important;
+}
+#app.sv-view-plan .sv-ios-next-copy em{
+  margin-top:10px!important;
+  color:#98763a!important;
+  font:700 14px/1.25 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif!important;
+  font-style:normal!important;
+}
+#app.sv-view-plan .sv-ios-chevron{
+  flex:0 0 auto!important;
+  color:#aa8641!important;
+  font:300 34px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif!important;
+}
+#app.sv-view-plan .sv-ios-actions{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:10px!important;
+  margin:0 0 28px!important;
+}
+#app.sv-view-plan .sv-ios-action-primary,
+#app.sv-view-plan .sv-ios-action-secondary{
+  min-height:50px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:0 12px!important;
+  border-radius:14px!important;
+  text-decoration:none!important;
+  font:800 15px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif!important;
+}
+#app.sv-view-plan .sv-ios-action-primary{
+  border:0!important;
+  background:linear-gradient(115deg,#ebcd84,#cfa957)!important;
+  color:#123247!important;
+}
+#app.sv-view-plan .sv-ios-action-secondary{
+  border:1px solid #ded6ca!important;
+  background:#fffdf9!important;
+  color:#123247!important;
+}
+#app.sv-view-plan .sv-ios-heading{
+  margin:0 0 10px 4px!important;
+  color:#123247!important;
+  font:400 28px/1.1 Georgia,"Times New Roman",serif!important;
+}
+#app.sv-view-plan .sv-ios-group{
+  overflow:hidden!important;
+  border:1px solid #e2dbd0!important;
+  border-radius:18px!important;
+  background:#fffdf9!important;
+}
+#app.sv-view-plan .sv-ios-group .item{
+  margin:0!important;
+  border:0!important;
+  border-radius:0!important;
+  border-bottom:1px solid #ece5dc!important;
+  background:transparent!important;
+}
+#app.sv-view-plan .sv-ios-group .item:last-child{
+  border-bottom:0!important;
+}
+#app.sv-view-plan .sv-ios-group .item strong,
+#app.sv-view-plan .sv-ios-disclosure-body .item strong{
+  color:#123247!important;
+  font:400 24px/1.1 Georgia,"Times New Roman",serif!important;
+}
+#app.sv-view-plan .sv-ios-disclosure{
+  overflow:hidden!important;
+  border:1px solid #e2dbd0!important;
+  border-radius:18px!important;
+  background:#fffdf9!important;
+}
+#app.sv-view-plan .sv-ios-disclosure summary{
+  min-height:60px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:14px!important;
+  padding:0 17px!important;
+  cursor:pointer!important;
+  list-style:none!important;
+  color:#123247!important;
+  font:700 16px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif!important;
+}
+#app.sv-view-plan .sv-ios-disclosure summary::-webkit-details-marker{display:none!important}
+#app.sv-view-plan .sv-ios-summary-right{
+  display:flex!important;
+  align-items:center!important;
+  gap:5px!important;
+  color:#98763a!important;
+  font-size:14px!important;
+  font-weight:700!important;
+}
+#app.sv-view-plan .sv-ios-summary-right b{
+  font-size:25px!important;
+  line-height:1!important;
+  font-weight:300!important;
+  transition:transform .18s ease!important;
+}
+#app.sv-view-plan .sv-ios-disclosure[open] .sv-ios-summary-right b{
+  transform:rotate(90deg)!important;
+}
+#app.sv-view-plan .sv-ios-disclosure-body{
+  padding:0 14px 14px!important;
+  border-top:1px solid #ece5dc!important;
+}
+#app.sv-view-plan .sv-ios-disclosure-body .calendar{
+  margin:14px 0 0!important;
+  border:0!important;
+  padding:0!important;
+  background:transparent!important;
+}
+#app.sv-view-plan .sv-ios-disclosure-body #dateShows{
+  margin-top:12px!important;
+}
+#app.sv-view-plan .sv-ios-past-section{
+  margin-top:28px!important;
+}
+#app.sv-view-plan .sv-ios-past .sv-ios-disclosure-body{
+  padding-top:10px!important;
+}
+#app.sv-view-plan .sv-ios-past .item{
+  margin:0!important;
+  border:0!important;
+  border-bottom:1px solid #ece5dc!important;
+  border-radius:0!important;
+  background:transparent!important;
+}
+#app.sv-view-plan .sv-ios-past .item:last-child{border-bottom:0!important}
+#app.sv-view-plan .sv-ios-empty-next{
+  margin-bottom:12px!important;
+  padding:18px!important;
+  border:1px solid #e2dbd0!important;
+  border-radius:18px!important;
+  background:#fffdf9!important;
+}
+#app.sv-view-plan .sv-ios-empty-next h2{
+  margin:4px 0 5px!important;
+  color:#123247!important;
+  font:400 27px/1.1 Georgia,"Times New Roman",serif!important;
+}
+#app.sv-view-plan .sv-ios-empty-next p{
+  margin:0!important;
+  color:#77818b!important;
+  font-size:15px!important;
+  line-height:1.4!important;
+}
+</style>
+
+
+<style id="sv-myshows-add-icon-match-home-20260930">
+#app.sv-view-plan .sv-ios-actions{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:12px!important;
+  margin:0 0 28px!important;
+}
+#app.sv-view-plan .sv-ios-add-show{
+  align-self:flex-start!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:10px!important;
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+  color:#123247!important;
+  box-shadow:none!important;
+}
+#app.sv-view-plan .sv-ios-add-circle{
+  width:58px!important;
+  height:58px!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:50%!important;
+  background:#d9b35a!important;
+  color:#123247!important;
+  font:400 34px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif!important;
+}
+#app.sv-view-plan .sv-ios-add-label{
+  font:800 16px/1.1 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif!important;
+}
+#app.sv-view-plan .sv-ios-find-show{
+  min-height:64px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:12px!important;
+  padding:12px 16px!important;
+  border:1px solid #e2dbd0!important;
+  border-radius:16px!important;
+  background:#fffdf9!important;
+  color:#123247!important;
+  text-decoration:none!important;
+}
+#app.sv-view-plan .sv-ios-find-show span{
+  display:flex!important;
+  flex-direction:column!important;
+  min-width:0!important;
+}
+#app.sv-view-plan .sv-ios-find-show strong{
+  font:800 15px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif!important;
+  color:#123247!important;
+}
+#app.sv-view-plan .sv-ios-find-show small{
+  margin-top:3px!important;
+  color:#77818b!important;
+  font:400 14px/1.25 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif!important;
+}
+#app.sv-view-plan .sv-ios-find-show b{
+  color:#aa8641!important;
+  font-size:28px!important;
+  font-weight:400!important;
+}
+</style>
+
+
+<style id="sv-ios-polish-20261001">
+/* Final iOS coherence pass — 1 Oct 2026 */
+:root{--sv-ios-bg:#fbf8f1;--sv-ios-card:#fffdf9;--sv-ios-line:#e5dccd;--sv-ios-navy:#123247;--sv-ios-gold:#cda34c;--sv-ios-muted:#7d8791}
+
+/* Compact bottom navigation */
+.sv-bottom-nav{min-height:76px!important;padding-top:7px!important;padding-bottom:calc(8px + env(safe-area-inset-bottom))!important}
+.sv-bottom-nav-inner{min-height:54px!important}
+.sv-bottom-nav button{min-height:52px!important;padding:4px 2px!important;gap:3px!important;font-size:11.5px!important}
+.sv-bottom-nav svg{width:24px!important;height:24px!important;stroke-width:1.8!important}
+#app:not(.sv-view-home){padding-bottom:118px!important}
+
+/* Home header action slightly quieter */
+#app.sv-view-home .sv-app-home-add b{width:48px!important;height:48px!important;font-size:31px!important}
+#app.sv-view-home .sv-app-home-add{gap:4px!important}
+#app.sv-view-home .sv-app-home-add span{font-size:13px!important}
+
+/* My Shows: section hierarchy and collapsed calendar */
+#app.sv-view-plan .sv-ios-heading{font:400 29px/1.12 Georgia,"Times New Roman",serif!important;color:var(--sv-ios-navy)!important;margin:26px 0 12px!important}
+#app.sv-view-plan .sv-ios-past-section>.sv-ios-heading{font-size:29px!important}
+#app.sv-view-plan .sv-ios-disclosure{border:1px solid var(--sv-ios-line)!important;border-radius:18px!important;background:var(--sv-ios-card)!important;overflow:hidden!important}
+#app.sv-view-plan .sv-ios-disclosure>summary{min-height:62px!important;padding:15px 18px!important;font:700 15px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif!important;color:var(--sv-ios-navy)!important}
+#app.sv-view-plan .sv-ios-past>summary{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif!important;font-size:15px!important;font-weight:650!important;padding:15px 18px!important}
+#app.sv-view-plan .sv-ios-section:has(.sv-ios-disclosure:first-child){margin-top:22px!important}
+#app.sv-view-plan .sv-ios-disclosure-body{padding:0 14px 15px!important}
+
+/* Show Day is a working hub, not a status board */
+#app.sv-view-showday{padding-top:20px!important}
+.sv-showday-hub>h1{margin:0 0 18px!important}
+.sv-showday-showhead{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin:0 0 16px;padding:0 2px 14px;border-bottom:1px solid var(--sv-ios-line)}
+.sv-showday-showhead div{display:flex;flex-direction:column;gap:3px}.sv-showday-showhead strong{font:400 28px/1.05 Georgia,"Times New Roman",serif;color:var(--sv-ios-navy)}.sv-showday-showhead span{font:400 14px/1.3 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--sv-ios-muted)}
+.sv-showday-showhead button{border:0;background:transparent;color:#98763a;font:700 13px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;padding:5px 0}
+.sv-showday-module{margin:0 0 13px!important;padding:18px!important;border:1px solid var(--sv-ios-line)!important;border-radius:19px!important;background:var(--sv-ios-card)!important;color:var(--sv-ios-navy)!important;box-shadow:none!important}
+.sv-showday-plan-module{border-color:#dcc48d!important;background:linear-gradient(180deg,#fffdf8 0%,#fffaf0 100%)!important}
+.sv-showday-module-copy h2,.sv-showday-checklist summary b{margin:2px 0 5px;font:400 25px/1.1 Georgia,"Times New Roman",serif;color:var(--sv-ios-navy)}
+.sv-showday-module-copy p{margin:0;color:var(--sv-ios-muted);font:400 14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+.sv-showday-kicker{display:block;margin-bottom:6px;color:#9d7b3e;font:800 10.5px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;letter-spacing:.18em}
+.sv-showday-primary{display:flex!important;align-items:center;justify-content:center;width:100%;min-height:52px;margin-top:16px;border:0;border-radius:15px;background:linear-gradient(90deg,#eccf82,#d5ad55);color:var(--sv-ios-navy)!important;text-decoration:none;font:800 15px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;cursor:pointer}
+.sv-showday-checklist{padding:0!important;overflow:hidden}.sv-showday-checklist>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none;padding:17px 18px;cursor:pointer}.sv-showday-checklist>summary::-webkit-details-marker{display:none}.sv-showday-checklist summary span:first-child{display:flex;flex-direction:column;gap:3px}.sv-showday-checklist summary small{color:var(--sv-ios-muted);font:600 12px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}.sv-showday-chevron{color:#a27f40;font-size:22px;transition:transform .2s}.sv-showday-checklist[open] .sv-showday-chevron{transform:rotate(180deg)}
+.sv-showday-checklist-body{padding:0 18px 17px;border-top:1px solid var(--sv-ios-line)}.sv-showday-task{display:flex;align-items:flex-start;gap:11px;padding:12px 0;border-bottom:1px solid #eee7dc;color:var(--sv-ios-navy);font:600 13.5px/1.35 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}.sv-showday-task input{width:19px;height:19px;margin:0;accent-color:var(--sv-ios-gold);flex:none}.sv-showday-task input:checked+span{text-decoration:line-through;color:#9aa1a7}.sv-showday-addtask{display:flex;gap:8px;padding-top:13px}.sv-showday-addtask input{min-width:0;flex:1;border:1px solid var(--sv-ios-line);border-radius:12px;background:#fff;padding:11px 12px;font-size:13px}.sv-showday-addtask button{border:0;background:transparent;color:#9b783a;font-weight:750;padding:0 2px}
+.sv-showday-ai{display:grid;grid-template-columns:34px 1fr;gap:0 11px;align-items:start}.sv-showday-ai-icon{grid-row:1/2;display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:#f3ead7;color:#a47f3e;font-size:18px}.sv-showday-ai .sv-showday-module-copy{grid-column:2}.sv-showday-ai .sv-showday-rowlink{grid-column:1/3;margin-top:13px}
+.sv-showday-rowlink{display:flex;align-items:center;justify-content:space-between;width:100%;padding:13px 0 0;border:0;border-top:1px solid #eee7dc;background:transparent;color:var(--sv-ios-navy)!important;text-decoration:none;font:750 14px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;text-align:left}.sv-showday-rowlink span{color:#a27f40;font-size:20px;font-weight:400}.sv-showday-secondary-row{margin-top:12px}.sv-showday-details-module .sv-showday-rowlink{margin-top:14px}
+.sv-showday-empty{padding:22px!important;background:var(--sv-ios-card)!important;color:var(--sv-ios-navy)!important;border:1px solid var(--sv-ios-line)!important;border-radius:19px!important}.sv-showday-empty h2{font-size:26px!important}.sv-showday-empty p{color:var(--sv-ios-muted)!important}
+
+/* Team: compact iOS grouped list */
+#app.sv-view-team .sv-team-intro{margin-bottom:20px!important}
+#app.sv-view-team .sv-team-intro h1{margin-bottom:5px!important}
+.sv-team-group{overflow:hidden;border:1px solid var(--sv-ios-line);border-radius:19px;background:var(--sv-ios-card)}
+.sv-team-row{margin:0!important;border:0!important;border-radius:0!important;background:transparent!important;padding:0!important}.sv-team-row+ .sv-team-row{border-top:1px solid var(--sv-ios-line)!important}
+.sv-team-row>summary{display:grid!important;grid-template-columns:minmax(0,1fr) auto 18px;align-items:center;gap:10px;min-height:83px;padding:15px 17px!important;list-style:none;cursor:pointer}.sv-team-row>summary::-webkit-details-marker{display:none}.sv-team-row-copy h2{margin:0 0 3px!important;font:400 24px/1.06 Georgia,"Times New Roman",serif!important;color:var(--sv-ios-navy)!important}.sv-team-row-copy p{margin:0!important;color:var(--sv-ios-muted)!important;font:400 12.5px/1.3 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif!important}.sv-team-row .sv-team-count{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 7px;border-radius:12px;background:#f4efe6;color:#77818b;font:700 12px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}.sv-team-row-chevron{color:#9b783a;font-size:23px;line-height:1;transition:transform .2s}.sv-team-row[open] .sv-team-row-chevron{transform:rotate(90deg)}
+.sv-team-row-body{padding:0 17px 14px;border-top:1px solid #eee7dc}.sv-team-person-row{display:flex;align-items:center;justify-content:space-between;width:100%;padding:13px 0;border:0;border-bottom:1px solid #eee7dc;background:transparent;text-align:left;color:var(--sv-ios-navy)}.sv-team-person-row span{display:flex;flex-direction:column;gap:3px}.sv-team-person-row strong{font:700 14px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}.sv-team-person-row small{color:var(--sv-ios-muted);font:400 12px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}.sv-team-person-row b{color:#a27f40;font-size:21px;font-weight:400}.sv-team-add{display:block;width:100%;padding:14px 0 2px;border:0;background:transparent;color:#9b783a;text-align:left;font:750 13.5px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}.sv-team-empty{margin:13px 0 0;color:var(--sv-ios-muted);font-size:13px}
+
+@media(max-width:430px){
+  .sv-bottom-nav{min-height:74px!important}.sv-bottom-nav button{font-size:11.25px!important}.sv-bottom-nav svg{width:23px!important;height:23px!important}
+  #app:not(.sv-view-home) h1{font-size:42px!important}
+  .sv-showday-module-copy h2,.sv-showday-checklist summary b{font-size:23px}
+  .sv-team-row-copy h2{font-size:23px!important}
+}
+</style>
+
 </head><body><div id="sv-internal-bar" class="sv-internal-bar" hidden><div class="sv-internal-logo">Show<span>Viva</span></div></div><main id="app"><div class="eyebrow">Your ShowViva</div><div class="tiles"><button class="tile" onclick="go('add')"><span class="symbol">▦</span><strong>Add Show</strong><small>Get planning →</small></button><button class="tile" onclick="go('team')"><span class="symbol">♧</span><strong>My Team</strong><small>Horses &amp; riders</small></button></div><section class="next"><div class="eyebrow">Up next</div><h2>Wales and West</h2><p>16–18 October</p><button class="goldbtn" onclick="openShow(1)">Open Show →</button></section><div class="sectionhead"><h2>My Shows</h2><button class="link" onclick="mode='list';go('plan')">View all →</button></div><button class="item" onclick="openShow(2)"><span><strong>Suffolk Equestrian</strong><small>11–12 November</small></span><span class="arrow">›</span></button><button class="item" onclick="openShow(3)"><span><strong>Arena UK</strong><small>25–30 November</small></span><span class="arrow">›</span></button></main><nav class="sv-bottom-nav" aria-label="Primary navigation"><div class="sv-bottom-nav-inner">
 <button type="button" data-sv-nav="home" onclick="go('home')" aria-label="Home"><svg viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5v8.25A1.25 1.25 0 0 1 18.75 20H5.25A1.25 1.25 0 0 1 4 18.75z"/><path d="M9.5 20v-5.5h5V20"/></svg><span>Home</span></button>
 <button type="button" data-sv-nav="plan" onclick="mode='calendar';go('plan')" aria-label="My Shows"><svg viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="15" rx="2"/><path d="M7.5 3.5v4M16.5 3.5v4M3.5 9.5h17"/></svg><span>My Shows</span></button>
@@ -3400,43 +3726,81 @@ onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();svHom
 else if(view==='showday'){
  const next=ordered().filter(s=>!isPast(s))[0]||null;
  if(!next){
-   app.innerHTML=`<div class="sv-showday-shell">
+   app.innerHTML=`<div class="sv-showday-shell sv-showday-hub">
      <div class="sv-eyebrow">SHOW DAY</div>
      <h1>Show Day</h1>
-     <section class="sv-showday-empty">
-       <div class="sv-showday-icon">+</div>
+     <section class="sv-showday-empty sv-ios-card">
        <h2>No shows added yet</h2>
-       <p>Add your next show and this is where your Show Day plan will live.</p>
+       <p>Add your next show and Show Day will bring your plan, checklist and show details together.</p>
        <button type="button" class="goldbtn" onclick="go('add')">Add a show →</button>
      </section>
    </div>`;
  }else{
+   selected=Number(next.id);
+   ensureShowLists(next);
    const state=svHomeState(next);
    const plannerStatus=next.showDayPlanner?.status||'';
    const creating=['building','creating','checking','requesting'].includes(plannerStatus);
    const requested=state.kind==='requested'||plannerStatus==='not_published';
    const planning=state.kind==='planning';
    const link=state.kind==='link';
-   const statusTitle=creating?'Creating your Show Day plan':requested?'Planner requested':link?'Show Plan not ready':planning?'Entries not confirmed':'Show Day';
-   const statusCopy=creating?'We’re checking the published start list and building your personalised plan.':requested?'Waiting for the start list to be published.':link?'Add the show link so ShowViva can find the published start list.':planning?'Confirm your entries first so ShowViva knows what to prepare.':'Your Show Day plan will appear here.';
-   const action=planning
-      ?`<button type="button" class="goldbtn" onclick="openShow(${next.id})">Plan entries →</button>`
-      :link
-      ?`<button type="button" class="goldbtn" onclick="openShow(${next.id})">Add show link →</button>`
-      :`<button type="button" class="sv-showday-secondary" onclick="openShow(${next.id})">View show details →</button>`;
-   app.innerHTML=`<div class="sv-showday-shell">
+   const ready=state.kind==='ready'||plannerStatus==='ready';
+   const tasks=next.prepChecklist||[];
+   const completed=tasks.filter(t=>t.done).length;
+   const planCopy=ready?'Your personalised plan is ready.':creating?'We’re creating your personalised plan.':requested?'Waiting for the published start list.':link?'Add the show link so ShowViva can find the start list.':planning?'Confirm your entries to start your Show Plan.':'Your personalised plan for show day.';
+   const planAction=ready
+      ?`<a class="sv-showday-primary" href="planner.html?show=${encodeURIComponent(next.id)}#team=${encodeURIComponent(TEAM_TOKEN)}">Open Show Plan →</a>`
+      :`<button type="button" class="sv-showday-primary" onclick="openShow(${next.id})">${link?'Add show link':planning?'Confirm entries':'View Show Plan'} →</button>`;
+   const checklistRows=tasks.map((t,i)=>`<label class="sv-showday-task"><input type="checkbox" ${t.done?'checked':''} onchange="setTask('prep',${i},this.checked);render()"><span>${esc(t.text)}</span></label>`).join('');
+   app.innerHTML=`<div class="sv-showday-shell sv-showday-hub">
      <div class="sv-eyebrow">SHOW DAY</div>
      <h1>Show Day</h1>
-     <section class="sv-showday-card">
-       <div class="sv-showday-next">NEXT SHOW</div>
-       <h2>${esc(next.name)}</h2>
-       <p class="sv-showday-date">${esc(dates(next))}</p>
-       <div class="sv-showday-rule"></div>
-       <div class="sv-showday-status">
-         <span class="sv-showday-dot">${planning?'•':'✓'}</span>
-         <div><strong>${esc(statusTitle)}</strong><p>${esc(statusCopy)}</p></div>
+     <div class="sv-showday-showhead">
+       <div><strong>${esc(next.name)}</strong><span>${esc(dates(next))}</span></div>
+       <button type="button" onclick="openShow(${next.id})">Show details ›</button>
+     </div>
+
+     <section class="sv-showday-module sv-showday-plan-module">
+       <div class="sv-showday-module-copy">
+         <span class="sv-showday-kicker">MY SHOW PLAN</span>
+         <h2>${ready?'Ready for show day':'Your Show Plan'}</h2>
+         <p>${esc(planCopy)}</p>
        </div>
-       ${action}
+       ${planAction}
+     </section>
+
+     <details class="sv-showday-module sv-showday-checklist" open>
+       <summary>
+         <span><b>Show checklist</b><small>${completed} of ${tasks.length} complete</small></span>
+         <span class="sv-showday-chevron">⌄</span>
+       </summary>
+       <div class="sv-showday-checklist-body">
+         ${checklistRows||'<p class="sv-support">No checklist items yet.</p>'}
+         <form class="sv-showday-addtask" onsubmit="addShowTask(event,'prep');render()">
+           <input name="task" maxlength="120" required placeholder="Add a checklist item…">
+           <button type="submit">+ Add</button>
+         </form>
+       </div>
+     </details>
+
+     <section class="sv-showday-module sv-showday-ai">
+       <div class="sv-showday-ai-icon">✦</div>
+       <div class="sv-showday-module-copy">
+         <span class="sv-showday-kicker">ASK SHOWVIVA</span>
+         <h2>Need a hand?</h2>
+         <p>Ask about timings, travel, packing or show-day logistics.</p>
+       </div>
+       <a class="sv-showday-rowlink" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Ask ShowViva <span>›</span></a>
+     </section>
+
+     <section class="sv-showday-module sv-showday-details-module">
+       <div class="sv-showday-module-copy">
+         <span class="sv-showday-kicker">SHOW DETAILS</span>
+         <h2>${esc(next.name)}</h2>
+         <p>${esc(dates(next))}${next.entriesSubmitted?' · Entries submitted':''}</p>
+       </div>
+       <button type="button" class="sv-showday-rowlink" onclick="openShow(${next.id})">Open show <span>›</span></button>
+       ${next.showLink?`<a class="sv-showday-rowlink sv-showday-secondary-row" href="${esc(next.showLink)}" target="_blank" rel="noopener noreferrer">Official show link <span>↗</span></a>`:''}
      </section>
    </div>`;
  }
@@ -3447,8 +3811,67 @@ const notes=capitolNotes().slice().sort((a,b)=>(b.createdAt||'').localeCompare(a
 const notesHtml=notes.map(n=>{const i=capitolNotes().findIndex(x=>x.id===n.id);return `<article class="sv-note-item"><div class="sv-note-meta"><strong>${esc(n.author||'Earlier team note')}</strong>${n.createdAt?`<time datetime="${esc(n.createdAt)}">${esc(new Date(n.createdAt).toLocaleString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}))}</time>`:''}</div>${svEditingNoteIndex===i?`<form class="sv-note-edit-form" onsubmit="saveCapitolEdit(event,${i})"><label class="field">Edit note<textarea name="note" required maxlength="5000">${esc(n.text)}</textarea></label><div class="sv-note-actions"><button type="submit" class="sv-note-edit">Save changes</button><button type="button" class="sv-note-remove" onclick="svEditingNoteIndex=null;render()">Cancel</button></div></form>`:`<p>${esc(n.text)}</p>${n.editedAt?`<small class="sv-note-edited">Edited ${esc(new Date(n.editedAt).toLocaleString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}))}</small>`:''}<div class="sv-note-actions"><button type="button" class="sv-note-edit" onclick="svEditingNoteIndex=${i};render()">Edit</button><button type="button" class="sv-note-remove" onclick="deleteCapitolNote(${i})">Delete</button></div>`}</article>`}).join('');
 app.innerHTML=`${back()}<div class="sv-branch-intro sv-one-notebook-intro"><div class="sv-eyebrow">YOUR TEAM</div><h1>Team notes</h1><p class="intro">One shared place for notes everyone needs.</p></div><section class="sv-notebook-card sv-capitol-notes"><h2>Add note</h2><form id="sv-note-form" onsubmit="addCapitolNote(event)"><label class="field">Your name<select name="author" required><option value="">Select your name</option>${capitolAuthorOptions()}</select></label><label class="field">Note<textarea name="note" id="sv-team-notes" required maxlength="5000" placeholder="Write a note for the team…"></textarea></label><button type="submit" class="goldbtn sv-capitol-add">Add note</button><span id="sv-team-note-status" role="status" aria-live="polite"></span></form><div class="sv-capitol-feed" aria-label="Shared team notes">${notesHtml||'<p class="sv-notebook-help">No notes yet.</p>'}</div></section>`}
 else if(view==='past'){app.innerHTML=`${back()}<h1>Past Shows</h1><p class="intro">Your previous shows, all in one place.</p>${ordered().filter(isPast).reverse().map(showItem).join('')||'<p class="empty">No past shows yet.</p>'}`}
-else if(view==='plan'){app.innerHTML=`${back()}<div class="sv-branch-intro"><h1>My Shows</h1><p class="intro">Everything you’ve got coming up.</p></div><button class="goldbtn" onclick="go('add')">+ Add Show</button><a class="sv-calendar-find-show" href="https://www.britishshowjumping.co.uk/show-calendar.cfm" target="_blank" rel="noopener noreferrer"><span><strong>Find a show</strong><small>View upcoming British Showjumping shows</small></span><b>→</b></a>${calendar()}<h2 class="calendar-section-title">Upcoming</h2>${ordered().filter(s=>!isPast(s)).map(showItem).join('')||'<p class="empty">No upcoming shows.</p>'}<details class="sv-secondary-fold sv-plan-past"><summary>Past shows <span class="sv-team-count">${ordered().filter(isPast).length}</span></summary><div class="sv-secondary-fold-content">${ordered().filter(isPast).reverse().map(showItem).join('')||'<p class="empty">No past shows yet.</p>'}</div></details>`}
-else if(view==='team'){app.innerHTML=`${back()}<div class="sv-branch-intro"><h1>My team</h1><p class="intro">Your horses and people.</p></div><details class="sv-roster-section sv-roster-fold"><summary><h2 class="subhead">Horses</h2><span class="sv-team-count">${data.horses.length}</span><span class="sv-roster-chevron" aria-hidden="true"></span></summary><div class="sv-roster-fold-content">${data.horses.map((h,i)=>`<div class="sv-roster-card"><div class="sv-roster-info"><strong>${esc(horseName(h))}</strong><small>${esc(registeredName(h))}</small></div><div class="sv-roster-actions"><button type="button" onclick="editingHorse=${i};go('horse')">Edit</button></div></div>`).join('')||'<p class="hint">No horses yet.</p>'}<button type="button" class="goldbtn sv-roster-add" onclick="editingHorse=null;go('horse')">+ Add Horse</button></div></details><details class="sv-roster-section sv-roster-fold"><summary><h2 class="subhead">Riders</h2><span class="sv-team-count">${data.riders.length}</span><span class="sv-roster-chevron" aria-hidden="true"></span></summary><div class="sv-roster-fold-content">${data.riders.map((r,i)=>`<div class="sv-roster-card"><div class="sv-roster-info"><strong>${esc(riderName(r))}</strong></div><div class="sv-roster-actions"><button type="button" onclick="editingRider=${i};go('rider')">Edit</button></div></div>`).join('')||'<p class="hint">No riders yet.</p>'}<button type="button" class="goldbtn sv-roster-add" onclick="editingRider=null;go('rider')">+ Add Rider</button></div></details><details class="sv-roster-section sv-roster-fold"><summary><h2 class="subhead">Team members</h2><span class="sv-team-count">${(data.teamMembers||[]).length}</span><span class="sv-roster-chevron" aria-hidden="true"></span></summary><div class="sv-roster-fold-content">${(data.teamMembers||[]).map((name,i)=>`<div class="sv-roster-card"><div class="sv-roster-info"><strong>${esc(name)}</strong></div><div class="sv-roster-actions"><button type="button" onclick="editingTeamMember=${i};go('member')">Edit</button></div></div>`).join('')||'<p class="hint">No team members yet.</p>'}<button type="button" class="goldbtn sv-roster-add" onclick="editingTeamMember=null;go('member')">+ Add Team Member</button></div></details>`}
+else if(view==='plan'){
+ const upcoming=ordered().filter(s=>!isPast(s));
+ const next=upcoming[0]||null;
+ const later=upcoming.slice(1);
+ const past=ordered().filter(isPast).reverse();
+ const nextState=next?svHomeState(next):null;
+ const nextSub=next?(nextState?.kind==='requested'?'Planner requested · Waiting for start list':nextState?.kind==='ready'?'Show Day plan ready':nextState?.kind==='link'?'Action needed · Add show link':nextState?.kind==='planning'?'Action needed · Confirm entries':statusLabel(next)):'';
+ app.innerHTML=`${back()}
+ <div class="sv-branch-intro sv-ios-page-intro">
+   <h1>My Shows</h1>
+   <p class="intro">Your shows, plans and calendar.</p>
+ </div>
+ ${next?`
+   <section class="sv-ios-section">
+     <div class="sv-ios-section-label">NEXT SHOW</div>
+     <button class="sv-ios-next-show" onclick="openShow(${next.id})">
+       <span class="sv-ios-next-copy">
+         <strong>${esc(next.name)}</strong>
+         <small>${dates(next)}</small>
+         <em>${esc(nextSub)}</em>
+       </span>
+       <span class="sv-ios-chevron">›</span>
+     </button>
+   </section>
+ `:`
+   <section class="sv-ios-empty-next">
+     <div class="sv-ios-section-label">NEXT SHOW</div>
+     <h2>No shows added yet</h2>
+     <p>Add your next show and ShowViva will keep everything together here.</p>
+   </section>
+ `}
+ <div class="sv-ios-actions">
+   <button type="button" class="sv-ios-add-show" onclick="go('add')" aria-label="Add show">
+     <span class="sv-ios-add-circle">+</span>
+     <span class="sv-ios-add-label">Add show</span>
+   </button>
+   <a class="sv-ios-find-show" href="https://www.britishshowjumping.co.uk/show-calendar.cfm" target="_blank" rel="noopener noreferrer">
+     <span><strong>Find a show</strong><small>View upcoming British Showjumping shows</small></span>
+     <b>→</b>
+   </a>
+ </div>
+ ${later.length?`
+   <section class="sv-ios-section sv-ios-later">
+     <h2 class="sv-ios-heading">Upcoming</h2>
+     <div class="sv-ios-group">${later.map(showItem).join('')}</div>
+   </section>
+ `:''}
+ <section class="sv-ios-section">
+   <details class="sv-ios-disclosure">
+     <summary><span>Show calendar</span><span class="sv-ios-summary-right">View <b>›</b></span></summary>
+     <div class="sv-ios-disclosure-body">${calendar()}</div>
+   </details>
+ </section>
+ <section class="sv-ios-section sv-ios-past-section">
+   <h2 class="sv-ios-heading">Past shows</h2>
+   <details class="sv-ios-disclosure sv-ios-past">
+     <summary><span>${past.length?`${past.length} ${past.length===1?'show':'shows'}`:'No past shows yet'}</span><span class="sv-ios-summary-right">${past.length?'View':''} <b>›</b></span></summary>
+     <div class="sv-ios-disclosure-body">${past.map(showItem).join('')||'<p class="empty">No past shows yet.</p>'}</div>
+   </details>
+ </section>`}
+else if(view==='team'){app.innerHTML=`${back()}<div class="sv-branch-intro sv-team-intro"><h1>Team</h1><p class="intro">Horses, riders and people.</p></div><section class="sv-team-group"><details class="sv-team-row"><summary><div class="sv-team-row-copy"><h2>Horses</h2><p>View and manage horses</p></div><span class="sv-team-count">${data.horses.length}</span><span class="sv-team-row-chevron">›</span></summary><div class="sv-team-row-body">${data.horses.map((h,i)=>`<button type="button" class="sv-team-person-row" onclick="editingHorse=${i};go('horse')"><span><strong>${esc(horseName(h))}</strong><small>${horseName(h)!==registeredName(h)?esc(registeredName(h)):'Horse details'}</small></span><b>›</b></button>`).join('')||'<p class="sv-team-empty">No horses yet.</p>'}<button type="button" class="sv-team-add" onclick="editingHorse=null;go('horse')">+ Add horse</button></div></details><details class="sv-team-row"><summary><div class="sv-team-row-copy"><h2>Riders</h2><p>Rider details and registrations</p></div><span class="sv-team-count">${data.riders.length}</span><span class="sv-team-row-chevron">›</span></summary><div class="sv-team-row-body">${data.riders.map((r,i)=>`<button type="button" class="sv-team-person-row" onclick="editingRider=${i};go('rider')"><span><strong>${esc(riderName(r))}</strong><small>Rider details</small></span><b>›</b></button>`).join('')||'<p class="sv-team-empty">No riders yet.</p>'}<button type="button" class="sv-team-add" onclick="editingRider=null;go('rider')">+ Add rider</button></div></details><details class="sv-team-row"><summary><div class="sv-team-row-copy"><h2>Team members</h2><p>Owners, grooms and support</p></div><span class="sv-team-count">${(data.teamMembers||[]).length}</span><span class="sv-team-row-chevron">›</span></summary><div class="sv-team-row-body">${(data.teamMembers||[]).map((name,i)=>`<button type="button" class="sv-team-person-row" onclick="editingTeamMember=${i};go('member')"><span><strong>${esc(name)}</strong><small>Team member</small></span><b>›</b></button>`).join('')||'<p class="sv-team-empty">No team members yet.</p>'}<button type="button" class="sv-team-add" onclick="editingTeamMember=null;go('member')">+ Add team member</button></div></details></section>`}
 else if(view==='member'){const name=editingTeamMember===null?'':data.teamMembers?.[editingTeamMember]||'';app.innerHTML=`<button class="back sv-consistent-home" onclick="go('team')">← My Team</button><div class="sv-branch-intro"><div class="sv-eyebrow">TEAM CAPITOL · TEAM MEMBER</div><h1>${editingTeamMember===null?'Add Team Member':'Edit Team Member'}</h1></div><form class="sv-member-details" onsubmit="saveTeamMember(event)"><label class="field">Team member name<input name="name" maxlength="80" required value="${esc(name)}" placeholder="Name"></label><button type="submit" class="goldbtn">Save Team Member →</button></form>${editingTeamMember!==null?`<button type="button" class="sv-delete-team" onclick="deleteTeamMember(${editingTeamMember})">Delete team member</button>`:''}`}
 else if(view==='rider'){const r=editingRider===null?{}:data.riders[editingRider]||{},o=typeof r==='string'?{name:r}:r;app.innerHTML=`<button class="back" onclick="go('team')">← My Team</button><div class="sv-branch-intro"><div class="sv-eyebrow">RIDER</div><h1>${editingRider===null?'Add Rider':'Edit Rider'}</h1></div><form class="sv-simple-form" onsubmit="saveRider(event)"><label class="field">Rider name<input name="name" required maxlength="80" value="${esc(o.name||'')}"></label><details class="sv-secondary-fold" ${o.bs||o.fei?'open':''}><summary>Registration details <span class="sv-team-count">Optional</span></summary><div class="sv-secondary-fold-content"><label class="field">British Showjumping number<input name="bs" maxlength="60" value="${esc(o.bs||'')}"></label><label class="field">FEI ID<input name="fei" maxlength="60" value="${esc(o.fei||'')}"></label></div></details><button class="goldbtn sv-inline-save">Save Rider →</button></form>${editingRider!==null?`<button type="button" class="sv-delete-team" onclick="deleteRider()">Delete rider</button>`:``}`}
 else if(view==='editShow'){const s=data.shows.find(x=>x.id===selected);if(!s){go('home');return}app.innerHTML=`<button class="back" onclick="go('show')">← Back to show</button><div class="sv-branch-intro sv-simple-intro"><div class="eyebrow">YOUR SHOW</div><h1>Edit show</h1><p class="intro">Update the essentials for this show.</p></div><form class="sv-simple-form sv-edit-show-page" onsubmit="saveShowDetails(event)"><label class="field">Show / venue<input name="venue" maxlength="150" required value="${esc(s.venue||'')}"></label><div class="sv-date-pair"><label class="field">Starts<input name="start" type="date" required value="${esc(s.start||'')}"></label><label class="field">Ends<input name="end" type="date" required value="${esc(s.end||'')}"></label></div><section class="sv-edit-show-section"><div class="sv-edit-show-heading"><strong>Horses</strong><small>Select the horses going to this show.</small></div><div class="sv-edit-show-choice-list">${data.horses.map(h=>`<label class="sv-choice"><input type="checkbox" name="horses" value="${esc(registeredName(h))}" ${(s.horses||[]).includes(registeredName(h))?'checked':''}><span><strong>${esc(horseName(h))}</strong>${horseName(h)!==registeredName(h)?`<small>${esc(registeredName(h))}</small>`:''}</span></label>`).join('')||'<p class="hint">No horses in My Team yet.</p>'}</div></section><section class="sv-edit-show-section"><div class="sv-edit-show-heading"><strong>Riders</strong><small>Select the riders for this show.</small></div><div class="sv-edit-show-choice-list">${data.riders.map(r=>`<label class="sv-choice"><input type="checkbox" name="riders" value="${esc(riderName(r))}" ${(s.riders||[]).includes(riderName(r))?'checked':''}><span><strong>${esc(riderName(r))}</strong></span></label>`).join('')||'<p class="hint">No riders in My Team yet.</p>'}</div></section><div class="sv-edit-show-actions"><button class="goldbtn" type="submit">Save changes</button><button type="button" class="sv-planner-not-now" onclick="go('show')">Cancel</button></div></form>`}
