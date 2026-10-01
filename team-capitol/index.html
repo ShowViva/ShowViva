@@ -3687,6 +3687,8 @@ body:has(#app:not(.sv-view-home)) .site-header .header-message{display:none!impo
 /* Bottom navigation: fixed viewport anchor on every page */
 html body .sv-bottom-nav{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;z-index:999!important;background:#fbf8f1!important;-webkit-transform:translateZ(0)!important;transform:translateZ(0)!important;will-change:transform!important;padding-bottom:calc(13px + env(safe-area-inset-bottom))!important}
 #app{padding-bottom:calc(132px + env(safe-area-inset-bottom))!important}
+
+.sv-system-state{flex:0 0 82px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}.sv-system-state i{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:1.55rem;font-weight:800}.sv-system-state small{font:750 10px/1.15 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;white-space:nowrap}.sv-app-home-hero .sv-system-state i{background:rgba(232,200,116,.16);border:2px solid rgba(232,200,116,.75);color:#e8c874}.sv-app-home-hero .sv-system-state small{color:#e8c874}.sv-app-home-hero .sv-system-state.ready i{background:#e9f1e8;border-color:#e9f1e8;color:#54725e}.sv-app-home-hero .sv-system-state.ready small{color:#e8c874}.sv-setup-system-state i{background:#f7eedc;border:1px solid #ead9b9;color:#a97c2a}.sv-setup-system-state small{color:#9a783b}.sv-setup-system-state.ready i{background:#e9f1e8;border-color:#dfe9dd;color:#54725e}.sv-system-card{margin-top:18px;border:1px solid #e5d9c6;border-radius:28px;background:#fffdf9;padding:22px;display:flex;gap:15px;align-items:flex-start}.sv-system-card .sv-system-card-icon{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;flex:none;background:#f7eedc;color:#a97c2a;font-size:1.25rem}.sv-system-card.ready .sv-system-card-icon{background:#e9f1e8;color:#54725e}.sv-system-card h2{margin:0 0 5px;font-size:1.45rem}.sv-system-card p{margin:0;color:#7d8995;line-height:1.45}.sv-system-card .goldbtn{margin-top:14px}.sv-plan-show-state{width:60px;min-width:60px;height:60px;border-radius:50%;display:grid;place-items:center;font-size:1.45rem;font-weight:800}.sv-plan-show-state.preparing{background:#f7eedc;color:#a97c2a}.sv-plan-show-state.ready{background:#e9f1e8;color:#54725e}.sv-plan-calendar-sheet{margin-top:14px;padding:12px 0 0;border-top:1px solid #e8dfd2}.sv-plan-calendar-sheet[hidden]{display:none!important}
 @media(max-width:390px){.sv-readiness{flex-basis:68px}.sv-readiness-ring{width:56px;height:56px}.sv-readiness-ring span{font-size:15px}#app.sv-view-plan .sv-planning-actions{grid-template-columns:minmax(0,1fr) 82px!important}#app.sv-view-plan .sv-ios-add-secondary{width:82px!important;min-width:82px!important}}
 </style>
 
@@ -3767,9 +3769,9 @@ html body .sv-bottom-nav{position:fixed!important;left:0!important;right:0!impor
 @media(max-width:600px){.sv-plan-tools{grid-template-columns:1fr 1fr}.sv-plan-tool-find{grid-column:1/-1}.sv-plan-tool strong{font-size:1.15rem}.sv-plan-tool small{font-size:.8rem}.sv-plan-upcoming>h2{font-size:1.8rem}}
 </style>
 
-<script id="sv-build-cache-reset-20261001-1005">
+<script id="sv-build-cache-reset-20261001-1045">
 (function () {
-  const build = '20261001-1005';
+  const build = '20261001-1045';
   const key = 'showviva-ui-build';
   if (sessionStorage.getItem(key) === build) return;
   sessionStorage.setItem(key, build);
@@ -3858,19 +3860,25 @@ function openPlannerSetup(id){openShow(id);setTimeout(()=>{const d=document.quer
 }
 
 async function checkPlannerNow(btn){const s=data.shows.find(x=>x.id===selected);if(!s)return;const status=document.getElementById('sv-planner-status');btn.disabled=true;if(status)status.textContent=' Checking published start lists…';try{const r=await fetch(PLANNER_API,{method:'POST',headers:{'Content-Type':'application/json','x-team-token':TEAM_TOKEN},body:JSON.stringify({show_id:s.id}),cache:'no-store'});const j=await r.json();if(!r.ok)throw new Error(j.error||'Could not check start lists');const refreshed=await teamApi('GET');data=refreshed.state;teamRevision=refreshed.revision;render();}catch(err){btn.disabled=false;if(status)status.textContent=' '+(err?.message||'Could not check right now.');}}
+function svReadiness(s){
+ const done=(s?1:0)+(s?.entriesSubmitted?1:0)+((s?.entrySystem&&s?.showLink)?1:0);
+ return {done,total:3,label:'Setup progress',pct:Math.max(0,Math.min(100,(done/3)*100))};
+}
+function svPlannerPhase(s){
+ const r=svReadiness(s);
+ if(s?.showDayPlanner?.status==='ready')return 'ready';
+ if(r.done>=3)return 'preparing';
+ return 'setup';
+}
 function svHomeState(s){
  if(!s)return {kind:'none'};
- if(s.showDayPlanner?.status==='ready')return {kind:'ready',status:'Show Plan ready',button:'Open Show Day →'};
- if(s.entriesSubmitted&&s.entrySystem&&s.showLink)return {kind:'requested',status:'Preparing your Show Plan',button:'Track my show →'};
- if(s.entriesSubmitted)return {kind:'link',status:'Entries submitted',button:'Complete show setup →'};
- return {kind:'planning',status:'Planning entries',button:'Complete show setup →'};
+ const phase=svPlannerPhase(s);
+ if(phase==='ready')return {kind:'ready',status:'Show Plan ready',button:'Open Show Day →'};
+ if(phase==='preparing')return {kind:'requested',status:'Preparing your Show Plan',button:'Track my show →'};
+ if(s.entriesSubmitted)return {kind:'link',status:'Entries submitted',button:'Complete setup →'};
+ return {kind:'planning',status:'Planning entries',button:'Complete setup →'};
 }
-function svReadiness(s){
- const done=(s?1:0)+(s?.entriesSubmitted?1:0)+((s?.entrySystem&&s?.showLink)?1:0)+(s?.showDayPlanner?.status==='ready'?1:0);
- const label=done>=4?'Ready':'Setup progress';
- return {done,total:4,label,pct:Math.max(0,Math.min(100,(done/4)*100))};
-}
-function svHomeShowPill(s){if(s.showDayPlanner?.status==='ready')return ['Show Day ready','ready'];if(s.entriesSubmitted)return ['Entered','entered'];return ['Planning',''];}
+function svHomeShowPill(s){const phase=svPlannerPhase(s);if(phase==='ready')return ['Show Plan ready','ready'];if(phase==='preparing')return ['Preparing plan','entered'];const r=svReadiness(s);return [`${r.done}/3 setup`,r.done>1?'entered':''];}
 function svHomeDateBits(s){const d=dates(s);const m=d.match(/^(\\d{1,2}(?:[–-]\\d{1,2})?)\\s+([A-Za-z]+)/);return m?[m[1],m[2].slice(0,3).toUpperCase()]:[d,''];}
 function openLatestShowDay(){
  const next=ordered().filter(s=>!isPast(s))[0]||null;
@@ -3891,30 +3899,36 @@ const legacyHeader=document.querySelector('.site-header');if(legacyHeader)legacy
 const internalBar=document.getElementById('sv-internal-bar');if(internalBar)internalBar.hidden=(view==='home');
 svUpdateNotebookBadge();const svNav=({home:'home',showSetup:'home',entries:'home',entryAdd:'home',entryConfirm:'home',showLink:'home',plan:'plan',show:'plan',editShow:'plan',add:'plan',showday:'showday',notebook:'team',team:'team',horse:'team',rider:'team',member:'team'}[view]||'');document.querySelectorAll('.sv-bottom-nav button').forEach(b=>b.classList.toggle('active',b.dataset.svNav===svNav));const homeNav=document.querySelector('.home-nav');if(homeNav)homeNav.hidden=(view==='home');if(view==='confirmed'){app.innerHTML=`<div class="sv-saved-overlay" role="dialog" aria-modal="true" aria-labelledby="sv-saved-title"><div class="sv-saved-dialog"><div class="sv-eyebrow">YOUR SHOWVIVA</div><h1 id="sv-saved-title">Show saved</h1><p>Your show has been added to your ShowViva calendar.</p><button class="goldbtn" onclick="go('home')">Home</button></div></div>`;return}if(view==='home'){const shows=ordered().filter(s=>!isPast(s)),next=shows[0],state=svHomeState(next),readiness=svReadiness(next),others=shows.filter(s=>s.id!==next?.id).slice(0,5);app.innerHTML=`<div class="sv-app-home-top"><div class="sv-app-home-logo">Show<span>Viva</span></div><button type="button" class="sv-app-home-add" onclick="go('add')"><b>+</b><span>Add show</span></button></div>${next?`<section class="sv-app-home-hero" aria-label="Up next" role="button" tabindex="0"
 onclick="svHomePrimary(data.shows.find(x=>x.id===${next.id}),svHomeState(data.shows.find(x=>x.id===${next.id})))"
-onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();svHomePrimary(data.shows.find(x=>x.id===${next.id}),svHomeState(data.shows.find(x=>x.id===${next.id})))}"><div class="sv-app-home-hero-top"><div class="sv-app-home-main"><div class="eyebrow">UP NEXT</div><h1>${esc(next.name)}</h1><p class="sv-app-home-date">${esc(dates(next))}</p></div><div class="sv-readiness" style="--sv-progress:${readiness.pct}%" aria-label="${readiness.done} of 4 show setup steps complete"><div class="sv-readiness-ring"><span>${readiness.done}/4</span></div><small>${esc(readiness.label)}</small></div></div><div class="sv-app-home-status"><i>${state.kind==='planning'?'•':'✓'}</i><span>${esc(state.status)}</span></div><button type="button" class="sv-app-home-cta" onclick="event.stopPropagation();svHomePrimary(data.shows.find(x=>x.id===${next.id}),svHomeState(data.shows.find(x=>x.id===${next.id})))">${esc(state.button||'Track my show →')}</button></section>`:`<section class="sv-app-home-empty"><h1>No upcoming show</h1><p>Add your next show when you’re ready.</p><button class="sv-app-home-cta" onclick="go('add')">Add show →</button></section>`}<section class="sv-app-home-section"><div class="sv-app-home-section-head"><h2>My Shows</h2><button type="button" class="sv-app-home-viewall" onclick="mode='list';go('plan')">View all →</button></div><div class="sv-app-home-shows">${others.map(s=>{const parts=svHomeDateBits(s),pill=svHomeShowPill(s);return `<button type="button" class="sv-app-home-show" onclick="openShowSetup(${s.id})"><span class="date"><strong>${esc(parts[0])}</strong><small>${esc(parts[1])}</small></span><span class="name">${esc(s.name)}</span><span class="pill ${pill[1]}">${esc(pill[0])}</span><span class="arrow">›</span></button>`}).join('')||'<p class="sv-app-home-none">No other upcoming shows.</p>'}</div></section>`}
+onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();svHomePrimary(data.shows.find(x=>x.id===${next.id}),svHomeState(data.shows.find(x=>x.id===${next.id})))}"><div class="sv-app-home-hero-top"><div class="sv-app-home-main"><div class="eyebrow">UP NEXT</div><h1>${esc(next.name)}</h1><p class="sv-app-home-date">${esc(dates(next))}</p></div>${svPlannerPhase(next)==='setup'?`<div class="sv-readiness" style="--sv-progress:${readiness.pct}%" aria-label="${readiness.done} of 3 show setup actions complete"><div class="sv-readiness-ring"><span>${readiness.done}/3</span></div><small>Setup progress</small></div>`:`<div class="sv-system-state ${svPlannerPhase(next)==='ready'?'ready':'preparing'}"><i>${svPlannerPhase(next)==='ready'?'✓':'⌛'}</i><small>${svPlannerPhase(next)==='ready'?'Show Plan ready':'Preparing plan'}</small></div>`}</div><div class="sv-app-home-status"><i>${state.kind==='planning'?'•':'✓'}</i><span>${esc(state.status)}</span></div><button type="button" class="sv-app-home-cta" onclick="event.stopPropagation();svHomePrimary(data.shows.find(x=>x.id===${next.id}),svHomeState(data.shows.find(x=>x.id===${next.id})))">${esc(state.button||'Track my show →')}</button></section>`:`<section class="sv-app-home-empty"><h1>No upcoming show</h1><p>Add your next show when you’re ready.</p><button class="sv-app-home-cta" onclick="go('add')">Add show →</button></section>`}<section class="sv-app-home-section"><div class="sv-app-home-section-head"><h2>My Shows</h2><button type="button" class="sv-app-home-viewall" onclick="mode='list';go('plan')">View all →</button></div><div class="sv-app-home-shows">${others.map(s=>{const parts=svHomeDateBits(s),pill=svHomeShowPill(s);return `<button type="button" class="sv-app-home-show" onclick="openShowSetup(${s.id})"><span class="date"><strong>${esc(parts[0])}</strong><small>${esc(parts[1])}</small></span><span class="name">${esc(s.name)}</span><span class="pill ${pill[1]}">${esc(pill[0])}</span><span class="arrow">›</span></button>`}).join('')||'<p class="sv-app-home-none">No other upcoming shows.</p>'}</div></section>`}
 else if(view==='showSetup'){
  const s=data.shows.find(x=>x.id===selected);
  if(!s){go('home');return}
  const readiness=svReadiness(s);
  const linkDone=!!(s.entrySystem&&s.showLink);
- const planReady=s.showDayPlanner?.status==='ready';
- const planPreparing=linkDone&&!planReady;
+ const phase=svPlannerPhase(s);
  const row=(title,copy,stateLabel,stateClass,action='')=>`<div class="sv-setup-row ${stateClass}"><div class="sv-setup-state">${stateClass==='done'?'✓':stateClass==='needed'?'!':'○'}</div><div class="sv-setup-copy"><strong>${title}</strong><small>${copy}</small>${action}</div><span class="sv-setup-pill">${stateLabel}</span></div>`;
+ const phaseState=phase==='setup'
+   ? `<div class="sv-setup-readiness" style="--sv-progress:${readiness.pct}%"><div class="sv-readiness-ring"><span>${readiness.done}/3</span></div><small>Setup progress</small></div>`
+   : `<div class="sv-system-state sv-setup-system-state ${phase==='ready'?'ready':'preparing'}"><i>${phase==='ready'?'✓':'⌛'}</i><small>${phase==='ready'?'Plan ready':'Preparing plan'}</small></div>`;
+ const systemCard=phase==='preparing'
+   ? `<section class="sv-system-card"><span class="sv-system-card-icon">⌛</span><div><h2>Preparing your Show Plan</h2><p>Your personalised plan will be created automatically and will appear on Show Day when it’s ready.</p></div></section>`
+   : phase==='ready'
+   ? `<section class="sv-system-card ready"><span class="sv-system-card-icon">✓</span><div><h2>Your Show Plan is ready</h2><p>Everything you need for your show day is ready.</p><button type="button" class="goldbtn" onclick="go('showday')">Open Show Day →</button></div></section>`
+   : '';
  app.innerHTML=`<div class="sv-show-setup-page">
    <button class="back sv-consistent-home" onclick="go('home')">← Home</button>
    <div class="sv-show-setup-head">
      <div><div class="sv-eyebrow">SHOW SETUP</div><h1>${esc(s.name)}</h1><p>${esc(dates(s))}</p><button type="button" class="sv-setup-edit-show" onclick="go('editShow')">Edit show →</button></div>
-     <div class="sv-setup-readiness" style="--sv-progress:${readiness.pct}%"><div class="sv-readiness-ring"><span>${readiness.done}/4</span></div><small>${readiness.done===4?'Ready':'Setup progress'}</small></div>
+     ${phaseState}
    </div>
    <section class="sv-setup-list">
      ${row('Show added','Your show is in My Shows.','Done','done')}
      ${row('Entries confirmed',s.entriesSubmitted?'Entries have been confirmed.':'Add your horses, riders and classes.',s.entriesSubmitted?'Done':'Needed',s.entriesSubmitted?'done':'needed',`<button type="button" ${!s.entriesSubmitted?'class="sv-setup-primary-link"':''} onclick="svOpenEntries(${s.id})">${s.entriesSubmitted?'View entries':'Add entries'} →</button>`)}
      ${row('Show link',linkDone?'Show link added.':'Add the show link so ShowViva can create your personalised plan.',linkDone?'Done':'Needed',linkDone?'done':'needed',linkDone?`<button type="button" onclick="svOpenShowLink(${s.id})">View link →</button>`:`<button type="button" class="sv-setup-primary-link" onclick="svOpenShowLink(${s.id})">Add show link →</button>`)}
-     ${row('Show Plan',planReady?'Your personalised Show Plan is ready.':planPreparing?'ShowViva is preparing your personalised plan.':'This will be created once the show link is added.',planReady?'Done':'Waiting',planReady?'done':'waiting',planReady?`<a href="planner.html?show=${encodeURIComponent(s.id)}#team=${encodeURIComponent(TEAM_TOKEN)}">Open Show Plan →</a>`:'')}
    </section>
+   ${systemCard}
  </div>`;
 }
-
 else if(view==='entries'){
  const s=data.shows.find(x=>x.id===selected);if(!s){go('home');return}
  const entries=svEntriesForShow(s);
@@ -3978,11 +3992,11 @@ else if(view==='showday'){
    const venue=next.venue&&next.venue!==next.name?next.venue:'';
    const showFacts=[venue?`<span><b>⌖</b>${esc(venue)}</span>`:'',first.cls?`<span><b>☷</b>${esc(first.cls)}</span>`:'',first.stable||first.registered?`<span><b>♞</b>${esc(first.stable||first.registered)}</span>`:''].filter(Boolean).join('');
    const title=ready?'Your Show Plan is ready':(creating||requested)?'Preparing your Show Plan':link?'Show link needed':'Your Show Plan';
-   const copy=ready?'Your personalised plan is ready.':(creating||requested)?'We’re creating your personalised plan.':link?'Add the show link so ShowViva can create your personalised plan.':planning?'Confirm your entries to start your Show Plan.':'Your personalised plan for show day.';
+   const copy=ready?'Your personalised plan is ready.':(creating||requested)?'Your personalised plan will appear here automatically when it’s ready.':link?'Add the show link so ShowViva can create your personalised plan.':planning?'Confirm your entries to start your Show Plan.':'Your personalised plan for show day.';
    const action=ready?`<a class="sv-showday-primary" href="planner.html?show=${encodeURIComponent(next.id)}#team=${encodeURIComponent(TEAM_TOKEN)}">Open Show Plan →</a>`:link?`<button type="button" class="sv-showday-primary" onclick="svOpenShowLink(${next.id})">Add show link →</button>`:planning?`<button type="button" class="sv-showday-primary" onclick="svOpenEntries(${next.id})">Confirm entries →</button>`:'';
    const checklistRows=tasks.map((t,i)=>`<label class="sv-showday-task"><input type="checkbox" ${t.done?'checked':''} onchange="setTask('prep',${i},this.checked);render()"><span>${esc(t.text)}</span></label>`).join('');
    app.innerHTML=`<div class="sv-showday-shell sv-showday-hub">
-     <div class="sv-showday-titlebar"><div><div class="sv-eyebrow">SHOW DAY</div><h1>Show Day</h1><p>Everything you need for your next show.</p></div><a class="sv-showday-chat" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" aria-label="Ask ShowViva">✦</a></div>
+     <div class="sv-showday-titlebar"><div><div class="sv-eyebrow">SHOW DAY</div><h1>Show Day</h1><p>Everything you need for your show day.</p></div><a class="sv-showday-chat" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" aria-label="Ask ShowViva">✦</a></div>
      <button type="button" class="sv-showday-show-card" onclick="openShowSetup(${next.id})">
        <span class="sv-showday-show-main"><strong>${esc(next.name)}</strong><small>${esc(dates(next))}</small>${showFacts?`<span class="sv-showday-facts">${showFacts}</span>`:''}</span><span class="sv-showday-show-arrow">›</span>
      </button>
@@ -3999,7 +4013,7 @@ app.innerHTML=`${back()}<div class="sv-branch-intro sv-one-notebook-intro"><div 
 else if(view==='past'){app.innerHTML=`${back()}<h1>Past Shows</h1><p class="intro">Your previous shows, all in one place.</p>${ordered().filter(isPast).reverse().map(showItem).join('')||'<p class="empty">No past shows yet.</p>'}`}
 else if(view==='plan'){
  const upcoming=ordered().filter(s=>!isPast(s));
- const upcomingCards=upcoming.map(s=>{const r=svReadiness(s);const status=r.done>=4?'Ready':`${r.done}/4 · Setup in progress`;return `<button type="button" class="sv-plan-show-card" onclick="openShowSetup(${s.id})"><span class="sv-plan-show-main"><strong>${esc(s.name)}</strong><small>${esc(dates(s))}</small><em>${esc(status)}</em></span><span class="sv-plan-show-progress" style="--sv-progress:${r.pct}%"><i>${r.done}/4</i></span><span class="sv-plan-show-chevron">›</span></button>`}).join('');
+ const upcomingCards=upcoming.map(s=>{const r=svReadiness(s),phase=svPlannerPhase(s);let status='',stateVisual='';if(phase==='ready'){status='Show Plan ready';stateVisual=`<span class="sv-plan-show-state ready" aria-label="Show Plan ready">✓</span>`;}else if(phase==='preparing'){status='Preparing plan';stateVisual=`<span class="sv-plan-show-state preparing" aria-label="Preparing Show Plan">⌛</span>`;}else{status=`${r.done}/3 · Setup in progress`;stateVisual=`<span class="sv-plan-show-progress" style="--sv-progress:${r.pct}%"><i>${r.done}/3</i></span>`;}return `<button type="button" class="sv-plan-show-card" onclick="openShowSetup(${s.id})"><span class="sv-plan-show-main"><strong>${esc(s.name)}</strong><small>${esc(dates(s))}</small><em>${esc(status)}</em></span>${stateVisual}<span class="sv-plan-show-chevron">›</span></button>`}).join('');
  app.innerHTML=`${back()}
  <div class="sv-branch-intro sv-ios-page-intro">
    <h1>My Shows</h1>
@@ -4016,17 +4030,18 @@ else if(view==='plan'){
        <span class="sv-plan-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></span>
        <span><strong>Add a show</strong><small>Add a show manually</small></span><b>›</b>
      </button>
-     <button type="button" class="sv-plan-tool" onclick="document.getElementById('sv-plan-calendar')?.toggleAttribute('open')">
+     <button type="button" class="sv-plan-tool" onclick="const c=document.getElementById('sv-plan-calendar');c.hidden=!c.hidden">
        <span class="sv-plan-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="15" rx="2"></rect><path d="M7.5 3.5v4M16.5 3.5v4M3.5 9.5h17"></path></svg></span>
        <span><strong>Show calendar</strong><small>View your full show calendar</small></span><b>›</b>
      </button>
    </div>
-   <details id="sv-plan-calendar" class="sv-plan-calendar-panel"><summary>Show calendar <span>Close / view</span></summary><div>${calendar()}</div></details>
+   <div id="sv-plan-calendar" class="sv-plan-calendar-sheet" hidden>${calendar()}</div>
  </section>
  <section class="sv-plan-upcoming">
    <h2>Upcoming Shows</h2>
    <div class="sv-plan-upcoming-list">${upcomingCards||'<p class="empty">No upcoming shows yet.</p>'}</div>
  </section>`}
+
 else if(view==='team'){app.innerHTML=`${back()}<div class="sv-branch-intro sv-team-intro"><h1>Team</h1><p class="intro">Horses, riders and people.</p></div><section class="sv-team-group"><details class="sv-team-row"><summary><div class="sv-team-row-copy"><h2>Horses</h2><p>View and manage horses</p></div><span class="sv-team-count">${data.horses.length}</span><span class="sv-team-row-chevron">›</span></summary><div class="sv-team-row-body">${data.horses.map((h,i)=>`<button type="button" class="sv-team-person-row" onclick="editingHorse=${i};go('horse')"><span><strong>${esc(horseName(h))}</strong><small>${horseName(h)!==registeredName(h)?esc(registeredName(h)):'Horse details'}</small></span><b>›</b></button>`).join('')||'<p class="sv-team-empty">No horses yet.</p>'}<button type="button" class="sv-team-add" onclick="editingHorse=null;go('horse')">+ Add horse</button></div></details><details class="sv-team-row"><summary><div class="sv-team-row-copy"><h2>Riders</h2><p>Rider details and registrations</p></div><span class="sv-team-count">${data.riders.length}</span><span class="sv-team-row-chevron">›</span></summary><div class="sv-team-row-body">${data.riders.map((r,i)=>`<button type="button" class="sv-team-person-row" onclick="editingRider=${i};go('rider')"><span><strong>${esc(riderName(r))}</strong><small>Rider details</small></span><b>›</b></button>`).join('')||'<p class="sv-team-empty">No riders yet.</p>'}<button type="button" class="sv-team-add" onclick="editingRider=null;go('rider')">+ Add rider</button></div></details><details class="sv-team-row"><summary><div class="sv-team-row-copy"><h2>Team members</h2><p>Owners, grooms and support</p></div><span class="sv-team-count">${(data.teamMembers||[]).length}</span><span class="sv-team-row-chevron">›</span></summary><div class="sv-team-row-body">${(data.teamMembers||[]).map((name,i)=>`<button type="button" class="sv-team-person-row" onclick="editingTeamMember=${i};go('member')"><span><strong>${esc(name)}</strong><small>Team member</small></span><b>›</b></button>`).join('')||'<p class="sv-team-empty">No team members yet.</p>'}<button type="button" class="sv-team-add" onclick="editingTeamMember=null;go('member')">+ Add team member</button></div></details></section>`}
 else if(view==='member'){const name=editingTeamMember===null?'':data.teamMembers?.[editingTeamMember]||'';app.innerHTML=`<button class="back sv-consistent-home" onclick="go('team')">← My Team</button><div class="sv-branch-intro"><div class="sv-eyebrow">TEAM MEMBER</div><h1>${editingTeamMember===null?'Add Team Member':'Edit Team Member'}</h1></div><form class="sv-simple-form sv-member-details" onsubmit="saveTeamMember(event)"><label class="field">Team member name<input name="name" maxlength="80" required value="${esc(name)}" placeholder="Name"></label><button type="submit" class="goldbtn">Save Team Member →</button></form>${editingTeamMember!==null?`<button type="button" class="sv-delete-team" onclick="deleteTeamMember(${editingTeamMember})">Delete team member</button>`:''}`}
 else if(view==='rider'){const r=editingRider===null?{}:data.riders[editingRider]||{},o=typeof r==='string'?{name:r}:r;app.innerHTML=`<button class="back sv-consistent-home" onclick="go('team')">← My Team</button><div class="sv-branch-intro"><div class="sv-eyebrow">RIDER</div><h1>${editingRider===null?'Add Rider':'Edit Rider'}</h1></div><form class="sv-simple-form" onsubmit="saveRider(event)"><label class="field">Rider name<input name="name" required maxlength="80" value="${esc(o.name||'')}"></label><details class="sv-secondary-fold"><summary>Registration details <span class="sv-team-count">Optional</span></summary><div class="sv-secondary-fold-content"><label class="field">British Showjumping number<input name="bs" maxlength="60" value="${esc(o.bs||'')}"></label><label class="field">FEI ID<input name="fei" maxlength="60" value="${esc(o.fei||'')}"></label></div></details><button class="goldbtn sv-inline-save">Save Rider →</button></form>${editingRider!==null?`<button type="button" class="sv-delete-team" onclick="deleteRider()">Delete rider</button>`:``}`}
@@ -4321,7 +4336,7 @@ startTeam();
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
-      const reg = await navigator.serviceWorker.register('./service-worker.js?v=20261001-1005', { updateViaCache: 'none' });
+      const reg = await navigator.serviceWorker.register('./service-worker.js?v=20261001-1045', { updateViaCache: 'none' });
       await reg.update();
     } catch(e) {}
   });
