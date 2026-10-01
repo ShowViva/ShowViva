@@ -1279,10 +1279,22 @@ if ('serviceWorker' in navigator) { window.addEventListener('load', () => naviga
 .sv-save-home{width:100%;border:0;background:transparent;color:#183049;font:inherit;font-weight:800;padding:15px 10px;cursor:pointer;}
 @media(min-width:700px){.sv-save-choice{align-items:center}.sv-save-choice-card{padding-bottom:28px}}
 </style>
+<style id="showviva-final-pass-2-20261001">
+#app.sv-final-view-show .sv-final-headline{display:block;margin-bottom:18px}
+#app.sv-final-view-show .sv-final-headline h1{margin-bottom:7px}
+#app.sv-final-view-show .sv-show-setup-card{padding:0 20px;border-radius:24px}
+#app.sv-final-view-show .sv-step-detail{font-size:13px;line-height:1.4;color:#697682;margin-top:7px;overflow-wrap:anywhere}
+#app.sv-final-view-show .sv-step-detail b{color:#10283a}.sv-step-detail em{font-style:normal;color:#89939c;margin-left:3px}
+#app.sv-final-view-show .sv-link-detail{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.sv-danger-zone{margin:30px 0 12px;padding-top:24px;border-top:1px solid #e8dfd2;text-align:center}.sv-delete-show{border:0;background:transparent;color:#9b4741;font:600 15px Arial,sans-serif;padding:12px 18px}.sv-danger-zone small{display:block;color:#8a9298;font-size:12px;margin-top:2px}
+.sv-showday-show{display:flex;align-items:center;gap:16px;width:100%;margin:20px 0 16px;padding:20px;background:#10283a;color:#fff;border:1.5px solid #d9ad60;border-radius:24px;text-align:left;box-shadow:none}.sv-showday-show .copy{flex:1;min-width:0}.sv-showday-show .sv-final-eyebrow{color:#e4b85e}.sv-showday-show strong{display:block;font:400 clamp(29px,8vw,38px)/1.1 Georgia,serif;margin:8px 0 5px;color:#fff}.sv-showday-show small{display:block;color:#e8e4dc;font-size:16px}.sv-showday-show .meta{display:block;color:#d6d7d5;font-size:13px;margin-top:8px}.sv-showday-show .open{flex:none;color:#e7bd69;font-weight:700;font-size:15px}.sv-showday-plan{margin-top:0!important}.sv-final-view-showday .sv-final-card+.sv-final-card{margin-top:0}
+@media(max-width:390px){.sv-showday-show{padding:18px}.sv-showday-show .open{font-size:14px}}
+</style>
 <script id="showviva-final-pass-20261001">
 (function(){
 const legacyRender=render;
 const _go=go;
+let svShowSource='plan';
 
 function svRows(s){
  const rows=[];
@@ -1302,7 +1314,7 @@ function svRing(s,dark=false){if(svReady(s))return `<span class="sv-final-ring r
 function svHorseDisplay(registered){const h=(data.horses||[]).find(x=>registeredName(x)===registered);const stable=h&&horseName(h)!==registered?horseName(h):'';return {registered,stable}}
 function svShowMeta(s){const rows=svRows(s);if(!rows.length)return '';const first=rows[0];return `<div class="meta">${esc(first.cls)} · ${esc(first.registered)}${first.stable?` <span style="color:#9aa3ad">${esc(first.stable)}</span>`:''}${rows.length>1?`<br>+ ${rows.length-1} more entr${rows.length-1===1?'y':'ies'}`:''}</div>`}
 function svShowItem(s){return `<button class="sv-final-show-item" onclick="openShow(${s.id})"><span class="copy"><strong>${esc(s.name)}</strong><small>${dates(s)}</small>${svShowMeta(s)}</span><span class="status ${svStatusClass(s)}">${esc(svStatus(s))}</span><span class="sv-final-chevron">›</span></button>`}
-function svNavActive(v){if(v==='home')return'home';if(['plan','show','entries','entryadd','showlink','add','calendar'].includes(v))return'shows';if(v==='showday')return'showday';if(['team','horse','rider','member'].includes(v))return'team';return''}
+function svNavActive(v){if(v==='home')return'home';if(['plan','show','showedit','entries','entryadd','showlink','add','calendar'].includes(v))return'shows';if(v==='showday')return'showday';if(['team','horse','rider','member'].includes(v))return'team';return''}
 function svEnsureNav(){
  let nav=document.getElementById('sv-final-bottomnav');if(!nav){nav=document.createElement('nav');nav.id='sv-final-bottomnav';nav.className='sv-final-bottomnav';nav.setAttribute('aria-label','Main navigation');document.body.appendChild(nav)}
  const active=svNavActive(view);
@@ -1332,17 +1344,21 @@ function svRenderCalendar(){app.innerHTML=`${svBack('My Shows')}<h1>Show calenda
 function svRenderShow(){
  const s=data.shows.find(x=>x.id===selected);if(!s){go('home');return}
  ensureShowLists(s);const rows=svRows(s),steps=svSteps(s);
- const entryText=s.entriesSubmitted?`${rows.length} entr${rows.length===1?'y':'ies'} added`:rows.length?`${rows.length} entr${rows.length===1?'y':'ies'} to confirm`:'Add your entries for this show.';
+ const entryText=s.entriesSubmitted?`${rows.length} entr${rows.length===1?'y':'ies'} confirmed`:rows.length?`${rows.length} entr${rows.length===1?'y':'ies'} to confirm`:'Add your entries for this show.';
  const linkDone=!!(s.entriesSubmitted&&s.showLink);
- app.innerHTML=`${svBack('My Shows')}<div class="sv-final-headline"><div class="copy"><div class="sv-final-eyebrow">SHOW SETUP</div><h1>${esc(s.name)}</h1><p class="intro">${dates(s)}</p><button class="sv-final-secondary" onclick="svEditShow()">Edit show →</button></div><div class="sv-final-progress-block">${svRing(s)}<span>${esc(svStatus(s))}</span></div></div>
- <div class="sv-final-card sv-final-step-card">
- <div class="sv-final-row"><span class="sv-final-done">✓</span><div class="sv-final-row-main"><strong>Show added</strong><small>Your show is in My Shows.</small></div><button class="sv-final-secondary" onclick="svEditShow()">Edit →</button></div>
- <div class="sv-final-row" onclick="go('entries')" role="button" tabindex="0"><span class="${s.entriesSubmitted?'sv-final-done':'sv-final-todo'}">${s.entriesSubmitted?'✓':''}</span><div class="sv-final-row-main"><strong>Entries</strong><small>${esc(entryText)}</small></div><span class="sv-final-chevron">›</span></div>
- <div class="sv-final-row" onclick="go('showlink')" role="button" tabindex="0"><span class="${linkDone?'sv-final-done':'sv-final-todo'}">${linkDone?'✓':''}</span><div class="sv-final-row-main"><strong>Show link</strong><small>${linkDone?'Link added.':'Add the link to this show on its entry system.'}</small></div><span class="sv-final-chevron">›</span></div>
+ const backLabel=svShowSource==='showday'?'Show Day':'My Shows',backFn=svShowSource==='showday'?"go('showday')":"go('plan')";
+ app.innerHTML=`${svBack(backLabel,backFn)}<div class="sv-final-headline"><div class="copy"><div class="sv-final-eyebrow">SHOW SETUP</div><h1>${esc(s.name)}</h1><p class="intro">${dates(s)}</p><button class="sv-final-secondary" onclick="go('showedit')">Edit show →</button></div></div>
+ <div class="sv-final-card sv-final-step-card sv-show-setup-card">
+ <div class="sv-final-row"><span class="sv-final-done">✓</span><div class="sv-final-row-main"><strong>Show added</strong><small>${esc(s.venue||s.name)} · ${dates(s)}</small></div></div>
+ <div class="sv-final-row" onclick="go('entries')" role="button" tabindex="0"><span class="${s.entriesSubmitted?'sv-final-done':'sv-final-todo'}">${s.entriesSubmitted?'✓':''}</span><div class="sv-final-row-main"><strong>Entries</strong><small>${esc(entryText)}</small>${rows.slice(0,2).map(r=>`<div class="sv-step-detail"><b>${esc(r.registered)}</b>${r.stable?` <em>${esc(r.stable)}</em>`:''} · ${esc(r.cls)}</div>`).join('')}${rows.length>2?`<div class="sv-step-detail">+ ${rows.length-2} more</div>`:''}</div><span class="sv-final-chevron">›</span></div>
+ <div class="sv-final-row" onclick="go('showlink')" role="button" tabindex="0"><span class="${linkDone?'sv-final-done':'sv-final-todo'}">${linkDone?'✓':''}</span><div class="sv-final-row-main"><strong>Show link</strong><small>${linkDone?'Link added.':'Add the link to this show on its entry system.'}</small>${s.showLink?`<div class="sv-step-detail sv-link-detail">${esc(s.showLink)}</div>`:''}</div><span class="sv-final-chevron">›</span></div>
  </div>
  ${steps>=3&&!svReady(s)?`<div class="sv-final-info"><span class="i">i</span><span><strong style="color:var(--sv-navy)">Creating your personalised plan</strong><br>We'll let you know when it's ready.</span></div>`:''}
- <div class="sv-final-card" style="margin-top:22px"><div class="sv-final-row"><div class="sv-final-row-main"><strong>Show details</strong><small>${esc(s.venue||s.name)} · ${dates(s)}</small></div><span class="sv-final-chevron">›</span></div>${rows.length?`<div class="sv-final-row" onclick="go('entries')"><div class="sv-final-row-main"><strong>Entries</strong><small>${rows.length} entr${rows.length===1?'y':'ies'}</small>${rows.slice(0,2).map(r=>`<div style="margin-top:8px"><span class="sv-final-entry-name"><strong>${esc(r.registered)}</strong>${r.stable?`<em>${esc(r.stable)}</em>`:''}</span><span class="sv-final-entry-class">${esc(r.cls)}</span></div>`).join('')}</div><span class="sv-final-chevron">›</span></div>`:''}${s.showLink?`<div class="sv-final-row" onclick="go('showlink')"><div class="sv-final-row-main"><strong>Show entry link</strong><small>${esc(s.showLink)}</small></div><span class="sv-final-chevron">›</span></div>`:''}</div>
  ${svReady(s)?`<a class="sv-final-primary" style="display:block;text-align:center;text-decoration:none" href="planner.html?show=${encodeURIComponent(s.id)}#team=${encodeURIComponent(TEAM_TOKEN)}">Open my Show Plan →</a>`:''}`;
+}
+function svRenderShowEdit(){
+ const s=data.shows.find(x=>x.id===selected);if(!s){go('plan');return}
+ app.innerHTML=`${svBack('Show setup',"go('show')")}<div class="sv-final-eyebrow">EDIT SHOW</div><h1>${esc(s.name)}</h1><p class="intro">Update the show details.</p><div class="sv-final-divider"></div><form class="sv-final-form" onsubmit="svSaveShowEdit(event)"><label class="field">Show name<input name="name" required maxlength="150" value="${esc(s.name)}"></label><label class="field">Starts<input name="start" type="date" required value="${esc(s.start)}"></label><label class="field">Ends<input name="end" type="date" required value="${esc(s.end||s.start)}"></label><button class="sv-final-primary">Save changes →</button></form><div class="sv-danger-zone"><button type="button" class="sv-delete-show" onclick="deleteShow()">Delete show</button><small>This permanently removes the show for the team.</small></div>`;
 }
 function svRenderAdd(){app.innerHTML=`${svBack('My Shows')}<h1>Add Show</h1><p class="intro">Add the show to your calendar. ShowViva will guide you through the rest.</p><div class="sv-final-divider"></div><form class="sv-final-form" onsubmit="addShow(event)"><label class="field">Show name<input name="venue" required maxlength="150" placeholder="e.g. Codham"></label><label class="field">Starts<input name="start" type="date" required></label><label class="field">Ends<input name="end" type="date" required></label><input type="hidden" name="entrySystem" value=""><input type="hidden" name="showLink" value=""><button class="sv-final-primary">Save show →</button></form>`}
 function svRenderEntries(){
@@ -1360,7 +1376,11 @@ function svRenderShowLink(){
 }
 function svRenderShowDay(){
  const shows=ordered().filter(s=>!isPast(s)),s=shows[0];if(!s){app.innerHTML=`<div class="sv-final-eyebrow">SHOW DAY</div><h1>Show Day</h1><p class="intro">Everything you need for your show day.</p><div class="sv-final-card"><p class="intro" style="margin:0!important">No upcoming show yet.</p></div>`;return}
- const rows=svRows(s);app.innerHTML=`<div class="sv-final-eyebrow">SHOW DAY</div><h1>Show Day</h1><p class="intro">Everything you need for your show day.</p><div class="sv-final-card"><div class="sv-final-row"><div class="sv-final-row-main"><h2 style="margin:0!important">${esc(s.name)}</h2><small>${dates(s)}</small>${rows.slice(0,2).map(r=>`<div style="margin-top:8px;color:var(--sv-muted)">${esc(r.cls)} · ${esc(r.registered)}${r.stable?' '+esc(r.stable):''}</div>`).join('')}</div><span class="sv-final-chevron">›</span></div></div><div class="sv-final-card"><div class="sv-final-eyebrow">SHOW PLAN</div><h2 style="margin:0 0 8px!important">${svReady(s)?'Plan ready':svSteps(s)>=3?'Creating your Show Plan':'Show Plan'}</h2><p class="intro" style="font-size:16px!important;margin-bottom:0!important">${svReady(s)?'Your personalised plan is ready.':svSteps(s)>=3?'Your personalised plan will appear here automatically when it’s ready.':'Complete your show setup to create your personalised plan.'}</p>${svReady(s)?`<a class="sv-final-primary" style="display:block;text-align:center;text-decoration:none" href="planner.html?show=${encodeURIComponent(s.id)}#team=${encodeURIComponent(TEAM_TOKEN)}">Open my Show Plan →</a>`:`<button class="sv-final-primary" onclick="openShow(${s.id})">${svSteps(s)>=3?'Track my show':'Finish show setup'} →</button>`}</div><button class="sv-final-checklist-link" onclick="openShow(${s.id})"><span style="font-size:23px;color:#bd8f35">☑</span><span class="copy"><strong>Show checklist</strong><small>Get organised for show day.</small></span><span class="sv-final-chevron">›</span></button><a class="sv-final-ai-link" href="https://chatgpt.com/" target="_blank" rel="noopener"><span style="font-size:23px;color:#bd8f35">✦</span><span class="copy"><strong>Ask the AI</strong><small>Get quick answers on the day.</small></span><span class="sv-final-chevron">›</span></a><button class="sv-final-notes-link" onclick="go('notebook')"><span style="font-size:23px;color:#bd8f35">▤</span><span class="copy"><strong>Team notes</strong><small>Shared notes and updates.</small></span><span class="sv-final-chevron">›</span></button>`;
+ const rows=svRows(s),steps=svSteps(s);
+ app.innerHTML=`<div class="sv-final-eyebrow">SHOW DAY</div><h1>Show Day</h1><p class="intro">Everything you need for your show day.</p>
+ <button class="sv-showday-show" onclick="openShowFrom('showday',${s.id})"><span class="copy"><span class="sv-final-eyebrow">YOUR SHOW</span><strong>${esc(s.name)}</strong><small>${dates(s)}</small>${rows.slice(0,2).map(r=>`<span class="meta">${esc(r.cls)} · ${esc(r.registered)}${r.stable?' '+esc(r.stable):''}</span>`).join('')}</span><span class="open">Open →</span></button>
+ <div class="sv-final-card sv-showday-plan"><div class="sv-final-eyebrow">SHOW PLAN</div><h2 style="margin:0 0 8px!important">${svReady(s)?'Plan ready':steps>=3?'Creating your Show Plan':'Show Plan'}</h2><p class="intro" style="font-size:16px!important;margin-bottom:0!important">${svReady(s)?'Your personalised plan is ready.':steps>=3?'Your personalised plan will appear here automatically when it’s ready.':'Complete your show setup to create your personalised plan.'}</p>${svReady(s)?`<a class="sv-final-primary" style="display:block;text-align:center;text-decoration:none" href="planner.html?show=${encodeURIComponent(s.id)}#team=${encodeURIComponent(TEAM_TOKEN)}">Open my Show Plan →</a>`:steps<3?`<button class="sv-final-primary" onclick="openShowFrom('showday',${s.id})">Finish show setup →</button>`:''}</div>
+ <button class="sv-final-checklist-link" onclick="openShowFrom('showday',${s.id})"><span style="font-size:23px;color:#bd8f35">☑</span><span class="copy"><strong>Show checklist</strong><small>Get organised for show day.</small></span><span class="sv-final-chevron">›</span></button><a class="sv-final-ai-link" href="https://chatgpt.com/" target="_blank" rel="noopener"><span style="font-size:23px;color:#bd8f35">✦</span><span class="copy"><strong>Ask the AI</strong><small>Get quick answers on the day.</small></span><span class="sv-final-chevron">›</span></a><button class="sv-final-notes-link" onclick="go('notebook')"><span style="font-size:23px;color:#bd8f35">▤</span><span class="copy"><strong>Team notes</strong><small>Shared notes and updates.</small></span><span class="sv-final-chevron">›</span></button>`;
 }
 function svRenderTeam(){
  const horseRows=(data.horses||[]).map((h,i)=>{const r=registeredName(h),st=horseName(h)!==r?horseName(h):'';return `<div class="sv-final-row"><div class="sv-final-row-main"><strong>${esc(r)}</strong>${st?`<small>${esc(st)}</small>`:''}</div><button class="sv-final-secondary" onclick="editingHorse=${i};go('horse')">Edit →</button></div>`}).join('')||'<p class="intro" style="font-size:16px!important">No horses yet.</p>';
@@ -1372,7 +1392,9 @@ function svRenderTeam(){
 window.svToggleEntries=function(){const s=data.shows.find(x=>x.id===selected);if(!s)return;s.entriesSubmitted=!s.entriesSubmitted;save();render()}
 window.svAddEntry=function(e){e.preventDefault();const s=data.shows.find(x=>x.id===selected);if(!s)return;const f=e.target.elements,h=f.horse.value,choice=f.cls.value,cls=(choice==='Other'?f.other.value:choice).trim();if(!h||!cls)return;(s.plannedClasses||(s.plannedClasses={}));if((s.plannedClasses[h]||[]).includes(cls)){alert('This horse is already listed in that class.');return}(s.plannedClasses[h]||(s.plannedClasses[h]=[])).push(cls);if(!s.horses.includes(h))s.horses.push(h);s.entriesSubmitted=false;save();go('entries')}
 window.svSaveLink=function(e){e.preventDefault();const s=data.shows.find(x=>x.id===selected);if(!s)return;const url=e.target.elements.link.value.trim();s.showLink=url;const low=url.toLowerCase();s.entrySystem=low.includes('equipe')?'equipe':low.includes('myridinglife')?'myridinglife':'other';s.autoPlanner=true;save();go('show')}
-window.svEditShow=function(){const s=data.shows.find(x=>x.id===selected);if(!s)return;const name=prompt('Show name',s.name);if(name===null)return;const v=name.trim();if(v){s.name=v;s.venue=v;save();render()}}
+window.svEditShow=function(){go('showedit')}
+window.svSaveShowEdit=function(e){e.preventDefault();const s=data.shows.find(x=>x.id===selected);if(!s)return;const f=e.target.elements,name=f.name.value.trim();if(!name)return;s.name=name;s.venue=name;s.start=f.start.value;s.end=f.end.value||f.start.value;if(s.end<s.start){alert('End date cannot be before the start date.');return}save();go('show')}
+window.openShowFrom=function(source,id){svShowSource=source||'plan';activeTool=null;selected=Number(id);go('show')}
 
 render=function(){
  app.className='sv-final-view-'+view;
@@ -1381,6 +1403,7 @@ render=function(){
  else if(view==='plan')svRenderPlan();
  else if(view==='calendar')svRenderCalendar();
  else if(view==='show')svRenderShow();
+ else if(view==='showedit')svRenderShowEdit();
  else if(view==='add')svRenderAdd();
  else if(view==='entries')svRenderEntries();
  else if(view==='entryadd')svRenderEntryAdd();
@@ -1392,7 +1415,7 @@ render=function(){
 };
 
 // Make legacy page actions return into the new flow.
-window.openShow=function(id){activeTool=null;selected=Number(id);go('show')};
+window.openShow=function(id){svShowSource='plan';activeTool=null;selected=Number(id);go('show')};
 // Re-render once the shared state has loaded; startTeam invokes render itself.
 setTimeout(()=>{if(teamReady)render()},0);
 })();
